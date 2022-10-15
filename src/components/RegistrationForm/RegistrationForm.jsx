@@ -4,9 +4,18 @@ import * as yup from "yup";
 
 const RegistrationForm = () => {
   const validationSchema = yup.object().shape({
+    email: yup.string().email('invalid email').required('Please, enter your email'),
+    password: yup
+      .string()
+      .required(`Please, enter your password`)
+      .min(6, "At least 6 characters")
+      .max(12, "up to 12 characters"),
+    confirmPassword: yup
+      .string()
+      .oneOf([yup.ref("password")], "Passwords do not match.")
+      .required(`Please, confirm your password`),
     firstName: yup
       .string()
-      .min(1, "at least 1 character")
       .max(12, "up to 12 characters")
       .required(`Please, enter your name`),
   });
@@ -24,15 +33,7 @@ const RegistrationForm = () => {
         validationSchema={validationSchema}
         onSubmit={(values) => console.log(values)}
       >
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          isValid,
-          dirty,
-          handleSubmit,
-        }) => (
+        {({ values, errors, touched, handleChange, handleSubmit }) => (
           <Form>
             <label>
               Email
@@ -43,6 +44,7 @@ const RegistrationForm = () => {
                 value={values.name}
                 onChange={handleChange}
               />
+              {touched.email && errors.email && <p>{errors.email}</p>}
             </label>
             <label>
               Password
@@ -54,6 +56,7 @@ const RegistrationForm = () => {
                 required={true}
                 onChange={handleChange}
               />
+              {touched.password && errors.password && <p>{errors.password}</p>}
             </label>
             <label>
               Confirm password
@@ -64,6 +67,9 @@ const RegistrationForm = () => {
                 value={values.name}
                 onChange={handleChange}
               />
+              {touched.confirmPassword && errors.confirmPassword && (
+                <p>{errors.confirmPassword}</p>
+              )}
             </label>
             <label>
               First name
@@ -79,11 +85,7 @@ const RegistrationForm = () => {
               )}
             </label>
             <div>
-              <button
-                type="submit"
-                // disabled={!isValid || !dirty}
-                onClick={handleSubmit}
-              >
+              <button type="submit" onClick={handleSubmit}>
                 REGISTER
               </button>
               {/* <Link></Link> */}
