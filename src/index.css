@@ -1,3 +1,41 @@
+@font-face {
+  font-family: 'Circe';
+  src: url('./styles/fonts/Circe-Regular.woff2') format('woff2'),
+      url('./styles/fonts/Circe-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./styles/fonts/Poppins-Bold.woff2') format('woff2'),
+      url('./styles/fonts/Poppins-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./styles/fonts/Poppins-Regular.woff2') format('woff2'),
+      url('./styles/fonts/Poppins-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Circe';
+  src: url('./styles/fonts/Circe-Bold.woff2') format('woff2'),
+      url('./styles/fonts/Circe-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+
 html {
   box-sizing: border-box;
   scroll-behavior: smooth;
@@ -146,4 +184,9 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
+}
+
+body {
+  font-family: Circe;
+  font-weight: normal;
 }

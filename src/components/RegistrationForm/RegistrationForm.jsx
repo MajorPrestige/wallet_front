@@ -15,13 +15,14 @@ const RegistrationForm = () => {
       .oneOf([yup.ref("password")], "Passwords do not match.")
       .required(`Please, confirm your password`),
     firstName: yup
-      .string()
+      .string() 
       .max(12, "up to 12 characters")
       .required(`Please, enter your name`),
   });
 
   return (
     <div>
+      <h1>Wallet</h1>
       <Formik
         initialValues={{
           email: "",
@@ -35,6 +36,7 @@ const RegistrationForm = () => {
       >
         {({ values, errors, touched, handleChange, handleSubmit }) => (
           <Form>
+            
             <label>
               Email
               <Field
@@ -88,7 +90,7 @@ const RegistrationForm = () => {
               <button type="submit" onClick={handleSubmit}>
                 REGISTER
               </button>
-              {/* <Link></Link> */}
+              <button>LOG IN</button>
             </div>
           </Form>
         )}
