@@ -2,30 +2,29 @@ import { createGlobalStyle } from "styled-components";
 
 
 const GlobalStyles = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&display=swap');
 @font-face {
-	font-family: 'Circe';
-	src: url('Circe-Regular.eot');
-	src: local('Circe'), local('Circe-Regular'),
-		url('Circe-Regular.eot?#iefix') format('embedded-opentype'),
-		url('Circe-Regular.woff') format('woff'),
-		url('Circe-Regular.ttf') format('truetype');
-	font-weight: 400;
-	font-style: normal;
+    font-family: 'Circe';
+    src: url('../Circe-Regular.eot');
+    src: local('Circe'), local('Circe-Regular'),
+        url('../Circe-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../Circe-Regular.woff2') format('woff2'),
+        url('../Circe-Regular.woff') format('woff'),
+        url('../Circe-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
-	font-family: 'Circe';
-	src: url('Circe-Bold.eot');
-	src: local('Circe Bold'), local('Circe-Bold'),
-		url('Circe-Bold.eot?#iefix') format('embedded-opentype'),
-		url('Circe-Bold.woff') format('woff'),
-		url('Circe-Bold.ttf') format('truetype');
-	font-weight: 700;
-	font-style: normal;
+    font-family: 'Circe';
+    src: url('../Circe-Bold.eot');
+    src: local('Circe Bold'), local('Circe-Bold'),
+        url('../Circe-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../Circe-Bold.woff2') format('woff2'),
+        url('../Circe-Bold.woff') format('woff'),
+        url('../Circe-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
 }
-
-
 
 html {
   box-sizing: border-box;
@@ -178,9 +177,10 @@ img {
 }
 
 body {
-  font-family: 'Circe', sans-serif;
+  font-family: 'Circe';
   font-weight: 400;
 }
+
 `
 
 export default GlobalStyles
