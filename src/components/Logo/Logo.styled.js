@@ -1,15 +1,34 @@
 import styled from "styled-components";
+import { ReactComponent as Icon } from "images/svgs/wallet.svg";
+import { device } from "styles/Media.variables";
 
 export const LogoContainer = styled.div`
+	display: flex;
+	align-items: center;
+`;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+export const IconLogo= styled(Icon)`
+  width: 30px;
+  height: 30px;
+
+  @media ${device.tablet} {
+		width: 40px;
+  height: 40px;
+	}
 `
 
 export const LogoText = styled.p`
-  font-family: "Poppins";
-  font-weight: 700;
-  font-size: 22px;
-  margin-left: 15px;
-`
+	font-family: "Poppins";
+	font-weight: 700;
+
+	@media ${device.tabletBefore} {
+		font-size: 22px;
+		margin-left: 15px;
+	}
+
+  @media ${device.tablet} {
+		font-size: 30px;
+		line-height: 1.5;
+    margin-left: 20px;
+	}
+`;

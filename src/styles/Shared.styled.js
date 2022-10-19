@@ -1,5 +1,1 @@
-import styled from "styled-components";
-
-export const Logo = styled.p`
-  
-`
+// import styled from "styled-components";

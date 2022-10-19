@@ -1,5 +1,5 @@
-import { ReactComponent as IconLogo } from "images/svgs/wallet.svg";
 import { LogoContainer, LogoText } from "./Logo.styled";
+import { IconLogo } from "./Logo.styled";
 
 
 const Logo = () => {
