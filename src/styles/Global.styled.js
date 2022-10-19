@@ -2,30 +2,6 @@ import { createGlobalStyle } from "styled-components";
 
 
 const GlobalStyles = createGlobalStyle`
-@font-face {
-    font-family: 'Circe';
-    src: url('../Circe-Regular.eot');
-    src: local('Circe'), local('Circe-Regular'),
-        url('../Circe-Regular.eot?#iefix') format('embedded-opentype'),
-        url('../Circe-Regular.woff2') format('woff2'),
-        url('../Circe-Regular.woff') format('woff'),
-        url('../Circe-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Circe';
-    src: url('../Circe-Bold.eot');
-    src: local('Circe Bold'), local('Circe-Bold'),
-        url('../Circe-Bold.eot?#iefix') format('embedded-opentype'),
-        url('../Circe-Bold.woff2') format('woff2'),
-        url('../Circe-Bold.woff') format('woff'),
-        url('../Circe-Bold.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-}
-
 html {
   box-sizing: border-box;
   scroll-behavior: smooth;
@@ -34,6 +10,10 @@ html {
 *::after,
 *::before {
   box-sizing: inherit;
+}
+
+body, button, input {
+  font-family: "Circe";
 }
 
 html,
@@ -121,7 +101,6 @@ video {
   padding: 0;
   border: 0;
   font-size: 100%;
-  font: inherit;
   vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -137,9 +116,6 @@ menu,
 nav,
 section {
   display: block;
-}
-body {
-  line-height: 1;
 }
 ol,
 ul {
@@ -169,18 +145,11 @@ a {
   text-decoration: none;
 }
 
-
 img {
   display: block;
   max-width: 100%;
   height: auto;
 }
-
-body {
-  font-family: 'Circe';
-  font-weight: 400;
-}
-
 `
 
 export default GlobalStyles

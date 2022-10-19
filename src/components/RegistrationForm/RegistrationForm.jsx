@@ -1,10 +1,12 @@
 import { Formik, Form, Field } from "formik";
 // import { Link } from "react-router-dom";
 import * as yup from "yup";
-import { ReactComponent as IconLogo } from "images/svgs/wallet.svg";
-import  { ReactComponent as EmailLogo } from "images/svgs/email.svg";
-import  { ReactComponent as PasswordLogo } from "images/svgs/password.svg";
-import  { ReactComponent as UserLogo } from "images/svgs/user.svg";
+
+import Logo from "components/Logo/Logo";
+import { ReactComponent as EmailLogo } from "images/svgs/email.svg";
+import { ReactComponent as PasswordLogo } from "images/svgs/password.svg";
+import { ReactComponent as UserLogo } from "images/svgs/user.svg";
+
 
 const RegistrationForm = () => {
 	const validationSchema = yup.object().shape({
@@ -23,11 +25,7 @@ const RegistrationForm = () => {
 
 	return (
 		<div>
-			<h1>
-				{" "}
-				<IconLogo />
-				Wallet
-			</h1>
+			<Logo />
 			<Formik
 				initialValues={{
 					email: "",
@@ -40,6 +38,7 @@ const RegistrationForm = () => {
 				onSubmit={values => console.log(values)}
 			>
 				{({ values, errors, touched, handleChange, handleSubmit }) => (
+					
 					<Form>
 						<label>
 							<EmailLogo />
@@ -65,7 +64,7 @@ const RegistrationForm = () => {
 							{touched.password && errors.password && <p>{errors.password}</p>}
 						</label>
 						<label>
-							<PasswordLogo /> 
+							<PasswordLogo />
 							<Field
 								name="confirmPassword"
 								type="password"
