@@ -28,7 +28,6 @@ export const LogoText = styled.p`
 
   @media ${device.tablet} {
 		font-size: 30px;
-		line-height: 1.5;
     margin-left: 20px;
 	}
 `;

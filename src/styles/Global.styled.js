@@ -16,6 +16,10 @@ body, button, input {
   font-family: "Circe";
 }
 
+body {
+  line-height: 1.5;
+}
+
 html,
 body,
 div,
