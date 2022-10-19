@@ -45,6 +45,7 @@ export const StyledField = styled(Field)`
 	border-bottom: 1px solid #e0e0e0;
 	font-size: 18px;
 	outline: none;
+	transition: 0.2s ease-in-out;
 
 	&::placeholder {
 		color: #bdbdbd;
@@ -54,7 +55,7 @@ export const StyledField = styled(Field)`
 		border-color: #24cca7;
 	}
 
-	&:focus ~ svg{
+	&:focus ~ svg {
 		fill: #24cca7;
 	}
 `;
@@ -70,7 +71,7 @@ export const PasswordLogo = styled(Password)`
 	position: absolute;
 	top: 0;
 	left: 10px;
-  fill: #e0e0e0;
+	fill: #e0e0e0;
 `;
 
 export const UserLogo = styled(User)`
@@ -85,4 +86,10 @@ export const AuthError = styled.p`
 	font-size: 12px;
 	margin-left: 55px;
 	color: #ff6596;
+`;
+
+export const ButtonWrapper = styled.div`
+	margin-top: 40px;
+	display: flex;
+  flex-direction: column;
 `;

@@ -3,7 +3,7 @@ import { Formik } from "formik";
 import * as yup from "yup";
 
 import Logo from "components/Logo/Logo";
-import { Container } from "styles/Shared.styled";
+import { Container,Button } from "styles/Shared.styled";
 import {
 	FormWrapper,
 	LogoWrapper,
@@ -14,6 +14,7 @@ import {
 	PasswordLogo,
 	UserLogo,
 	AuthError,
+	ButtonWrapper,
 } from "./RegistrationForm.styled";
 
 const RegistrationForm = () => {
@@ -98,12 +99,12 @@ const RegistrationForm = () => {
 								<UserLogo />
 								{touched.firstName && errors.firstName && <AuthError>{errors.firstName}</AuthError>}
 							</StyledLabel>
-							<div>
-								<button type="submit" onClick={handleSubmit}>
+							<ButtonWrapper>
+								<Button primary marginBotom="20px" type="submit" onClick={handleSubmit}>
 									REGISTER
-								</button>
-								<button>LOG IN</button>
-							</div>
+								</Button>
+								<Button type="submit" outlined>LOG IN</Button>
+							</ButtonWrapper>
 						</StyledForm>
 					)}
 				</Formik>

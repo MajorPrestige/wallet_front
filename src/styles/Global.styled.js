@@ -14,11 +14,9 @@ html {
 
 body, button, input {
   font-family: "Circe";
+  line-height: 1.5
 }
 
-body {
-  line-height: 1.5;
-}
 
 html,
 body,
