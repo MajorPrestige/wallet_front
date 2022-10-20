@@ -8,6 +8,12 @@ export const Container = styled.div`
 	}
 `;
 
+export const Title = styled.h1`
+  font-family: 'Poppins';
+  font-weight: 400;
+  font-size: 30px;
+`;
+
 export const Button = styled.button`
   position: relative;  
   display: block;
