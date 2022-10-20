@@ -6,10 +6,8 @@ import { ReactComponent as Password } from "images/svgs/password.svg";
 import { ReactComponent as User } from "images/svgs/user.svg";
 
 export const LogoWrapper = styled.div`
-	@media ${device.tabletBefore} {
-		display: flex;
-		justify-content: center;
-	}
+	display: flex;
+	justify-content: center;
 `;
 
 export const FormWrapper = styled.div`
@@ -21,13 +19,18 @@ export const FormWrapper = styled.div`
 		padding-bottom: 36px;
 		max-width: 320px;
 	}
+
+	@media ${device.tablet} {
+		width: 533px;
+		height: 616px;
+		padding: 40px 58px 62px 65px;
+		border-radius: 20px;
+	}
 `;
 
 export const StyledForm = styled(Form)`
 	text-align: center;
-	@media ${device.tabletBefore} {
-		margin-top: 60px;
-	}
+	margin-top: 60px;
 `;
 
 export const StyledLabel = styled.label`
@@ -91,6 +94,6 @@ export const AuthError = styled.p`
 export const ButtonWrapper = styled.div`
 	margin-top: 40px;
 	display: flex;
-  flex-direction: column;
+	flex-direction: column;
 	align-items: center;
 `;
