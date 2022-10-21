@@ -3,7 +3,7 @@ import { Formik } from "formik";
 import * as yup from "yup";
 
 import Logo from "components/Logo/Logo";
-import { AuthContainer,Button } from "styles/Shared.styled";
+import { AuthContainer, Button } from "styles/Shared.styled";
 import {
 	FormWrapper,
 	LogoWrapper,
@@ -15,6 +15,8 @@ import {
 	UserLogo,
 	AuthError,
 	ButtonWrapper,
+	PasswordCheck,
+	PasswordCheckItem
 } from "./RegistrationForm.styled";
 
 const RegistrationForm = () => {
@@ -31,6 +33,11 @@ const RegistrationForm = () => {
 			.required(`Please, confirm your password`),
 		firstName: yup.string().max(12, "up to 12 characters").required(`Please, enter your name`),
 	});
+
+	const checkPassword = (password) => {
+		console.log(password);
+	}
+
 
 	return (
 		<AuthContainer>
@@ -73,6 +80,12 @@ const RegistrationForm = () => {
 									onChange={handleChange}
 								/>
 								<PasswordLogo />
+								{/* style={{backgroundColor: "red"}} */}
+								<PasswordCheck>
+									<PasswordCheckItem>{checkPassword(values.password)}</PasswordCheckItem>
+									<PasswordCheckItem></PasswordCheckItem>
+									<PasswordCheckItem></PasswordCheckItem>
+								</PasswordCheck>
 								{touched.password && errors.password && <AuthError>{errors.password}</AuthError>}
 							</StyledLabel>
 							<StyledLabel>
@@ -103,7 +116,9 @@ const RegistrationForm = () => {
 								<Button primary marginBotom="20px" type="submit" onClick={handleSubmit}>
 									REGISTER
 								</Button>
-								<Button type="submit" outlined>LOG IN</Button>
+								<Button type="submit" outlined>
+									LOG IN
+								</Button>
 							</ButtonWrapper>
 						</StyledForm>
 					)}

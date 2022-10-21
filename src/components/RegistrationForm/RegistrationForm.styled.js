@@ -88,6 +88,7 @@ export const AuthError = styled.p`
 	position: absolute;
 	font-size: 12px;
 	margin-left: 55px;
+	margin-top: 2px;
 	color: #ff6596;
 `;
 
@@ -96,4 +97,16 @@ export const ButtonWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+`;
+
+export const PasswordCheck = styled.div`
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+`;
+
+export const PasswordCheckItem = styled.span`
+	margin-top: 5px;
+	background-color: #E5F1EF;
+	height: 2px;
+	box-shadow: 0px 1px 8px rgba(36, 204, 167, 0.5);
 `;
