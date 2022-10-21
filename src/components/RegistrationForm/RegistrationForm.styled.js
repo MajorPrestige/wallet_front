@@ -12,7 +12,7 @@ export const LogoWrapper = styled.div`
 
 export const FormWrapper = styled.div`
 	background-color: #ffffff;
-	margin: 0 auto;
+	margin: auto;
 
 	@media ${device.tabletBefore} {
 		padding-top: 36px;

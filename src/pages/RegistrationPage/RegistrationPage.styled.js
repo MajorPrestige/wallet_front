@@ -13,14 +13,27 @@ export const StyledRegistrationForm = styled.div`
 	@media ${device.tablet} {
 		background: top 0% right 0% no-repeat url(${Elipse2}), bottom 0% left 0% no-repeat url(${Elipse1}), #e7eaf2;
 	}
+
+	@media ${device.desktop} {
+		display: flex;
+		align-items: center;
+	}
 `;
 
 export const RegistrationHero = styled.div`
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding-top: 60px;
-	padding-bottom: 50px;
+	@media ${device.tablet} {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding-top: 60px;
+		padding-bottom: 50px;
+	}
+
+	@media ${device.desktop} {
+		width: 100vw;
+		height: 100vh;
+		flex-direction: column;
+	}
 `;
 
 export const RegistrationImg = styled.img`
@@ -28,4 +41,10 @@ export const RegistrationImg = styled.img`
 		width: 274px;
 		height: 250px;
 	}
-` 
+
+	@media ${device.desktop} {
+		margin-bottom: 32px;
+		width: 453px;
+		height: 413px;
+	}
+`;

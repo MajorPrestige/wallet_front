@@ -3,7 +3,7 @@ import { Formik } from "formik";
 import * as yup from "yup";
 
 import Logo from "components/Logo/Logo";
-import { Container,Button } from "styles/Shared.styled";
+import { AuthContainer,Button } from "styles/Shared.styled";
 import {
 	FormWrapper,
 	LogoWrapper,
@@ -33,7 +33,7 @@ const RegistrationForm = () => {
 	});
 
 	return (
-		<Container>
+		<AuthContainer>
 			<FormWrapper>
 				<LogoWrapper>
 					<Logo />
@@ -109,7 +109,7 @@ const RegistrationForm = () => {
 					)}
 				</Formik>
 			</FormWrapper>
-		</Container>
+		</AuthContainer>
 	);
 };
 
