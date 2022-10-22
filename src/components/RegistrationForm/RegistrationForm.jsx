@@ -64,7 +64,6 @@ const RegistrationForm = () => {
 						confirmPassword: "",
 						firstName: "",
 					}}
-					validateOnChange
 					validationSchema={validationSchema}
 					onSubmit={values => console.log(values)}
 				>
@@ -98,7 +97,7 @@ const RegistrationForm = () => {
 										<span></span>
 									</PasswordCheck>
 								)}
-								{touched.password && errors.password && <AuthError>{errors.password}</AuthError>}
+								{((errors.password && values.password ) || touched.password )&& <AuthError>{errors.password}</AuthError>}
 							</StyledLabel>
 							<StyledLabel>
 								<StyledField
@@ -122,7 +121,7 @@ const RegistrationForm = () => {
 									onChange={handleChange}
 								/>
 								<UserLogo />
-								{touched.firstName && errors.firstName && <AuthError>{errors.firstName}</AuthError>}
+								{(touched.firstName || (errors.firstName && values.firstName)) && <AuthError>{errors.firstName}</AuthError>}
 							</StyledLabel>
 							<ButtonWrapper>
 								<Button primary marginBotom="20px" type="submit" onClick={handleSubmit}>
