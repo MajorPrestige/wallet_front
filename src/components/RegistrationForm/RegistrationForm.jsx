@@ -36,12 +36,23 @@ const RegistrationForm = () => {
 
 	const checkPassword = password => {
 		if (password) {
-			if (password.length > 5 && (password !== password.toLowerCase() || (/\d/.test(password) && /[a-zA-Z]/.test(password)))) {
-				if ((/\d/.test(password) && /[a-zA-Z]/.test(password)) && password !== password.toLowerCase()) {
+			if (
+				password.length > 5 &&
+				((password !== password.toLowerCase() && password !== password.toUpperCase()) ||
+					(/\d/.test(password) && /[a-zA-Z]/.test(password)))
+			) {
+				if (
+					password !== password.toLowerCase() &&
+					password !== password.toUpperCase() &&
+					/\d/.test(password) &&
+					/[a-zA-Z]/.test(password)
+				) {
 					return "strong";
 				}
+
 				return "normal";
 			}
+
 			return "week";
 		}
 	};
@@ -87,7 +98,7 @@ const RegistrationForm = () => {
 									onChange={handleChange}
 								/>
 								<PasswordLogo />
-								<PasswordCheck security = {checkPassword(values.password)}>
+								<PasswordCheck security={checkPassword(values.password)}>
 									<PasswordCheckItem></PasswordCheckItem>
 									<PasswordCheckItem></PasswordCheckItem>
 									<PasswordCheckItem></PasswordCheckItem>
