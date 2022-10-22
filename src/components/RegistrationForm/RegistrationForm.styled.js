@@ -131,4 +131,3 @@ export const PasswordCheck = styled.div`
 	`}
 `;
 
-export const PasswordCheckItem = styled.span``;

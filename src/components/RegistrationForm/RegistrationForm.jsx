@@ -16,7 +16,6 @@ import {
 	AuthError,
 	ButtonWrapper,
 	PasswordCheck,
-	PasswordCheckItem,
 } from "./RegistrationForm.styled";
 
 const RegistrationForm = () => {
@@ -98,11 +97,13 @@ const RegistrationForm = () => {
 									onChange={handleChange}
 								/>
 								<PasswordLogo />
-								<PasswordCheck security={checkPassword(values.password)}>
-									<PasswordCheckItem></PasswordCheckItem>
-									<PasswordCheckItem></PasswordCheckItem>
-									<PasswordCheckItem></PasswordCheckItem>
-								</PasswordCheck>
+								{values.password && (
+									<PasswordCheck security={checkPassword(values.password)}>
+										<span></span>
+										<span></span>
+										<span></span>
+									</PasswordCheck>
+								)}
 								{touched.password && errors.password && <AuthError>{errors.password}</AuthError>}
 							</StyledLabel>
 							<StyledLabel>
