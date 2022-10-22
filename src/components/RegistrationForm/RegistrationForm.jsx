@@ -16,7 +16,7 @@ import {
 	AuthError,
 	ButtonWrapper,
 	PasswordCheck,
-	PasswordCheckItem
+	PasswordCheckItem,
 } from "./RegistrationForm.styled";
 
 const RegistrationForm = () => {
@@ -34,10 +34,17 @@ const RegistrationForm = () => {
 		firstName: yup.string().max(12, "up to 12 characters").required(`Please, enter your name`),
 	});
 
-	const checkPassword = (password) => {
-		console.log(password);
-	}
-
+	const checkPassword = password => {
+		if (password) {
+			if (password.length > 5 && (password !== password.toLowerCase() || (/\d/.test(password) && /[a-zA-Z]/.test(password)))) {
+				if ((/\d/.test(password) && /[a-zA-Z]/.test(password)) && password !== password.toLowerCase()) {
+					return "strong";
+				}
+				return "normal";
+			}
+			return "week";
+		}
+	};
 
 	return (
 		<AuthContainer>
@@ -80,9 +87,8 @@ const RegistrationForm = () => {
 									onChange={handleChange}
 								/>
 								<PasswordLogo />
-								{/* style={{backgroundColor: "red"}} */}
-								<PasswordCheck>
-									<PasswordCheckItem>{checkPassword(values.password)}</PasswordCheckItem>
+								<PasswordCheck security = {checkPassword(values.password)}>
+									<PasswordCheckItem></PasswordCheckItem>
 									<PasswordCheckItem></PasswordCheckItem>
 									<PasswordCheckItem></PasswordCheckItem>
 								</PasswordCheck>

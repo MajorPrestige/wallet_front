@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import { Form, Field } from "formik";
 import { device } from "styles/Media.variables";
 import { ReactComponent as Email } from "images/svgs/email.svg";
@@ -102,11 +102,33 @@ export const ButtonWrapper = styled.div`
 export const PasswordCheck = styled.div`
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
+	gap: 5px;
+
+	& span {
+		margin-top: 5px;
+		background-color: #e5f1ef;
+		height: 2px;
+		box-shadow: 0px 1px 8px rgba(36, 204, 167, 0.5);
+	}
+
+	${({security}) => security === "week" && css`
+		& :nth-child(1) {
+			background-color: #ed4e50;
+		}
+	`}
+
+	${({security}) => security === "normal" && css`
+		& :nth-child(1),
+		& :nth-child(2) {
+			background-color: #ffd33d;
+		}
+	`}
+
+	${({security}) => security === "strong" && css`
+		& :nth-child(n) {
+			background-color: #24CCA7;
+		}
+	`}
 `;
 
-export const PasswordCheckItem = styled.span`
-	margin-top: 5px;
-	background-color: #E5F1EF;
-	height: 2px;
-	box-shadow: 0px 1px 8px rgba(36, 204, 167, 0.5);
-`;
+export const PasswordCheckItem = styled.span``;
