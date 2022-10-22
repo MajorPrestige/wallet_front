@@ -25,7 +25,11 @@ const RegistrationForm = () => {
 			.string()
 			.required(`Please, enter your password`)
 			.min(6, "At least 6 characters")
-			.max(12, "up to 12 characters"),
+			.max(12, "Up to 12 characters")
+			.matches(
+				/^.*(?=.{6,})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+				"At least one uppercase and one number"
+			),
 		confirmPassword: yup
 			.string()
 			.oneOf([yup.ref("password")], "Passwords do not match.")
