@@ -26,10 +26,8 @@ const RegistrationForm = () => {
 			.required(`Please, enter your password`)
 			.min(6, "At least 6 characters")
 			.max(12, "Up to 12 characters")
-			.matches(
-				/^.*(?=.{6,})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
-				"At least one uppercase and one number"
-			),
+			.matches(/^.*(?=.{6,})((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/, "At least one uppercase and lowercase")
+			.matches(/^.*(?=.*\d).*$/, "At least one number"),
 		confirmPassword: yup
 			.string()
 			.oneOf([yup.ref("password")], "Passwords do not match.")
@@ -37,25 +35,17 @@ const RegistrationForm = () => {
 		firstName: yup.string().max(12, "up to 12 characters").required(`Please, enter your name`),
 	});
 
+
 	const checkPassword = password => {
 		if (password) {
-			if (
-				password.length > 5 &&
-				((password !== password.toLowerCase() && password !== password.toUpperCase()) ||
-					(/\d/.test(password) && /[a-zA-Z]/.test(password)))
-			) {
-				if (
-					password !== password.toLowerCase() &&
-					password !== password.toUpperCase() &&
-					/\d/.test(password) &&
-					/[a-zA-Z]/.test(password)
-				) {
-					return "strong";
+			if (password.length <= 12) {
+				if (password.length > 5 && (/((?=.*[a-z]){1})((?=.*[A-Z]){1})/.test(password) || /\d/.test(password))) {
+					if (/(?=.{6,})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1})/.test(password)) {
+						return "strong";
+					}
+					return "normal";
 				}
-
-				return "normal";
 			}
-
 			return "week";
 		}
 	};
