@@ -1,9 +1,8 @@
 import { Formik } from "formik";
-// import { Link } from "react-router-dom";
 import * as yup from "yup";
 
 import Logo from "components/Logo/Logo";
-import { AuthContainer, Button } from "styles/Shared.styled";
+import { AuthContainer, Button, StyledLink } from "styles/Shared.styled";
 import {
 	FormWrapper,
 	LogoWrapper,
@@ -34,7 +33,6 @@ const RegistrationForm = () => {
 			.required(`Please, confirm your password`),
 		firstName: yup.string().max(12, "up to 12 characters").required(`Please, enter your name`),
 	});
-
 
 	const checkPassword = password => {
 		if (password) {
@@ -97,7 +95,9 @@ const RegistrationForm = () => {
 										<span></span>
 									</PasswordCheck>
 								)}
-								{((errors.password && values.password ) || touched.password )&& <AuthError>{errors.password}</AuthError>}
+								{((errors.password && values.password) || touched.password) && (
+									<AuthError>{errors.password}</AuthError>
+								)}
 							</StyledLabel>
 							<StyledLabel>
 								<StyledField
@@ -121,15 +121,17 @@ const RegistrationForm = () => {
 									onChange={handleChange}
 								/>
 								<UserLogo />
-								{(touched.firstName || (errors.firstName && values.firstName)) && <AuthError>{errors.firstName}</AuthError>}
+								{(touched.firstName || (errors.firstName && values.firstName)) && (
+									<AuthError>{errors.firstName}</AuthError>
+								)}
 							</StyledLabel>
 							<ButtonWrapper>
 								<Button primary marginBotom="20px" type="submit" onClick={handleSubmit}>
 									REGISTER
 								</Button>
-								<Button type="submit" outlined>
+								<StyledLink to="/" outlined="true">
 									LOG IN
-								</Button>
+								</StyledLink>
 							</ButtonWrapper>
 						</StyledForm>
 					)}

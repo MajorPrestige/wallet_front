@@ -1,34 +1,8 @@
+import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 import { device } from "./Media.variables";
 
-export const AuthContainer = styled.div`
-	@media ${device.tabletBefore} {
-    height: 100vh;
-		padding-left: 20px;
-		padding-right: 20px;
-	}
-
-  @media ${device.tabletOnly} {
-    padding-bottom: 48px;
-	}
-
-	@media ${device.desktop} {
-    width: 100vw;
-    min-height: 100vh;
-    padding: 52px 91px 52px 107px;
-    display: flex;
-		background: rgba(255, 255, 255, 0.4);
-		backdrop-filter: blur(25px);
-	}
-`;
-
-export const Title = styled.h1`
-	font-family: "Poppins";
-	font-weight: 400;
-	font-size: 30px;
-`;
-
-export const Button = styled.button`
+const linkAndButtonStyle = css`
 	position: relative;
 	display: block;
 	width: 280px;
@@ -76,4 +50,39 @@ export const Button = styled.button`
 				color: #ffffff;
 			}
 		`}
+`;
+
+export const AuthContainer = styled.div`
+	@media ${device.tabletBefore} {
+		height: 100vh;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+	@media ${device.tabletOnly} {
+		padding-bottom: 48px;
+	}
+
+	@media ${device.desktop} {
+		width: 100vw;
+		min-height: 100vh;
+		padding: 52px 91px 52px 107px;
+		display: flex;
+		background: rgba(255, 255, 255, 0.4);
+		backdrop-filter: blur(25px);
+	}
+`;
+
+export const Title = styled.h1`
+	font-family: "Poppins";
+	font-weight: 400;
+	font-size: 30px;
+`;
+
+export const Button = styled.button`
+	${linkAndButtonStyle}
+`;
+
+export const StyledLink = styled(Link)`
+	${linkAndButtonStyle}
 `;
