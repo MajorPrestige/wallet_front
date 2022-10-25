@@ -8,6 +8,7 @@ import { ReactComponent as User } from "images/svgs/user.svg";
 export const AuthContainer = styled.div`
 	@media ${device.tabletBefore} {
 		height: 100vh;
+    display: flex;
 		padding-left: 20px;
 		padding-right: 20px;
 	}
@@ -36,14 +37,13 @@ export const FormWrapper = styled.div`
 	margin: auto;
 
 	@media ${device.tabletBefore} {
-		padding-top: 36px;
-		padding-bottom: 36px;
+		padding-top: 32px;
+		padding-bottom: 32px;
 		max-width: 320px;
 	}
 
 	@media ${device.tablet} {
 		width: 533px;
-		height: 616px;
 		padding: 40px 58px 62px 65px;
 		border-radius: 20px;
 	}
