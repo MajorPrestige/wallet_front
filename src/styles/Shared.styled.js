@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
-import { device } from "./Media.variables";
+import { device } from "styles/Media.variables";
+import Elipse1 from "images/auth/Ellipse1.png";
+import Elipse2 from "images/auth/Ellipse2.png";
 
 const linkAndButtonStyle = css`
 	position: relative;
@@ -52,24 +54,20 @@ const linkAndButtonStyle = css`
 		`}
 `;
 
-export const AuthContainer = styled.div`
+export const StyledAuthForm = styled.div`
+	min-height: 100vh;
+
 	@media ${device.tabletBefore} {
-		height: 100vh;
-		padding-left: 20px;
-		padding-right: 20px;
+		background-color: #ffffff;
 	}
 
-	@media ${device.tabletOnly} {
-		padding-bottom: 48px;
+	@media ${device.tablet} {
+		background: top 0% right 0% no-repeat url(${Elipse2}), bottom 0% left 0% no-repeat url(${Elipse1}), #e7eaf2;
 	}
 
 	@media ${device.desktop} {
-		width: 100vw;
-		min-height: 100vh;
-		padding: 52px 91px 52px 107px;
 		display: flex;
-		background: rgba(255, 255, 255, 0.4);
-		backdrop-filter: blur(25px);
+		align-items: center;
 	}
 `;
 
@@ -77,6 +75,22 @@ export const Title = styled.h1`
 	font-family: "Poppins";
 	font-weight: 400;
 	font-size: 30px;
+`;
+
+export const AuthHero = styled.div`
+	@media ${device.tablet} {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding-top: 60px;
+		padding-bottom: 50px;
+	}
+
+	@media ${device.desktop} {
+		width: 100vw;
+		height: 100vh;
+		flex-direction: column;
+	}
 `;
 
 export const Button = styled.button`

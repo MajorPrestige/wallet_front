@@ -7,10 +7,10 @@ import GlobalStyles from "styles/Global.styled";
 import "styles/fonts/fonts.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-	<React.StrictMode>
+	// <React.StrictMode>
 		<BrowserRouter>
 			<GlobalStyles />
 			<App />
 		</BrowserRouter>
-	</React.StrictMode>,
+	// </React.StrictMode>,
 );

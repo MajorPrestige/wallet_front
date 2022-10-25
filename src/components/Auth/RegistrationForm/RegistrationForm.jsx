@@ -2,20 +2,21 @@ import { Formik } from "formik";
 import * as yup from "yup";
 
 import Logo from "components/Logo/Logo";
-import { AuthContainer, Button, StyledLink } from "styles/Shared.styled";
+import { Button, StyledLink } from "styles/Shared.styled";
 import {
-	FormWrapper,
+	AuthContainer,
 	LogoWrapper,
+	FormWrapper,
 	StyledForm,
 	StyledLabel,
 	StyledField,
 	EmailLogo,
 	PasswordLogo,
-	UserLogo,
 	AuthError,
 	ButtonWrapper,
+	UserLogo,
 	PasswordCheck,
-} from "./RegistrationForm.styled";
+} from "../Auth.styled";
 
 const RegistrationForm = () => {
 	const validationSchema = yup.object().shape({
