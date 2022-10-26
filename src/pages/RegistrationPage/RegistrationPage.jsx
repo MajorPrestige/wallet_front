@@ -12,6 +12,15 @@ import FinanceDesk2x from "images/auth/FinanceDesk@2x.png";
 const RegistrationPage = () => {
 	const isntMobile = useMediaQuery({ minWidth: 768 });
 
+	const b = {
+		a: 2,
+		func: function(){
+			return this;
+		}
+	}
+
+	console.log(b.func())
+
 	return (
 		<StyledAuthForm>
 			{isntMobile && (
