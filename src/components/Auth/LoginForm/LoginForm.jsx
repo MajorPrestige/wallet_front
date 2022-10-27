@@ -66,10 +66,10 @@ const LoginForm = () => {
 							</StyledLabel>
 							<ButtonWrapper>
 								<Button primary marginBotom="20px" type="submit" onClick={handleSubmit}>
-                  LOG IN
+                  SIGN IN
 								</Button>
 								<StyledLink to="/signup" outlined="true">
-									REGISTER
+									SIGN UP
 								</StyledLink>
 							</ButtonWrapper>
 						</StyledForm>

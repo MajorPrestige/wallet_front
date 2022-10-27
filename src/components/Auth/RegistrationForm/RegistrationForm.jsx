@@ -128,10 +128,10 @@ const RegistrationForm = () => {
 							</StyledLabel>
 							<ButtonWrapper>
 								<Button primary marginBotom="20px" type="submit" onClick={handleSubmit}>
-									REGISTER
+									SIGN UP
 								</Button>
 								<StyledLink to="/" outlined="true">
-									LOG IN
+									SIGN IN
 								</StyledLink>
 							</ButtonWrapper>
 						</StyledForm>
