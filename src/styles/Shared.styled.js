@@ -54,6 +54,20 @@ const linkAndButtonStyle = css`
 		`}
 `;
 
+export const Button = styled.button`
+	${linkAndButtonStyle}
+`;
+
+export const StyledLink = styled(Link)`
+	${linkAndButtonStyle}
+`;
+
+export const Title = styled.h1`
+	font-family: "Poppins";
+	font-weight: 400;
+	font-size: 30px;
+`;
+
 export const StyledAuthForm = styled.div`
 	min-height: 100vh;
 
@@ -69,12 +83,6 @@ export const StyledAuthForm = styled.div`
 		display: flex;
 		align-items: center;
 	}
-`;
-
-export const Title = styled.h1`
-	font-family: "Poppins";
-	font-weight: 400;
-	font-size: 30px;
 `;
 
 export const AuthHero = styled.div`
@@ -93,10 +101,4 @@ export const AuthHero = styled.div`
 	}
 `;
 
-export const Button = styled.button`
-	${linkAndButtonStyle}
-`;
 
-export const StyledLink = styled(Link)`
-	${linkAndButtonStyle}
-`;
