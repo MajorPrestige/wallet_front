@@ -1,7 +1,5 @@
 const ButtonAddTransactions = () => {
-  return (
-    <div></div>
-  );
-}
+  return <div></div>;
+};
 
 export default ButtonAddTransactions;
