@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import { axiosSignIn, axiosSignOut, axiosSignUp } from "api/auth/auth";
+import { axiosSignIn, axiosSignOut, axiosSignUp, axiosCurrent } from "api/auth/auth";
 
 export const signup = createAsyncThunk(
   'auth/signup',
@@ -38,5 +38,27 @@ export const signout = createAsyncThunk(
       const { data, status } = error.response;
       return rejectWithValue({ data, status });
     }
+  }
+);
+
+export const current = createAsyncThunk(
+  'auth/current',
+  async (_, { rejectWithValue, getState }) => {
+    try {
+      const { auth } = getState();
+      const data = await axiosCurrent(auth.token);
+      return data;
+    } catch (error) {
+      const { data, status } = error.response;
+      return rejectWithValue({ data, status });
+    }
+  },
+  {
+    condition: (_, { getState }) => {
+      const { auth } = getState();
+      if (!auth.token) {
+        return false;
+      }
+    },
   }
 );

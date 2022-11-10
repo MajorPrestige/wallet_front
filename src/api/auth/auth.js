@@ -19,3 +19,10 @@ export const axiosSignOut = async () => {
   axios.defaults.headers.common["Authorization"] = null;
   return data;
 };
+
+export const axiosCurrent = async (token) => {
+  axios.defaults.headers.common["Authorization"] = token;
+  const { data } = await axios.get("/users/current");
+  return data;
+};
+
