@@ -11,13 +11,15 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
+import auth from './auth/auth-slice';
+
 const persistConfig = {
   key: 'auth-token',
   storage,
   whitelist: ['token'],
 }
 
-const persistedReducer = persistReducer(persistConfig);
+const persistedReducer = persistReducer(persistConfig, auth);
 
 export const store = configureStore({
   reducer: {
