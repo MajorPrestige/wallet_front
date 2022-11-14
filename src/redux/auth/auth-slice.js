@@ -7,6 +7,7 @@ const initialState = {
   isLogin: false,
   loading: false,
   error: null,
+  firstLoading: false,
 };
 
 const accessAuth = (store, payload) => {
@@ -61,17 +62,20 @@ const auth = createSlice({
 
     // Current
     [current.pending]: (store) => {
+      store.firstLoading = true;
       store.loading = true;
       store.error = null;
     },
 
     [current.fulfilled]: (store, { payload }) => {
+      store.firstLoading = false;
       store.loading = false;
       store.isLogin = true;
       store.user = payload;
     },
 
     [current.rejected]: (store, { payload }) => {
+      store.firstLoading = false;
       store.loading = false;
       store.error = payload;
     },
