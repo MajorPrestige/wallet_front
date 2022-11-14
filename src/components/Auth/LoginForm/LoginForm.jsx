@@ -27,11 +27,6 @@ const LoginForm = () => {
     password: yup.string().required(`Please, enter your password`),
   });
 
-  // const onSubmit = (values, {resetForm}) => {
-  //   console.log(values);
-	// 	resetForm({});
-  // };
-	
   const onSubmit = (values) => {
     dispatch(signin(values));
   };

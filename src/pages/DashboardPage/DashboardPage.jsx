@@ -1,5 +1,12 @@
+import Header from "components/Header/Header";
+import { Container } from "./DashboardPage.styled";
+
 const DashboardPage = () => {
-  return <div>you're login</div>;
-}
+  return (
+    <Container>
+      <Header />
+    </Container>
+  );
+};
 
 export default DashboardPage;
