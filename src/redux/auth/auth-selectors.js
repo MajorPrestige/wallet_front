@@ -1,0 +1,1 @@
+export const getIsLogin = ({auth}) => auth.isLogin
