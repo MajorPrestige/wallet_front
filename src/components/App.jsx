@@ -9,6 +9,7 @@ const LoginPage = lazy(() => import("pages/LoginPage/LoginPage"));
 const RegistrationPage = lazy(() =>
   import("pages/RegistrationPage/RegistrationPage")
 );
+const DashbordPage = lazy(() => import("pages/DashboardPage/DashboardPage"))
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/signup" element={<RegistrationPage />} />
+        <Route path="/dashboard" element={<DashbordPage />} />
       </Routes>
     </Suspense>
   );
