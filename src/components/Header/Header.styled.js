@@ -7,6 +7,7 @@ export const StyledHeader = styled.header`
   align-items: center;
   padding-top: 20px;
   padding-bottom: 20px;
+  background-color: #ffffff;
 `;
 
 export const HeaderWrapper = styled.div`
