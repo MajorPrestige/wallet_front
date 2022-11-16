@@ -67,8 +67,6 @@ export const Title = styled.h1`
 `;
 
 export const Container = styled.div`
-  background-color: #dcdcdf;
-
   @media ${device.mobileOnly} {
     margin-left: 20px;
     margin-right: 20px;
