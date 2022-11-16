@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import { Form, Field } from "formik";
 import { device } from "styles/Media.variables";
+
 import { ReactComponent as Email } from "images/svgs/email.svg";
 import { ReactComponent as Password } from "images/svgs/password.svg";
 import { ReactComponent as User } from "images/svgs/user.svg";

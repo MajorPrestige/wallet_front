@@ -1,7 +1,7 @@
 import Header from "components/Header/Header";
-import { Container } from "./DashboardPage.styled";
+import { Container } from "styles/Shared.styled";
 
-const DashboardPage = () => {
+const HomePage = () => {
   return (
     <Container>
       <Header />
@@ -9,4 +9,4 @@ const DashboardPage = () => {
   );
 };
 
-export default DashboardPage;
+export default HomePage;

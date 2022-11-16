@@ -7,11 +7,11 @@ import { current } from "redux/auth/auth-operations";
 import PrivateRoutes from "./Routes/PrivateRoutes";
 import PublicRoutes from "./Routes/PublicRoutes";
 
-const LoginPage = lazy(() => import("pages/LoginPage/LoginPage"));
+const LoginPage = lazy(() => import("pages/AuthPage/LoginPage/LoginPage"));
 const RegistrationPage = lazy(() =>
-  import("pages/RegistrationPage/RegistrationPage")
+  import("pages/AuthPage/RegistrationPage/RegistrationPage")
 );
-const DashbordPage = lazy(() => import("pages/DashboardPage/DashboardPage"));
+const HomePage = lazy(() => import("pages/DashboardPage/HomePage/HomePage"));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -28,7 +28,7 @@ export const App = () => {
           <Route path="/signup" element={<RegistrationPage />} />
         </Route>
         <Route element={<PrivateRoutes />}>
-          <Route path="/dashboard" element={<DashbordPage />} />
+          <Route path="/home" element={<HomePage />} />
         </Route>
       </Routes>
     </Suspense>

@@ -4,13 +4,15 @@ import { useSelector } from "react-redux";
 import LoginForm from "components/Auth/LoginForm/LoginForm";
 import { Title } from "styles/Shared.styled";
 import { LoginImg } from "./LoginPage.styled";
-import { StyledAuthForm, AuthHero } from "styles/Shared.styled";
+import { StyledAuthForm, AuthHero } from "../AuthPage.styled";
+
 import { getFirstLoading } from "redux/auth/auth-selectors";
 
 import SigninTab from "images/auth/SigninAppTab.png";
 import SigninTab2x from "images/auth/SigninAppTab@2x.png";
 import SigninDesk from "images/auth/SigninAppDesk.png";
 import SigninDesk2x from "images/auth/SigninAppDeskt@2x.png";
+
 
 const LoginPage = () => {
   const isntMobile = useMediaQuery({ minWidth: 768 });

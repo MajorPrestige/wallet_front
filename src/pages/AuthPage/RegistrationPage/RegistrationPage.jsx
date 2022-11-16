@@ -1,7 +1,7 @@
 import { useMediaQuery } from "react-responsive";
 
 import RegistrationForm from "components/Auth/RegistrationForm/RegistrationForm";
-import { StyledAuthForm, AuthHero } from "styles/Shared.styled";
+import { StyledAuthForm, AuthHero } from "../AuthPage.styled";
 import { RegistrationImg } from "./RegistrationPage.styled";
 import { Title } from "styles/Shared.styled";
 import FinanceTab from "images/auth/FinanceTab.png";
