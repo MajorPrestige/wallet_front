@@ -12,6 +12,8 @@ const RegistrationPage = lazy(() =>
   import("pages/AuthPage/RegistrationPage/RegistrationPage")
 );
 const HomePage = lazy(() => import("pages/DashboardPage/HomePage/HomePage"));
+const StatisticsPage = lazy(() => import("pages/DashboardPage/StatisticsPage/StatisticsPage"));
+const CurrencyPage = lazy(() => import("pages/DashboardPage/CurrencyPage/CurrencyPage"));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -29,6 +31,8 @@ export const App = () => {
         </Route>
         <Route element={<PrivateRoutes />}>
           <Route path="/home" element={<HomePage />} />
+          <Route path="/statistics" element={<StatisticsPage />} />
+          <Route path="/currency" element={<CurrencyPage />} />
         </Route>
       </Routes>
     </Suspense>

@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-// import { device } from "styles/Media.variables";
+import { device } from "styles/Media.variables";
 
 export const StyledHeader = styled.header`
   display: flex;
@@ -8,6 +8,21 @@ export const StyledHeader = styled.header`
   padding-top: 20px;
   padding-bottom: 20px;
   background-color: #ffffff;
+
+  @media ${device.mobileOnly} {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  @media ${device.mobile} {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  @media ${device.desktop} {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 `;
 
 export const HeaderWrapper = styled.div`
