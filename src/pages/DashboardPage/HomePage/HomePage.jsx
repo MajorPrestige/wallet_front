@@ -1,3 +1,4 @@
+import Balance from "components/Balance/Balance";
 import Header from "components/Header/Header";
 import Navigation from "components/Navigation/Navigation";
 import { Container } from "styles/Shared.styled";
@@ -9,6 +10,7 @@ const HomePage = () => {
       <Header />
       <Container>
         <Navigation current="home" />
+        <Balance />
       </Container>
     </BackgroundContainer>
   );
