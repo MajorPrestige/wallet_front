@@ -1,6 +1,5 @@
 import { createGlobalStyle } from "styled-components";
 
-
 const GlobalStyles = createGlobalStyle`
 
 html {
@@ -14,7 +13,7 @@ html {
 }
 
 body, button, input {
-  font-family: "Circe";
+  font-family: Circe,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
   line-height: 1.5
 }
 
@@ -153,6 +152,6 @@ img {
   max-width: 100%;
   height: auto;
 }
-`
+`;
 
-export default GlobalStyles
+export default GlobalStyles;
