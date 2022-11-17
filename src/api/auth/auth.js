@@ -25,4 +25,3 @@ export const axiosCurrent = async (token) => {
   const { data } = await axios.get("/users/current");
   return data;
 };
-

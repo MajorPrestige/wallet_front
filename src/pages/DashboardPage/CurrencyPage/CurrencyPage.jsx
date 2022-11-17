@@ -1,3 +1,4 @@
+import Currency from "components/Currency/Currency";
 import Header from "components/Header/Header";
 import Navigation from "components/Navigation/Navigation";
 import { Container } from "styles/Shared.styled";
@@ -9,6 +10,7 @@ const CurrencyPage = () => {
       <Header />
       <Container>
         <Navigation current="currency" />
+        <Currency />
       </Container>
     </BackgroundContainer>
   );
