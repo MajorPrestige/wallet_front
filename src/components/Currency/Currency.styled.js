@@ -46,8 +46,8 @@ export const Table = styled.table`
     }
 
     @media ${device.tablet} {
-      padding-left: 25px;
-      padding-left: 25px;
+      padding-left: 30px;
+      padding-left: 30px;
     }
 
     @media ${device.desktop} {
@@ -55,4 +55,16 @@ export const Table = styled.table`
       padding-right: 35px;
     }
   }
+`;
+
+export const TdLastChild = styled.td`
+  @media ${device.tablet} {
+      padding-bottom: 32px !important;
+    }
+
+  @media ${device.desktop} {
+      padding-bottom: 197px !important;
+    }
+
+  
 `;

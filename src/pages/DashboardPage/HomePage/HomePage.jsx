@@ -1,3 +1,5 @@
+import { useMediaQuery } from "react-responsive";
+
 import Balance from "components/Balance/Balance";
 import Currency from "components/Currency/Currency";
 import Header from "components/Header/Header";
@@ -7,6 +9,8 @@ import { Container } from "styles/Shared.styled";
 import { BackgroundContainer, BlurContainer } from "../DashboardPage.styled";
 
 const HomePage = () => {
+  const isTablet = useMediaQuery({ minWidth: 768 });
+
   return (
     <BackgroundContainer>
       <BlurContainer>
@@ -14,7 +18,7 @@ const HomePage = () => {
         <Container>
           <Navigation current="home" />
           <Balance />
-          <Currency />
+          {isTablet && <Currency />}
           <Table />
         </Container>
       </BlurContainer>
