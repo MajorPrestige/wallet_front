@@ -17,6 +17,11 @@ export const BalanceContainer = styled.div`
     max-width: 416px;
   }
 
+  @media ${device.tablet} {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
   & p:first-child {
     font-size: 12px;
     color: #a6a6a6;

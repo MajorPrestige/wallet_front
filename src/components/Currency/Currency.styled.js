@@ -1,10 +1,15 @@
 import styled from "styled-components";
 import { device } from "styles/Media.variables";
+import background from "images/svgs/currency-bg.svg";
 
 export const Table = styled.table`
   color: #ffffff;
   border-radius: 30px;
-  background: linear-gradient(#6e78e8 50px, #4a56e2 50px);
+
+  background: #4a56e2 url(${background});
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: contain;
 
   @media ${device.tabletBefore} {
     padding-left: 20px;
@@ -17,6 +22,10 @@ export const Table = styled.table`
   & thead {
     font-weight: 700;
     font-size: 18px;
+    background: linear-gradient(
+      rgba(255, 255, 255, 0.2) 15%,
+      rgba(255, 255, 255, 0) 105%
+    );
   }
 
   & tbody {
