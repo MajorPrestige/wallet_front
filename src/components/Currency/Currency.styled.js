@@ -23,16 +23,8 @@ export const Table = styled.table`
     font-weight: 700;
     font-size: 18px;
     background: linear-gradient(
-      rgba(255, 255, 255, 0.2) 15%,
+      rgba(255, 255, 255, 0.2) 5%,
       rgba(255, 255, 255, 0) 105%
-    );
-  }
-
-  & tbody {
-    background: linear-gradient(
-      360deg,
-      rgba(255, 255, 255, 0.2) -5%,
-      rgba(255, 255, 255, 0) 80%
     );
   }
 
@@ -59,12 +51,10 @@ export const Table = styled.table`
 
 export const TdLastChild = styled.td`
   @media ${device.tablet} {
-      padding-bottom: 32px !important;
-    }
+    padding-bottom: 32px !important;
+  }
 
   @media ${device.desktop} {
-      padding-bottom: 197px !important;
-    }
-
-  
+    padding-bottom: 197px !important;
+  }
 `;

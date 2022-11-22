@@ -81,5 +81,6 @@ export const Container = styled.div`
   @media ${device.desktop} {
     padding-left: 16px;
     padding-right: 16px;
+    display: flex;
   }
 `;

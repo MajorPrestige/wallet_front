@@ -13,8 +13,6 @@ export const BalanceContainer = styled.div`
   background-color: #ffffff;
   border-radius: 30px;
 
-  
-
   @media ${device.tabletBefore} {
     margin-top: 12px;
   }
@@ -25,6 +23,8 @@ export const BalanceContainer = styled.div`
     margin-right: 0;
   }
   @media ${device.desktop} {
+    margin-top: 32px;
+    margin-bottom: 32px;
     min-width: 395px;
   }
 

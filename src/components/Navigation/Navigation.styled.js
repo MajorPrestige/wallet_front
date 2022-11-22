@@ -13,7 +13,6 @@ export const ButtonWrapper = styled.div`
 
   @media ${device.tablet} {
     margin-top: 0px;
-    margin-bottom: 28px;
     flex-direction: column;
   }
 `;

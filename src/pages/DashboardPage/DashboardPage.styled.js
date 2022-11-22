@@ -23,13 +23,26 @@ export const BlurContainer = styled.div`
 
 export const Flex = styled.div`
   display: flex;
+  justify-content: space-around;
 
-  @media ${device.tablet} {
+  @media ${device.tabletOnly} {
     padding-top: 32px;
     padding-bottom: 20px;
 
     & > div {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       margin-right: 32px;
     }
+  }
+
+  @media ${device.desktop} {
+    min-height: calc(100vh - 85px);
+    display: block;
+    padding-right: 70px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    border-right: 2px solid rgba(0, 0, 0, 0.05);
   }
 `;
