@@ -20,3 +20,16 @@ export const BlurContainer = styled.div`
     backdrop-filter: blur(25px);
   }
 `;
+
+export const Flex = styled.div`
+  display: flex;
+
+  @media ${device.tablet} {
+    padding-top: 32px;
+    padding-bottom: 20px;
+
+    & > div {
+      margin-right: 32px;
+    }
+  }
+`;

@@ -67,18 +67,19 @@ export const Title = styled.h1`
 `;
 
 export const Container = styled.div`
+  margin: 0 auto;
   @media ${device.mobileOnly} {
-    margin-left: 20px;
-    margin-right: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
   @media ${device.mobile} {
-    margin-left: 32px;
-    margin-right: 32px;
+    padding-left: 32px;
+    padding-right: 32px;
   }
 
   @media ${device.desktop} {
-    margin-left: 16px;
-    margin-right: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
   }
 `;

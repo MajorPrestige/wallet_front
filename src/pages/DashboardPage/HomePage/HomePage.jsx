@@ -6,7 +6,7 @@ import Header from "components/Header/Header";
 import Navigation from "components/Navigation/Navigation";
 import Table from "components/Table/Table";
 import { Container } from "styles/Shared.styled";
-import { BackgroundContainer, BlurContainer } from "../DashboardPage.styled";
+import { BackgroundContainer, BlurContainer, Flex } from "../DashboardPage.styled";
 
 const HomePage = () => {
   const isTablet = useMediaQuery({ minWidth: 768 });
@@ -16,9 +16,13 @@ const HomePage = () => {
       <BlurContainer>
         <Header />
         <Container>
-          <Navigation current="home" />
-          <Balance />
-          {isTablet && <Currency />}
+          <Flex>
+            <div>
+              <Navigation current="home" />
+              <Balance />
+            </div>
+            {isTablet && <Currency />}
+          </Flex>
           <Table />
         </Container>
       </BlurContainer>
