@@ -9,6 +9,6 @@ const Logo = () => {
 				<LogoText>Wallet</LogoText>
     </LogoContainer>
   );
-}
+};
 
 export default Logo;

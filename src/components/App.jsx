@@ -9,7 +9,7 @@ import PublicRoutes from "./Routes/PublicRoutes";
 
 const LoginPage = lazy(() => import("pages/AuthPage/LoginPage/LoginPage"));
 const RegistrationPage = lazy(() =>
-  import("pages/AuthPage/RegistrationPage/RegistrationPage")
+  import("pages/AuthPage/RegistrationPage/RegistrationPage"),
 );
 const HomePage = lazy(() => import("pages/DashboardPage/HomePage/HomePage"));
 const StatisticsPage = lazy(() => import("pages/DashboardPage/StatisticsPage/StatisticsPage"));

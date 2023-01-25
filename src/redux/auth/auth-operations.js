@@ -12,7 +12,7 @@ export const signup = createAsyncThunk(
       const { data, status } = error.response;
       return rejectWithValue({ data, status });
     }
-  }
+  },
 );
 
 export const signin = createAsyncThunk(
@@ -25,7 +25,7 @@ export const signin = createAsyncThunk(
       const { data, status } = error.response;
       return rejectWithValue({ data, status });
     }
-  }
+  },
 );
 
 export const signout = createAsyncThunk(
@@ -38,7 +38,7 @@ export const signout = createAsyncThunk(
       const { data, status } = error.response;
       return rejectWithValue({ data, status });
     }
-  }
+  },
 );
 
 export const current = createAsyncThunk(
@@ -60,5 +60,5 @@ export const current = createAsyncThunk(
         return false;
       }
     },
-  }
+  },
 );

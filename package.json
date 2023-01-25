@@ -28,6 +28,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint:js": "eslint src/**/*.{js,jsx}",
+    "lintFix:js": "eslint --fix src/**/*.{js,jsx}",
     "lint-staged:fix": "git add -A & npx lint-staged **/*.js & git reset HEAD",
     "lsf": "npm run lint-staged:fix"
   },

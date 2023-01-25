@@ -19,4 +19,4 @@ export const TableContainer = styled.div`
     width: 715px;
     height: 312px;
   }
-`
+`;

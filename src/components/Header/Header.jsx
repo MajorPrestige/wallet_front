@@ -13,8 +13,8 @@ const Header = () => {
   const isTablet = useMediaQuery({ minWidth: 768 });
 
   const onLogoutButtonClick = () => {
-    dispatch(signout())
-  }
+    dispatch(signout());
+  };
 
   return (
     <StyledHeader>

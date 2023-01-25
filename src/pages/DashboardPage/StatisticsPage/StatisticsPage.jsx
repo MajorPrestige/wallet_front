@@ -12,6 +12,6 @@ const StatisticsPage = () => {
       </Container>
     </BackgroundContainer>
   );
-}
+};
 
 export default StatisticsPage;

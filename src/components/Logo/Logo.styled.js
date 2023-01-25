@@ -15,7 +15,7 @@ export const IconLogo= styled(Icon)`
 		width: 40px;
   height: 40px;
 	}
-`
+`;
 
 export const LogoText = styled.p`
 	font-family: "Poppins";

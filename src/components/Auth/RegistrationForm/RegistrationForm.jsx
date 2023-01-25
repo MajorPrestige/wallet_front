@@ -33,7 +33,7 @@ const RegistrationForm = () => {
       .max(12, "Up to 12 characters")
       .matches(
         /^.*(?=.{6,})((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
-        "At least one uppercase and lowercase"
+        "At least one uppercase and lowercase",
       )
       .matches(/^.*(?=.*\d).*$/, "At least one number"),
     confirmPassword: yup
