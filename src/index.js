@@ -1,16 +1,16 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
-import { Provider } from "react-redux";
-import { PersistGate } from "redux-persist/integration/react";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 
-import { App } from "components/App";
-import GlobalStyles from "styles/Global.styled";
-import { persistor, store } from "redux/store";
+import { App } from 'components/App';
+import GlobalStyles from 'styles/Global.styled';
+import { persistor, store } from 'redux/store';
 
-import "styles/fonts/fonts.css";
+import 'styles/fonts/fonts.css';
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter basename='/wallet_front'>
       <Provider store={store}>
@@ -20,5 +20,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         </PersistGate>
       </Provider>
     </BrowserRouter>
-  </React.StrictMode>
+  </React.StrictMode>,
 );
