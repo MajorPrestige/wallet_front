@@ -31,12 +31,6 @@
     "lint-staged:fix": "git add -A & npx lint-staged **/*.js & git reset HEAD",
     "lsf": "npm run lint-staged:fix"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -53,5 +47,10 @@
     "./**/*.js": [
       "eslint --fix"
     ]
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "lint-staged": "^13.1.0"
   }
 }
