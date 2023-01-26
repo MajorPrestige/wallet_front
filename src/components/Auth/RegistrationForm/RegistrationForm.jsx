@@ -30,7 +30,7 @@ const RegistrationForm = () => {
       .string()
       .required(`Please, enter your password`)
       .min(6, "At least 6 characters")
-      .max(12, "Up to 12 characters")
+      .max(16, "Up to 16 characters")
       .matches(
         /^.*(?=.{6,})((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
         "At least one uppercase and lowercase",
@@ -48,7 +48,7 @@ const RegistrationForm = () => {
 
   const checkPassword = (password) => {
     if (password) {
-      if (password.length <= 12) {
+      if (password.length <= 16) {
         if (
           password.length > 5 &&
           (/((?=.*[a-z]){1})((?=.*[A-Z]){1})/.test(password) || /\d/.test(password))
@@ -65,7 +65,7 @@ const RegistrationForm = () => {
 
   const onSubmit = ({ firstName, email, password }) => {
     const value = {
-      username: firstName,
+      name: firstName,
       email,
       password,
     };
