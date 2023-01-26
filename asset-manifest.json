@@ -1,10 +1,10 @@
 {
   "files": {
     "main.css": "/wallet_front/static/css/main.6cdfe5ff.css",
-    "main.js": "/wallet_front/static/js/main.64cc7cfb.js",
+    "main.js": "/wallet_front/static/js/main.21b6ac47.js",
     "static/js/268.59b902ee.chunk.js": "/wallet_front/static/js/268.59b902ee.chunk.js",
     "static/js/189.71cf7c1f.chunk.js": "/wallet_front/static/js/189.71cf7c1f.chunk.js",
-    "static/js/558.733bb482.chunk.js": "/wallet_front/static/js/558.733bb482.chunk.js",
+    "static/js/214.5a037b10.chunk.js": "/wallet_front/static/js/214.5a037b10.chunk.js",
     "static/js/448.fd36eee9.chunk.js": "/wallet_front/static/js/448.fd36eee9.chunk.js",
     "static/js/449.31f65b4c.chunk.js": "/wallet_front/static/js/449.31f65b4c.chunk.js",
     "static/js/805.5b17f35a.chunk.js": "/wallet_front/static/js/805.5b17f35a.chunk.js",
@@ -36,10 +36,10 @@
     "static/media/email.svg": "/wallet_front/static/media/email.d960ae1c15f360ed9172400e12125342.svg",
     "static/media/home.svg": "/wallet_front/static/media/home.d37a5b8c9de5f2b13502a18bc9abfbcf.svg",
     "main.6cdfe5ff.css.map": "/wallet_front/static/css/main.6cdfe5ff.css.map",
-    "main.64cc7cfb.js.map": "/wallet_front/static/js/main.64cc7cfb.js.map",
+    "main.21b6ac47.js.map": "/wallet_front/static/js/main.21b6ac47.js.map",
     "268.59b902ee.chunk.js.map": "/wallet_front/static/js/268.59b902ee.chunk.js.map",
     "189.71cf7c1f.chunk.js.map": "/wallet_front/static/js/189.71cf7c1f.chunk.js.map",
-    "558.733bb482.chunk.js.map": "/wallet_front/static/js/558.733bb482.chunk.js.map",
+    "214.5a037b10.chunk.js.map": "/wallet_front/static/js/214.5a037b10.chunk.js.map",
     "448.fd36eee9.chunk.js.map": "/wallet_front/static/js/448.fd36eee9.chunk.js.map",
     "449.31f65b4c.chunk.js.map": "/wallet_front/static/js/449.31f65b4c.chunk.js.map",
     "805.5b17f35a.chunk.js.map": "/wallet_front/static/js/805.5b17f35a.chunk.js.map",
@@ -49,6 +49,6 @@
   },
   "entrypoints": [
     "static/css/main.6cdfe5ff.css",
-    "static/js/main.64cc7cfb.js"
+    "static/js/main.21b6ac47.js"
   ]
 }
