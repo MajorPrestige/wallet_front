@@ -1,9 +1,9 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { signin, signout, signup, current } from "./auth-operations";
+import { createSlice } from '@reduxjs/toolkit';
+import { signin, signout, signup, current } from './auth-operations';
 
 const initialState = {
   user: {},
-  token: "",
+  token: '',
   isLogin: false,
   loading: false,
   error: null,
@@ -14,20 +14,25 @@ const accessAuth = (store, payload) => {
   store.loading = false;
   store.isLogin = true;
   store.user = payload.user;
-  store.token = payload.token;
+  store.token = payload.user.token;
 };
 
 const auth = createSlice({
-  name: "auth",
+  name: 'auth',
   initialState,
   extraReducers: {
     // Signup
-    [signup.pending]: (store) => {
+    [signup.pending]: store => {
       store.loading = true;
       store.error = null;
     },
 
-    [signup.fulfilled]: (store, { payload }) => accessAuth(store, payload),
+    [signup.fulfilled]: (store, { payload }) => {
+      store.loading = false;
+      store.isLogin = false;
+      store.user = payload.user;
+      store.token = null;
+    },
 
     [signup.rejected]: (store, { payload }) => {
       store.loading = false;
@@ -35,7 +40,7 @@ const auth = createSlice({
     },
 
     // Signin
-    [signin.pending]: (store) => {
+    [signin.pending]: store => {
       store.loading = true;
       store.error = null;
     },
@@ -48,7 +53,7 @@ const auth = createSlice({
     },
 
     // Signout
-    [signout.pending]: (store) => {
+    [signout.pending]: store => {
       store.loading = true;
       store.error = null;
     },
@@ -61,7 +66,7 @@ const auth = createSlice({
     },
 
     // Current
-    [current.pending]: (store) => {
+    [current.pending]: store => {
       store.firstLoading = true;
       store.loading = true;
       store.error = null;
