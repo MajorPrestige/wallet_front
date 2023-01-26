@@ -1,11 +1,11 @@
-import styled from "styled-components";
-import { device } from "styles/Media.variables";
-import background from "images/svgs/currency-bg.svg";
+import styled from 'styled-components';
+import { device } from 'styles/Media.variables';
+import background from 'images/svgs/currency-bg.svg';
 
 export const Table = styled.table`
   color: #ffffff;
   border-radius: 30px;
-
+  overflow: hidden;
   background: #4a56e2 url(${background});
   background-position: bottom;
   background-repeat: no-repeat;
