@@ -7,6 +7,8 @@ import { current } from "redux/auth/auth-operations";
 import PrivateRoutes from "./Routes/PrivateRoutes";
 import PublicRoutes from "./Routes/PublicRoutes";
 
+import Loader from "components/Loader/Loader";
+
 const LoginPage = lazy(() => import("pages/AuthPage/LoginPage/LoginPage"));
 const RegistrationPage = lazy(() =>
   import("pages/AuthPage/RegistrationPage/RegistrationPage"),
@@ -23,7 +25,7 @@ export const App = () => {
   }, [dispatch]);
 
   return (
-    <Suspense fallback={<p>Loading...</p>}>
+    <Suspense fallback={<Loader />}>
       <Routes>
         <Route element={<PublicRoutes />}>
           <Route path="/" element={<LoginPage />} />
