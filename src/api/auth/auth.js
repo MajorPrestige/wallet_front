@@ -1,6 +1,7 @@
 import axios from "axios";
 
 axios.defaults.baseURL = "https://goit-wallet-back.onrender.com/api";
+
 // axios.defaults.baseURL = "http://localhost:4000/api/";
 
 export const axiosSignUp = async (userData) => {
@@ -21,7 +22,7 @@ export const axiosSignOut = async () => {
 };
 
 export const axiosCurrent = async (token) => {
-  axios.defaults.headers.common["Authorization"] = token;
-  const data  = await axios.get("/users/current");
+  axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  const {data}  = await axios.get("/users/current");
   return data;
 };
