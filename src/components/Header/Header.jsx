@@ -1,10 +1,10 @@
-import Logo from "components/Logo/Logo";
-import { useDispatch, useSelector } from "react-redux";
-import { useMediaQuery } from "react-responsive";
-import { getFirstName } from "redux/auth/auth-selectors";
-import { HeaderWrapper, StyledHeader, LogoutButton } from "./Header.styled";
-import { ReactComponent as Logout } from "images/svgs/logout.svg";
-import { signout } from "redux/auth/auth-operations";
+import Logo from 'components/Logo/Logo';
+import { useDispatch, useSelector } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
+import { getFirstName } from 'redux/auth/auth-selectors';
+import { HeaderWrapper, StyledHeader, LogoutButton } from './Header.styled';
+import { ReactComponent as Logout } from 'images/svgs/logout.svg';
+import { signout } from 'redux/auth/auth-operations';
 
 const Header = () => {
   const userName = useSelector(getFirstName);
@@ -30,10 +30,10 @@ const Header = () => {
         )}
         {isTablet && (
           <>
-            <p style={{ marginRight: "8px" }}>{userName}</p>
+            <p style={{ marginRight: '8px' }}>{userName}</p>
             <LogoutButton onClick={onLogoutButtonClick} tablet>
               <Logout />
-              <span style={{ marginLeft: "8px" }}>Exit</span>
+              <span style={{ marginLeft: '8px' }}>Exit</span>
             </LogoutButton>
           </>
         )}
