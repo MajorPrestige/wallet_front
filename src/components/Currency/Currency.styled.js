@@ -27,7 +27,7 @@ export const Table = styled.table`
       rgba(255, 255, 255, 0) 105%
     );
   }
-
+  
   & th,
   td {
     padding: 15px;
