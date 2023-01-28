@@ -6,6 +6,12 @@ import {
   MinusSum,
   TableHead,
   Operations,
+  MobContainer,
+  PlusTable,
+  MinusTable,
+  MobTr,
+  MobTd,
+  MobTbody,
 } from './Table.styled';
 
 import transactions from './transactions';
@@ -41,7 +47,7 @@ const Table = () => {
                   ) : (
                     <MinusSum>{Sum}</MinusSum>
                   )}
-                  <Operations>{Balance}</Operations>
+                  <Operations>{Balance}</Operations>{' '}
                 </tr>
               ),
             )}
@@ -49,7 +55,73 @@ const Table = () => {
         </TableContainer>
       )}
 
-      {!isntMobile && <div></div>}
+      {!isntMobile && (
+        <MobContainer>
+          {transactions.map(
+            ({ id, Date, Type, Category, Comment, Sum, Balance }) =>
+              Type === '+' ? (
+                <PlusTable key={id}>
+                  <MobTbody>
+                    <MobTr>
+                      <MobTd>Date</MobTd>
+                      <MobTd>{Date}</MobTd>
+                    </MobTr>
+
+                    <MobTr>
+                      <MobTd>Type</MobTd>
+                      <MobTd>{Type}</MobTd>
+                    </MobTr>
+                    <MobTr>
+                      <MobTd>Category</MobTd>
+                      <MobTd>{Category}</MobTd>
+                    </MobTr>
+                    <MobTr>
+                      <MobTd>Comment</MobTd>
+                      <MobTd>{Comment}</MobTd>
+                    </MobTr>
+                    <MobTr>
+                      <MobTd>Sum</MobTd>
+                      <MobTd>{Sum}</MobTd>
+                    </MobTr>
+                    <MobTr>
+                      <MobTd>Balance</MobTd>
+                      <MobTd>{Balance}</MobTd>
+                    </MobTr>
+                  </MobTbody>
+                </PlusTable>
+              ) : (
+                <MinusTable key={id}>
+                  <MobTbody>
+                    <MobTr>
+                      <MobTd>Date</MobTd>
+                      <MobTd>{Date}</MobTd>
+                    </MobTr>
+                    <MobTr>
+                      <MobTd>Type</MobTd>
+                      <MobTd>{Type}</MobTd>
+                    </MobTr>
+                    <MobTr>
+                      <MobTd>Category</MobTd>
+                      <MobTd>{Category}</MobTd>
+                    </MobTr>
+                    <MobTr>
+                      <MobTd>Comment</MobTd>
+                      <MobTd>{Comment}</MobTd>
+                    </MobTr>
+                    <MobTr>
+                      <MobTd>Sum</MobTd>
+                      <MobTd>{Sum}</MobTd>
+                    </MobTr>
+                    <MobTr>
+                      <MobTd>Balance</MobTd>
+                      <MobTd>{Balance}</MobTd>
+                    </MobTr>
+                  </MobTbody>
+                </MinusTable>
+              ),
+          )}
+        </MobContainer>
+      )}
     </>
   );
 };
