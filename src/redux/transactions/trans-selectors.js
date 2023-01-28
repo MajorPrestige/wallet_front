@@ -1,0 +1,1 @@
+export const getStatistic = ({ transactions }) => transactions.statistic;
