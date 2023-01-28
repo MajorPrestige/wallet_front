@@ -1,5 +1,6 @@
 import Header from "components/Header/Header";
 import Navigation from "components/Navigation/Navigation";
+import Chart from "components/Chart/Chart";
 import { Container } from "styles/Shared.styled";
 import { BackgroundContainer } from "../DashboardPage.styled";
 
@@ -10,6 +11,7 @@ const StatisticsPage = () => {
       <Container>
         <Navigation current="statistics" />
       </Container>
+      <Chart/>
     </BackgroundContainer>
   );
 };
