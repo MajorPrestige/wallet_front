@@ -3,8 +3,9 @@ import { Chart as ChartJS, ArcElement, Tooltip } from 'chart.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
-import { StyledChart } from './Chart.styled';
-import { getStatistic } from 'redux/transactions/trans-selectors';
+import { getBalance } from "redux/auth/auth-selectors";
+import { StyledChart, StyledBalance } from './Chart.styled';
+// import { getStatistic } from 'redux/transactions/trans-selectors';
 
 import { statistic } from 'redux/transactions/trans-operations';
 
@@ -13,14 +14,12 @@ ChartJS.register(ArcElement, Tooltip);
 const Chart = () => {
   const dispatch = useDispatch();
 
+  const balance = useSelector(getBalance);
+
   useEffect(() => {
     dispatch(statistic({year: 2022, month: 6}));
   }, [dispatch]);
 
-  const statisticData = useSelector(getStatistic);
-
-  const categories = [];
-  const totalSums = [];
   const colors = [
     '#FED057',
     '#FFD8D0',
@@ -34,10 +33,31 @@ const Chart = () => {
     '#E1E384',
   ];
 
-  for (const statistic of statisticData) {
-    categories.push(statistic.category.name);
-    totalSums.push(statistic.totalSum);
-  }
+  const categories = [
+    'Main expenses',
+    'Products',
+    'Car',
+    'Self care',
+    'Child care',
+    'Household products',
+    'Education',
+    'Leisure',
+    'Other expenses',
+    'Entertainment',
+  ];
+
+  const totalSums = [100, 100, 300, 10, 5, 20, 250, 20, 100, 10];
+
+  // const transactions = useSelector(getStatistic);
+  // // console.log(transactions);
+
+  // const expensesTrans = transactions.filter(trans => trans.type === false);
+
+  // const categories = [...new Set(expensesTrans.map(trans => trans.category.name))];
+
+  // const totalSums = categories.map((category) => (expensesTrans
+  //   .filter(trans => trans.category.name === category)
+  //   .reduce((total, trans) => { return total + trans.sum; }, 0)));
 
   const data = {
     labels: categories,
@@ -46,8 +66,8 @@ const Chart = () => {
         label: '# of Categories',
         data: totalSums,
         backgroundColor: colors,
-        borderColor: colors,
-        borderWidth: 1,
+        borderWidth: 0,
+        cutout: '65%',
       },
     ],
   };
@@ -55,23 +75,15 @@ const Chart = () => {
   return (
     <StyledChart>
       <Doughnut data={data} />
+      <StyledBalance>
+        <div>
+          <span>&#8372; </span>
+          <span>{balance}</span>
+        </div>
+      </StyledBalance>
     </StyledChart>
   );
 };
 
 export default Chart;
 
-  // const categories = [
-  //   'Main expenses',
-  //   'Products',
-  //   'Car',
-  //   'Self care',
-  //   'Child care',
-  //   'Household products',
-  //   'Education',
-  //   'Leisure',
-  //   'Other expenses',
-  //   'Entertainment',
-  // ];
-
-  // const totalSums = [100, 100, 300, 10, 5, 20, 250, 20, 100, 10];
