@@ -2,9 +2,7 @@ import styled from 'styled-components';
 import { device } from 'styles/Media.variables';
 
 export const TableContainer = styled.table`
-  border-top: 30px;
   margin-top: 15px;
-  width: 100%;
 
   @media ${device.tabletBefore} {
     margin-top: 40px;
