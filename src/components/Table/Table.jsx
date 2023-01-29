@@ -20,9 +20,20 @@ import {
 
 import transactions from './transactions';
 import { useMediaQuery } from 'react-responsive';
+// import { useDispatch } from 'react-redux';
+// import { useEffect } from 'react';
+// import { fetchTransactions } from 'redux/transactions/trans-operations';
+// import { useSelector } from 'react-redux';
+// import { getTransactions } from 'redux/transactions/trans-selectors';
 
 const Table = () => {
   const isntMobile = useMediaQuery({ minWidth: 768 });
+  // const dispatch = useDispatch();
+  // const transactions = useSelector(getTransactions);
+
+  // useEffect(() => {
+  //   dispatch(fetchTransactions({ page: 1, limit: 5 }));
+  // }, [dispatch]);
 
   return (
     <>
