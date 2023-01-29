@@ -6,12 +6,16 @@ import {
   MinusSum,
   TableHead,
   Operations,
-  MobContainer,
   PlusTable,
   MinusTable,
-  MobTr,
-  MobTd,
-  MobTbody,
+  MobileTd,
+  MobileTbody,
+  MobileContainer,
+  MobileTrPlus,
+  MobileTrMinus,
+  MobileTdTitle,
+  MobileTdSumPlus,
+  MobileTdMinus,
 } from './Table.styled';
 
 import transactions from './transactions';
@@ -47,7 +51,7 @@ const Table = () => {
                   ) : (
                     <MinusSum>{Sum}</MinusSum>
                   )}
-                  <Operations>{Balance}</Operations>{' '}
+                  <Operations>{Balance}</Operations>
                 </tr>
               ),
             )}
@@ -56,71 +60,70 @@ const Table = () => {
       )}
 
       {!isntMobile && (
-        <MobContainer>
+        <MobileContainer>
           {transactions.map(
             ({ id, Date, Type, Category, Comment, Sum, Balance }) =>
               Type === '+' ? (
                 <PlusTable key={id}>
-                  <MobTbody>
-                    <MobTr>
-                      <MobTd>Date</MobTd>
-                      <MobTd>{Date}</MobTd>
-                    </MobTr>
-
-                    <MobTr>
-                      <MobTd>Type</MobTd>
-                      <MobTd>{Type}</MobTd>
-                    </MobTr>
-                    <MobTr>
-                      <MobTd>Category</MobTd>
-                      <MobTd>{Category}</MobTd>
-                    </MobTr>
-                    <MobTr>
-                      <MobTd>Comment</MobTd>
-                      <MobTd>{Comment}</MobTd>
-                    </MobTr>
-                    <MobTr>
-                      <MobTd>Sum</MobTd>
-                      <MobTd>{Sum}</MobTd>
-                    </MobTr>
-                    <MobTr>
-                      <MobTd>Balance</MobTd>
-                      <MobTd>{Balance}</MobTd>
-                    </MobTr>
-                  </MobTbody>
+                  <MobileTbody>
+                    <MobileTrPlus>
+                      <MobileTdTitle>Date</MobileTdTitle>
+                      <MobileTd>{Date}</MobileTd>
+                    </MobileTrPlus>
+                    <MobileTrPlus>
+                      <MobileTdTitle>Type</MobileTdTitle>
+                      <MobileTd>{Type}</MobileTd>
+                    </MobileTrPlus>
+                    <MobileTrPlus>
+                      <MobileTdTitle>Category</MobileTdTitle>
+                      <MobileTd>{Category}</MobileTd>
+                    </MobileTrPlus>
+                    <MobileTrPlus>
+                      <MobileTdTitle>Comment</MobileTdTitle>
+                      <MobileTd>{Comment}</MobileTd>
+                    </MobileTrPlus>
+                    <MobileTrPlus>
+                      <MobileTdTitle>Sum</MobileTdTitle>
+                      <MobileTdSumPlus>{Sum}</MobileTdSumPlus>
+                    </MobileTrPlus>
+                    <MobileTrPlus>
+                      <MobileTdTitle>Balance</MobileTdTitle>
+                      <MobileTd>{Balance}</MobileTd>
+                    </MobileTrPlus>
+                  </MobileTbody>
                 </PlusTable>
               ) : (
                 <MinusTable key={id}>
-                  <MobTbody>
-                    <MobTr>
-                      <MobTd>Date</MobTd>
-                      <MobTd>{Date}</MobTd>
-                    </MobTr>
-                    <MobTr>
-                      <MobTd>Type</MobTd>
-                      <MobTd>{Type}</MobTd>
-                    </MobTr>
-                    <MobTr>
-                      <MobTd>Category</MobTd>
-                      <MobTd>{Category}</MobTd>
-                    </MobTr>
-                    <MobTr>
-                      <MobTd>Comment</MobTd>
-                      <MobTd>{Comment}</MobTd>
-                    </MobTr>
-                    <MobTr>
-                      <MobTd>Sum</MobTd>
-                      <MobTd>{Sum}</MobTd>
-                    </MobTr>
-                    <MobTr>
-                      <MobTd>Balance</MobTd>
-                      <MobTd>{Balance}</MobTd>
-                    </MobTr>
-                  </MobTbody>
+                  <MobileTbody>
+                    <MobileTrMinus>
+                      <MobileTdTitle>Date</MobileTdTitle>
+                      <MobileTd>{Date}</MobileTd>
+                    </MobileTrMinus>
+                    <MobileTrMinus>
+                      <MobileTdTitle>Type</MobileTdTitle>
+                      <MobileTd>{Type}</MobileTd>
+                    </MobileTrMinus>
+                    <MobileTrMinus>
+                      <MobileTdTitle>Category</MobileTdTitle>
+                      <MobileTd>{Category}</MobileTd>
+                    </MobileTrMinus>
+                    <MobileTrMinus>
+                      <MobileTdTitle>Comment</MobileTdTitle>
+                      <MobileTd>{Comment}</MobileTd>
+                    </MobileTrMinus>
+                    <MobileTrMinus>
+                      <MobileTdTitle>Sum</MobileTdTitle>
+                      <MobileTdMinus>{Sum}</MobileTdMinus>
+                    </MobileTrMinus>
+                    <MobileTrMinus>
+                      <MobileTdTitle>Balance</MobileTdTitle>
+                      <MobileTd>{Balance}</MobileTd>
+                    </MobileTrMinus>
+                  </MobileTbody>
                 </MinusTable>
               ),
           )}
-        </MobContainer>
+        </MobileContainer>
       )}
     </>
   );

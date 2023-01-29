@@ -52,43 +52,79 @@ export const Operations = styled.th`
 `;
 
 // ----------------------------------------------------
-
-export const MobContainer = styled.div`
-  margin-top: 15px;
+export const MobileContainer = styled.div`
+  background-color: inherit;
+  margin-top: 30px;
 `;
 
 export const PlusTable = styled.table`
   width: 100%;
   margin-bottom: 10px;
-  border: black;
 `;
 
 export const MinusTable = styled.table`
   width: 100%;
+
   margin-bottom: 10px;
 `;
 
-export const MobTbody = styled.tbody`
-  background: inherit;
-`;
+export const MobileTbody = styled.tbody``;
 
-export const MobTr = styled.tr`
+export const MobileTrPlus = styled.tr`
   display: flex;
-
-  height: 50px;
   justify-content: space-between;
-  width: 100%;
-  background: white;
-  :last-child {
+  align-items: center;
+  height: 50px;
+  padding: 10px 20px;
+  background-color: white;
+
+  &:last-child {
     border-bottom-left-radius: 20px;
-    box-shadow: inset 4px 0px 0px red;
+    border-bottom-right-radius: 20px;
   }
-  box-shadow: inset 1px 0px green;
-  /* сделать бордер */
+  &:first-child {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+  box-shadow: inset 4px 0px 0px #24cca7;
+  border: 1px solid #dcdcdf;
 `;
 
-export const MobTd = styled.td`
-  padding: 12px 20px;
+export const MobileTrMinus = styled.tr`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  padding: 10px 20px;
+  background-color: white;
 
-  height: 100%;
+  &:last-child {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+  &:first-child {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+  box-shadow: inset 4px 0px 0px 0px #ff6596;
+  border: 1px solid #dcdcdf;
+`;
+
+export const MobileTdTitle = styled.td`
+  font-weight: 700;
+  font-size: 18px;
+  line-height: calc(27 / 18);
+`;
+
+export const MobileTd = styled.td`
+  font-weight: 400;
+  font-size: 16px;
+  line-height: calc(24 / 16);
+`;
+
+export const MobileTdSumPlus = styled.td`
+  color: #24cca7;
+`;
+export const MobileTdMinus = styled.td`
+  color: #ff6596;
 `;

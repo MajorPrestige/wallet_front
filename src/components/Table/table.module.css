@@ -6,4 +6,6 @@
 
 .table {
   width: 100%;
+  background-color: wheat;
+  border-radius: 30px;
 }
