@@ -1,11 +1,12 @@
-import { Formik } from "formik";
-import * as yup from "yup";
-import { useDispatch } from "react-redux";
+import { Formik } from 'formik';
+import * as yup from 'yup';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { signin } from "redux/auth/auth-operations";
+import { signin } from 'redux/auth/auth-operations';
 
-import Logo from "components/Logo/Logo";
-import { Button, StyledLink } from "styles/Shared.styled";
+import Logo from 'components/Logo/Logo';
+import Modal from 'components/Modal/Modal';
+import { Button, StyledLink } from 'styles/Shared.styled';
 import {
   AuthContainer,
   LogoWrapper,
@@ -17,18 +18,28 @@ import {
   PasswordLogo,
   AuthError,
   ButtonWrapper,
-} from "../Auth.styled";
+} from '../Auth.styled';
+
+import { getAuthError } from 'redux/auth/auth-selectors';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
+  const authError = useSelector(getAuthError);
 
   const validationSchema = yup.object().shape({
-    email: yup.string().email("invalid email").required("Please, enter your email"),
+    email: yup
+      .string()
+      .email('invalid email')
+      .required('Please, enter your email'),
     password: yup.string().required(`Please, enter your password`),
   });
 
-  const onSubmit = (values) => {
+  const onSubmit = values => {
     dispatch(signin(values));
+  };
+
+  const handleModalClose = () => {
+    console.log('hello');
   };
 
   return (
@@ -40,8 +51,8 @@ const LoginForm = () => {
 
         <Formik
           initialValues={{
-            email: "",
-            password: "",
+            email: '',
+            password: '',
           }}
           validationSchema={validationSchema}
           onSubmit={onSubmit}
@@ -87,6 +98,11 @@ const LoginForm = () => {
           )}
         </Formik>
       </FormWrapper>
+      {authError && (
+        <Modal toogleModal={handleModalClose}>
+          <p></p>
+        </Modal>
+      )}
     </AuthContainer>
   );
 };
