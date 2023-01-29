@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 
 import { getBalance } from "redux/auth/auth-selectors";
 import { StyledChart, StyledBalance } from './Chart.styled';
-// import { getStatistic } from 'redux/transactions/trans-selectors';
+import { getStatistic } from 'redux/transactions/trans-selectors';
 
 import { statistic } from 'redux/transactions/trans-operations';
 
@@ -33,31 +33,15 @@ const Chart = () => {
     '#E1E384',
   ];
 
-  const categories = [
-    'Main expenses',
-    'Products',
-    'Car',
-    'Self care',
-    'Child care',
-    'Household products',
-    'Education',
-    'Leisure',
-    'Other expenses',
-    'Entertainment',
-  ];
+  const transactions = useSelector(getStatistic);
 
-  const totalSums = [100, 100, 300, 10, 5, 20, 250, 20, 100, 10];
+  const expensesTrans = transactions.filter(trans => trans.type === false);
 
-  // const transactions = useSelector(getStatistic);
-  // // console.log(transactions);
+  const categories = [...new Set(expensesTrans.map(trans => trans.category.name))];
 
-  // const expensesTrans = transactions.filter(trans => trans.type === false);
-
-  // const categories = [...new Set(expensesTrans.map(trans => trans.category.name))];
-
-  // const totalSums = categories.map((category) => (expensesTrans
-  //   .filter(trans => trans.category.name === category)
-  //   .reduce((total, trans) => { return total + trans.sum; }, 0)));
+  const totalSums = categories.map((category) => (expensesTrans
+    .filter(trans => trans.category.name === category)
+    .reduce((total, trans) => { return total + trans.sum; }, 0)));
 
   const data = {
     labels: categories,
@@ -87,3 +71,17 @@ const Chart = () => {
 
 export default Chart;
 
+  // const categories = [
+  //   'Main expenses',
+  //   'Products',
+  //   'Car',
+  //   'Self care',
+  //   'Child care',
+  //   'Household products',
+  //   'Education',
+  //   'Leisure',
+  //   'Other expenses',
+  //   'Entertainment',
+  // ];
+
+  // const totalSums = [100, 100, 300, 10, 5, 20, 250, 20, 100, 10];
