@@ -21,6 +21,8 @@ import {
 } from '../Auth.styled';
 
 import { getAuthError } from 'redux/auth/auth-selectors';
+import { clearAuthError } from 'redux/auth/auth-slice';
+
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -39,7 +41,7 @@ const LoginForm = () => {
   };
 
   const handleModalClose = () => {
-    console.log('hello');
+    dispatch(clearAuthError());
   };
 
   return (
@@ -100,7 +102,7 @@ const LoginForm = () => {
       </FormWrapper>
       {authError && (
         <Modal toogleModal={handleModalClose}>
-          <p></p>
+          <p>{authError}</p>
         </Modal>
       )}
     </AuthContainer>
