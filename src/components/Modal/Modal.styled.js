@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import { device } from 'styles/Media.variables';
+
+import { ReactComponent as ModalCloseSvg } from "images/svgs/modal-close.svg";
 
 export const Overlay = styled.div`
   position: fixed;
@@ -14,14 +17,28 @@ export const Overlay = styled.div`
 `;
 
 export const ModalWindow = styled.div`
-  width: 540px;
-  min-height: 204px;
+  position: relative;
+  width: 280px;
+  min-height: 520px;
   border-radius: 8px;
   background-color: #fff;
   box-shadow: 10px 10px 20px rgba(9, 30, 63, 0.2);
 
-  @media screen and (max-width: 768px) {
-  	width: 280px;
-  	min-height: 222px;
+  @media ${device.mobileTablet} {
+    width: 440px;
   }
+
+  @media ${device.tablet} {
+    width: 533px;
+    min-height: 616px;
+  }
+`;
+
+export const ModalClose = styled(ModalCloseSvg)`
+    position: absolute;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    top: 20px;
+    right: 20px;
 `;

@@ -5,13 +5,16 @@ const Loader = () => {
   return (
     <div
       style={{
+        width: "100vw",
+        height: "100vh",
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         position: 'absolute',
-        top: '50%',
         left: '50%',
         transform: 'translateX(-50%)',
+        backdropFilter: 'blur(15px)',
+        zIndex: '2',
       }}
     >
       <ThreeDots
