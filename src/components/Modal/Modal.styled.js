@@ -20,7 +20,7 @@ export const Overlay = styled.div`
   }
 `;
 
-export const ModalWindowAddTransaction = styled.div`
+export const ModalWindow = styled.div`
   position: relative;
   width: 280px;
   min-height: 520px;
@@ -38,7 +38,7 @@ export const ModalWindowAddTransaction = styled.div`
   }
 `;
 
-export const ModalWindow = styled.div`
+export const ModalWindowAddTransaction = styled.div`
   position: relative;
   width: 540px;
   min-height: 204px;

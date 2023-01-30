@@ -5,7 +5,7 @@ import {
 } from './ErrorMessage.styled';
 import s from './boo.module.css';
 
-const ErrorMessage = ({ status }) => {
+const ErrorMessage = ({ message }) => {
   return (
     <ErrorMessageBlock>
       <div className={s.booWrapper}>
@@ -13,7 +13,7 @@ const ErrorMessage = ({ status }) => {
           <div className={s.face} id="face"></div>
         </div>
         <div className={s.shadow}></div>
-        <ErrorMessageText>{status}</ErrorMessageText>
+        <ErrorMessageText>{message}</ErrorMessageText>
       </div>
     </ErrorMessageBlock>
   );
@@ -22,5 +22,5 @@ const ErrorMessage = ({ status }) => {
 export default ErrorMessage;
 
 ErrorMessage.propTypes = {
-  status: PropTypes.string,
+  message: PropTypes.string,
 };

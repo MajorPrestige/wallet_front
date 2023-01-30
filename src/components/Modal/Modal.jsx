@@ -33,15 +33,15 @@ const Modal = ({ toogleModal, children, isSignIn }) => {
   return createPortal(
     <Overlay onClick={onOverlayClick}>
       {isSignIn ? (
-        <ModalWindow>
-          <ModalClose onClick={toogleModal} />
-          {children}
-        </ModalWindow>
-      ) : (
         <ModalWindowAddTransaction>
           <ModalClose onClick={toogleModal} />
           {children}
         </ModalWindowAddTransaction>
+      ) : (
+        <ModalWindow>
+          <ModalClose onClick={toogleModal} />
+          {children}
+        </ModalWindow>
       )}
     </Overlay>,
     modalRoot,
