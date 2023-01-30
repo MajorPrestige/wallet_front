@@ -29,12 +29,12 @@ export const Flex = styled.div`
     padding-top: 32px;
     padding-bottom: 20px;
 
-    & > div {
+    /* & > div {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       margin-right: 32px;
-    }
+    } */
   }
 
   @media ${device.desktop} {
@@ -44,5 +44,14 @@ export const Flex = styled.div`
     padding-top: 40px;
     padding-bottom: 40px;
     border-right: 2px solid rgba(0, 0, 0, 0.05);
+  }
+`;
+
+export const Wrap = styled.div`
+  @media ${device.tabletOnly} {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right: 32px;
   }
 `;
