@@ -32,6 +32,10 @@ export const CustomSelect = styled(Select)`
   ,
   .react-select__menu-list {
     color: #000000;
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
   }
   ,
   .react-select__option {
