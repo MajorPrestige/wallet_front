@@ -1,25 +1,32 @@
 import styled from 'styled-components';
 import { device } from 'styles/Media.variables';
+import { ReactComponent as Icon } from 'images/svgs/plus.svg';
 
 export const TransactionButton = styled.button`
   width: 44px;
   height: 44px;
-  background-image: linear-gradient(122deg, rgba(0, 255, 205, 0.95), #24cca7);
-  transition: transform 300ms linear;
+  background-color: #24cca7;
+  transition: 0.2s ease-in-out;
   border: none;
   border-radius: 50%;
   font-size: 30px;
-  font-family: 'Montserrat';
-  color: #fff;
   position: fixed;
   right: 20px;
   bottom: 20px;
   outline: none;
   cursor: pointer;
-  box-shadow: rgba(0, 75, 144, 0.35) 0px 8px 10px 0px;
-  &:hover {
-    background-image: linear-gradient(122deg, #24cca7, rgba(0, 255, 205, 0.95));
-    transform: scale(1.1);
+  box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
+  &:hover,
+  &:focus {
+    border: 1px solid #24cca7;
+    transform: scale(1.05);
+    outline: transparent;
+    color: #24cca7;
+    background-color: #ffffff;
+  }
+  &:hover svg,
+  &:focus svg {
+    fill: #24cca7;
   }
 
   @media ${device.tablet} {
@@ -31,4 +38,11 @@ export const TransactionButton = styled.button`
   @media ${device.desktop} {
     right: 85px;
   }
+`;
+
+export const IconLogo = styled(Icon)`
+  width: 20px;
+  height: 20px;
+  fill: #fff;
+  transition: 0.2s ease-in-out;
 `;
