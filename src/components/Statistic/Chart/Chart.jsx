@@ -4,21 +4,23 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
 import { getBalance } from "redux/auth/auth-selectors";
-import { StyledChart, StyledBalance } from './Chart.styled';
 import { getStatistic } from 'redux/transactions/trans-selectors';
-
 import { statistic } from 'redux/transactions/trans-operations';
+
+import { StyledChart, StyledBalance } from './Chart.styled';
 
 ChartJS.register(ArcElement, Tooltip);
 
-const Chart = () => {
+const Chart = ({date}) => {
   const dispatch = useDispatch();
 
   const balance = useSelector(getBalance);
 
+  const {year, month} = date;
+
   useEffect(() => {
-    dispatch(statistic({year: 2022, month: 6}));
-  }, [dispatch]);
+    dispatch(statistic({year: Number(year), month: Number(month)}));
+  }, [dispatch, month, year]);
 
   const colors = [
     '#FED057',
