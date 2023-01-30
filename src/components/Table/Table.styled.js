@@ -1,15 +1,39 @@
 import styled from 'styled-components';
 import { device } from 'styles/Media.variables';
 
+export const Container = styled.div`
+  width: 100%;
+  max-height: 60vh;
+  margin-left: auto;
+  margin-right: auto;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: aliceblue;
+    border-radius: 10px;
+  }
+  &&::-webkit-scrollbar-thumb {
+    background-color: #c0c5f5; /* цвет бегунка */
+    border-radius: 10px; /* округлось бегунка */
+    border: 3px solid #c0c5f5; /* отступ вокруг бегунка */
+  }
+`;
+
 export const TableContainer = styled.table`
   margin-top: 15px;
   margin-bottom: 15px;
+  margin-left: auto;
+  margin-right: auto;
 
   @media ${device.tablet} {
+    width: 705px;
+    height: 305px;
+  }
+  @media ${device.desktop} {
     width: 715px;
-    height: 312px;
-    margin-left: auto;
-    margin-right: auto;
+    height: 305px;
   }
 `;
 
@@ -22,6 +46,7 @@ export const Category = styled.th`
   background-color: #ffffff;
   font-size: 18px;
   margin-top: 15px;
+  font-weight: 700;
 
   &:first-child {
     width: 100px;
@@ -55,6 +80,7 @@ export const Operations = styled.th`
 export const MobileContainer = styled.div`
   background-color: inherit;
   margin-top: 30px;
+  overflow: scroll;
 `;
 
 export const PlusTable = styled.table`

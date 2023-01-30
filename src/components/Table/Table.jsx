@@ -1,4 +1,10 @@
 import React from 'react';
+
+import { useMediaQuery } from 'react-responsive';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
 import {
   Category,
   TableContainer,
@@ -16,58 +22,58 @@ import {
   MobileTdTitle,
   MobileTdSumPlus,
   MobileTdMinus,
+  Container,
 } from './Table.styled';
 
 import transactions from './transactions';
-import { useMediaQuery } from 'react-responsive';
-// import { useDispatch } from 'react-redux';
-// import { useEffect } from 'react';
-// import { fetchTransactions } from 'redux/transactions/trans-operations';
-// import { useSelector } from 'react-redux';
-// import { getTransactions } from 'redux/transactions/trans-selectors';
+import { getTransactions } from 'redux/transactions/trans-selectors';
+import { fetchTransactions } from 'redux/transactions/trans-operations';
 
 const Table = () => {
   const isntMobile = useMediaQuery({ minWidth: 768 });
-  // const dispatch = useDispatch();
-  // const transactions = useSelector(getTransactions);
+  const dispatch = useDispatch();
+  const transactions = useSelector(getTransactions);
+  console.log(transactions);
 
-  // useEffect(() => {
-  //   dispatch(fetchTransactions({ page: 1, limit: 5 }));
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchTransactions({ page: 1, limit: 5 }));
+  }, [dispatch]);
 
   return (
     <>
       {isntMobile && (
-        <TableContainer>
-          <TableHead>
-            <tr>
-              <Category>Date</Category>
-              <Category>Type</Category>
-              <Category>Category</Category>
-              <Category>Comment</Category>
-              <Category>Sum</Category>
-              <Category>Balance</Category>
-            </tr>
-          </TableHead>
-          <tbody>
-            {transactions.map(
-              ({ id, Date, Type, Category, Comment, Sum, Balance }) => (
-                <tr key={id}>
-                  <Operations>{Date}</Operations>
-                  <Operations>{Type}</Operations>
-                  <Operations>{Category}</Operations>
-                  <Operations>{Comment}</Operations>
-                  {Type === '+' ? (
-                    <PlusSum>{Sum}</PlusSum>
-                  ) : (
-                    <MinusSum>{Sum}</MinusSum>
-                  )}
-                  <Operations>{Balance}</Operations>
-                </tr>
-              ),
-            )}
-          </tbody>
-        </TableContainer>
+        <Container>
+          <TableContainer>
+            <TableHead>
+              <tr>
+                <Category>Date</Category>
+                <Category>Type</Category>
+                <Category>Category</Category>
+                <Category>Comment</Category>
+                <Category>Sum</Category>
+                <Category>Balance</Category>
+              </tr>
+            </TableHead>
+            <tbody>
+              {transactions.map(
+                ({ id, Date, Type, Category, Comment, Sum, Balance }) => (
+                  <tr key={id}>
+                    <Operations>{Date}</Operations>
+                    <Operations>{Type}</Operations>
+                    <Operations>{Category}</Operations>
+                    <Operations>{Comment}</Operations>
+                    {Type === '+' ? (
+                      <PlusSum>{Sum}</PlusSum>
+                    ) : (
+                      <MinusSum>{Sum}</MinusSum>
+                    )}
+                    <Operations>{Balance}</Operations>
+                  </tr>
+                ),
+              )}
+            </tbody>
+          </TableContainer>
+        </Container>
       )}
 
       {!isntMobile && (

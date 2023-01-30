@@ -1,16 +1,12 @@
 import axios from 'axios';
 
-export const API = axios.create({
-  baseURL: 'https://goit-wallet-back.onrender.com/api',
-});
-
 const getTransactions = async (page = 1, limit = 10) => {
-  const { data } = await API.get(`/transactions?page=${page}&limit=${limit}`);
+  const { data } = await axios.get(`/transactions?page=${page}&limit=${limit}`);
   return data;
 };
 
 const postTransactions = async transaction => {
-  const { data } = await API.post('/transactions', transaction);
+  const { data } = await axios.post('/transactions', transaction);
   return data;
 };
 
