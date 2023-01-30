@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { signup } from 'redux/auth/auth-operations';
 
-import Loader from 'components/Loader/Loader';
 import Modal from 'components/Modal/Modal';
 import Logo from 'components/Logo/Logo';
 import ErrorMessage from 'components/ErrorMessage/ErrorMessage';
@@ -25,13 +24,12 @@ import {
   PasswordCheck,
 } from '../Auth.styled';
 
-import { getAuthError, getLoading } from 'redux/auth/auth-selectors';
+import { getAuthError} from 'redux/auth/auth-selectors';
 import { clearAuthError } from 'redux/auth/auth-slice';
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
   const authError = useSelector(getAuthError);
-  const loading = useSelector(getLoading);
 
   const validationSchema = yup.object().shape({
     email: yup
@@ -94,7 +92,6 @@ const RegistrationForm = () => {
 
   return (
     <>
-      {loading && <Loader />}
       <AuthContainer>
         <FormWrapper>
           <LogoWrapper>
@@ -189,7 +186,7 @@ const RegistrationForm = () => {
         </FormWrapper>
       </AuthContainer>
       {authError && (
-        <Modal toogleModal={handleModalClose}>
+        <Modal toogleModal={handleModalClose} isSignIn={false}>
           <ErrorMessage status={authError}></ErrorMessage>
         </Modal>
       )}

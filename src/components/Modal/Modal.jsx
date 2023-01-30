@@ -1,11 +1,16 @@
 import { createPortal } from 'react-dom';
 import { useEffect } from 'react';
 
-import { Overlay, ModalWindow, ModalClose } from './Modal.styled';
+import {
+  Overlay,
+  ModalWindow,
+  ModalClose,
+  ModalWindowAddTransaction,
+} from './Modal.styled';
 
 const modalRoot = document.querySelector('#modal-root');
 
-const Modal = ({ toogleModal, children }) => {
+const Modal = ({ toogleModal, children, isSignIn }) => {
   useEffect(() => {
     window.addEventListener('keydown', onKeyDown);
     return () => {
@@ -27,10 +32,17 @@ const Modal = ({ toogleModal, children }) => {
 
   return createPortal(
     <Overlay onClick={onOverlayClick}>
-      <ModalWindow>
-        <ModalClose onClick={toogleModal}/>
-        {children}
-      </ModalWindow>
+      {isSignIn ? (
+        <ModalWindow>
+          <ModalClose onClick={toogleModal} />
+          {children}
+        </ModalWindow>
+      ) : (
+        <ModalWindowAddTransaction>
+          <ModalClose onClick={toogleModal} />
+          {children}
+        </ModalWindowAddTransaction>
+      )}
     </Overlay>,
     modalRoot,
   );

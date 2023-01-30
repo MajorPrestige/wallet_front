@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { signin } from 'redux/auth/auth-operations';
 
-import Loader from 'components/Loader/Loader';
 import Logo from 'components/Logo/Logo';
 import Modal from 'components/Modal/Modal';
 import { Button, StyledLink } from 'styles/Shared.styled';
@@ -21,14 +20,13 @@ import {
   ButtonWrapper,
 } from '../Auth.styled';
 
-import { getAuthError, getLoading } from 'redux/auth/auth-selectors';
+import { getAuthError } from 'redux/auth/auth-selectors';
 import { clearAuthError } from 'redux/auth/auth-slice';
 import ErrorMessage from 'components/ErrorMessage/ErrorMessage';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
   const authError = useSelector(getAuthError);
-  const loading = useSelector(getLoading);
 
   const validationSchema = yup.object().shape({
     email: yup
@@ -48,7 +46,6 @@ const LoginForm = () => {
 
   return (
     <>
-      {loading && <Loader />}
       <AuthContainer>
         <FormWrapper>
           <LogoWrapper>
@@ -107,7 +104,7 @@ const LoginForm = () => {
         </FormWrapper>
       </AuthContainer>
       {authError && (
-        <Modal toogleModal={handleModalClose}>
+        <Modal toogleModal={handleModalClose} isSignIn={false}>
           <ErrorMessage status={authError}></ErrorMessage>
         </Modal>
       )}
