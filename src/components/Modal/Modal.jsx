@@ -1,39 +1,51 @@
 import { createPortal } from 'react-dom';
 import { useEffect } from 'react';
 
-import { Overlay } from './Modal.styled';
-import { ModalWindow } from './Modal.styled';
+import {
+  Overlay,
+  ModalWindow,
+  ModalClose,
+  ModalWindowAddTransaction,
+} from './Modal.styled';
 
 const modalRoot = document.querySelector('#modal-root');
 
-const Modal = ({ toogleModal, children }) => {
-	useEffect(() => {
-		window.addEventListener('keydown', onKeyDown);
-		return () => {
-			window.removeEventListener('keydown', onKeyDown);
-		};
-	});
+const Modal = ({ toogleModal, children, isSignIn }) => {
+  useEffect(() => {
+    window.addEventListener('keydown', onKeyDown);
+    return () => {
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  });
 
-	const onOverlayClick = e => {
-		if (e.target === e.currentTarget) {
-			toogleModal();
-		}
-	};
+  const onOverlayClick = e => {
+    if (e.target === e.currentTarget) {
+      toogleModal();
+    }
+  };
 
-	const onKeyDown = e => {
-		if (e.code === 'Escape') {
-			toogleModal();
-		}
-	};
+  const onKeyDown = e => {
+    if (e.code === 'Escape') {
+      toogleModal();
+    }
+  };
 
-	return createPortal(
-		<Overlay onClick={onOverlayClick}>
-			<ModalWindow>
-			{children}
-			</ModalWindow>
-		</Overlay>,
-		modalRoot,
-	);
+  return createPortal(
+    <Overlay onClick={onOverlayClick}>
+      {isSignIn ? (
+        <ModalWindow>
+          <ModalClose onClick={toogleModal} />
+          {children}
+        </ModalWindow>
+      ) : (
+        <ModalWindowAddTransaction>
+          <ModalClose onClick={toogleModal} />
+          {children}
+        </ModalWindowAddTransaction>
+      )}
+    </Overlay>,
+    modalRoot,
+  );
 };
 
 export default Modal;
@@ -44,9 +56,9 @@ export default Modal;
 //               |
 //               V
 
-	// const toogleModal = () => {
-	// 	setIsModal(!isModal);
-	// };
+// const toogleModal = () => {
+// 	setIsModal(!isModal);
+// };
 
 // добавить его в компонент в котором
 //  будет модальное окно
