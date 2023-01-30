@@ -3,6 +3,7 @@ import Select from 'react-select';
 
 export const CustomSelect = styled(Select)`
   .react-select__control {
+    cursor: pointer;
     width: 100%;
     border-width: 0;
     font-family: 'Circe';
@@ -34,6 +35,7 @@ export const CustomSelect = styled(Select)`
   }
   ,
   .react-select__option {
+    cursor: pointer;
     font-weight: 400;
     &:hover {
       font-weight: 700;
