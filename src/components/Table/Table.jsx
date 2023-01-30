@@ -76,96 +76,85 @@ const Table = () => {
               ).sort((a, b) => b.date - a.date),
             )
           ) : (
-            <h3>У вас не має транзакций</h3>
+            <h2 style={{ textAlign: 'center', color: 'red' }}>
+              Sorry you don't have transactions
+            </h2>
           )}
         </Container>
       )}
 
-      {/* <tbody>
-              {transactions.map(
-                ({ id, Date, Type, Category, Comment, Sum, Balance }) => (
-                  <tr key={id}>
-                    <Operations>{Date}</Operations>
-                    <Operations>{Type}</Operations>
-                    <Operations>{Category}</Operations>
-                    <Operations>{Comment}</Operations>
-                    {Type === '+' ? (
-                      <PlusSum>{Sum}</PlusSum>
-                    ) : (
-                      <MinusSum>{Sum}</MinusSum>
-                    )}
-                    <Operations>{Balance}</Operations>
-                  </tr>
+      {!isntMobile &&
+        (transactions.length > 0 ? (
+          <MobileContainer>
+            {transactions
+              .sort((a, b) => b.date - a.date)
+              .map(elem =>
+                elem.type === '+' ? (
+                  <PlusTable key={elem._id}>
+                    <MobileTbody>
+                      <MobileTrPlus>
+                        <MobileTdTitle>Date</MobileTdTitle>
+                        <MobileTd>{formatDate(elem.date)}</MobileTd>
+                      </MobileTrPlus>
+                      <MobileTrPlus>
+                        <MobileTdTitle>Type</MobileTdTitle>
+                        <MobileTd>{elem.type}</MobileTd>
+                      </MobileTrPlus>
+                      <MobileTrPlus>
+                        <MobileTdTitle>Category</MobileTdTitle>
+                        <MobileTd>{elem.category}</MobileTd>
+                      </MobileTrPlus>
+                      <MobileTrPlus>
+                        <MobileTdTitle>Comment</MobileTdTitle>
+                        <MobileTd>{elem.comment}</MobileTd>
+                      </MobileTrPlus>
+                      <MobileTrPlus>
+                        <MobileTdTitle>Sum</MobileTdTitle>
+                        <MobileTdSumPlus>{elem.sum}</MobileTdSumPlus>
+                      </MobileTrPlus>
+                      <MobileTrPlus>
+                        <MobileTdTitle>Balance</MobileTdTitle>
+                        <MobileTd>{elem.balance}</MobileTd>
+                      </MobileTrPlus>
+                    </MobileTbody>
+                  </PlusTable>
+                ) : (
+                  <MinusTable key={elem._id}>
+                    <MobileTbody>
+                      <MobileTrMinus>
+                        <MobileTdTitle>Date</MobileTdTitle>
+                        <MobileTd>{Date}</MobileTd>
+                      </MobileTrMinus>
+                      <MobileTrMinus>
+                        <MobileTdTitle>Type</MobileTdTitle>
+                        <MobileTd>{elem.type}</MobileTd>
+                      </MobileTrMinus>
+                      <MobileTrMinus>
+                        <MobileTdTitle>Category</MobileTdTitle>
+                        <MobileTd>{elem.category}</MobileTd>
+                      </MobileTrMinus>
+                      <MobileTrMinus>
+                        <MobileTdTitle>Comment</MobileTdTitle>
+                        <MobileTd>{elem.comment}</MobileTd>
+                      </MobileTrMinus>
+                      <MobileTrMinus>
+                        <MobileTdTitle>Sum</MobileTdTitle>
+                        <MobileTdMinus>{elem.sum}</MobileTdMinus>
+                      </MobileTrMinus>
+                      <MobileTrMinus>
+                        <MobileTdTitle>Balance</MobileTdTitle>
+                        <MobileTd>{elem.balance}</MobileTd>
+                      </MobileTrMinus>
+                    </MobileTbody>
+                  </MinusTable>
                 ),
               )}
-            </tbody> */}
-
-      {!isntMobile && (
-        <MobileContainer>
-          {transactions.map(
-            ({ id, Date, Type, Category, Comment, Sum, Balance }) =>
-              Type === '+' ? (
-                <PlusTable key={id}>
-                  <MobileTbody>
-                    <MobileTrPlus>
-                      <MobileTdTitle>Date</MobileTdTitle>
-                      <MobileTd>{Date}</MobileTd>
-                    </MobileTrPlus>
-                    <MobileTrPlus>
-                      <MobileTdTitle>Type</MobileTdTitle>
-                      <MobileTd>{Type}</MobileTd>
-                    </MobileTrPlus>
-                    <MobileTrPlus>
-                      <MobileTdTitle>Category</MobileTdTitle>
-                      <MobileTd>{Category}</MobileTd>
-                    </MobileTrPlus>
-                    <MobileTrPlus>
-                      <MobileTdTitle>Comment</MobileTdTitle>
-                      <MobileTd>{Comment}</MobileTd>
-                    </MobileTrPlus>
-                    <MobileTrPlus>
-                      <MobileTdTitle>Sum</MobileTdTitle>
-                      <MobileTdSumPlus>{Sum}</MobileTdSumPlus>
-                    </MobileTrPlus>
-                    <MobileTrPlus>
-                      <MobileTdTitle>Balance</MobileTdTitle>
-                      <MobileTd>{Balance}</MobileTd>
-                    </MobileTrPlus>
-                  </MobileTbody>
-                </PlusTable>
-              ) : (
-                <MinusTable key={id}>
-                  <MobileTbody>
-                    <MobileTrMinus>
-                      <MobileTdTitle>Date</MobileTdTitle>
-                      <MobileTd>{Date}</MobileTd>
-                    </MobileTrMinus>
-                    <MobileTrMinus>
-                      <MobileTdTitle>Type</MobileTdTitle>
-                      <MobileTd>{Type}</MobileTd>
-                    </MobileTrMinus>
-                    <MobileTrMinus>
-                      <MobileTdTitle>Category</MobileTdTitle>
-                      <MobileTd>{Category}</MobileTd>
-                    </MobileTrMinus>
-                    <MobileTrMinus>
-                      <MobileTdTitle>Comment</MobileTdTitle>
-                      <MobileTd>{Comment}</MobileTd>
-                    </MobileTrMinus>
-                    <MobileTrMinus>
-                      <MobileTdTitle>Sum</MobileTdTitle>
-                      <MobileTdMinus>{Sum}</MobileTdMinus>
-                    </MobileTrMinus>
-                    <MobileTrMinus>
-                      <MobileTdTitle>Balance</MobileTdTitle>
-                      <MobileTd>{Balance}</MobileTd>
-                    </MobileTrMinus>
-                  </MobileTbody>
-                </MinusTable>
-              ),
-          )}
-        </MobileContainer>
-      )}
+          </MobileContainer>
+        ) : (
+          <h2 style={{ textAlign: 'center', color: 'red' }}>
+            Sorry you don't have transactions
+          </h2>
+        ))}
     </>
   );
 };
