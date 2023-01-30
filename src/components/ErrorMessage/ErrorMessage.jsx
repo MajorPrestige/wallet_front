@@ -13,7 +13,7 @@ const ErrorMessage = ({ status }) => {
           <div className={s.face} id="face"></div>
         </div>
         <div className={s.shadow}></div>
-        <ErrorMessageText>{status}.</ErrorMessageText>
+        <ErrorMessageText>{status}</ErrorMessageText>
       </div>
     </ErrorMessageBlock>
   );
