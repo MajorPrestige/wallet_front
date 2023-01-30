@@ -1,9 +1,9 @@
 import Header from "components/Header/Header";
 import Navigation from "components/Navigation/Navigation";
-import Chart from "components/Chart/Chart";
+import Statistic from "components/Statistic/Statistic";
+
 import { Container } from "styles/Shared.styled";
 import { BackgroundContainer } from "../DashboardPage.styled";
-import { Title } from "./StatisticsPage.styled";
 
 const StatisticsPage = () => {
   return (
@@ -11,8 +11,7 @@ const StatisticsPage = () => {
       <Header />
       <Container>
         <Navigation current="statistics" />
-        <Title>Statistics</Title>
-        <Chart/>
+        <Statistic/>
       </Container>
     </BackgroundContainer>
   );
