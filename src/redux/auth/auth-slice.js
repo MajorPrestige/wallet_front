@@ -20,6 +20,11 @@ const accessAuth = (store, payload) => {
 const auth = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    clearAuthError: store => {
+      store.error = null;
+    },
+  },
   extraReducers: {
     // Signup
     [signup.pending]: store => {
@@ -87,4 +92,5 @@ const auth = createSlice({
   },
 });
 
+export const { clearAuthError } = auth.actions;
 export default auth.reducer;
