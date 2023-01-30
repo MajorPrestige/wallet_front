@@ -32,4 +32,13 @@ export const CustomSelect = styled(Select)`
   .react-select__menu-list {
     color: #000000;
   }
+  ,
+  .react-select__option {
+    font-weight: 400;
+    &:hover {
+      font-weight: 700;
+      color: #FF6596;
+      background-color: #FFFFFF;
+    }
+  },
 `;
