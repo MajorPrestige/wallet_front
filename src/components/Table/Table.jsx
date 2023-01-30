@@ -28,6 +28,7 @@ import {
 import transactions from './transactions';
 import { getTransactions } from 'redux/transactions/trans-selectors';
 import { fetchTransactions } from 'redux/transactions/trans-operations';
+import { formatDate } from './../../helpers/formatDate';
 
 const Table = () => {
   const isntMobile = useMediaQuery({ minWidth: 768 });
@@ -54,7 +55,33 @@ const Table = () => {
                 <Category>Balance</Category>
               </tr>
             </TableHead>
-            <tbody>
+          </TableContainer>
+          {transactions?.length ? (
+            [...transactions].map(elem =>
+              (
+                <tbody>
+                  <tr key={elem._id}>
+                    <Operations>{formatDate(elem.date)}</Operations>
+                    <Operations>{elem.type}</Operations>
+                    <Operations>{elem.category}</Operations>
+                    <Operations>{elem.comment}</Operations>
+                    {elem.type === '+' ? (
+                      <PlusSum>{elem.sum}</PlusSum>
+                    ) : (
+                      <MinusSum>{elem.sum}</MinusSum>
+                    )}
+                    <Operations>{elem.balance}</Operations>
+                  </tr>
+                </tbody>
+              ).sort((a, b) => b.date - a.date),
+            )
+          ) : (
+            <h3>У вас не має транзакций</h3>
+          )}
+        </Container>
+      )}
+
+      {/* <tbody>
               {transactions.map(
                 ({ id, Date, Type, Category, Comment, Sum, Balance }) => (
                   <tr key={id}>
@@ -71,10 +98,7 @@ const Table = () => {
                   </tr>
                 ),
               )}
-            </tbody>
-          </TableContainer>
-        </Container>
-      )}
+            </tbody> */}
 
       {!isntMobile && (
         <MobileContainer>
