@@ -64,8 +64,9 @@ export const PlusTable = styled.table`
 
 export const MinusTable = styled.table`
   width: 100%;
-
+  border-radius: 30px;
   margin-bottom: 10px;
+  background-color: green;
 `;
 
 export const MobileTbody = styled.tbody``;
@@ -79,12 +80,12 @@ export const MobileTrPlus = styled.tr`
   background-color: white;
 
   &:last-child {
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
   }
   &:first-child {
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
   }
   box-shadow: inset 4px 0px 0px #24cca7;
   border: 1px solid #dcdcdf;
@@ -99,12 +100,12 @@ export const MobileTrMinus = styled.tr`
   background-color: white;
 
   &:last-child {
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
   }
   &:first-child {
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
   }
   box-shadow: inset 4px 0px 0px 0px #ff6596;
   border: 1px solid #dcdcdf;
