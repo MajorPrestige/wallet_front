@@ -15,10 +15,11 @@ const Header = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const isTablet = useMediaQuery({ minWidth: 768 });
 
-  const [modalWindow, setModalWindow] = useState(false);
-  const openModalHandler = () => setModalWindow(true);
+  const [isModal, setIsModal] = useState(false);
 
-  
+  const toogleModal = () => {
+    setIsModal(!isModal);
+  }; 
 
   return (
     <StyledHeader>
@@ -27,7 +28,7 @@ const Header = () => {
         {isMobile && (
           <>
             <p>{userName}</p>
-            <LogoutButton onClick={openModalHandler} type="button">
+            <LogoutButton onClick={toogleModal} type="button">
               <Logout />
             </LogoutButton>
           </>
@@ -35,16 +36,16 @@ const Header = () => {
         {isTablet && (
           <>
             <p style={{ marginRight: '8px' }}>{userName}</p>
-            <LogoutButton onClick={openModalHandler} tablet>
+            <LogoutButton onClick={toogleModal} tablet>
               <Logout />
               <span style={{ marginLeft: '8px' }}>Exit</span>
             </LogoutButton>
           </>
         )}
       </HeaderWrapper>
-      {modalWindow && (
-        <Modal closeModal ={setModalWindow}>
-          <ModalLogout />
+      {isModal && (
+        <Modal toogleModal={toogleModal}>
+          <ModalLogout toogleModalCancel={toogleModal}/>
         </Modal>
       )}
     </StyledHeader>
