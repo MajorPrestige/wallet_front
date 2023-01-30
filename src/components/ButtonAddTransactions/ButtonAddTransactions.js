@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { device } from 'styles/Media.variables';
 
-export const Button = styled.button`
+export const TransactionButton = styled.button`
   width: 44px;
   height: 44px;
   background-image: linear-gradient(122deg, rgba(0, 255, 205, 0.95), #24cca7);
