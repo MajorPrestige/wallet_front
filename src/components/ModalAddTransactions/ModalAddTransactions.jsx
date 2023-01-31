@@ -27,6 +27,7 @@ import {
   CheckIncome,
   CheckExpense,
   CalendarDatetime,
+  LableSelect,
 } from './../ModalAddTransactions/ModalAddTransaction.styled';
 import { getAllCategories } from 'api/categories/category';
 
@@ -121,12 +122,12 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
           {({ values, errors, touched, handleChange, handleSubmit }) => (
             <FormAddTrans onSubmit={handleSubmit}>
               {!isChecked && (
-                <Lable>
+                <LableSelect>
                   <SelectList
                     options={options}
                     getCurrent={setSelectedOption}
                   />
-                </Lable>
+                </LableSelect>
               )}
               <Lable>
                 <Inpput
