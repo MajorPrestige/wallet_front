@@ -5,7 +5,7 @@ import Loader from 'components/Loader/Loader';
 import LoginForm from 'components/Auth/LoginForm/LoginForm';
 import { Title } from 'styles/Shared.styled';
 import { LoginImg } from './LoginPage.styled';
-import { StyledAuthForm, AuthHero } from '../AuthPage.styled';
+import { AuthContainer, StyledAuthForm, AuthHero } from '../AuthPage.styled';
 
 import { getFirstLoading, getLoading } from 'redux/auth/auth-selectors';
 
@@ -25,6 +25,7 @@ const LoginPage = () => {
       <>
       {loading && <Loader />}
         <StyledAuthForm>
+        <AuthContainer>
           {isntMobile && (
             <AuthHero>
               <div>
@@ -46,6 +47,7 @@ const LoginPage = () => {
             </AuthHero>
           )}
           <LoginForm />
+          </AuthContainer>
         </StyledAuthForm>
       </>
     )
