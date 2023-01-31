@@ -2,13 +2,12 @@ import styled from "styled-components";
 import { device } from "styles/Media.variables";
 
 export const StyledChart = styled.div`
-  @media ${device.mobile} {
-    position: relative;
-    width: 280px;
-    height: 280px;
-    margin-right: auto;
-    margin-left: auto;
-  }
+  position: relative;
+  width: 280px;
+  height: 280px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 32px;
 
   @media ${device.tablet} {
     width: 336px;
