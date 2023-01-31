@@ -1,9 +1,9 @@
 import { Formik } from 'formik';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-
-import { getStatistic } from 'redux/transactions/trans-selectors';
-import { statistic } from 'redux/transactions/trans-operations';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { useEffect } from 'react';
+//
+// import { getStatistic } from 'redux/transactions/trans-selectors';
+// import { statistic } from 'redux/transactions/trans-operations';
 
 import { FormContainer, StyledForm, StyledField } from './DiagramForm.styled';
 

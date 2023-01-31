@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getAllCategories } from '../../api/categories/category';
-import Select from 'react-select';
+// import Select from 'react-select';
 import { CustomSelect } from './CategoriesList.styled';
 
 const CategoriesList = () => {
