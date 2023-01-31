@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { device } from 'styles/Media.variables';
 
 export const Container = styled.div`
@@ -65,16 +65,7 @@ export const Operations = styled.th`
   padding: 15px;
   font-size: 16px;
   font-weight: 400;
-  ${props =>
-    props.red &&
-    css`
-      color: #ff6596;
-    `}
-  ${props =>
-    props.green &&
-    css`
-      color: #24cca7;
-    `}
+  color: ${props => props.color};
 `;
 
 // ----------------------------------------------------
@@ -147,6 +138,7 @@ export const MobileTd = styled.td`
   font-weight: 400;
   font-size: 16px;
   line-height: calc(24 / 16);
+  color: ${props => props.color};
 `;
 
 export const MobileTdSumPlus = styled.td`
