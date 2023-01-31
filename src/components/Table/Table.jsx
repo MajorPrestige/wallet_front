@@ -54,26 +54,27 @@ const Table = () => {
                 <Category>Balance</Category>
               </tr>
             </TableHead>
+
+            <tbody>
+              {transactions.length > 0 &&
+                [...transactions]
+                  .sort((a, b) => b.date - a.date)
+                  .map(elem => (
+                    <tr key={elem._id}>
+                      <Operations>{formatDate(elem.date)}</Operations>
+                      <Operations>{elem.type}</Operations>
+                      <Operations>{elem.category}</Operations>
+                      <Operations>{elem.comment}</Operations>
+                      {elem.type === true ? (
+                        <Operations green>{elem.sum}</Operations>
+                      ) : (
+                        <Operations red>{elem.sum}</Operations>
+                      )}
+                      <Operations>{elem.balanceAfter}</Operations>
+                    </tr>
+                  ))}
+            </tbody>
           </TableContainer>
-          {transactions.length > 0 &&
-            [...transactions].map(elem =>
-              (
-                <tbody>
-                  <tr key={elem._id}>
-                    <Operations>{formatDate(elem.date)}</Operations>
-                    <Operations>{elem.type}</Operations>
-                    <Operations>{elem.category}</Operations>
-                    <Operations>{elem.comment}</Operations>
-                    {elem.type === true ? (
-                      <Operations green>{elem.sum}</Operations>
-                    ) : (
-                      <Operations red>{elem.sum}</Operations>
-                    )}
-                    <Operations>{elem.balanceAfter}</Operations>
-                  </tr>
-                </tbody>
-              ).sort((a, b) => b.date - a.date),
-            )}
         </Container>
       )}
 
