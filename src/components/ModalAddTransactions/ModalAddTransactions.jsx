@@ -1,15 +1,13 @@
 import React from 'react';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import Select from 'react-select';
-// import Switch from 'react-switch';
-// import Datetime from 'react-datetime';
+import { useState, useEffect } from 'react';
+// import { useDispatch } from 'react-redux';
 import 'react-datetime/css/react-datetime.css';
 import moment from 'moment';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 
 import calendar from '../../images/svgs/calendar.svg';
+import SelectList from 'components/SelectList/SelectList';
 
 import {
   Conteiner,
@@ -31,40 +29,24 @@ import {
   CheckExpense,
   CalendarDatetime,
 } from './../ModalAddTransactions/ModalAddTransaction.styled';
-
-const options = [
-  { value: 'main expenses', label: 'Main expenses' },
-  { value: 'products', label: 'Products' },
-  { value: 'car', label: 'Car' },
-  { value: 'salfe care', label: 'Salfe care' },
-  { value: 'child care', label: 'Child care' },
-  { value: 'household products', label: 'Household products' },
-  { value: 'education', label: 'Education' },
-  { value: 'leisure', label: 'Leisure' },
-  { value: 'other expenses', label: 'Other expenses' },
-  { value: 'enterteintmen', label: 'Enterteintmen' },
-];
+import { getAllCategories } from 'api/categories/category';
 
 const ModalAddTransactions = ({ toggleModalCancel }) => {
   const [isChecked, setIsChecked] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
-  const [comment, setIsComment] = useState('');
-  const [sum, setSum] = useState('');
+  const [options, setOptions] = useState([]);
+
   const [date, setDate] = useState(new Date());
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
+
+  useEffect(() => {
+    getAllCategories().then(data => {
+      setOptions(data.map(it => ({ value: it._id, label: it.name })));
+    });
+  }, []);
 
   const handleChecked = () => {
     setIsChecked(!isChecked);
-  };
-
-  const handleChange = e => {
-    const { value } = e.target;
-    if (e.target.name === 'sum') {
-      setSum(value);
-    }
-    if (e.target.name === 'comment') {
-      setIsComment(value);
-    }
   };
 
   let yesterday = moment().subtract(1, 'day');
@@ -74,14 +56,25 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
   }
 
   const validationSchema = yup.object().shape({
-    date: yup.date().required(),
-    type: yup.string().required,
-    category: yup.string(),
-    comment: yup.string(),
+    // category: yup.string(),
+    // comment: yup.string(),
     sum: yup.number().required(),
   });
+
   const onSubmit = values => {
-    dispatch();
+    // dispatch();
+
+    const data = {
+      type: isChecked,
+      date: date.toISOString().slice(0, 10),
+      sum: values.sum,
+      comment: values.comment,
+    };
+
+    if (!isChecked) {
+      data.category = selectedOption.value;
+    }
+    console.log(data);
   };
 
   return (
@@ -118,23 +111,21 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
 
         <Formik
           initialValues={{
-            category: '',
+            // category: '',
             sum: '',
-            date: '',
+            comment: '',
+            // date: '',
           }}
           validationSchema={validationSchema}
           onSubmit={onSubmit}
         >
-          {() => (
-            <FormAddTrans>
-              {isChecked && (
+          {({ values, errors, touched, handleChange, handleSubmit }) => (
+            <FormAddTrans onSubmit={handleSubmit}>
+              {!isChecked && (
                 <Lable>
-                  {/* select a category */}
-                  <Select
-                    name="category"
-                    defaultValue={selectedOption}
-                    onChange={setSelectedOption}
+                  <SelectList
                     options={options}
+                    getCurrent={setSelectedOption}
                   />
                 </Lable>
               )}
@@ -143,9 +134,10 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
                   type="text"
                   placeholder="0.00"
                   name="sum"
-                  value={sum}
+                  value={values.name}
                   onChange={handleChange}
-                ></Inpput>
+                />
+                {touched.sum && errors.sum && <p>помилка</p>}
               </Lable>
               <CalendarDatetime
                 name="date"
@@ -159,7 +151,7 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
                 }}
                 timeFormat={false}
                 initialValue={date}
-                isValidDate={valid}
+                // isValidDate={valid}
                 value={date}
                 onChange={setDate}
                 closeOnSelect={true}
@@ -169,11 +161,11 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
                   type="text"
                   name="comment"
                   placeholder="Comment"
-                  value={comment}
+                  value={values.name}
                   onChange={handleChange}
                 ></InpputComment>
               </LableComment>
-              <ButtonAdd>add</ButtonAdd>
+              <ButtonAdd type="submit">add</ButtonAdd>
             </FormAddTrans>
           )}
         </Formik>
