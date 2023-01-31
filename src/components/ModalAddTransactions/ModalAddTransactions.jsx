@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import 'react-datetime/css/react-datetime.css';
 import moment from 'moment';
 import { Formik } from 'formik';
+
 import * as yup from 'yup';
 
 import calendar from '../../images/svgs/calendar.svg';
@@ -75,8 +76,12 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
       data.category = selectedOption.value;
     }
     console.log(data);
+    reset();
   };
-
+  const reset = () => {
+    setIsChecked(false);
+    setSelectedOption(null);
+  };
   return (
     <>
       <Conteiner>
@@ -163,7 +168,8 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
                   placeholder="Comment"
                   value={values.name}
                   onChange={handleChange}
-                ></InpputComment>
+                />
+                {/* {touched.comment && errors.comment && <p>помилка</p>} */}
               </LableComment>
               <ButtonAdd type="submit">add</ButtonAdd>
             </FormAddTrans>
