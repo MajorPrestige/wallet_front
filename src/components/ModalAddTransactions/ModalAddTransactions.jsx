@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState, useEffect } from 'react';
 // import { useDispatch } from 'react-redux';
 import 'react-datetime/css/react-datetime.css';
@@ -49,11 +48,11 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
     setIsChecked(!isChecked);
   };
 
-  let yesterday = moment().subtract(1, 'day');
+  // let yesterday = moment().subtract(1, 'day');
 
-  function valid(current) {
-    return current.isAfter(yesterday);
-  }
+  // function valid(current) {
+  //   return current.isAfter(yesterday);
+  // }
 
   const validationSchema = yup.object().shape({
     // category: yup.string(),
