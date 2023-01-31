@@ -1,5 +1,6 @@
 import { createPortal } from 'react-dom';
 import { useEffect } from 'react';
+import { useMediaQuery } from 'react-responsive';
 
 import {
   Overlay,
@@ -11,6 +12,8 @@ import {
 const modalRoot = document.querySelector('#modal-root');
 
 const Modal = ({ toggleModal, children, isSignIn }) => {
+  const isTablet = useMediaQuery({ minWidth: 768 });
+
   useEffect(() => {
     window.addEventListener('keydown', onKeyDown);
     return () => {
@@ -34,7 +37,7 @@ const Modal = ({ toggleModal, children, isSignIn }) => {
     <Overlay onClick={onOverlayClick}>
       {isSignIn ? (
         <ModalWindowAddTransaction>
-          <ModalClose onClick={toggleModal} />
+          {isTablet && <ModalClose onClick={toggleModal} />}
           {children}
         </ModalWindowAddTransaction>
       ) : (
