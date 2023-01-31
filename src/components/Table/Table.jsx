@@ -23,7 +23,6 @@ import {
   Container,
 } from './Table.styled';
 
-import transactions from './transactions';
 import { getTransactions } from 'redux/transactions/trans-selectors';
 import { fetchTransactions } from 'redux/transactions/trans-operations';
 import { formatDate } from './../../helpers/formatDate';
@@ -121,7 +120,7 @@ const Table = () => {
                     <MobileTbody>
                       <MobileTrMinus>
                         <MobileTdTitle>Date</MobileTdTitle>
-                        <MobileTd>{Date}</MobileTd>
+                        <MobileTd>{formatDate(elem.date)}</MobileTd>
                       </MobileTrMinus>
                       <MobileTrMinus>
                         <MobileTdTitle>Type</MobileTdTitle>
