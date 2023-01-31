@@ -31,7 +31,6 @@ const Table = () => {
   const isntMobile = useMediaQuery({ minWidth: 768 });
   const dispatch = useDispatch();
   const transactions = useSelector(getTransactions);
-  console.log(transactions);
 
   useEffect(() => {
     dispatch(fetchTransactions({ page: 1, limit: 5 }));
