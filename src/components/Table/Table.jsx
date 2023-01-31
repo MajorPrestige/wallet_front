@@ -8,8 +8,6 @@ import { useDispatch } from 'react-redux';
 import {
   Category,
   TableContainer,
-  PlusSum,
-  MinusSum,
   TableHead,
   Operations,
   PlusTable,
@@ -66,9 +64,9 @@ const Table = () => {
                     <Operations>{elem.category}</Operations>
                     <Operations>{elem.comment}</Operations>
                     {elem.type === '+' ? (
-                      <PlusSum>{elem.sum}</PlusSum>
+                      <Operations green>{elem.sum}</Operations>
                     ) : (
-                      <MinusSum>{elem.sum}</MinusSum>
+                      <Operations red>{elem.sum}</Operations>
                     )}
                     <Operations>{elem.balance}</Operations>
                   </tr>

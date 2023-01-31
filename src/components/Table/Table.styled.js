@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { device } from 'styles/Media.variables';
 
 export const Container = styled.div`
@@ -26,7 +26,7 @@ export const TableContainer = styled.table`
   margin-bottom: 15px;
   margin-left: auto;
   margin-right: auto;
-
+  align-items: center;
   @media ${device.tablet} {
     width: 705px;
     height: 305px;
@@ -61,19 +61,20 @@ export const Category = styled.th`
   }
 `;
 
-export const PlusSum = styled.th`
-  color: #24cca7;
-  align-items: center;
-`;
-
-export const MinusSum = styled.th`
-  color: #ff6596;
-`;
-
 export const Operations = styled.th`
   padding: 15px;
   font-size: 16px;
   font-weight: 400;
+  ${props =>
+    props.red &&
+    css`
+      color: #ff6596;
+    `}
+  ${props =>
+    props.green &&
+    css`
+      color: #24cca7;
+    `}
 `;
 
 // ----------------------------------------------------
