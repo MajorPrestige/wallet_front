@@ -35,24 +35,25 @@ const options = [
 const ModalAddTransactions = ({ toogleModalCancel }) => {
   const [isChecked, setIsChecked] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
-  const [comment, setIsComment] = useState('');
-  const [sum, setSum] = useState('');
+  // const [comment, setIsComment] = useState('');
+  // const [sum, setSum] = useState('');
   const [date, setDate] = useState(new Date());
-  const dispatch = useDispatch();
-
+  // const dispatch = useDispatch();
+console.log(selectedOption);
+console.log(date);
   const handleChecked = () => {
     setIsChecked(!isChecked);
   };
 
-  const handleChange = e => {
-    const { value } = e.target;
-    if (e.target.name === 'sum') {
-      setSum(value);
-    }
-    if (e.target.name === 'comment') {
-      setIsComment(value);
-    }
-  };
+  // const handleChange = e => {
+  //   const { value } = e.target;
+  //   if (e.target.name === 'sum') {
+  //     setSum(value);
+  //   }
+  //   if (e.target.name === 'comment') {
+  //     setIsComment(value);
+  //   }
+  // };
 
   let yesterday = moment().subtract(1, 'day');
 
@@ -67,8 +68,12 @@ const ModalAddTransactions = ({ toogleModalCancel }) => {
     comment: yup.string(),
     sum: yup.number().required(),
   });
+
+  
+
   const onSubmit = values => {
-    dispatch();
+    // dispatch();
+    console.log(values);
   };
   return (
     <>
@@ -81,18 +86,20 @@ const ModalAddTransactions = ({ toogleModalCancel }) => {
             sum: '',
             date: '',
           }}
-          validationSchema={validationSchema}
+          // validationSchema={validationSchema}
           onSubmit={onSubmit}
         >
-          {() => (
-            <FormAddTrans>
+          {({ values, errors, touched, handleChange, handleSubmit }) => (
+            <FormAddTrans onSubmit={handleSubmit}>
               {!isChecked && (
                 <Lable>
                   select a category
                   <Select
                     name="category"
-                    defaultValue={selectedOption}
+                    value={values.name}
+                    // defaultValue={selectedOption}
                     onChange={setSelectedOption}
+                    // onChange={handleChange}
                     options={options}
                   />
                 </Lable>
@@ -102,7 +109,8 @@ const ModalAddTransactions = ({ toogleModalCancel }) => {
                   type="text"
                   placeholder="0.00"
                   name="sum"
-                  value={sum}
+                  value={values.name}
+                  // value={sum}
                   onChange={handleChange}
                 ></Inpput>
               </Lable>
@@ -115,19 +123,22 @@ const ModalAddTransactions = ({ toogleModalCancel }) => {
                 timeFormat={false}
                 initialValue={date}
                 isValidDate={valid}
-                value={date}
-                onChange={setDate}
+                value={values.name}
+                // value={date}
+                // onChange={setDate}
+                onChange={handleChange}
               />
               <Lable>
                 <Inpput
                   type="text"
                   name="comment"
                   placeholder="comment"
-                  value={comment}
+                  // value={comment}
+                  value={values.name}
                   onChange={handleChange}
                 ></Inpput>
               </Lable>
-              <ButtonAdd>add</ButtonAdd>
+              <ButtonAdd type="submit">add</ButtonAdd>
             </FormAddTrans>
           )}
         </Formik>
