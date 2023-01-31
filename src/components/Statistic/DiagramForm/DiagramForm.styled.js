@@ -2,14 +2,14 @@ import styled from "styled-components";
 import { device } from "styles/Media.variables";
 import { Form, Field } from 'formik';
 
-export const FormConteiner = styled.div`
-  margin-left: auto;
+export const FormContainer = styled.div`
   margin-right: auto;
+  margin-left: auto;
 `;
 
 export const StyledForm = styled(Form)`
-  margin-left: auto;
   margin-right: auto;
+  margin-left: auto;
   margin-bottom: 20px;
 `;
 
@@ -36,6 +36,7 @@ export const StyledField = styled(Field)`
 
   @media ${device.tablet} {
     width: 160px; 
+
     &:first-child {
       margin-right: 16px;
       margin-bottom: 0px;
@@ -44,8 +45,9 @@ export const StyledField = styled(Field)`
 
   @media ${device.desktop} {
     width: 182px; 
+
     &:first-child {
-      margin-right: 32px;
+      margin-right: 31px;
     }
   }
 `;

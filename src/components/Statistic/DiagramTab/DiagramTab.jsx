@@ -4,7 +4,23 @@ import { useEffect } from 'react';
 import { getStatistic } from 'redux/transactions/trans-selectors';
 import { statistic } from 'redux/transactions/trans-operations';
 
-import { TableContainer, TableHead, Category, TableBody, TableRow, OperationCat, OperationSum, Square } from './DiagramTab.styled';
+import {
+  TableContainer,
+  TableHead,
+  Category,
+  TableBody,
+  TableRow,
+  OperationCat,
+  OperationSum,
+  Square,
+  Totals,
+  Expense,
+  Income,
+  CellInner,
+  Sum,
+} from './DiagramTab.styled';
+
+// import styles from './DiagramTab.styled';
 
 const colors = [
   '#FED057',
@@ -50,35 +66,73 @@ const DiagramTab = ({ date }) => {
   const expense = expensesTrans.reduce((total, trans) => {
     return total + trans.sum;
   }, 0);
+
   const income = transactions
     .filter(trans => trans.type === true)
     .reduce((total, trans) => {
       return total + trans.sum;
     }, 0);
 
-  return (<>
-    <TableContainer>
-      <TableHead>
-        <tr>
-          <Category>Category</Category>
-          <Category>Sum</Category>
-        </tr>
-      </TableHead>
-      <TableBody>
-        {totalSums.map(({ id, category, totalSum, color }) => (
-          <TableRow key={id}>
-            <OperationCat><Square style={{backgroundColor: {color}}}/>{category}</OperationCat>
-            <OperationSum>{totalSum}</OperationSum>
-          </TableRow>
-        ))}
-      </TableBody>
-    </TableContainer>
-    <div>
-      <p>Expenses:<span>{expense}</span></p>
-      <p>Income:<span>{income}</span></p>
-    </div>
+  return (
+    <>
+      <TableContainer>
+        <TableHead>
+          <tr>
+            <Category>Category</Category>
+            <Category>Sum</Category>
+          </tr>
+        </TableHead>
+        <TableBody>
+          {totalSums.map(({ id, category, totalSum, color }) => {
+            return (
+              <TableRow key={id}>
+                <OperationCat>
+                  <CellInner>
+                    <Square color={color} />
+                    {category}
+                  </CellInner>
+                </OperationCat>
+                <OperationSum>
+                  <CellInner>
+                    {totalSum}
+                  </CellInner>
+                </OperationSum>
+              </TableRow>
+            );
+          })}
+        </TableBody>
+      </TableContainer>
+      <Sum>
+        <Totals>
+          Expenses:<Expense>{expense}</Expense>
+        </Totals>
+        <Totals>
+          Income:<Income>{income}</Income>
+        </Totals>
+      </Sum>
     </>
   );
 };
 
 export default DiagramTab;
+
+// const totalSums = [
+//   {
+//     id: 1,
+//     category: "Car",
+//     totalSum: 200,
+//     color: "#FED057",
+//   },
+//   {
+//     id: 2,
+//     category: "Products",
+//     totalSum: 500,
+//     color: "#FFD8D0",
+//   },
+//   {
+//     id: 3,
+//     category: "Education",
+//     totalSum: 50,
+//     color: "black",
+//   },
+// ];

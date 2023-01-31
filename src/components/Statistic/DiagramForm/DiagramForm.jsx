@@ -1,9 +1,13 @@
 import { Formik } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
-import { FormConteiner, StyledForm, StyledField } from './DiagramForm.styled';
+import { getStatistic } from 'redux/transactions/trans-selectors';
+import { statistic } from 'redux/transactions/trans-operations';
+
+import { FormContainer, StyledForm, StyledField } from './DiagramForm.styled';
 
 const DiagramForm = ({setDate}) => {
-
   const onChange = ({target}) => {
     setDate( prevState => {
       return {...prevState, [target.name]: target.value};
@@ -11,7 +15,7 @@ const DiagramForm = ({setDate}) => {
   };
 
   return (
-    <FormConteiner>
+    <FormContainer>
       <Formik
         initialValues={{ month: '', year: '' }}
       >
@@ -24,7 +28,7 @@ const DiagramForm = ({setDate}) => {
               <option value="4">April</option>
               <option value="5">May</option>
               <option value="6">June</option>
-              <option value="7">July</option>
+              <option value="7" disabled>July</option>
               <option value="8">August</option>
               <option value="9">September</option>
               <option value="10">October</option>
@@ -42,7 +46,7 @@ const DiagramForm = ({setDate}) => {
           </StyledForm>
         )}
       </Formik>
-    </FormConteiner>
+    </FormContainer>
   );
 };
 
