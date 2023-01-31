@@ -10,7 +10,7 @@ import {
 
 const modalRoot = document.querySelector('#modal-root');
 
-const Modal = ({ toogleModal, children, isSignIn }) => {
+const Modal = ({ toggleModal, children, isSignIn }) => {
   useEffect(() => {
     window.addEventListener('keydown', onKeyDown);
     return () => {
@@ -20,13 +20,13 @@ const Modal = ({ toogleModal, children, isSignIn }) => {
 
   const onOverlayClick = e => {
     if (e.target === e.currentTarget) {
-      toogleModal();
+      toggleModal();
     }
   };
 
   const onKeyDown = e => {
     if (e.code === 'Escape') {
-      toogleModal();
+      toggleModal();
     }
   };
 
@@ -34,12 +34,12 @@ const Modal = ({ toogleModal, children, isSignIn }) => {
     <Overlay onClick={onOverlayClick}>
       {isSignIn ? (
         <ModalWindowAddTransaction>
-          <ModalClose onClick={toogleModal} />
+          <ModalClose onClick={toggleModal} />
           {children}
         </ModalWindowAddTransaction>
       ) : (
         <ModalWindow>
-          <ModalClose onClick={toogleModal} />
+          <ModalClose onClick={toggleModal} />
           {children}
         </ModalWindow>
       )}
@@ -56,7 +56,7 @@ export default Modal;
 //               |
 //               V
 
-// const toogleModal = () => {
+// const toggleModal = () => {
 // 	setIsModal(!isModal);
 // };
 

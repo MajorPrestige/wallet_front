@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import { device } from 'styles/Media.variables';
 
 const linkAndButtonStyles = css`
+  font-family: 'Circe';
   position: relative;
   display: block;
   width: 280px;
