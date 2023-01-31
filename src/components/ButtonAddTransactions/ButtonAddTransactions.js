@@ -1,8 +1,11 @@
 import styled from 'styled-components';
 import { device } from 'styles/Media.variables';
-import { ReactComponent as Icon } from 'images/svgs/plus.svg';
+import { ReactComponent as Icon } from 'images/svgs/add.svg';
 
 export const TransactionButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 44px;
   height: 44px;
   background-color: #24cca7;
@@ -21,11 +24,12 @@ export const TransactionButton = styled.button`
     border: 1px solid #24cca7;
     transform: scale(1.05);
     outline: transparent;
-    color: #24cca7;
+    
     background-color: #ffffff;
   }
   &:hover svg,
   &:focus svg {
+    stroke: #24cca7;
     fill: #24cca7;
   }
 
@@ -43,6 +47,6 @@ export const TransactionButton = styled.button`
 export const IconLogo = styled(Icon)`
   width: 20px;
   height: 20px;
-  fill: #fff;
+  stroke: #fff;
   transition: 0.2s ease-in-out;
 `;
