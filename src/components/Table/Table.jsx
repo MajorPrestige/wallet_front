@@ -37,6 +37,8 @@ const Table = () => {
     dispatch(fetchTransactions({ page: 1, limit: 5 }));
   }, [dispatch]);
 
+  if (!transactions) return false;
+
   return (
     <>
       {isntMobile && (
@@ -53,7 +55,7 @@ const Table = () => {
               </tr>
             </TableHead>
           </TableContainer>
-          {transactions?.length ? (
+          {transactions.length > 0 &&
             [...transactions].map(elem =>
               (
                 <tbody>
@@ -62,96 +64,86 @@ const Table = () => {
                     <Operations>{elem.type}</Operations>
                     <Operations>{elem.category}</Operations>
                     <Operations>{elem.comment}</Operations>
-                    {elem.type === '+' ? (
+                    {elem.type === true ? (
                       <Operations green>{elem.sum}</Operations>
                     ) : (
                       <Operations red>{elem.sum}</Operations>
                     )}
-                    <Operations>{elem.balance}</Operations>
+                    <Operations>{elem.balanceAfter}</Operations>
                   </tr>
                 </tbody>
               ).sort((a, b) => b.date - a.date),
-            )
-          ) : (
-            <h2 style={{ textAlign: 'center', color: '#fd0000be' }}>
-              Sorry you don't have transactions
-            </h2>
-          )}
+            )}
         </Container>
       )}
 
-      {!isntMobile &&
-        (transactions.length > 0 ? (
-          <MobileContainer>
-            {transactions
-              .sort((a, b) => b.date - a.date)
-              .map(elem =>
-                elem.type === '+' ? (
-                  <PlusTable key={elem._id}>
-                    <MobileTbody>
-                      <MobileTrPlus>
-                        <MobileTdTitle>Date</MobileTdTitle>
-                        <MobileTd>{formatDate(elem.date)}</MobileTd>
-                      </MobileTrPlus>
-                      <MobileTrPlus>
-                        <MobileTdTitle>Type</MobileTdTitle>
-                        <MobileTd>{elem.type}</MobileTd>
-                      </MobileTrPlus>
-                      <MobileTrPlus>
-                        <MobileTdTitle>Category</MobileTdTitle>
-                        <MobileTd>{elem.category}</MobileTd>
-                      </MobileTrPlus>
-                      <MobileTrPlus>
-                        <MobileTdTitle>Comment</MobileTdTitle>
-                        <MobileTd>{elem.comment}</MobileTd>
-                      </MobileTrPlus>
-                      <MobileTrPlus>
-                        <MobileTdTitle>Sum</MobileTdTitle>
-                        <MobileTdSumPlus>{elem.sum}</MobileTdSumPlus>
-                      </MobileTrPlus>
-                      <MobileTrPlus>
-                        <MobileTdTitle>Balance</MobileTdTitle>
-                        <MobileTd>{elem.balance}</MobileTd>
-                      </MobileTrPlus>
-                    </MobileTbody>
-                  </PlusTable>
-                ) : (
-                  <MinusTable key={elem._id}>
-                    <MobileTbody>
-                      <MobileTrMinus>
-                        <MobileTdTitle>Date</MobileTdTitle>
-                        <MobileTd>{formatDate(elem.date)}</MobileTd>
-                      </MobileTrMinus>
-                      <MobileTrMinus>
-                        <MobileTdTitle>Type</MobileTdTitle>
-                        <MobileTd>{elem.type}</MobileTd>
-                      </MobileTrMinus>
-                      <MobileTrMinus>
-                        <MobileTdTitle>Category</MobileTdTitle>
-                        <MobileTd>{elem.category}</MobileTd>
-                      </MobileTrMinus>
-                      <MobileTrMinus>
-                        <MobileTdTitle>Comment</MobileTdTitle>
-                        <MobileTd>{elem.comment}</MobileTd>
-                      </MobileTrMinus>
-                      <MobileTrMinus>
-                        <MobileTdTitle>Sum</MobileTdTitle>
-                        <MobileTdMinus>{elem.sum}</MobileTdMinus>
-                      </MobileTrMinus>
-                      <MobileTrMinus>
-                        <MobileTdTitle>Balance</MobileTdTitle>
-                        <MobileTd>{elem.balance}</MobileTd>
-                      </MobileTrMinus>
-                    </MobileTbody>
-                  </MinusTable>
-                ),
-              )}
-          </MobileContainer>
-        ) : (
-          <h2 style={{ textAlign: 'center', color: '#fd0000be' }}>
-            Sorry you don't have transactions
-          </h2>
-        ))}
+      {!isntMobile && transactions.length > 0 && (
+        <MobileContainer>
+          {transactions
+            .sort((a, b) => b.date - a.date)
+            .map(elem =>
+              elem.type === true ? (
+                <PlusTable key={elem._id}>
+                  <MobileTbody>
+                    <MobileTrPlus>
+                      <MobileTdTitle>Date</MobileTdTitle>
+                      <MobileTd>{formatDate(elem.date)}</MobileTd>
+                    </MobileTrPlus>
+                    <MobileTrPlus>
+                      <MobileTdTitle>Type</MobileTdTitle>
+                      <MobileTd>{elem.type}</MobileTd>
+                    </MobileTrPlus>
+                    <MobileTrPlus>
+                      <MobileTdTitle>Category</MobileTdTitle>
+                      <MobileTd>{elem.category}</MobileTd>
+                    </MobileTrPlus>
+                    <MobileTrPlus>
+                      <MobileTdTitle>Comment</MobileTdTitle>
+                      <MobileTd>{elem.comment}</MobileTd>
+                    </MobileTrPlus>
+                    <MobileTrPlus>
+                      <MobileTdTitle>Sum</MobileTdTitle>
+                      <MobileTdSumPlus>{elem.sum}</MobileTdSumPlus>
+                    </MobileTrPlus>
+                    <MobileTrPlus>
+                      <MobileTdTitle>Balance</MobileTdTitle>
+                      <MobileTd>{elem.balanceAfter}</MobileTd>
+                    </MobileTrPlus>
+                  </MobileTbody>
+                </PlusTable>
+              ) : (
+                <MinusTable key={elem._id}>
+                  <MobileTbody>
+                    <MobileTrMinus>
+                      <MobileTdTitle>Date</MobileTdTitle>
+                      <MobileTd>{formatDate(elem.date)}</MobileTd>
+                    </MobileTrMinus>
+                    <MobileTrMinus>
+                      <MobileTdTitle>Type</MobileTdTitle>
+                      <MobileTd>{elem.type}</MobileTd>
+                    </MobileTrMinus>
+                    <MobileTrMinus>
+                      <MobileTdTitle>Category</MobileTdTitle>
+                      <MobileTd>{elem.category}</MobileTd>
+                    </MobileTrMinus>
+                    <MobileTrMinus>
+                      <MobileTdTitle>Comment</MobileTdTitle>
+                      <MobileTd>{elem.comment}</MobileTd>
+                    </MobileTrMinus>
+                    <MobileTrMinus>
+                      <MobileTdTitle>Sum</MobileTdTitle>
+                      <MobileTdMinus>{elem.sum}</MobileTdMinus>
+                    </MobileTrMinus>
+                    <MobileTrMinus>
+                      <MobileTdTitle>Balance</MobileTdTitle>
+                      <MobileTd>{elem.balanceAfter}</MobileTd>
+                    </MobileTrMinus>
+                  </MobileTbody>
+                </MinusTable>
+              ),
+            )}
+        </MobileContainer>
+      )}
     </>
   );
 };
