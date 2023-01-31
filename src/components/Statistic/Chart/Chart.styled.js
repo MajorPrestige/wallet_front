@@ -32,3 +32,14 @@ export const StyledBalance = styled.div`
   font-size: 18px;
   line-height: 27px;
 `;
+
+export const Notification = styled.p`
+  margin-bottom: 20px;
+  @media ${device.tablet} {
+    width: 336px;
+  }
+
+  @media ${device.desktop} {
+    width: 288px;
+  }
+`;
