@@ -28,7 +28,9 @@ const transactions = createSlice({
       store.firstLoading = false;
       store.loading = false;
       store.isLogin = true;
-      store.statistic = payload;
+      store.statistic = {
+        transactions: payload,
+      };
     },
 
     [statistic.rejected]: (store, { payload }) => {
