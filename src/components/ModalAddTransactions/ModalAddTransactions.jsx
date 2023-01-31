@@ -1,9 +1,8 @@
 import React from 'react';
-import { useState } from 'react';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import Select from 'react-select';
-// import Switch from 'react-switch';
-// import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
 import moment from 'moment';
 import { Formik } from 'formik';
@@ -32,41 +31,25 @@ import {
   CalendarDatetime,
 } from './../ModalAddTransactions/ModalAddTransaction.styled';
 
-const options = [
-  { value: 'main expenses', label: 'Main expenses' },
-  { value: 'products', label: 'Products' },
-  { value: 'car', label: 'Car' },
-  { value: 'salfe care', label: 'Salfe care' },
-  { value: 'child care', label: 'Child care' },
-  { value: 'household products', label: 'Household products' },
-  { value: 'education', label: 'Education' },
-  { value: 'leisure', label: 'Leisure' },
-  { value: 'other expenses', label: 'Other expenses' },
-  { value: 'enterteintmen', label: 'Enterteintmen' },
-];
-
 const ModalAddTransactions = ({ toogleModalCancel }) => {
   const [isChecked, setIsChecked] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
-  // const [comment, setIsComment] = useState('');
-  // const [sum, setSum] = useState('');
+  const [options, setOptions] = useState([]);
+
   const [date, setDate] = useState(new Date());
   // const dispatch = useDispatch();
-console.log(selectedOption);
-console.log(date);
+
+  useEffect(() => {
+    axios('/categories').then(data => {
+      setOptions(
+        data.data.data.result.map(it => ({ value: it._id, label: it.name })),
+      );
+    });
+  }, []);
+
   const handleChecked = () => {
     setIsChecked(!isChecked);
   };
-
-  // const handleChange = e => {
-  //   const { value } = e.target;
-  //   if (e.target.name === 'sum') {
-  //     setSum(value);
-  //   }
-  //   if (e.target.name === 'comment') {
-  //     setIsComment(value);
-  //   }
-  // };
 
   let yesterday = moment().subtract(1, 'day');
 
@@ -82,11 +65,14 @@ console.log(date);
     sum: yup.number().required(),
   });
 
-  
-
   const onSubmit = values => {
     // dispatch();
-    console.log(values);
+    const data = {
+      category: selectedOption.value,
+      date: date.toISOString().slice(0, 10),
+      sum: values.sum,
+      comment: values.comment,
+    };
   };
 
   return (
@@ -134,13 +120,10 @@ console.log(date);
             <FormAddTrans onSubmit={handleSubmit}>
               {!isChecked && (
                 <Lable>
-                  {/* select a category */}
                   <Select
                     name="category"
-                    value={values.name}
-                    // defaultValue={selectedOption}
+                    defaultValue={selectedOption}
                     onChange={setSelectedOption}
-                    // onChange={handleChange}
                     options={options}
                   />
                 </Lable>
@@ -151,9 +134,8 @@ console.log(date);
                   placeholder="0.00"
                   name="sum"
                   value={values.name}
-                  // value={sum}
                   onChange={handleChange}
-                ></Inpput>
+                />
               </Lable>
               <CalendarDatetime
                 name="date"
@@ -167,7 +149,7 @@ console.log(date);
                 }}
                 timeFormat={false}
                 initialValue={date}
-                isValidDate={valid}
+                // isValidDate={valid}
                 value={date}
                 onChange={setDate}
                 closeOnSelect={true}
@@ -177,11 +159,11 @@ console.log(date);
                   type="text"
                   name="comment"
                   placeholder="Comment"
-                  // value={comment}
+                  value={values.name}
                   onChange={handleChange}
                 ></InpputComment>
               </LableComment>
-              <ButtonAdd>add</ButtonAdd>
+              <ButtonAdd type="submit">add</ButtonAdd>
             </FormAddTrans>
           )}
         </Formik>
