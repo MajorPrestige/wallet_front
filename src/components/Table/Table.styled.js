@@ -29,11 +29,11 @@ export const TableContainer = styled.table`
   align-items: center;
   @media ${device.tablet} {
     width: 705px;
-    height: 305px;
+    max-height: 305px;
   }
   @media ${device.desktop} {
     width: 715px;
-    height: 305px;
+    max-height: 305px;
   }
 `;
 

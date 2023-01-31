@@ -16,7 +16,6 @@ export const TableContainer = styled.table`
 `;
 
 export const TableHead = styled.thead`
-  /* margin-bottom: 15px; */
 `;
 
 export const Category = styled.th`
@@ -45,60 +44,76 @@ export const Category = styled.th`
 `;
 
 export const TableBody = styled.tbody`
-  &:first-child {
-    text-align: start;
-  }
-
-  &:last-child {
-    text-align: end;
-  }
 `;
 
 export const TableRow = styled.tr`
   border-bottom: 1px solid #DCDCDF;
   box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);  
-  &:first-child {
-    text-align: start;
-  }
-
-  &:last-child {
-    text-align: end;
-  }
 `;
 
-// export const PlusSum = styled.th`
-//   color: #24cca7;
-//   align-items: center;
-// `;
-
-// export const MinusSum = styled.th`
-//   color: #ff6596;
-// `;
-
-export const OperationCat = styled.th`
+export const OperationCat = styled.td`
   padding: 20px;
 
   font-weight: 400;
   font-size: 16px;
-  line-height: 18px;
+  line-height: 24px;
 
-  &:first-child {
-    text-align: start;
-  }
+  text-align: start;
+  vertical-align: middle;
 `;
 
-export const OperationSum = styled.th`
-padding: 20px;
+export const OperationSum = styled.td`
+  padding: 20px;
 
-font-weight: 400;
-font-size: 16px;
-line-height: 18px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+
+  vertical-align: middle;
+  
+  display: flex;
+  align-items: center;
+  justify-content: end;
+`;
+
+export const CellInner = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 export const Square = styled.div`
   width: 24px;
   height: 24px;
-  /* background-color: black; */
+  border-radius: 2px;
+  background-color: ${(params) => params.color};
+  
+  margin-right: 16px;
 
   display: inline-block;
+`;
+
+export const Totals = styled.p`
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+
+  margin-top: 15px;
+  margin-left: 20px;
+  margin-right: 20px;
+
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const Expense = styled.span`
+  text-align: right;
+  color: #FF6596;
+`;
+
+export const Income = styled.span`
+  text-align: right;
+  color: #24CCA7;  
+`;
+
+export const Sum = styled.div`
 `;

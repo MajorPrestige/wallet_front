@@ -104,7 +104,7 @@ const LoginForm = () => {
         </FormWrapper>
       </AuthContainer>
       {authError && (
-        <Modal toogleModal={handleModalClose} isSignIn={false}>
+        <Modal toggleModal={handleModalClose} isSignIn={false}>
           <ErrorMessage message={authError}></ErrorMessage>
         </Modal>
       )}

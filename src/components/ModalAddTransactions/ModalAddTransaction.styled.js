@@ -63,6 +63,7 @@ export const UncheckedHandle = styled.div`
 export const StyledPlusIcon = styled(Plus)`
   width: 20px;
   height: 20px;
+  stroke: #fff;
 `;
 
 export const StyledMinusIcon = styled(Minus)`

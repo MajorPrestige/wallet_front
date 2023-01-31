@@ -31,11 +31,12 @@ const Table = () => {
   const isntMobile = useMediaQuery({ minWidth: 768 });
   const dispatch = useDispatch();
   const transactions = useSelector(getTransactions);
-  console.log(transactions);
 
   useEffect(() => {
     dispatch(fetchTransactions({ page: 1, limit: 5 }));
   }, [dispatch]);
+
+  if (!transactions) return false;
 
   return (
     <>
@@ -52,41 +53,38 @@ const Table = () => {
                 <Category>Balance</Category>
               </tr>
             </TableHead>
+
+            <tbody>
+              {transactions.length > 0 &&
+                [...transactions]
+                  .sort((a, b) => b.date - a.date)
+                  .map(elem => (
+                    <tr key={elem._id}>
+                      <Operations>{formatDate(elem.date)}</Operations>
+                      <Operations>{elem.type}</Operations>
+                      <Operations>{elem.category}</Operations>
+                      <Operations>{elem.comment}</Operations>
+                      {elem.type === true ? (
+                        <Operations green>{elem.sum}</Operations>
+                      ) : (
+                        <Operations red>{elem.sum}</Operations>
+                      )}
+                      <Operations>{elem.balanceAfter}</Operations>
+                    </tr>
+                  ))}
+            </tbody>
           </TableContainer>
-          {transactions?.length ? (
-            [...transactions].map(elem =>
-              (
-                <tbody>
-                  <tr key={elem._id}>
-                    <Operations>{formatDate(elem.date)}</Operations>
-                    <Operations>{elem.type}</Operations>
-                    <Operations>{elem.category}</Operations>
-                    <Operations>{elem.comment}</Operations>
-                    {elem.type === '+' ? (
-                      <Operations green>{elem.sum}</Operations>
-                    ) : (
-                      <Operations red>{elem.sum}</Operations>
-                    )}
-                    <Operations>{elem.balance}</Operations>
-                  </tr>
-                </tbody>
-              ).sort((a, b) => b.date - a.date),
-            )
-          ) : (
-            <h2 style={{ textAlign: 'center', color: '#fd0000be' }}>
-              Sorry you don't have transactions
-            </h2>
-          )}
         </Container>
       )}
 
-      {!isntMobile &&
-        (transactions.length > 0 ? (
-          <MobileContainer>
-            {transactions
+      {!isntMobile && transactions.length > 0 && (
+        <MobileContainer>
+          {transactions.length > 0 &&
+            [...transactions]
+
               .sort((a, b) => b.date - a.date)
               .map(elem =>
-                elem.type === '+' ? (
+                elem.type === true ? (
                   <PlusTable key={elem._id}>
                     <MobileTbody>
                       <MobileTrPlus>
@@ -111,7 +109,7 @@ const Table = () => {
                       </MobileTrPlus>
                       <MobileTrPlus>
                         <MobileTdTitle>Balance</MobileTdTitle>
-                        <MobileTd>{elem.balance}</MobileTd>
+                        <MobileTd>{elem.balanceAfter}</MobileTd>
                       </MobileTrPlus>
                     </MobileTbody>
                   </PlusTable>
@@ -140,18 +138,14 @@ const Table = () => {
                       </MobileTrMinus>
                       <MobileTrMinus>
                         <MobileTdTitle>Balance</MobileTdTitle>
-                        <MobileTd>{elem.balance}</MobileTd>
+                        <MobileTd>{elem.balanceAfter}</MobileTd>
                       </MobileTrMinus>
                     </MobileTbody>
                   </MinusTable>
                 ),
               )}
-          </MobileContainer>
-        ) : (
-          <h2 style={{ textAlign: 'center', color: '#fd0000be' }}>
-            Sorry you don't have transactions
-          </h2>
-        ))}
+        </MobileContainer>
+      )}
     </>
   );
 };

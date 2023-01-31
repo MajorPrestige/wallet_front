@@ -10,10 +10,8 @@
 const getCurrencyCources = async () => {
 	try {
 		const { data } = await fetch("https://api.monobank.ua/bank/currency");
-		console.log(data);
 		return data;
 	} catch (error) {
-		console.log(error);
 	}
 };
 getCurrencyCources();

@@ -31,7 +31,7 @@ import {
 } from './../ModalAddTransactions/ModalAddTransaction.styled';
 import { getAllCategories } from 'api/categories/category';
 
-const ModalAddTransactions = ({ toogleModalCancel }) => {
+const ModalAddTransactions = ({ toggleModalCancel }) => {
   const [isChecked, setIsChecked] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
   const [options, setOptions] = useState([]);
@@ -170,7 +170,7 @@ const ModalAddTransactions = ({ toogleModalCancel }) => {
           )}
         </Formik>
 
-        <ButtonCancel type="button" onClick={() => toogleModalCancel()}>
+        <ButtonCancel type="button" onClick={() => toggleModalCancel()}>
           cancel
         </ButtonCancel>
       </Conteiner>
