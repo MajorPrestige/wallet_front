@@ -2,12 +2,14 @@ import React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Select from 'react-select';
-import Switch from 'react-switch';
-import Datetime from 'react-datetime';
+// import Switch from 'react-switch';
+// import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
 import moment from 'moment';
 import { Formik } from 'formik';
 import * as yup from 'yup';
+
+import calendar from '../../images/svgs/calendar.svg';
 
 import {
   Conteiner,
@@ -17,6 +19,17 @@ import {
   Inpput,
   ButtonAdd,
   ButtonCancel,
+  WrapCheckbox,
+  Choice,
+  CheckedHand,
+  UncheckedHandle,
+  StyledPlusIcon,
+  StyledMinusIcon,
+  LableComment,
+  InpputComment,
+  CheckIncome,
+  CheckExpense,
+  CalendarDatetime,
 } from './../ModalAddTransactions/ModalAddTransaction.styled';
 
 const options = [
@@ -70,11 +83,39 @@ const ModalAddTransactions = ({ toogleModalCancel }) => {
   const onSubmit = values => {
     dispatch();
   };
+
   return (
     <>
       <Conteiner>
         <Title>Add transaction</Title>
-        <Switch onChange={handleChecked} checked={isChecked} />
+        <WrapCheckbox>
+          <CheckIncome isChecked={isChecked}>Income</CheckIncome>
+          <Choice
+            onChange={handleChecked}
+            checked={!isChecked}
+            offColor={'#ffffff'}
+            onColor={'#ffffff'}
+            handleDiameter={44}
+            activeBoxShadow={'null'}
+            height={40}
+            width={80}
+            borderRadius={30}
+            checkedHandleIcon={
+              <CheckedHand>
+                <StyledMinusIcon></StyledMinusIcon>
+              </CheckedHand>
+            }
+            uncheckedHandleIcon={
+              <UncheckedHandle>
+                <StyledPlusIcon></StyledPlusIcon>
+              </UncheckedHandle>
+            }
+            checkedIcon={false}
+            uncheckedIcon={false}
+          />
+          <CheckExpense isChecked={isChecked}>Expense</CheckExpense>
+        </WrapCheckbox>
+
         <Formik
           initialValues={{
             category: '',
@@ -86,9 +127,9 @@ const ModalAddTransactions = ({ toogleModalCancel }) => {
         >
           {() => (
             <FormAddTrans>
-              {!isChecked && (
+              {isChecked && (
                 <Lable>
-                  select a category
+                  {/* select a category */}
                   <Select
                     name="category"
                     defaultValue={selectedOption}
@@ -106,27 +147,32 @@ const ModalAddTransactions = ({ toogleModalCancel }) => {
                   onChange={handleChange}
                 ></Inpput>
               </Lable>
-              <Datetime
+              <CalendarDatetime
                 name="date"
                 dateFormat="DD.MM.YYYY"
                 inputProps={{
-                  style: { color: 'red' },
+                  style: {
+                    background: `url(${calendar})`,
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: 'right 20px bottom 8px',
+                  },
                 }}
                 timeFormat={false}
                 initialValue={date}
                 isValidDate={valid}
                 value={date}
                 onChange={setDate}
+                closeOnSelect={true}
               />
-              <Lable>
-                <Inpput
+              <LableComment>
+                <InpputComment
                   type="text"
                   name="comment"
-                  placeholder="comment"
+                  placeholder="Comment"
                   value={comment}
                   onChange={handleChange}
-                ></Inpput>
-              </Lable>
+                ></InpputComment>
+              </LableComment>
               <ButtonAdd>add</ButtonAdd>
             </FormAddTrans>
           )}
