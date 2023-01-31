@@ -3,7 +3,7 @@ import Switch from "react-switch";
 import Datetime from "react-datetime";
 import { device } from "styles/Media.variables";
 
-import { ReactComponent as Plus } from "images/svgs/plus.svg";
+import { ReactComponent as Plus } from "images/svgs/add.svg";
 import { ReactComponent as Minus } from "images/svgs/minus.svg";
 
 export const Conteiner = styled.div`
