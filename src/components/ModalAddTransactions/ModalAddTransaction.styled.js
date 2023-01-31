@@ -84,6 +84,19 @@ export const FormAddTrans = styled.form`
 `;
 export const Checkbox = styled.input``;
 
+export const LableSelect = styled.label`
+  width: 280px;
+  height: 32px;
+  margin-bottom: 40px;
+  &:focus {
+    border-color: #24cca7;
+  }
+
+  @media ${device.tablet} {
+    width: 394px;
+  }
+`;
+
 export const Lable = styled.label`
   width: 280px;
   height: 32px;
@@ -93,7 +106,8 @@ export const Lable = styled.label`
   }
 
   @media ${device.tablet} {
-    width: 190px;
+    width: 181px;
+    margin-right: 32px;
   }
 `;
 
@@ -113,6 +127,11 @@ export const Inpput = styled.input`
   :focus {
     border-color: #24cca7;
   }
+
+  
+  @media ${device.tablet} {
+    text-align: center;
+  }
 `;
 
 export const CalendarDatetime = styled(Datetime)`
@@ -129,7 +148,7 @@ export const CalendarDatetime = styled(Datetime)`
     }
 
     @media ${device.tablet} {
-      width: 190px;
+      width: 181px;
     }
   }
 `;
@@ -155,6 +174,7 @@ export const InpputComment = styled.textarea`
   font-size: 18px;
   height: 100%;
   outline: none;
+  resize: none;
 
   ::placeholder {
     font-size: 18px;
@@ -163,6 +183,11 @@ export const InpputComment = styled.textarea`
 
   :focus {
     border-color: #24cca7;
+  }
+
+  
+  @media ${device.tablet} {
+    padding: 0px 8px 8px 8px;
   }
 `;
 

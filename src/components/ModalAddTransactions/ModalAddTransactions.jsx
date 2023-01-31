@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import 'react-datetime/css/react-datetime.css';
@@ -29,6 +28,7 @@ import {
   CheckIncome,
   CheckExpense,
   CalendarDatetime,
+  LableSelect,
 } from './../ModalAddTransactions/ModalAddTransaction.styled';
 import { getAllCategories } from 'api/categories/category';
 import { addTransaction } from 'redux/transactions/trans-operations';
@@ -122,12 +122,12 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
           {({ values, errors, touched, handleChange, handleSubmit }) => (
             <FormAddTrans onSubmit={handleSubmit}>
               {!isChecked && (
-                <Lable>
+                <LableSelect>
                   <SelectList
                     options={options}
                     getCurrent={setSelectedOption}
                   />
-                </Lable>
+                </LableSelect>
               )}
               <Lable>
                 <Inpput

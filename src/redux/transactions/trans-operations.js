@@ -19,9 +19,9 @@ export const statistic = createAsyncThunk(
 
 export const fetchTransactions = createAsyncThunk(
   'transactions',
-  async ({ page, limit }, { rejectWithValue }) => {
+  async (params, { rejectWithValue }) => {
     try {
-      const { data } = await transactionsAPI.getTransactions(page, limit);
+      const { data } = await transactionsAPI.getTransactions(params);
       return data;
     } catch (error) {
       const { data, status } = error.response;
