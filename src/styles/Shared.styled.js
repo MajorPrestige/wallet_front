@@ -1,14 +1,15 @@
-import { Link } from "react-router-dom";
-import styled, { css } from "styled-components";
-import { device } from "styles/Media.variables";
+import { Link } from 'react-router-dom';
+import styled, { css } from 'styled-components';
+import { device } from 'styles/Media.variables';
 
 const linkAndButtonStyles = css`
+  font-family: 'Poppins';
   position: relative;
   display: block;
   width: 280px;
   min-height: 50px;
   font-size: 18px;
-  margin-bottom: ${(props) => props.marginBotom || "0px"};
+  margin-bottom: ${props => props.marginBotom || '0px'};
   padding: 8px 0px;
   padding-top: 12px;
   border-radius: 20px;
@@ -22,7 +23,7 @@ const linkAndButtonStyles = css`
     outline: transparent;
   }
 
-  ${(props) =>
+  ${props =>
     props.primary &&
     css`
       background-color: #24cca7;
@@ -37,7 +38,7 @@ const linkAndButtonStyles = css`
       }
     `}
 
-  ${(props) =>
+  ${props =>
     props.outlined &&
     css`
       background-color: #ffffff;
@@ -61,7 +62,7 @@ export const StyledLink = styled(Link)`
 `;
 
 export const Title = styled.h1`
-  font-family: "Poppins";
+  font-family: 'Poppins';
   font-weight: 400;
   font-size: 30px;
 `;

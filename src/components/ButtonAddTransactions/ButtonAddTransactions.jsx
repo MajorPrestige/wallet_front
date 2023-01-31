@@ -8,17 +8,17 @@ import Modal from './../Modal/Modal';
 const ButtonAddTransactions = () => {
   const [isModal, setIsModal] = useState(false);
 
-  const toogleModal = () => {
+  const toggleModal = () => {
     setIsModal(!isModal);
   };
   return (
     <>
-      <TransactionButton type="button" onClick={() => toogleModal()}>
+      <TransactionButton type="button" onClick={() => toggleModal()}>
         <IconLogo/>
       </TransactionButton>
       {isModal && (
-        <Modal toogleModal={toogleModal}>
-          <ModalAddTransactions toogleModalCancel={toogleModal} />
+        <Modal toggleModal={toggleModal}>
+          <ModalAddTransactions toggleModalCancel={toggleModal} />
         </Modal>
       )}
     </>

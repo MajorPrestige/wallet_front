@@ -17,7 +17,7 @@ const Header = () => {
 
   const [isModal, setIsModal] = useState(false);
 
-  const toogleModal = () => {
+  const toggleModal = () => {
     setIsModal(!isModal);
   }; 
 
@@ -28,7 +28,7 @@ const Header = () => {
         {isMobile && (
           <>
             <p>{userName}</p>
-            <LogoutButton onClick={toogleModal} type="button">
+            <LogoutButton onClick={toggleModal} type="button">
               <Logout />
             </LogoutButton>
           </>
@@ -36,7 +36,7 @@ const Header = () => {
         {isTablet && (
           <>
             <p style={{ marginRight: '8px' }}>{userName}</p>
-            <LogoutButton onClick={toogleModal} tablet>
+            <LogoutButton onClick={toggleModal} tablet>
               <Logout />
               <span style={{ marginLeft: '8px' }}>Exit</span>
             </LogoutButton>
@@ -44,8 +44,8 @@ const Header = () => {
         )}
       </HeaderWrapper>
       {isModal && (
-        <Modal toogleModal={toogleModal}>
-          <ModalLogout toogleModalCancel={toogleModal}/>
+        <Modal toggleModal={toggleModal} isSignIn>
+          <ModalLogout toggleModalCancel={toggleModal}/>
         </Modal>
       )}
     </StyledHeader>
