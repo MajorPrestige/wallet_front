@@ -69,6 +69,8 @@ export const Title = styled.h1`
 
 export const Container = styled.div`
   margin: 0 auto;
+  position: relative;
+
   @media ${device.mobileOnly} {
     padding-left: 20px;
     padding-right: 20px;
@@ -80,6 +82,7 @@ export const Container = styled.div`
   }
 
   @media ${device.desktop} {
+    max-width: 1280px;
     padding-left: 16px;
     padding-right: 16px;
     display: flex;

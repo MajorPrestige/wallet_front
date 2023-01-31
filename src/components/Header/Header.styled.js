@@ -1,13 +1,19 @@
-import styled, { css } from "styled-components";
-import { device } from "styles/Media.variables";
+import styled, { css } from 'styled-components';
+import { device } from 'styles/Media.variables';
+
+export const HeaderContainer = styled.div`
+  background-color: #ffffff;
+  text-align: center;
+`;
 
 export const StyledHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 1280px;
+  margin: 0 auto;
   padding-top: 20px;
   padding-bottom: 20px;
-  background-color: #ffffff;
 
   @media ${device.mobileOnly} {
     padding-left: 20px;
@@ -40,7 +46,7 @@ export const LogoutButton = styled.button`
   padding: 0;
   padding-left: 8px;
 
-  ${(props) =>
+  ${props =>
     props.tablet &&
     css`
       font-size: 18px;
