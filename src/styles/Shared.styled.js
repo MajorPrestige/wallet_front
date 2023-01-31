@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
-import styled, { css } from "styled-components";
-import { device } from "styles/Media.variables";
+import { Link } from 'react-router-dom';
+import styled, { css } from 'styled-components';
+import { device } from 'styles/Media.variables';
 
 const linkAndButtonStyles = css`
   position: relative;
@@ -8,7 +8,7 @@ const linkAndButtonStyles = css`
   width: 280px;
   min-height: 50px;
   font-size: 18px;
-  margin-bottom: ${(props) => props.marginBotom || "0px"};
+  margin-bottom: ${props => props.marginBotom || '0px'};
   padding: 8px 0px;
   padding-top: 12px;
   border-radius: 20px;
@@ -22,7 +22,7 @@ const linkAndButtonStyles = css`
     outline: transparent;
   }
 
-  ${(props) =>
+  ${props =>
     props.primary &&
     css`
       background-color: #24cca7;
@@ -37,7 +37,7 @@ const linkAndButtonStyles = css`
       }
     `}
 
-  ${(props) =>
+  ${props =>
     props.outlined &&
     css`
       background-color: #ffffff;
@@ -61,13 +61,15 @@ export const StyledLink = styled(Link)`
 `;
 
 export const Title = styled.h1`
-  font-family: "Poppins";
+  font-family: 'Poppins';
   font-weight: 400;
   font-size: 30px;
 `;
 
 export const Container = styled.div`
   margin: 0 auto;
+  position: relative;
+
   @media ${device.mobileOnly} {
     padding-left: 20px;
     padding-right: 20px;
@@ -79,6 +81,7 @@ export const Container = styled.div`
   }
 
   @media ${device.desktop} {
+    max-width: 1280px;
     padding-left: 16px;
     padding-right: 16px;
     display: flex;
