@@ -6,7 +6,7 @@ import { ModalWindow } from './Modal.styled';
 
 const modalRoot = document.querySelector('#modal-root');
 
-const Modal = ({ toogleModal, children }) => {
+const Modal = ({ toogleModal, children, type }) => {
 	useEffect(() => {
 		window.addEventListener('keydown', onKeyDown);
 		return () => {
