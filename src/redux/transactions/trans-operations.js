@@ -35,7 +35,7 @@ export const addTransaction = createAsyncThunk(
   async (transaction, { rejectWithValue }) => {
     try {
       const { data } = await transactionsAPI.postTransactions(transaction);
-
+      console.log(data);
       return data;
     } catch (error) {
       const { data, status } = error.response;

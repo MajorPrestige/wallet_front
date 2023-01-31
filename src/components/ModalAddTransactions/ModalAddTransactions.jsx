@@ -1,8 +1,8 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import 'react-datetime/css/react-datetime.css';
-import moment from 'moment';
+// import moment from 'moment';
 import { Formik } from 'formik';
 
 import * as yup from 'yup';
@@ -31,14 +31,14 @@ import {
   CalendarDatetime,
 } from './../ModalAddTransactions/ModalAddTransaction.styled';
 import { getAllCategories } from 'api/categories/category';
+import { addTransaction } from 'redux/transactions/trans-operations';
 
 const ModalAddTransactions = ({ toggleModalCancel }) => {
   const [isChecked, setIsChecked] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
   const [options, setOptions] = useState([]);
-
   const [date, setDate] = useState(new Date());
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     getAllCategories().then(data => {
@@ -50,11 +50,11 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
     setIsChecked(!isChecked);
   };
 
-  let yesterday = moment().subtract(1, 'day');
+  // let yesterday = moment().subtract(1, 'day');
 
-  function valid(current) {
-    return current.isAfter(yesterday);
-  }
+  // function valid(current) {
+  //   return current.isAfter(yesterday);
+  // }
 
   const validationSchema = yup.object().shape({
     // category: yup.string(),
@@ -63,8 +63,6 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
   });
 
   const onSubmit = values => {
-    // dispatch();
-
     const data = {
       type: isChecked,
       date: date.toISOString().slice(0, 10),
@@ -76,12 +74,9 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
       data.category = selectedOption.value;
     }
     console.log(data);
-    reset();
+    dispatch(addTransaction(data));
   };
-  const reset = () => {
-    setIsChecked(false);
-    setSelectedOption(null);
-  };
+
   return (
     <>
       <Conteiner>
@@ -169,7 +164,8 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
                   value={values.name}
                   onChange={handleChange}
                 />
-                {/* {touched.comment && errors.comment && <p>помилка</p>} */}
+
+                {/* {touched.comment && errors.comment && <p>{errors.comment}</p>} */}
               </LableComment>
               <ButtonAdd type="submit">add</ButtonAdd>
             </FormAddTrans>
