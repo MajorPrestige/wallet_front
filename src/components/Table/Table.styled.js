@@ -93,7 +93,6 @@ export const MinusTable = styled.table`
   width: 100%;
   border-radius: 30px;
   margin-bottom: 10px;
- 
 `;
 
 export const MobileTbody = styled.tbody``;

@@ -73,7 +73,7 @@ const Table = () => {
               ).sort((a, b) => b.date - a.date),
             )
           ) : (
-            <h2 style={{ textAlign: 'center', color: 'red' }}>
+            <h2 style={{ textAlign: 'center', color: '#fd0000be' }}>
               Sorry you don't have transactions
             </h2>
           )}
@@ -148,7 +148,7 @@ const Table = () => {
               )}
           </MobileContainer>
         ) : (
-          <h2 style={{ textAlign: 'center', color: 'red' }}>
+          <h2 style={{ textAlign: 'center', color: '#fd0000be' }}>
             Sorry you don't have transactions
           </h2>
         ))}
