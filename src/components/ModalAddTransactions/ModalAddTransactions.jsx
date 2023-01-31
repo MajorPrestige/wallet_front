@@ -1,14 +1,13 @@
 import React from 'react';
-import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import Select from 'react-select';
+// import { useDispatch } from 'react-redux';
 import 'react-datetime/css/react-datetime.css';
 import moment from 'moment';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 
 import calendar from '../../images/svgs/calendar.svg';
+import SelectList from 'components/SelectList/SelectList';
 
 import {
   Conteiner,
@@ -30,6 +29,7 @@ import {
   CheckExpense,
   CalendarDatetime,
 } from './../ModalAddTransactions/ModalAddTransaction.styled';
+import { getAllCategories } from 'api/categories/category';
 
 const ModalAddTransactions = ({ toogleModalCancel }) => {
   const [isChecked, setIsChecked] = useState(false);
@@ -40,10 +40,8 @@ const ModalAddTransactions = ({ toogleModalCancel }) => {
   // const dispatch = useDispatch();
 
   useEffect(() => {
-    axios('/categories').then(data => {
-      setOptions(
-        data.data.data.result.map(it => ({ value: it._id, label: it.name })),
-      );
+    getAllCategories().then(data => {
+      setOptions(data.map(it => ({ value: it._id, label: it.name })));
     });
   }, []);
 
@@ -58,21 +56,25 @@ const ModalAddTransactions = ({ toogleModalCancel }) => {
   }
 
   const validationSchema = yup.object().shape({
-    date: yup.date().required(),
-    type: yup.string().required,
-    category: yup.string(),
-    comment: yup.string(),
+    // category: yup.string(),
+    // comment: yup.string(),
     sum: yup.number().required(),
   });
 
   const onSubmit = values => {
     // dispatch();
+
     const data = {
-      category: selectedOption.value,
+      type: isChecked,
       date: date.toISOString().slice(0, 10),
       sum: values.sum,
       comment: values.comment,
     };
+
+    if (!isChecked) {
+      data.category = selectedOption.value;
+    }
+    console.log(data);
   };
 
   return (
@@ -109,22 +111,21 @@ const ModalAddTransactions = ({ toogleModalCancel }) => {
 
         <Formik
           initialValues={{
-            category: '',
+            // category: '',
             sum: '',
-            date: '',
+            comment: '',
+            // date: '',
           }}
-          // validationSchema={validationSchema}
+          validationSchema={validationSchema}
           onSubmit={onSubmit}
         >
           {({ values, errors, touched, handleChange, handleSubmit }) => (
             <FormAddTrans onSubmit={handleSubmit}>
               {!isChecked && (
                 <Lable>
-                  <Select
-                    name="category"
-                    defaultValue={selectedOption}
-                    onChange={setSelectedOption}
+                  <SelectList
                     options={options}
+                    getCurrent={setSelectedOption}
                   />
                 </Lable>
               )}
@@ -136,6 +137,7 @@ const ModalAddTransactions = ({ toogleModalCancel }) => {
                   value={values.name}
                   onChange={handleChange}
                 />
+                {touched.sum && errors.sum && <p>помилка</p>}
               </Lable>
               <CalendarDatetime
                 name="date"
