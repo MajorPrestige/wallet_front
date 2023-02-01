@@ -90,7 +90,7 @@ export const MobileContainer = styled.div`
   margin-left: auto;
   margin-top: 30px;
   overflow: scroll;
-  /* max-width: 500px; */
+  max-width: 500px;
 `;
 
 export const PlusTable = styled.table`
