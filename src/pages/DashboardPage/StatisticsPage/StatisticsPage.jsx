@@ -7,13 +7,14 @@ import Balance from 'components/Balance/Balance';
 import Currency from 'components/Currency/Currency';
 
 import { Container } from 'styles/Shared.styled';
-import { BackgroundContainer, Flex, Wrap } from '../DashboardPage.styled';
+import { BackgroundContainer, BlurContainer, Flex, Wrap } from '../DashboardPage.styled';
 
 const StatisticsPage = () => {
   const isTablet = useMediaQuery({ minWidth: 768 });
 
   return (
     <BackgroundContainer>
+      <BlurContainer>
       <Header />
       <Container>
         <Flex>
@@ -25,6 +26,7 @@ const StatisticsPage = () => {
         </Flex>
         <Statistic />
       </Container>
+      </BlurContainer>
     </BackgroundContainer>
   );
 };

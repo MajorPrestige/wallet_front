@@ -11,7 +11,8 @@ ChartJS.register(ArcElement, Tooltip);
 const Chart = ({ transactions }) => {
   const balance = useSelector(getBalance);
 
-  let isTrans = false;
+  let isExpensTrans = false;
+  let isIncomeTrans = false;
 
   const colors = [
     '#FED057',
@@ -26,11 +27,15 @@ const Chart = ({ transactions }) => {
     '#E1E384',
   ];
 
-  if (transactions.length !== 0) {
-    isTrans = true;
-  }
-
   const expensesTrans = transactions.filter(trans => trans.type === false);
+  if (expensesTrans.length !== 0) {
+    isExpensTrans = true;
+  };
+
+  const incomeTrans = transactions.filter(trans => trans.type === true);
+  if (incomeTrans.length !== 0 && expensesTrans.length === 0) {
+    isIncomeTrans = true;
+  };
 
   const categories = [
     ...new Set(expensesTrans.map(trans => trans.category.name)),
@@ -44,24 +49,37 @@ const Chart = ({ transactions }) => {
       }, 0),
   );
 
-  const data = {
+  const dataIncome = {
+    labels: [""],
+    datasets: [
+      {
+        label: 'Income',
+        data: [100],
+        backgroundColor: "#d0d0d0",
+        borderWidth: 0,
+        cutout: '85%',
+      },
+    ],
+  };
+
+  const dataExpens = {
     labels: categories,
     datasets: [
       {
-        label: '# of Categories',
+        label: '% of Categories',
         data: totalSums,
         backgroundColor: colors,
         borderWidth: 0,
-        cutout: '65%',
+        cutout: '70%',
       },
     ],
   };
 
   return (
     <>
-      {isTrans ? (
+      {isIncomeTrans && (
         <StyledChart>
-          <Doughnut data={data} />
+          <Doughnut data={dataIncome} />
           <StyledBalance>
             <div>
               <span>&#8372; </span>
@@ -69,8 +87,21 @@ const Chart = ({ transactions }) => {
             </div>
           </StyledBalance>
         </StyledChart>
-      ) : (<Notification>You have no transactions in selected date yet. Please, choose another date.</Notification>)
+      )
     }
+      {isExpensTrans && (
+        <StyledChart>
+          <Doughnut data={dataExpens} />
+          <StyledBalance>
+            <div>
+              <span>&#8372; </span>
+              <span>{balance}</span>
+            </div>
+          </StyledBalance>
+        </StyledChart>
+      )
+    }
+    {!isIncomeTrans && !isExpensTrans && (<Notification>You have no transactions in selected date yet. Please, choose another date.</Notification>)}
     </>
   );
 };
