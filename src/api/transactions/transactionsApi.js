@@ -6,7 +6,7 @@ const getTransactions = async params => {
 };
 
 const postTransactions = async transaction => {
-  const { data } = await axios.post('/transactions', { transaction });
+  const { data } = await axios.post('/transactions',  transaction );
   return data;
 };
 

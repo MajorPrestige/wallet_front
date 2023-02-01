@@ -22,7 +22,7 @@ export const fetchTransactions = createAsyncThunk(
   async (params, { rejectWithValue }) => {
     try {
       const { data } = await transactionsAPI.getTransactions(params);
-      return data;
+      return data.transactions;
     } catch (error) {
       const { data, status } = error.response;
       return rejectWithValue({ data, status });
@@ -34,9 +34,13 @@ export const addTransaction = createAsyncThunk(
   'transaction',
   async (transaction, { rejectWithValue }) => {
     try {
+      const { data: {transactions} } = await transactionsAPI.postTransactions(transaction);
       const { data } = await transactionsAPI.postTransactions(transaction);
-      console.log(data);
-      return data;
+
+      
+      return {
+        transactions,
+      };
     } catch (error) {
       const { data, status } = error.response;
       return rejectWithValue({ data, status });

@@ -12,6 +12,7 @@ const initialState = {
   loading: false,
   error: null,
   firstLoading: false,
+  allTransactions: [],
 };
 
 const transactions = createSlice({
@@ -47,6 +48,8 @@ const transactions = createSlice({
       store.statistic = payload;
       store.loading = false;
       store.error = null;
+      store.allTransactions = payload;
+      console.log(store.allTransactions);
     },
     [fetchTransactions.rejected]: (store, { payload }) => {
       store.error = payload;
