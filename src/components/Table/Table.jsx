@@ -24,7 +24,7 @@ import {
 } from './Table.styled';
 
 import { getTransactions } from 'redux/transactions/trans-selectors';
-import { fetchPaginationTransactions, fetchTransactions } from 'redux/transactions/trans-operations';
+import { fetchTransactions } from 'redux/transactions/trans-operations';
 import { formatDate } from './../../helpers/formatDate';
 
 const Table = () => {

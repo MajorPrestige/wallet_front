@@ -1,17 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import Chart from 'components/Statistic/Chart/Chart';
 import DiagramTab from 'components/Statistic/DiagramTab/DiagramTab';
 import DiagramForm from './DiagramForm/DiagramForm';
 import { Title, StatisticContainer, TableContainer } from './Statistic.styled';
-import { useDispatch } from 'react-redux';
 
 const Statistic = () => {
   const [date, setDate] = useState({ month: 1, year: 2023 });
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetch);
-  }, []);
 
   return (
     <StatisticContainer>
