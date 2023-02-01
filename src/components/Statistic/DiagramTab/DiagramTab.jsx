@@ -1,9 +1,3 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-
-import { getStatistic } from 'redux/transactions/trans-selectors';
-import { fetchStatistic } from 'redux/transactions/trans-operations';
-
 import {
   TableContainer,
   TableHead,
@@ -35,16 +29,7 @@ const colors = [
   '#E1E384',
 ];
 
-const DiagramTab = ({ date }) => {
-  const dispatch = useDispatch();
-
-  const { year, month } = date;
-
-  useEffect(() => {
-    dispatch(fetchStatistic({ year: Number(year), month: Number(month) }));
-  }, [dispatch, month, year]);
-
-  const transactions = useSelector(getStatistic);
+const DiagramTab = ({ transactions }) => {
 
   const expensesTrans = transactions.filter(trans => trans.type === false);
 
@@ -115,24 +100,3 @@ const DiagramTab = ({ date }) => {
 };
 
 export default DiagramTab;
-
-// const totalSums = [
-//   {
-//     id: 1,
-//     category: "Car",
-//     totalSum: 200,
-//     color: "#FED057",
-//   },
-//   {
-//     id: 2,
-//     category: "Products",
-//     totalSum: 500,
-//     color: "#FFD8D0",
-//   },
-//   {
-//     id: 3,
-//     category: "Education",
-//     totalSum: 50,
-//     color: "black",
-//   },
-// ];
