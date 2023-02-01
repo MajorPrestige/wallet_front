@@ -13,9 +13,9 @@ export const TransactionButton = styled.button`
   border: none;
   border-radius: 50%;
   font-size: 30px;
-  position: fixed;
+  position: absolute;
   right: 20px;
-  bottom: 20px;
+  top: 444px;
   outline: none;
   cursor: pointer;
   box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
@@ -35,12 +35,12 @@ export const TransactionButton = styled.button`
 
   @media ${device.tablet} {
     right: 40px;
-    bottom: 20px;
+    bottom: 40px;
     z-index: 10;
   }
 
   @media ${device.desktop} {
-    right: 85px;
+    top: 556px;
   }
 `;
 
