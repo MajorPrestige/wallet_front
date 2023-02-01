@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
 import { getStatistic } from 'redux/transactions/trans-selectors';
-import { statistic } from 'redux/transactions/trans-operations';
+import { fetchStatistic } from 'redux/transactions/trans-operations';
 
 import {
   TableContainer,
@@ -41,7 +41,7 @@ const DiagramTab = ({ date }) => {
   const { year, month } = date;
 
   useEffect(() => {
-    dispatch(statistic({ year: Number(year), month: Number(month) }));
+    dispatch(fetchStatistic({ year: Number(year), month: Number(month) }));
   }, [dispatch, month, year]);
 
   const transactions = useSelector(getStatistic);
