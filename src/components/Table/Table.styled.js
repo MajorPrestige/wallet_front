@@ -7,6 +7,7 @@ export const Container = styled.div`
   max-height: 71vh;
   margin-left: auto;
   margin-right: auto;
+  overflow: auto;
 
   @media ${device.tabletOnly} {
     max-height: 50vh;
