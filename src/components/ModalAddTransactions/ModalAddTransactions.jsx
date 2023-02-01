@@ -74,7 +74,6 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
     if (!isChecked) {
       data.category = selectedOption.value;
     }
-    console.log(data);
   };
 
   return (

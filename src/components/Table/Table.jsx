@@ -24,7 +24,7 @@ import {
 } from './Table.styled';
 
 import { getTransactions } from 'redux/transactions/trans-selectors';
-import { fetchTransactions } from 'redux/transactions/trans-operations';
+import { fetchPaginationTransactions, fetchTransactions } from 'redux/transactions/trans-operations';
 import { formatDate } from './../../helpers/formatDate';
 
 const Table = () => {
@@ -37,7 +37,7 @@ const Table = () => {
   }, [dispatch]);
 
   if (!transactions) return false;
-  console.log(transactions);
+  // console.log(transactions);
   return (
     <>
       {isntMobile && (
