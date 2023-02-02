@@ -24,6 +24,8 @@ import { getAuthError } from 'redux/auth/auth-selectors';
 import { clearAuthError } from 'redux/auth/auth-slice';
 import ErrorMessage from 'components/ErrorMessage/ErrorMessage';
 
+const emailRegexp = /^\w+[\w-.]*\w@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/;
+
 const LoginForm = () => {
   const dispatch = useDispatch();
   const authError = useSelector(getAuthError);
@@ -31,7 +33,7 @@ const LoginForm = () => {
   const validationSchema = yup.object().shape({
     email: yup
       .string()
-      .email('invalid email')
+      .matches(emailRegexp, 'invalid email')
       .required('Please, enter your email'),
     password: yup.string().required(`Please, enter your password`),
   });
@@ -39,6 +41,10 @@ const LoginForm = () => {
   const onSubmit = values => {
     dispatch(signin(values));
   };
+
+  // const handleGoogleClick = () => {
+  //   console.log('hello');
+  // };
 
   const handleModalClose = () => {
     dispatch(clearAuthError());
@@ -97,6 +103,9 @@ const LoginForm = () => {
                   <StyledLink to="/signup" outlined="true">
                     SIGN UP
                   </StyledLink>
+                  {/* <a href='http://localhost:4000/api/users/google' onClick={handleGoogleClick}>
+                    GOOGLE
+                  </a> */}
                 </ButtonWrapper>
               </StyledForm>
             )}

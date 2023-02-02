@@ -19,6 +19,7 @@ export const ErrorMessageText = styled.div`
   color: #4a56e2;
   margin-top: 30px;
   max-width: 240px;
+  text-align: center;
 
   @media ${device.tablet} {
     font-size: 22px;
