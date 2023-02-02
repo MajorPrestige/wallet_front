@@ -3,12 +3,19 @@ import { useDispatch } from 'react-redux';
 
 import { Button } from 'styles/Shared.styled';
 import { ButtonWrapper, Container, Title } from './ModalLogout.styled';
+import { deleteTransaction } from 'redux/transactions/trans-operations';
 
-const ModalLogout = ({ toggleModalCancel, isDeleteIn }) => {
+const ModalLogout = ({ toggleModalCancel, isDeleteIn, elem }) => {
   const dispatch = useDispatch();
   const onLogoutButtonClick = () => {
     dispatch(signout());
   };
+
+  const handleDelete = () => {
+    dispatch(deleteTransaction(elem));
+    toggleModalCancel();
+  };
+
   return (
     <Container>
       {isDeleteIn ? (
@@ -18,7 +25,7 @@ const ModalLogout = ({ toggleModalCancel, isDeleteIn }) => {
             <Button
               primary="true"
               marginBotom="20px"
-              // onClick={onLogoutButtonClick}
+              onClick={handleDelete}
               type="submit"
             >
               YES

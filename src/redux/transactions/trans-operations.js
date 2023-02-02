@@ -62,3 +62,19 @@ export const addTransaction = createAsyncThunk(
     }
   },
 );
+
+
+export const deleteTransaction = createAsyncThunk(
+  'transactions/delete',
+  async(id, {rejectWithValue}) => {
+    console.log(id);
+    try {
+       await transactionsAPI.delTransaction(id);
+      const transactions = await transactionsAPI.getTransactions();
+      console.log(transactions);
+      return transactions;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  },
+);

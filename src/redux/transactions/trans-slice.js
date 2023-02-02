@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import {
   fetchTransactions,
-  addTransaction, fetchPaginationTransactions, fetchStatistic,
+  addTransaction, fetchPaginationTransactions, fetchStatistic, deleteTransaction,
 } from './trans-operations';
 
 const initialState = {
@@ -80,6 +80,20 @@ const transactions = createSlice({
       store.error = null;
     },
     [addTransaction.rejected]: (store, { payload }) => {
+      store.error = payload;
+      store.loading = false;
+    },
+    [deleteTransaction.pending]: store => {
+      store.loading = true;
+    },
+    [deleteTransaction.fulfilled]:(store, {payload}) => {
+      store.transactions = payload;
+      console.log(payload);
+      store.loading = false;
+      store.error = null;
+      
+    },
+    [deleteTransaction.rejected]: (store, { payload }) => {
       store.error = payload;
       store.loading = false;
     },
