@@ -50,7 +50,6 @@ const transactions = createSlice({
       store.loading = false;
       store.error = null;
       store.allTransactions = payload;
-      console.log(store.allTransactions);
     },
     [fetchTransactions.rejected]: (store, { payload }) => {
       store.error = payload;
