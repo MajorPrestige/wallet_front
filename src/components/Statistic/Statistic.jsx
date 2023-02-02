@@ -22,14 +22,29 @@ const Statistic = () => {
     }, [dispatch, month, year]);
 
   const transactions = useSelector(getStatistic);
+
+  // const dates = transactions.map(trans => trans.date);
+  // const newDate = new Date(dates[0]);
+  // console.log(dates[0]);
+  // console.log(newDate);
+  // console.log(newDate.getFullYear());
   
   // console.log(transactions);
 
+  // const arr = transactions
+  //   .map(trans => trans.date)
+  //   .reduce((acc, date) => {
+  //     const year = new Date(date).getFullYear();
+  //     const month = new Date(date).getMonth();
+  //     acc.year = year;
+  //     acc.month = (month + 1);
+  //   }, {year, month});
+
   // const arr = transactions.reduce((acc, trans) => {
-  //   const year = new Date(trans.date).getYear();
+  //   const year = new Date(trans.date).getFullYear();
   //   const month = new Date(trans.date).getMonth();
-  //   acc[year] = [month + 1];
-  // }, {});
+  //   return acc = month + 1;
+  // }, {year: [month]});
 
   // console.log(arr);
 
