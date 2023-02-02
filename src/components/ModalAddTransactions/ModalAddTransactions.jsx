@@ -67,7 +67,7 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
       type: isChecked,
       date: date.toISOString().slice(0, 10),
       sum: values.sum,
-      comment: values.comment,
+      comment: values.comment || '',
     };
 
     if (!isChecked) {

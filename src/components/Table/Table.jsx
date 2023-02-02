@@ -62,7 +62,7 @@ const Table = () => {
                     <Operations color={elem.type ? '#24cca7' : '#ff6596'}>
                       {elem.type ? '+' : '-'}
                     </Operations>
-                    <Operations>{elem.category.name}</Operations>
+                    <Operations>{elem?.category?.name ?? ''}</Operations>
                     <Operations>{elem.comment}</Operations>
                     <Operations color={elem.type ? '#24cca7' : '#ff6596'}>
                       {elem.sum}

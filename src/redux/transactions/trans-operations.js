@@ -50,9 +50,9 @@ export const addTransaction = createAsyncThunk(
       const addedTransaction = await transactionsAPI.postTransactions(
         transaction,
       );
-      const transactions = await transactionsAPI.getTransactions(transaction);
+      const transactions = await transactionsAPI.getTransactions();
 
-      
+
       return {
         addedTransaction,
         transactions,
