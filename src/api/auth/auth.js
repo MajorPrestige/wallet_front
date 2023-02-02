@@ -1,27 +1,28 @@
-import axios from "axios";
+import axios from 'axios';
 
-axios.defaults.baseURL = "https://wallet.goit.ua/api";
+axios.defaults.baseURL = 'https://goit-wallet-back.onrender.com/api';
 
-export const axiosSignUp = async (userData) => {
-  const { data } = await axios.post("/auth/sign-up", userData);
-  axios.defaults.headers.common["Authorization"] = `Bearer ${data.token}`;
+// axios.defaults.baseURL = "http://localhost:4000/api/";
+
+export const axiosSignUp = async userData => {
+  const { data } = await axios.post('/users/signup', userData);
   return data;
 };
 
-export const axiosSignIn = async (userData) => {
-  const { data } = await axios.post("/auth/sign-in", userData);
-  axios.defaults.headers.common["Authorization"] = `Bearer ${data.token}`;
+export const axiosSignIn = async userData => {
+  const { data } = await axios.post('/users/signin', userData);
+  axios.defaults.headers.common['Authorization'] = `Bearer ${data.user.token}`;
   return data;
 };
 
 export const axiosSignOut = async () => {
-  const { data } = await axios.delete("/auth/sign-out");
-  axios.defaults.headers.common["Authorization"] = null;
+  const { data } = await axios.post('/users/signout');
+  axios.defaults.headers.common['Authorization'] = null;
   return data;
 };
 
-export const axiosCurrent = async (token) => {
-  axios.defaults.headers.common["Authorization"] = token;
-  const { data } = await axios.get("/users/current");
+export const axiosCurrent = async token => {
+  axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  const { data } = await axios.get('/users/current');
   return data;
 };

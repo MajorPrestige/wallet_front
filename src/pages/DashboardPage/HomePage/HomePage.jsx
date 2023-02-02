@@ -1,31 +1,33 @@
 import { useMediaQuery } from "react-responsive";
 
+import ButtonAddTransactions from "components/ButtonAddTransactions/ButtonAddTransactions.jsx";
 import Balance from "components/Balance/Balance";
 import Currency from "components/Currency/Currency";
 import Header from "components/Header/Header";
 import Navigation from "components/Navigation/Navigation";
 import Table from "components/Table/Table";
 import { Container } from "styles/Shared.styled";
-import { BackgroundContainer, BlurContainer, Flex } from "../DashboardPage.styled";
+import { BackgroundContainer, BlurContainer, Flex, Wrap } from "../DashboardPage.styled";
 
 const HomePage = () => {
   const isTablet = useMediaQuery({ minWidth: 768 });
-
+  
   return (
     <BackgroundContainer>
       <BlurContainer>
         <Header />
         <Container>
           <Flex>
-            <div>
+            <Wrap>
               <Navigation current="home" />
               <Balance />
-            </div>
+            </Wrap>
             {isTablet && <Currency />}
           </Flex>
           <Table />
+          <ButtonAddTransactions/>
         </Container>
-      </BlurContainer>
+      </BlurContainer>      
     </BackgroundContainer>
   );
 };

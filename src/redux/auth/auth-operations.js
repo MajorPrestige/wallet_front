@@ -4,9 +4,11 @@ import { axiosSignIn, axiosSignOut, axiosSignUp, axiosCurrent } from "api/auth/a
 
 export const signup = createAsyncThunk(
   'auth/signup',
-  async (userData, { rejectWithValue }) => {
+  async (userData, { rejectWithValue, dispatch }) => {
     try {
       const data = await axiosSignUp(userData);
+      const {email, password} = userData;
+      dispatch(signin(({email, password})));
       return data;
     } catch (error) {
       const { data, status } = error.response;

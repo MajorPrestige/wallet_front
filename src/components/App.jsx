@@ -7,6 +7,8 @@ import { current } from "redux/auth/auth-operations";
 import PrivateRoutes from "./Routes/PrivateRoutes";
 import PublicRoutes from "./Routes/PublicRoutes";
 
+import Loader from "components/Loader/Loader";
+
 const LoginPage = lazy(() => import("pages/AuthPage/LoginPage/LoginPage"));
 const RegistrationPage = lazy(() =>
   import("pages/AuthPage/RegistrationPage/RegistrationPage"),
@@ -14,6 +16,7 @@ const RegistrationPage = lazy(() =>
 const HomePage = lazy(() => import("pages/DashboardPage/HomePage/HomePage"));
 const StatisticsPage = lazy(() => import("pages/DashboardPage/StatisticsPage/StatisticsPage"));
 const CurrencyPage = lazy(() => import("pages/DashboardPage/CurrencyPage/CurrencyPage"));
+const NotFoundPage = lazy(() => import("pages/NotFoundPage/NotFoundPage"));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -23,7 +26,7 @@ export const App = () => {
   }, [dispatch]);
 
   return (
-    <Suspense fallback={<p>Loading...</p>}>
+    <Suspense fallback={<Loader />}>
       <Routes>
         <Route element={<PublicRoutes />}>
           <Route path="/" element={<LoginPage />} />
@@ -34,6 +37,7 @@ export const App = () => {
           <Route path="/statistics" element={<StatisticsPage />} />
           <Route path="/currency" element={<CurrencyPage />} />
         </Route>
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Suspense>
   );
