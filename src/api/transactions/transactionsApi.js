@@ -11,8 +11,8 @@ const getPaginationTransactions = async () => {
 };
 
 const postTransactions = async transaction => {
-  const { data } = await axios.post('/transactions', { transaction });
-  return data;
+  const { data } = await axios.post('/transactions',  transaction );
+  return data.result;
 };
 
 export const transactionsAPI = {
