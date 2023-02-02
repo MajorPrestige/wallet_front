@@ -21,11 +21,17 @@ import {
   MobileTdSumPlus,
   MobileTdMinus,
   Container,
+  ButtonBin,
+  BinIcon,
 } from './Table.styled';
 
 import { getTransactions } from 'redux/transactions/trans-selectors';
 import { fetchTransactions } from 'redux/transactions/trans-operations';
 import { formatDate } from './../../helpers/formatDate';
+
+import Modal from 'components/Modal/Modal';
+import { useState } from 'react';
+import ModalLogout from 'components/ModalLogout/ModalLogout';
 
 const Table = () => {
   const isntMobile = useMediaQuery({ minWidth: 768 });
@@ -35,6 +41,12 @@ const Table = () => {
   useEffect(() => {
     dispatch(fetchTransactions());
   }, [dispatch]);
+
+  const [isModal, setIsModal] = useState(false);
+
+  const toggleModal = () => {
+    setIsModal(!isModal);
+  };
 
   if (!transactions) return false;
   // console.log(transactions);
@@ -51,6 +63,7 @@ const Table = () => {
                 <Category>Comment</Category>
                 <Category>Sum</Category>
                 <Category>Balance</Category>
+                <Category>Options</Category>
               </tr>
             </TableHead>
 
@@ -69,6 +82,11 @@ const Table = () => {
                     </Operations>
 
                     <Operations>{elem.balanceAfter}</Operations>
+                    <Operations>
+                      <ButtonBin type="button" onClick={toggleModal}>
+                        <BinIcon />
+                      </ButtonBin>
+                    </Operations>
                   </tr>
                 ))}
             </tbody>
@@ -145,6 +163,11 @@ const Table = () => {
               ),
             )}
         </MobileContainer>
+      )}
+      {isModal && (
+        <Modal toggleModal={toggleModal} isSignIn>
+          <ModalLogout toggleModalCancel={toggleModal} isDeleteIn />
+        </Modal>
       )}
     </>
   );

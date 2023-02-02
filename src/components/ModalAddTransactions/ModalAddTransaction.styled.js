@@ -174,6 +174,7 @@ export const InpputComment = styled.textarea`
   height: 100%;
   outline: none;
   resize: none;
+  font-family: inherit;
 
   ::placeholder {
     font-size: 18px;
@@ -218,6 +219,17 @@ export const ButtonAdd = styled.button`
   text-transform: uppercase;
   color: #ffffff;
   background: #24cca7;
+
+  &:hover,
+  &:focus {
+    border: 2px solid transparent;
+    transform: scale(1.05);
+    outline: transparent;
+
+    background-color: #ffffff;
+    color: #24cca7;
+    border: 1px solid #24cca7;
+  }
 `;
 
 export const ButtonCancel = styled.button`
@@ -234,4 +246,14 @@ export const ButtonCancel = styled.button`
   text-transform: uppercase;
   color: #4a56e2;
   margin-top: 20px;
+
+  &:hover,
+  &:focus {
+    border: 2px solid transparent;
+    transform: scale(1.05);
+    outline: transparent;
+
+    background-color: #4a56e2;
+    color: #ffffff;
+  }
 `;
