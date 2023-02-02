@@ -27,19 +27,37 @@ export const StyledBalance = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
 
-  font-family: 'Circe';
   font-weight: 700;
   font-size: 18px;
-  line-height: 27px;
 `;
 
-export const Notification = styled.p`
+export const Notification = styled.div`
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 20px;
+
+  width: 280px;
+  height: 280px;
+
+  border: 1px solid grey;
+  border-radius: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   @media ${device.tablet} {
     width: 336px;
+    height: 336px;
   }
 
   @media ${device.desktop} {
     width: 288px;
+    height: 288px;
   }
+`;
+
+export const Text = styled.p`
+  width: 250px;
+  text-align: center;
+  font-size: 18px;
 `;

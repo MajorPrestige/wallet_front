@@ -6,7 +6,7 @@ import {
 } from './trans-operations';
 
 const initialState = {
-  statistic: [],
+  statistic: {transactions: [], dateArr: {}},
   transactions: [],
   isLogin: false,
   loading: false,
@@ -33,7 +33,8 @@ const transactions = createSlice({
       store.firstLoading = false;
       store.loading = false;
       store.isLogin = true;
-      store.statistic = payload;
+      const statistic = {transactions: payload.transactions, dateArr: payload.dateArr};
+      store.statistic = statistic;
     },
     [fetchStatistic.rejected]: (store, { payload }) => {
       store.firstLoading = false;

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { device } from 'styles/Media.variables';
+import { backgroundColor, border, colorText } from './../../styles/Variables';
 
 export const Container = styled.div`
   width: 100%;
@@ -20,9 +21,9 @@ export const Container = styled.div`
     border-radius: 10px;
   }
   &&::-webkit-scrollbar-thumb {
-    background-color: #c0c5f5; /* цвет бегунка */
+    background-color: ${backgroundColor.scrollbarThumb}; /* цвет бегунка */
     border-radius: 10px; /* округлось бегунка */
-    border: 3px solid #c0c5f5; /* отступ вокруг бегунка */
+    border: ${border.scrollbarThumb}; /* отступ вокруг бегунка */
   }
 `;
 
@@ -76,7 +77,7 @@ export const Operations = styled.th`
   font-size: 16px;
   font-weight: 400;
   color: ${props => props.color};
-  border-bottom: 1px solid #dcdcdf;
+  border-bottom: ${border.homeTabGrey};
 `;
 
 // ----------------------------------------------------
@@ -122,8 +123,8 @@ export const MobileTrPlus = styled.tr`
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
   }
-  box-shadow: inset 4px 0px 0px #24cca7;
-  border: 1px solid #dcdcdf;
+  box-shadow: inset 4px 0px 0px ${colorText.green};
+  border: ${border.homeTabGrey};
 `;
 
 export const MobileTrMinus = styled.tr`
@@ -142,8 +143,8 @@ export const MobileTrMinus = styled.tr`
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
   }
-  box-shadow: inset 4px 0px 0px 0px #ff6596;
-  border: 1px solid #dcdcdf;
+  box-shadow: inset 4px 0px 0px 0px ${colorText.red};
+  border: ${border.homeTabGrey};
 `;
 
 export const MobileTdTitle = styled.td`
@@ -161,8 +162,8 @@ export const MobileTd = styled.td`
 `;
 
 export const MobileTdSumPlus = styled.td`
-  color: #24cca7;
+  color: ${colorText.green};
 `;
 export const MobileTdMinus = styled.td`
-  color: #ff6596;
+  color: ${colorText.red};
 `;
