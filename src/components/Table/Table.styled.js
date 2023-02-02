@@ -2,6 +2,9 @@ import styled from 'styled-components';
 import { device } from 'styles/Media.variables';
 import { backgroundColor, border, colorText } from './../../styles/Variables';
 
+
+import { ReactComponent as Bin } from "images/svgs/bin.svg";
+
 export const Container = styled.div`
   width: 100%;
   margin-top: 45px;
@@ -69,6 +72,26 @@ export const Category = styled.th`
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
   }
+`;
+
+export const ButtonBin = styled.button`
+  border: none;
+  background: inherit;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+
+  &:hover svg,
+  &:focus svg {
+    filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
+    fill: #4a56e2;
+  }
+`;
+
+export const BinIcon = styled(Bin)`
+  width: 24px;
+  height: 24px;
+  fill: #6e78e8;
 `;
 
 export const Operations = styled.th`
@@ -158,7 +181,7 @@ export const MobileTd = styled.td`
   font-weight: 400;
   font-size: 16px;
   line-height: calc(24 / 16);
-  color: ${props => props.color};
+  color: ${(props) => props.color};
 `;
 
 export const MobileTdSumPlus = styled.td`
