@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { device } from 'styles/Media.variables';
 
-import { ReactComponent as ModalCloseSvg } from "images/svgs/modal-close.svg";
+import { ReactComponent as ModalCloseSvg } from 'images/svgs/modal-close.svg';
 
 export const Overlay = styled.div`
   position: fixed;
@@ -57,10 +57,10 @@ export const ModalWindowAddTransaction = styled.div`
 `;
 
 export const ModalClose = styled(ModalCloseSvg)`
-    position: absolute;
-    cursor: pointer;
-    width: 20px;
-    height: 20px;
-    top: 20px;
-    right: 20px;
+  position: absolute;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  top: 20px;
+  right: 20px;
 `;

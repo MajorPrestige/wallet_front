@@ -37,7 +37,7 @@ const Table = () => {
   }, [dispatch]);
 
   if (!transactions) return false;
-  console.log(transactions);
+  // console.log(transactions);
   return (
     <>
       {isntMobile && (

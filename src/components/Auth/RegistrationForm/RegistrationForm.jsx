@@ -27,6 +27,8 @@ import {
 import { getAuthError} from 'redux/auth/auth-selectors';
 import { clearAuthError } from 'redux/auth/auth-slice';
 
+const emailRegexp = /^\w+[\w-.]*\w@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/;
+
 const RegistrationForm = () => {
   const dispatch = useDispatch();
   const authError = useSelector(getAuthError);
@@ -34,7 +36,7 @@ const RegistrationForm = () => {
   const validationSchema = yup.object().shape({
     email: yup
       .string()
-      .email('invalid email')
+      .matches(emailRegexp, 'invalid email')
       .required('Please, enter your email'),
     password: yup
       .string()

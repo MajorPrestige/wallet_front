@@ -1,25 +1,14 @@
 import styled from 'styled-components';
 import { device } from 'styles/Media.variables';
 
-export const ErrorMessageBlock = styled.div`
-  margin-left: 60px;
-  margin-right: 60px;
-  margin-top: auto;
-  margin-bottom: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-export const ErrorMessageText = styled.div`
+export const ErrorMessageText = styled.p`
   font-weight: 700;
   font-size: 18px;
   line-height: 1.214;
   letter-spacing: 0.04em;
   color: #4a56e2;
-  margin-top: 30px;
+  margin: 30px auto;
   max-width: 240px;
-  text-align: center;
 
   @media ${device.tablet} {
     font-size: 22px;
@@ -28,4 +17,9 @@ export const ErrorMessageText = styled.div`
   }
 `;
 
-
+export const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+`;

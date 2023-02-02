@@ -1,5 +1,2 @@
-export const getStatistic = ({ transactions }) =>
-  transactions.statistic.transactions;
-export const getTransactions = store =>
-  store.transactions.statistic.transactions;
-export const getAllTransaction = store => store.allTransactions;
+export const getStatistic = ({ transactions }) => transactions.statistic;
+export const getTransactions = store => store.transactions.transactions;

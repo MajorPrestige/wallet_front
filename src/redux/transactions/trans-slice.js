@@ -2,39 +2,40 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import {
   fetchTransactions,
-  statistic,
-  addTransaction,
+  addTransaction, fetchPaginationTransactions, fetchStatistic,
 } from './trans-operations';
 
 const initialState = {
   statistic: [],
+  transactions: [],
   isLogin: false,
   loading: false,
   error: null,
   firstLoading: false,
-  allTransactions: [],
+  pagination: {
+    transactions: [],
+    page: 1,
+    limit: 1,
+  },
 };
 
 const transactions = createSlice({
   name: 'transactions',
   initialState,
   extraReducers: {
-    [statistic.pending]: store => {
+    [fetchStatistic.pending]: store => {
       store.firstLoading = true;
       store.loading = true;
       store.error = null;
     },
 
-    [statistic.fulfilled]: (store, { payload }) => {
+    [fetchStatistic.fulfilled]: (store, { payload }) => {
       store.firstLoading = false;
       store.loading = false;
       store.isLogin = true;
-      store.statistic = {
-        transactions: payload,
-      };
+      store.statistic = payload;
     },
-
-    [statistic.rejected]: (store, { payload }) => {
+    [fetchStatistic.rejected]: (store, { payload }) => {
       store.firstLoading = false;
       store.loading = false;
       store.error = payload;
@@ -45,7 +46,7 @@ const transactions = createSlice({
       store.error = null;
     },
     [fetchTransactions.fulfilled]: (store, { payload }) => {
-      store.statistic = payload;
+      store.transactions = payload;
       store.loading = false;
       store.error = null;
       store.allTransactions = payload;
@@ -56,14 +57,25 @@ const transactions = createSlice({
       store.loading = false;
     },
 
+    [fetchPaginationTransactions.pending]: store => {
+      store.loading = true;
+      store.error = null;
+    },
+    [fetchPaginationTransactions.fulfilled]: (store, { payload }) => {
+      store.pagination.transactions = payload;
+      store.loading = false;
+      store.error = null;
+    },
+    [fetchPaginationTransactions.rejected]: (store, { payload }) => {
+      store.error = payload;
+      store.loading = false;
+    },
+
     [addTransaction.pending]: store => {
       store.loading = true;
     },
     [addTransaction.fulfilled]: (store, { payload }) => {
-      store.statistic.transactions = [
-        ...store.statistic.transactions,
-        payload.transaction,
-      ];
+      store.transactions = payload.transactions;
       store.loading = false;
       store.error = null;
     },

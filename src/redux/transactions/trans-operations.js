@@ -4,7 +4,7 @@ import { axiosStatistic } from 'api/transactions/statistic';
 
 import { transactionsAPI } from 'api/transactions/transactionsApi';
 
-export const statistic = createAsyncThunk(
+export const fetchStatistic = createAsyncThunk(
   'transactions/statistic',
   async (params, { rejectWithValue }) => {
     try {
@@ -19,10 +19,23 @@ export const statistic = createAsyncThunk(
 
 export const fetchTransactions = createAsyncThunk(
   'transactions',
+  async (_, { rejectWithValue }) => {
+    try {
+      const data = await transactionsAPI.getTransactions();
+      return data;
+    } catch (error) {
+      const { data, status } = error.response;
+      return rejectWithValue({ data, status });
+    }
+  },
+);
+
+export const fetchPaginationTransactions = createAsyncThunk(
+  'transactions/pagination',
   async (params, { rejectWithValue }) => {
     try {
-      const { data } = await transactionsAPI.getTransactions(params);
-      return data.transactions;
+      const data = await transactionsAPI.getPaginationTransactions(params);
+      return data;
     } catch (error) {
       const { data, status } = error.response;
       return rejectWithValue({ data, status });
@@ -34,11 +47,14 @@ export const addTransaction = createAsyncThunk(
   'transaction',
   async (transaction, { rejectWithValue }) => {
     try {
-      const { data: {transactions} } = await transactionsAPI.postTransactions(transaction);
-      const { data } = await transactionsAPI.postTransactions(transaction);
+      const addedTransaction = await transactionsAPI.postTransactions(
+        transaction,
+      );
+      const transactions = await transactionsAPI.getTransactions(transaction);
 
       
       return {
+        addedTransaction,
         transactions,
       };
     } catch (error) {

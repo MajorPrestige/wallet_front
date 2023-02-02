@@ -3,10 +3,15 @@ import { device } from 'styles/Media.variables';
 
 export const Container = styled.div`
   width: 100%;
-  max-height: 60vh;
+  margin-top: 45px;
+  max-height: 71vh;
   margin-left: auto;
   margin-right: auto;
-  overflow-y: scroll;
+  overflow: auto;
+
+  @media ${device.tabletOnly} {
+    max-height: 50vh;
+  }
   &::-webkit-scrollbar {
     width: 10px;
   }
@@ -22,14 +27,15 @@ export const Container = styled.div`
 `;
 
 export const TableContainer = styled.table`
-  margin-top: 15px;
   margin-bottom: 15px;
   margin-left: auto;
   margin-right: auto;
   align-items: center;
-  @media ${device.tablet} {
-    width: 705px;
+  table-layout: fixed;
+  border-collapse: separate;
+  @media ${device.tabletOnly} {
     max-height: 305px;
+    margin-top: 0px;
   }
   @media ${device.desktop} {
     width: 715px;
@@ -39,6 +45,9 @@ export const TableContainer = styled.table`
 
 export const TableHead = styled.thead`
   margin-bottom: 15px;
+  width: 100%;
+  position: sticky;
+  top: 0;
 `;
 
 export const Category = styled.th`
@@ -62,17 +71,26 @@ export const Category = styled.th`
 `;
 
 export const Operations = styled.th`
+  vertical-align: middle;
   padding: 15px;
   font-size: 16px;
   font-weight: 400;
   color: ${props => props.color};
+  border-bottom: 1px solid #dcdcdf;
 `;
 
 // ----------------------------------------------------
 export const MobileContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: inherit;
+  margin-right: auto;
+  margin-left: auto;
   margin-top: 30px;
   overflow: scroll;
+  max-width: 500px;
 `;
 
 export const PlusTable = styled.table`
@@ -135,6 +153,7 @@ export const MobileTdTitle = styled.td`
 `;
 
 export const MobileTd = styled.td`
+  display: flex;
   font-weight: 400;
   font-size: 16px;
   line-height: calc(24 / 16);

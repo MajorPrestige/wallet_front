@@ -1,10 +1,10 @@
-import styled from "styled-components";
-import Switch from "react-switch";
-import Datetime from "react-datetime";
-import { device } from "styles/Media.variables";
+import styled from 'styled-components';
+import Switch from 'react-switch';
+import Datetime from 'react-datetime';
+import { device } from 'styles/Media.variables';
 
-import { ReactComponent as Plus } from "images/svgs/add.svg";
-import { ReactComponent as Minus } from "images/svgs/minus.svg";
+import { ReactComponent as Plus } from 'images/svgs/add.svg';
+import { ReactComponent as Minus } from 'images/svgs/minus.svg';
 
 export const Conteiner = styled.div`
   padding: 20px 9px 60px;
@@ -28,11 +28,11 @@ export const WrapCheckbox = styled.div`
 `;
 
 export const CheckIncome = styled.h3`
-  color: ${(props) => (props.isChecked ? "#24CCA7" : "#e0e0e0")};
+  color: ${props => (props.isChecked ? '#24CCA7' : '#e0e0e0')};
 `;
 
 export const CheckExpense = styled.h3`
-  color: ${(props) => (props.isChecked ? "#e0e0e0" : "#FF6596")};
+  color: ${props => (props.isChecked ? '#e0e0e0' : '#FF6596')};
 `;
 
 export const Choice = styled(Switch)`
@@ -128,7 +128,6 @@ export const Inpput = styled.input`
     border-color: #24cca7;
   }
 
-  
   @media ${device.tablet} {
     text-align: center;
   }
@@ -185,7 +184,6 @@ export const InpputComment = styled.textarea`
     border-color: #24cca7;
   }
 
-  
   @media ${device.tablet} {
     padding: 0px 8px 8px 8px;
   }
@@ -193,7 +191,7 @@ export const InpputComment = styled.textarea`
 
 export const Title = styled.h2`
   font-size: 24px;
-  font-family: "Poppins";
+  font-family: 'Poppins';
   font-style: normal;
   font-weight: 400;
 
@@ -212,13 +210,13 @@ export const ButtonAdd = styled.button`
   background: #ffffff;
   border: 1px transparent;
   border-radius: 20px;
-  font-family: "Circe";
+  font-family: 'Circe';
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #4a56e2;
+  color: #ffffff;
   background: #24cca7;
 `;
 
@@ -228,7 +226,7 @@ export const ButtonCancel = styled.button`
   background: #ffffff;
   border: 1px solid #4a56e2;
   border-radius: 20px;
-  font-family: "Circe";
+  font-family: 'Circe';
   font-style: normal;
   font-weight: 400;
   font-size: 18px;

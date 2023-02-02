@@ -25,9 +25,9 @@ const HomePage = () => {
             {isTablet && <Currency />}
           </Flex>
           <Table />
+          <ButtonAddTransactions/>
         </Container>
-      </BlurContainer>
-      <ButtonAddTransactions/>
+      </BlurContainer>      
     </BackgroundContainer>
   );
 };

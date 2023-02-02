@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 
 import { getBalance } from 'redux/auth/auth-selectors';
 import { getStatistic } from 'redux/transactions/trans-selectors';
-import { statistic } from 'redux/transactions/trans-operations';
+import { fetchStatistic } from 'redux/transactions/trans-operations';
 
 import { StyledChart, StyledBalance, Notification } from './Chart.styled';
 
@@ -21,7 +21,7 @@ const Chart = ({ date }) => {
   const { year, month } = date;
 
   useEffect(() => {
-    dispatch(statistic({ year: Number(year), month: Number(month) }));
+    dispatch(fetchStatistic({ year: Number(year), month: Number(month) }));
   }, [dispatch, month, year]);
 
   const colors = [
