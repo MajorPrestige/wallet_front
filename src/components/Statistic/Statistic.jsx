@@ -30,7 +30,8 @@ const Statistic = () => {
   // console.log(newDate.getFullYear());
   
   // console.log(transactions);
-
+  
+  // first way
   // const arr = transactions
   //   .map(trans => trans.date)
   //   .reduce((acc, date) => {
@@ -40,6 +41,7 @@ const Statistic = () => {
   //     acc.month = (month + 1);
   //   }, {year, month});
 
+  // second way
   // const arr = transactions.reduce((acc, trans) => {
   //   const year = new Date(trans.date).getFullYear();
   //   const month = new Date(trans.date).getMonth();

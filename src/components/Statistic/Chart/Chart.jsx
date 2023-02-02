@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 import { getBalance } from 'redux/auth/auth-selectors';
 
-import { StyledChart, StyledBalance, Notification } from './Chart.styled';
+import { StyledChart, StyledBalance, Notification, Text } from './Chart.styled';
 
 ChartJS.register(ArcElement, Tooltip);
 
@@ -83,7 +83,7 @@ const Chart = ({ transactions }) => {
           <StyledBalance>
             <div>
               <span>&#8372; </span>
-              <span>{balance}</span>
+              <span>{balance.toFixed(2)}</span>
             </div>
           </StyledBalance>
         </StyledChart>
@@ -95,13 +95,13 @@ const Chart = ({ transactions }) => {
           <StyledBalance>
             <div>
               <span>&#8372; </span>
-              <span>{balance}</span>
+              <span>{balance.toFixed(2)}</span>
             </div>
           </StyledBalance>
         </StyledChart>
       )
     }
-    {!isIncomeTrans && !isExpensTrans && (<Notification>You have no transactions in selected date yet. Please, choose another date.</Notification>)}
+    {!isIncomeTrans && !isExpensTrans && (<Notification><Text>You have no transactions in selected date yet. Please, choose another date.</Text></Notification>)}
     </>
   );
 };

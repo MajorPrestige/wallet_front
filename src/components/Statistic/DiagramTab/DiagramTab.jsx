@@ -79,7 +79,7 @@ const DiagramTab = ({ transactions }) => {
                 </OperationCat>
                 <OperationSum>
                   <CellInner>
-                    {totalSum}
+                    {totalSum.toFixed(2)}
                   </CellInner>
                 </OperationSum>
               </TableRow>
@@ -89,10 +89,10 @@ const DiagramTab = ({ transactions }) => {
       </TableContainer>
       <Sum>
         <Totals>
-          Expenses:<Expense>{expense}</Expense>
+          Expenses:<Expense>{expense.toFixed(2)}</Expense>
         </Totals>
         <Totals>
-          Income:<Income>{income}</Income>
+          Income:<Income>{income.toFixed(2)}</Income>
         </Totals>
       </Sum>
     </>

@@ -10,7 +10,7 @@ const Balance = () => {
       <p>YOUR BALANCE</p>
       <p>
         <span>&#8372; </span>
-        <span>{balance}</span>
+        <span>{balance.toFixed(2)}</span>
       </p>
     </BalanceContainer>
   );
