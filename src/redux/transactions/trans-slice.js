@@ -49,6 +49,8 @@ const transactions = createSlice({
       store.transactions = payload;
       store.loading = false;
       store.error = null;
+      store.allTransactions = payload;
+      console.log(store.allTransactions);
     },
     [fetchTransactions.rejected]: (store, { payload }) => {
       store.error = payload;
@@ -73,10 +75,7 @@ const transactions = createSlice({
       store.loading = true;
     },
     [addTransaction.fulfilled]: (store, { payload }) => {
-      store.statistic.transactions = [
-        ...store.statistic.transactions,
-        payload.transaction,
-      ];
+      store.transactions = payload.transactions;
       store.loading = false;
       store.error = null;
     },
@@ -88,3 +87,5 @@ const transactions = createSlice({
 });
 
 export default transactions.reducer;
+
+
