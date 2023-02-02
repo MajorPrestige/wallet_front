@@ -52,7 +52,6 @@ export const addTransaction = createAsyncThunk(
       );
       const transactions = await transactionsAPI.getTransactions();
 
-
       return {
         addedTransaction,
         transactions,
