@@ -2,41 +2,46 @@ import { Formik } from 'formik';
 
 import { FormContainer, StyledForm, StyledField } from './DiagramForm.styled';
 
-const DiagramForm = ({setDate}) => {
-  const onChange = ({target}) => {
-    setDate( prevState => {
-      return {...prevState, [target.name]: target.value};
+const monthNames = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+
+const DiagramForm = ({ setDate, date, months, years }) => {
+  const onChange = ({ target }) => {
+    setDate(prevState => {
+      return { ...prevState, [target.name]: target.value };
     });
   };
 
   return (
     <FormContainer>
-      <Formik
-        initialValues={{ month: '', year: '' }}
-      >
+      <Formik initialValues={{ month: '', year: '' }}>
         {props => (
           <StyledForm>
-            <StyledField name="month" as="select" onChange={onChange} >
-              <option value="1">January</option>
-              <option value="2">February</option>
-              <option value="3">March</option>
-              <option value="4">April</option>
-              <option value="5">May</option>
-              <option value="6">June</option>
-              <option value="7">July</option>
-              <option value="8">August</option>
-              <option value="9">September</option>
-              <option value="10">October</option>
-              <option value="11">November</option>
-              <option value="12">December</option>
+            <StyledField name="month" as="select" onChange={onChange} defaultValue={monthNames[date.month]}>
+              {months.map((month, i) => (
+                <option key={i} value={i + 1} disabled={!month}>{monthNames[i]}</option>
+              ))}
             </StyledField>
-            <StyledField name="year" as="select" onChange={onChange} defaultValue={"2023"}>
-              <option value="2018">2018</option>
-              <option value="2019">2019</option>
-              <option value="2020">2020</option>
-              <option value="2021">2021</option>
-              <option value="2022">2022</option>
-              <option value="2023">2023</option>
+            <StyledField
+              name="year"
+              as="select"
+              onChange={onChange}
+            >
+              {years.reverse().map((year, i) => (
+                <option key={i} value={year}>{year}</option>
+              ))}
             </StyledField>
           </StyledForm>
         )}
