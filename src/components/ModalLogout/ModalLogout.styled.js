@@ -21,11 +21,11 @@ export const ButtonWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+  padding-bottom: 60px;
 `;
 
 export const Container = styled.div`
-  margin: 0 auto;
-  padding-bottom: 20px;
+  margin: 0 auto;  
   display:flex;
   flex-direction:column;
   text-align: center;
