@@ -1,6 +1,6 @@
 import { CustomSelect } from './SelectList.styled';
 
-const SelectList = ({ options, getCurrent, type }) => {
+const SelectList = ({ options, getCurrent, onChange, type, ...another }) => {
   const handleChange = selectedOption => {
     getCurrent(selectedOption);
   };
@@ -8,9 +8,9 @@ const SelectList = ({ options, getCurrent, type }) => {
   return (
     <>
       <CustomSelect
+        {...another}
         classNamePrefix={'react-select'}
         onChange={handleChange}
-        defaltValue={options[0]}
         options={options}
         placeholder="Select a category"
       />
