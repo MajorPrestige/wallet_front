@@ -57,7 +57,10 @@ const DiagramForm = ({ setDate, date, months, years }) => {
             <SelectList
               options={optionsYears}
               chart
-              defaultValue={optionsYears[0]}
+              defaultValue={{
+                label: date.year,
+                value: date.year,
+              }}
               getCurrent={setYear}
             />
           </StyledForm>
