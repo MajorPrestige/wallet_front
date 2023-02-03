@@ -36,7 +36,7 @@ import ModalLogout from 'components/ModalLogout/ModalLogout';
 const Table = () => {
   const [id, setId] = useState('');
 
-  const isntMobile = useMediaQuery({ minWidth: 768 });
+  const noMobile = useMediaQuery({ minWidth: 768 });
   const dispatch = useDispatch();
   const transactions = useSelector(getTransactions);
 
@@ -55,7 +55,7 @@ const Table = () => {
 
   return (
     <>
-      {isntMobile && (
+      {noMobile && (
         <Container>
           <TableContainer>
             <TableHead>
@@ -104,7 +104,7 @@ const Table = () => {
         </Container>
       )}
 
-      {!isntMobile && transactions.length > 0 && (
+      {!noMobile && transactions.length > 0 && (
         <MobileContainer>
           {transactions.length > 0 &&
             [...transactions].map(elem =>

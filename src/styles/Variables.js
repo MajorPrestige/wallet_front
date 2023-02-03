@@ -18,7 +18,7 @@ export const colorText = {
 export const backgroundColor = {
   primary: '#E7EAF2',
   white: '#ffffff',
-  blueActiv: '#4A56E2',
+  blueActive: '#4A56E2',
   blueNoActive: '#6E78E8',
   desktop: 'rgba(255, 255, 255, 0.4)',
   green: '#24cca7',
@@ -29,9 +29,9 @@ export const backgroundColor = {
 
 export const buttonColor = {
   transparent: 'transparent',
-  greenActiv: '#24cca7',
+  greenActive: '#24cca7',
   white: '#ffffff',
-  blueActiv: '#4A56E2',
+  blueActive: '#4A56E2',
 };
 
 export const statisticColor = {
@@ -40,7 +40,7 @@ export const statisticColor = {
   car: '#FD9498',
   self: '#C5BAFF',
   child: '#6E78E8',
-  gousehold: '#4A56E2',
+  household: '#4A56E2',
   education: '#81E1FF',
   leisure: '#24CCA7',
   other: '#00AD84',
@@ -68,5 +68,5 @@ export const border = {
 export const shadows = {
   selectList: '0px 6px 15px rgba(0, 0, 0, 0.1)',
   diagramTabShadow: '0px 1px 0px rgba(255, 255, 255, 0.6)',
-  tableHomeShados: '0 5px 2px -2px rgba(0, 0, 0, 0.3);',
+  tableHomeShadows: '0 5px 2px -2px rgba(0, 0, 0, 0.3);',
 };

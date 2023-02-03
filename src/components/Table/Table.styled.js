@@ -25,11 +25,12 @@ export const Container = styled.div`
   }
   &::-webkit-scrollbar-track {
     background-color: aliceblue;
+
     border-radius: 10px;
   }
   &&::-webkit-scrollbar-thumb {
     background-color: ${backgroundColor.scrollbarThumb}; /* цвет бегунка */
-    border-radius: 10px; /* округлось бегунка */
+    border-radius: 10px; /* колір бегунка */
     border: ${border.scrollbarThumb}; /* отступ вокруг бегунка */
   }
 `;
@@ -41,7 +42,7 @@ export const TableContainer = styled.table`
   align-items: center;
 
   border-collapse: separate;
-  box-shadow: ${shadows.tableHomeShados};
+  box-shadow: ${shadows.tableHomeShadows};
   @media ${device.tabletOnly} {
     max-height: 305px;
     margin-top: 0px;
