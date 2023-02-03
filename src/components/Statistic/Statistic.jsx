@@ -25,8 +25,8 @@ const Statistic = () => {
 
   const dateArr = useSelector(getDateArr);
 
-  const years = Object.keys(dateArr);
-  const monthArr = Object.values(dateArr);
+  const years = Object.keys(dateArr || {});
+  const monthArr = Object.values(dateArr || {});
 
   const months = years.includes(year) ? dateArr[year] : monthArr[monthArr.length - 1];
 
@@ -37,7 +37,7 @@ const Statistic = () => {
         <Chart transactions={transactions} />
       </div>
       <TableContainer>
-        <DiagramForm setDate={setDate} date={date} years={years} months={months}/>
+        <DiagramForm setDate={setDate} date={date} years={years} months={months || []}/>
         <DiagramTab transactions={transactions} />
       </TableContainer>
     </StatisticContainer>

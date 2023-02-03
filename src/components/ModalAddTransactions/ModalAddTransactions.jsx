@@ -42,7 +42,7 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
 
   useEffect(() => {
     getAllCategories().then(data => {
-      setOptions(data.map(it => ({ value: it._id, label: it.name })));
+      setOptions(data.map(it => ({ value: it._id, label: it.name})));
     });
   }, []);
 

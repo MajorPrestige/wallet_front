@@ -101,7 +101,13 @@ const Chart = ({ transactions }) => {
         </StyledChart>
       )
     }
-    {!isIncomeTrans && !isExpensTrans && (<Notification><Text>You have no transactions in selected date yet. Please, choose another date.</Text></Notification>)}
+    {!isIncomeTrans && !isExpensTrans && (
+    <Notification>
+      <Text>
+        You have no transactions in selected date yet. <br/> Please add transaction or choose another date.
+      </Text>
+    </Notification>
+    )}
     </>
   );
 };
