@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
+import { useSelector } from 'react-redux';
 
 import {
   TransactionButton,
@@ -10,10 +11,15 @@ import ModalAddTransactions from 'components/ModalAddTransactions/ModalAddTransa
 import Modal from './../Modal/Modal';
 import ModalAddTransMobile from './../ModalAddTransMobile/ModalAddTransMobile';
 
+import ErrorMessage from 'components/ErrorMessage/ErrorMessage';
+import { getTransactionsError } from 'redux/transactions/trans-selectors';
+
 const ButtonAddTransactions = () => {
   const [isModal, setIsModal] = useState(false);
-
   const isMobile = useMediaQuery({ maxWidth: 767 });
+
+  const transactionError = useSelector(getTransactionsError);
+
 
   const toggleModal = () => {
     setIsModal(!isModal);
@@ -23,15 +29,21 @@ const ButtonAddTransactions = () => {
       <TransactionButton type="button" onClick={() => toggleModal()}>
         <IconLogo />
       </TransactionButton>
-      {!isMobile && isModal && (
+
+      {transactionError && !isMobile && isModal && (
         <Modal toggleModal={toggleModal} isSignIn>
           <ModalAddTransactions toggleModalCancel={toggleModal} />
         </Modal>
       )}
-      {isMobile && isModal && (
+      {transactionError && isMobile && isModal && (
         <ModalAddTransMobile toggleModal={toggleModal} isSignIn>
           <ModalAddTransactions toggleModalCancel={toggleModal} />
         </ModalAddTransMobile>
+      )}
+      {!transactionError && (
+        <Modal toggleModal={toggleModal}>
+          <ErrorMessage message={transactionError}>messege</ErrorMessage>
+        </Modal>
       )}
     </>
   );
