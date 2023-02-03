@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { axiosCurrent } from 'api/auth/auth';
 
 import { axiosStatistic } from 'api/transactions/statistic';
 
@@ -45,16 +46,19 @@ export const fetchPaginationTransactions = createAsyncThunk(
 
 export const addTransaction = createAsyncThunk(
   'transaction',
-  async (transaction, { rejectWithValue }) => {
+  async (transaction, { rejectWithValue, getState }) => {
     try {
       const addedTransaction = await transactionsAPI.postTransactions(
         transaction,
       );
       const transactions = await transactionsAPI.getTransactions();
+      const { auth } = getState();
+      const data = await axiosCurrent(auth.token);
 
       return {
         addedTransaction,
         transactions,
+        data,
       };
     } catch (error) {
       const { data, status } = error.response;
@@ -66,13 +70,15 @@ export const addTransaction = createAsyncThunk(
 
 export const deleteTransaction = createAsyncThunk(
   'transactions/delete',
-  async(id, {rejectWithValue}) => {
+  async(id, {rejectWithValue, getState}) => {
     console.log(id);
     try {
        await transactionsAPI.delTransaction(id);
       const transactions = await transactionsAPI.getTransactions();
-      console.log(transactions);
-      return transactions;
+      const { auth } = getState();
+      const data = await axiosCurrent(auth.token);
+ 
+      return {transactions, data};
     } catch (error) {
       return rejectWithValue(error.message);
     }
