@@ -22,9 +22,11 @@ import {
   ButtonWrapper,
   UserLogo,
   PasswordCheck,
+  GoogleLogo,
+  ButtonGoogle,
 } from '../Auth.styled';
 
-import { getAuthError} from 'redux/auth/auth-selectors';
+import { getAuthError } from 'redux/auth/auth-selectors';
 import { clearAuthError } from 'redux/auth/auth-slice';
 
 const emailRegexp = /^\w+[\w-.]*\w@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/;
@@ -181,6 +183,11 @@ const RegistrationForm = () => {
                   <StyledLink to="/" outlined="true">
                     SIGN IN
                   </StyledLink>
+                  <ButtonGoogle href="https://goit-wallet-back.onrender.com/api/users/google">
+                    SIGN IN WITH
+                    <GoogleLogo />
+                    OOGLE
+                  </ButtonGoogle>
                 </ButtonWrapper>
               </StyledForm>
             )}

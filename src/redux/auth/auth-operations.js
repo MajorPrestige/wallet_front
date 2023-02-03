@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import { axiosSignIn, axiosSignOut, axiosSignUp, axiosCurrent } from "api/auth/auth";
+import { axiosSignIn, axiosSignOut, axiosSignUp, axiosCurrent, axiosSignInWithToken } from "api/auth/auth";
 
 export const signup = createAsyncThunk(
   'auth/signup',
@@ -22,6 +22,19 @@ export const signin = createAsyncThunk(
   async (userData, { rejectWithValue }) => {
     try {
       const data = await axiosSignIn(userData);
+      return data;
+    } catch (error) {
+      const { data, status } = error.response;
+      return rejectWithValue({ data, status });
+    }
+  },
+);
+
+export const signinWithToken = createAsyncThunk(
+  'auth/signin-with-token',
+  async (token, { rejectWithValue }) => {
+    try {
+      const data = await axiosSignInWithToken(token);
       return data;
     } catch (error) {
       const { data, status } = error.response;
