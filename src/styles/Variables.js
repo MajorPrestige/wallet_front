@@ -7,7 +7,7 @@ export const colorText = {
   black: '#000000',
   white: '#ffffff',
   green: '#24cca7',
-  red: ' #FF6596',
+  red: '#FF6596',
   blue: '#4A56E2',
   headerGrey: '#BDBDBD',
   balanceGrey: '#A6A6A6',
@@ -19,7 +19,7 @@ export const backgroundColor = {
   primary: '#E7EAF2',
   white: '#ffffff',
   blueActiv: '#4A56E2',
-  blueNoAktive: '#6E78E8',
+  blueNoActive: '#6E78E8',
   desktop: 'rgba(255, 255, 255, 0.4)',
   green: '#24cca7',
   modalCategoryList: 'rgba(255, 255, 255, 0.7)',
@@ -46,9 +46,21 @@ export const statisticColor = {
   other: '#00AD84',
 };
 
+// export const statisticColor =[
+//    '#FED057',
+//    '#FFD8D0',
+//    '#FD9498',
+//    '#C5BAFF',
+//    '#6E78E8',
+//    '#4A56E2',
+//    '#81E1FF',
+//    '#24CCA7',
+//    '#00AD84',
+// ;]
+
 export const border = {
   blue: '1px solid #4a56e2',
-  greyModal: ' 1px solid #e0e0e0',
+  greyModal: '1px solid #e0e0e0',
   homeTabGrey: '1px solid #dcdcdf',
   scrollbarThumb: '3px solid #c0c5f5',
 };
@@ -56,4 +68,5 @@ export const border = {
 export const shadows = {
   selectList: '0px 6px 15px rgba(0, 0, 0, 0.1)',
   diagramTabShadow: '0px 1px 0px rgba(255, 255, 255, 0.6)',
+  tableHomeShados: '0 5px 2px -2px rgba(0, 0, 0, 0.3);',
 };
