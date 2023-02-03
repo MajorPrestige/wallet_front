@@ -36,7 +36,7 @@ import ModalLogout from 'components/ModalLogout/ModalLogout';
 const Table = () => {
   const [id, setId] = useState('');
 
-  const isntMobile = useMediaQuery({ minWidth: 768 });
+  const noMobile = useMediaQuery({ minWidth: 768 });
   const dispatch = useDispatch();
   const transactions = useSelector(getTransactions);
 
@@ -52,10 +52,10 @@ const Table = () => {
   };
 
   if (!transactions) return false;
-  // console.log(transactions);
+
   return (
     <>
-      {isntMobile && (
+      {noMobile && (
         <Container>
           <TableContainer>
             <TableHead>
@@ -73,18 +73,22 @@ const Table = () => {
             <tbody>
               {transactions.length > 0 &&
                 [...transactions].map(elem => (
-                  <tr key={elem._id}>
+                  <tr key={elem._id} style={{ height: 50 }}>
                     <Operations>{formatDate(elem.date)}</Operations>
                     <Operations color={elem.type ? '#24cca7' : '#ff6596'}>
                       {elem.type ? '+' : '-'}
                     </Operations>
                     <Operations>{elem?.category?.name ?? ''}</Operations>
-                    <Operations>{elem.comment}</Operations>
+                    <Operations overflowWrap="break-word" wordBreak="break-all">
+                      {elem.comment}
+                    </Operations>
                     <Operations color={elem.type ? '#24cca7' : '#ff6596'}>
-                      {elem.sum}
+                      {Number(elem.sum).toFixed(2)}
                     </Operations>
 
-                    <Operations>{elem.balanceAfter}</Operations>
+                    <Operations>
+                      {Number(elem.balanceAfter).toFixed(2)}
+                    </Operations>
                     <Operations>
                       <ButtonBin
                         type="button"
@@ -100,7 +104,7 @@ const Table = () => {
         </Container>
       )}
 
-      {!isntMobile && transactions.length > 0 && (
+      {!noMobile && transactions.length > 0 && (
         <MobileContainer>
           {transactions.length > 0 &&
             [...transactions].map(elem =>
@@ -127,11 +131,15 @@ const Table = () => {
                     </MobileTrPlus>
                     <MobileTrPlus>
                       <MobileTdTitle>Sum</MobileTdTitle>
-                      <MobileTdSumPlus>{elem.sum}</MobileTdSumPlus>
+                      <MobileTdSumPlus>
+                        {Number(elem.sum).toFixed(2)}
+                      </MobileTdSumPlus>
                     </MobileTrPlus>
                     <MobileTrPlus>
                       <MobileTdTitle>Balance</MobileTdTitle>
-                      <MobileTd>{elem.balanceAfter}</MobileTd>
+                      <MobileTd>
+                        {Number(elem.balanceAfter).toFixed(2)}
+                      </MobileTd>
                     </MobileTrPlus>
                     <MobileTrPlus>
                       <MobileTdTitle>Options</MobileTdTitle>
