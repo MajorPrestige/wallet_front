@@ -42,7 +42,7 @@ export const TableContainer = styled.table`
   align-items: center;
 
   border-collapse: separate;
-  box-shadow: ${shadows.tableHomeShadows};
+
   @media ${device.tabletOnly} {
     max-height: 305px;
     margin-top: 0px;
@@ -109,6 +109,10 @@ export const Operations = styled.th`
   border-bottom: ${border.homeTabGrey};
   word-break: ${props => props.wordBreak};
   overflow-wrap: ${props => props.overflowWrap};
+`;
+
+export const Tbody = styled.tbody`
+  box-shadow: ${shadows.tableHomeShadows};
 `;
 
 // ----------------------------------------------------
