@@ -1,8 +1,9 @@
+import { useSearchParams } from 'react-router-dom';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { signin } from 'redux/auth/auth-operations';
+import { signin, signinWithToken } from 'redux/auth/auth-operations';
 
 import Logo from 'components/Logo/Logo';
 import Modal from 'components/Modal/Modal';
@@ -18,6 +19,8 @@ import {
   PasswordLogo,
   AuthError,
   ButtonWrapper,
+  GoogleLogo,
+  ButtonGoogle,
 } from '../Auth.styled';
 
 import { getAuthError } from 'redux/auth/auth-selectors';
@@ -28,7 +31,15 @@ const emailRegexp = /^\w+[\w-.]*\w@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/;
 
 const LoginForm = () => {
   const dispatch = useDispatch();
+  const [searchParams] = useSearchParams();
+
   const authError = useSelector(getAuthError);
+
+  const token = searchParams.get('token');
+
+  if (token) {
+    dispatch(signinWithToken({ token }));
+  }
 
   const validationSchema = yup.object().shape({
     email: yup
@@ -99,12 +110,10 @@ const LoginForm = () => {
                   <StyledLink to="/signup" outlined="true">
                     SIGN UP
                   </StyledLink>
-                  {/* <a href='https://goit-wallet-back.onrender.com/api/users/google' onClick={handleGoogleClick}>
-                    GOOGLE ONRENDER
-                  </a>
-                  <a href='http://localhost:4000/api/users/google' onClick={handleGoogleClick}>
-                    GOOGLE LOCAL
-                  </a> */}
+                  <ButtonGoogle href="https://goit-wallet-back.onrender.com/api/users/google">SIGN IN WITH
+                    <GoogleLogo />
+                    OOGLE
+                  </ButtonGoogle>
                 </ButtonWrapper>
               </StyledForm>
             )}
