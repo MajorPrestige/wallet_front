@@ -30,17 +30,17 @@ const ButtonAddTransactions = () => {
         <IconLogo />
       </TransactionButton>
 
-      {transactionError && !isMobile && isModal && (
+      {!transactionError && !isMobile && isModal && (
         <Modal toggleModal={toggleModal} isSignIn>
           <ModalAddTransactions toggleModalCancel={toggleModal} />
         </Modal>
       )}
-      {transactionError && isMobile && isModal && (
+      {!transactionError && isMobile && isModal && (
         <ModalAddTransMobile toggleModal={toggleModal} isSignIn>
           <ModalAddTransactions toggleModalCancel={toggleModal} />
         </ModalAddTransMobile>
       )}
-      {!transactionError && (
+      {transactionError && (
         <Modal toggleModal={toggleModal}>
           <ErrorMessage message={transactionError}>messege</ErrorMessage>
         </Modal>
