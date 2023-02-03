@@ -1,13 +1,21 @@
-import { LogoContainer, LogoText } from "./Logo.styled";
-import { IconLogo } from "./Logo.styled";
+import { LogoContainer, LogoHeaderContainer, LogoText } from './Logo.styled';
+import { IconLogo } from './Logo.styled';
 
-
-const Logo = () => {
+const Logo = ({ header }) => {
   return (
-    <LogoContainer>
-				<IconLogo/>
-				<LogoText>Wallet</LogoText>
-    </LogoContainer>
+    <>
+      {header ? (
+        <LogoHeaderContainer to="/">
+          <IconLogo />
+          <LogoText>Wallet</LogoText>
+        </LogoHeaderContainer>
+      ) : (
+        <LogoContainer>
+          <IconLogo />
+          <LogoText>Wallet</LogoText>
+        </LogoContainer>
+      )}
+    </>
   );
 };
 
