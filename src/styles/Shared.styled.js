@@ -10,6 +10,7 @@ const linkAndButtonStyles = css`
   min-height: 50px;
   font-size: 18px;
   margin-bottom: ${props => props.marginBotom || '0px'};
+  margin-top: ${props => props.marginTop || '0px'};
   padding: 8px 0px;
   padding-top: 12px;
   border-radius: 20px;
@@ -56,6 +57,7 @@ const linkAndButtonStyles = css`
 export const Button = styled.button`
   ${linkAndButtonStyles}
 `;
+
 
 export const StyledLink = styled(Link)`
   ${linkAndButtonStyles}

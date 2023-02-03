@@ -15,6 +15,12 @@ export const axiosSignIn = async userData => {
   return data;
 };
 
+export const axiosSignInWithToken = async token => {
+  const { data } = await axios.post('/users/signin-with-token', token);
+  axios.defaults.headers.common['Authorization'] = `Bearer ${data.user.token}`;
+  return data;
+};
+
 export const axiosSignOut = async () => {
   const { data } = await axios.post('/users/signout');
   axios.defaults.headers.common['Authorization'] = null;

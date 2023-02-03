@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { signin, signout, signup, current } from './auth-operations';
+import { signin, signout, signup, current, signinWithToken } from './auth-operations';
 
 const initialState = {
   user: {},
@@ -53,6 +53,19 @@ const auth = createSlice({
     [signin.fulfilled]: (store, { payload }) => accessAuth(store, payload),
 
     [signin.rejected]: (store, { payload }) => {
+      store.loading = false;
+      store.error = payload;
+    },
+
+    // SigninWithToken
+    [signinWithToken.pending]: store => {
+      store.loading = true;
+      store.error = null;
+    },
+
+    [signinWithToken.fulfilled]: (store, { payload }) => accessAuth(store, payload),
+
+    [signinWithToken.rejected]: (store, { payload }) => {
       store.loading = false;
       store.error = payload;
     },
