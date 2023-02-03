@@ -23,6 +23,7 @@ import {
   Container,
   ButtonBin,
   BinIcon,
+  Tbody,
 } from './Table.styled';
 
 import { getTransactions } from 'redux/transactions/trans-selectors';
@@ -70,7 +71,7 @@ const Table = () => {
               </tr>
             </TableHead>
 
-            <tbody>
+            <Tbody>
               {transactions.length > 0 &&
                 [...transactions].map(elem => (
                   <tr key={elem._id} style={{ height: 50 }}>
@@ -99,7 +100,7 @@ const Table = () => {
                     </Operations>
                   </tr>
                 ))}
-            </tbody>
+            </Tbody>
           </TableContainer>
         </Container>
       )}
