@@ -42,10 +42,6 @@ const LoginForm = () => {
     dispatch(signin(values));
   };
 
-  // const handleGoogleClick = () => {
-  //   console.log('hello');
-  // };
-
   const handleModalClose = () => {
     dispatch(clearAuthError());
   };
@@ -103,8 +99,11 @@ const LoginForm = () => {
                   <StyledLink to="/signup" outlined="true">
                     SIGN UP
                   </StyledLink>
-                  {/* <a href='http://localhost:4000/api/users/google' onClick={handleGoogleClick}>
-                    GOOGLE
+                  {/* <a href='https://goit-wallet-back.onrender.com/api/users/google' onClick={handleGoogleClick}>
+                    GOOGLE ONRENDER
+                  </a>
+                  <a href='http://localhost:4000/api/users/google' onClick={handleGoogleClick}>
+                    GOOGLE LOCAL
                   </a> */}
                 </ButtonWrapper>
               </StyledForm>

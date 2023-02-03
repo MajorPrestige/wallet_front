@@ -220,7 +220,7 @@ export const ButtonAdd = styled.button`
   color: #ffffff;
   background: #24cca7;
 
-  &:hover,
+  &:hover:not(:disabled),
   &:focus {
     border: 2px solid transparent;
     transform: scale(1.05);
@@ -229,6 +229,11 @@ export const ButtonAdd = styled.button`
     background-color: #ffffff;
     color: #24cca7;
     border: 1px solid #24cca7;
+  }
+
+
+  &:disabled {
+    filter: grayscale(1);
   }
 `;
 

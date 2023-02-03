@@ -29,7 +29,7 @@ const Header = () => {
   return (
     <HeaderContainer>
       <StyledHeader>
-        <Logo />
+        <Logo header/>
         <HeaderWrapper>
           {isMobile && (
             <>
