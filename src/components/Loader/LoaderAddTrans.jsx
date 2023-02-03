@@ -8,10 +8,6 @@ const LoaderAddTrans = () => {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          // position: 'absolute',
-          // top:'2%',
-          // left: '50%',
-          // transform: 'translateX(-50%)',
         }}
       >
         <ThreeDots

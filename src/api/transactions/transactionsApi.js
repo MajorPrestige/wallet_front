@@ -17,7 +17,6 @@ const postTransactions = async transaction => {
 
 const delTransaction= async id => {
   const { data } = await axios.delete(`/transactions/${id}`);
-  console.log(data);
   return data;
 };
 

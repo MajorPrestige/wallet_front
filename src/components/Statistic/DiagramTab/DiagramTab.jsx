@@ -14,7 +14,6 @@ import {
   Sum,
 } from './DiagramTab.styled';
 
-// import styles from './DiagramTab.styled';
 
 const colors = [
   '#FED057',

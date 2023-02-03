@@ -1,5 +1,3 @@
-// import getCurrencyCources from "api/auth/currency";
-// import { TdLastChild } from './Currency.styled';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { ThreeDots } from 'react-loader-spinner';
