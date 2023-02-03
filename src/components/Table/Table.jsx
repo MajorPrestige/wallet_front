@@ -79,7 +79,7 @@ const Table = () => {
                       {elem.type ? '+' : '-'}
                     </Operations>
                     <Operations>{elem?.category?.name ?? ''}</Operations>
-                    <Operations overflowWrap="break-word">
+                    <Operations overflowWrap="break-word" wordBreak="break-all">
                       {elem.comment}
                     </Operations>
                     <Operations color={elem.type ? '#24cca7' : '#ff6596'}>

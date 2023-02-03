@@ -16,7 +16,6 @@ export const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
   overflow: auto;
-  text-overflow: ellipsis;
 
   @media ${device.tabletOnly} {
     max-height: 50vh;
@@ -107,7 +106,7 @@ export const Operations = styled.th`
   font-weight: 400;
   color: ${props => props.color};
   border-bottom: ${border.homeTabGrey};
-
+  word-break: ${props => props.wordBreak};
   overflow-wrap: ${props => props.overflowWrap};
 `;
 
