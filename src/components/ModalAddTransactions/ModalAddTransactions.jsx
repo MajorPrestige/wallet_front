@@ -32,6 +32,7 @@ import { getAllCategories } from 'api/categories/category';
 import { addTransaction } from 'redux/transactions/trans-operations';
 import { AuthError } from './../Auth/Auth.styled';
 import { getLoadingAddTransaction } from 'redux/transactions/trans-selectors';
+import LoaderAddTrans from './../Loader/LoaderAddTrans';
 
 const ModalAddTransactions = ({ toggleModalCancel }) => {
   const [isSubmit, setIsSubmit] = useState(false);
@@ -47,16 +48,17 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
 
   useEffect(() => {
     getAllCategories().then(data => {
-      setOptions(data.map(it => ({ value: it._id, label: it.name})));
+      setOptions(data.map(it => ({ value: it._id, label: it.name })));
     });
   }, []);
 
   useEffect(() => {
-    if (!isLoadingAdd && !isErrorAdd && isSubmit) {
+    if (isSubmit && !isLoadingAdd &&
+      (isChecked ? true : !isErrorAdd)) {
       toggleModalCancel();
     }
     if (!isLoadingAdd) setIsSubmit(false);
-  }, [isErrorAdd, isLoadingAdd, isSubmit, toggleModalCancel]);
+  }, [isChecked, isErrorAdd, isLoadingAdd, isSubmit, toggleModalCancel]);
 
   useEffect(() => {
     onChangeSelect();
@@ -82,11 +84,15 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
 
   useEffect(() => {
     if (!isChecked && !selectedOption && isTouchedAdd) {
-      // console.log('Please, select a category');
+      console.log('Please, select a category');
     }
   }, [isChecked, isTouchedAdd, selectedOption]);
 
   const onSubmit = values => {
+     if (!isChecked && !selectedOption && isTouchedAdd) {
+       console.log('Please, select a category');
+       return;
+     }
     setIsSubmit(true);
     const data = {
       type: isChecked,
@@ -191,7 +197,7 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
                 />
               </LableComment>
               <ButtonAdd disabled={isLoadingAdd} type="submit">
-                {isLoadingAdd ? 'loading...' : 'add'}
+                {isLoadingAdd ? <LoaderAddTrans /> : 'add'}
               </ButtonAdd>
             </FormAddTrans>
           )}

@@ -14,6 +14,7 @@ import ModalAddTransMobile from './../ModalAddTransMobile/ModalAddTransMobile';
 import ErrorMessage from 'components/ErrorMessage/ErrorMessage';
 import { getTransactionsError } from 'redux/transactions/trans-selectors';
 
+
 const ButtonAddTransactions = () => {
   const [isModal, setIsModal] = useState(false);
   const isMobile = useMediaQuery({ maxWidth: 767 });
