@@ -1,6 +1,7 @@
 import { Formik } from 'formik';
 
-import { FormContainer, StyledForm, StyledField } from './DiagramForm.styled';
+import SelectList from 'components/SelectList/SelectList';
+import { FormContainer, StyledForm } from './DiagramForm.styled';
 
 const monthNames = [
   'January',
@@ -18,9 +19,24 @@ const monthNames = [
 ];
 
 const DiagramForm = ({ setDate, date, months, years }) => {
-  const onChange = ({ target }) => {
+  
+  const optionsMonths = months.map((month, i) => ({
+    value: i + 1,
+    isDisabled: !month,
+    label: monthNames[i],
+  }));
+  const setMonth = e => {
     setDate(prevState => {
-      return { ...prevState, [target.name]: target.value };
+      return { ...prevState, month: e.value };
+    });
+  };
+
+  const optionsYears = years
+    .reverse()
+    .map((year, i) => ({ value: year, label: year }));
+  const setYear = e => {
+    setDate(prevState => {
+      return { ...prevState, year: e.value };
     });
   };
 
@@ -29,20 +45,21 @@ const DiagramForm = ({ setDate, date, months, years }) => {
       <Formik initialValues={{ month: '', year: '' }}>
         {props => (
           <StyledForm>
-            <StyledField name="month" as="select" onChange={onChange} defaultValue={monthNames[date.month]}>
-              {months.map((month, i) => (
-                <option key={i} value={i + 1} disabled={!month}>{monthNames[i]}</option>
-              ))}
-            </StyledField>
-            <StyledField
-              name="year"
-              as="select"
-              onChange={onChange}
-            >
-              {years.reverse().map((year, i) => (
-                <option key={i} value={year}>{year}</option>
-              ))}
-            </StyledField>
+            <SelectList
+              options={optionsMonths}
+              chart
+              defaultValue={{
+                label: monthNames[date.month - 1],
+                value: date.month,
+              }}
+              getCurrent={setMonth}
+            />
+            <SelectList
+              options={optionsYears}
+              chart
+              defaultValue={optionsYears[0]}
+              getCurrent={setYear}
+            />
           </StyledForm>
         )}
       </Formik>
