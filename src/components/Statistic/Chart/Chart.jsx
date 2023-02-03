@@ -30,12 +30,12 @@ const Chart = ({ transactions }) => {
   const expensesTrans = transactions.filter(trans => trans.type === false);
   if (expensesTrans.length !== 0) {
     isExpensTrans = true;
-  };
+  }
 
   const incomeTrans = transactions.filter(trans => trans.type === true);
   if (incomeTrans.length !== 0 && expensesTrans.length === 0) {
     isIncomeTrans = true;
-  };
+  }
 
   const categories = [
     ...new Set(expensesTrans.map(trans => trans.category.name)),
@@ -50,12 +50,12 @@ const Chart = ({ transactions }) => {
   );
 
   const dataIncome = {
-    labels: [""],
+    labels: [''],
     datasets: [
       {
         label: 'Income',
         data: [100],
-        backgroundColor: "#d0d0d0",
+        backgroundColor: '#d0d0d0',
         borderWidth: 0,
         cutout: '85%',
       },
@@ -87,8 +87,7 @@ const Chart = ({ transactions }) => {
             </div>
           </StyledBalance>
         </StyledChart>
-      )
-    }
+      )}
       {isExpensTrans && (
         <StyledChart>
           <Doughnut data={dataExpens} />

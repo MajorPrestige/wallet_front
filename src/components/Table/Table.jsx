@@ -21,14 +21,22 @@ import {
   MobileTdSumPlus,
   MobileTdMinus,
   Container,
+  ButtonBin,
+  BinIcon,
 } from './Table.styled';
 
 import { getTransactions } from 'redux/transactions/trans-selectors';
 import { fetchTransactions } from 'redux/transactions/trans-operations';
 import { formatDate } from './../../helpers/formatDate';
 
+import Modal from 'components/Modal/Modal';
+import { useState } from 'react';
+import ModalLogout from 'components/ModalLogout/ModalLogout';
+
 const Table = () => {
-  const isntMobile = useMediaQuery({ minWidth: 768 });
+  const [id, setId] = useState('');
+
+  const noMobile = useMediaQuery({ minWidth: 768 });
   const dispatch = useDispatch();
   const transactions = useSelector(getTransactions);
 
@@ -36,11 +44,18 @@ const Table = () => {
     dispatch(fetchTransactions());
   }, [dispatch]);
 
+  const [isModal, setIsModal] = useState(false);
+
+  const toggleModal = e => {
+    setIsModal(!isModal);
+    setId(e);
+  };
+
   if (!transactions) return false;
-  // console.log(transactions);
+
   return (
     <>
-      {isntMobile && (
+      {noMobile && (
         <Container>
           <TableContainer>
             <TableHead>
@@ -51,24 +66,37 @@ const Table = () => {
                 <Category>Comment</Category>
                 <Category>Sum</Category>
                 <Category>Balance</Category>
+                <Category>Options</Category>
               </tr>
             </TableHead>
 
             <tbody>
               {transactions.length > 0 &&
                 [...transactions].map(elem => (
-                  <tr key={elem._id}>
+                  <tr key={elem._id} style={{ height: 50 }}>
                     <Operations>{formatDate(elem.date)}</Operations>
                     <Operations color={elem.type ? '#24cca7' : '#ff6596'}>
                       {elem.type ? '+' : '-'}
                     </Operations>
                     <Operations>{elem?.category?.name ?? ''}</Operations>
-                    <Operations>{elem.comment}</Operations>
+                    <Operations overflowWrap="break-word" wordBreak="break-all">
+                      {elem.comment}
+                    </Operations>
                     <Operations color={elem.type ? '#24cca7' : '#ff6596'}>
-                      {elem.sum}
+                      {Number(elem.sum).toFixed(2)}
                     </Operations>
 
-                    <Operations>{elem.balanceAfter}</Operations>
+                    <Operations>
+                      {Number(elem.balanceAfter).toFixed(2)}
+                    </Operations>
+                    <Operations>
+                      <ButtonBin
+                        type="button"
+                        onClick={() => toggleModal(elem._id)}
+                      >
+                        <BinIcon />
+                      </ButtonBin>
+                    </Operations>
                   </tr>
                 ))}
             </tbody>
@@ -76,7 +104,7 @@ const Table = () => {
         </Container>
       )}
 
-      {!isntMobile && transactions.length > 0 && (
+      {!noMobile && transactions.length > 0 && (
         <MobileContainer>
           {transactions.length > 0 &&
             [...transactions].map(elem =>
@@ -95,7 +123,7 @@ const Table = () => {
                     </MobileTrPlus>
                     <MobileTrPlus>
                       <MobileTdTitle>Category</MobileTdTitle>
-                      <MobileTd>{elem.category.name}</MobileTd>
+                      <MobileTd>{elem?.category?.name ?? ''}</MobileTd>
                     </MobileTrPlus>
                     <MobileTrPlus>
                       <MobileTdTitle>Comment</MobileTdTitle>
@@ -103,11 +131,26 @@ const Table = () => {
                     </MobileTrPlus>
                     <MobileTrPlus>
                       <MobileTdTitle>Sum</MobileTdTitle>
-                      <MobileTdSumPlus>{elem.sum}</MobileTdSumPlus>
+                      <MobileTdSumPlus>
+                        {Number(elem.sum).toFixed(2)}
+                      </MobileTdSumPlus>
                     </MobileTrPlus>
                     <MobileTrPlus>
                       <MobileTdTitle>Balance</MobileTdTitle>
-                      <MobileTd>{elem.balanceAfter}</MobileTd>
+                      <MobileTd>
+                        {Number(elem.balanceAfter).toFixed(2)}
+                      </MobileTd>
+                    </MobileTrPlus>
+                    <MobileTrPlus>
+                      <MobileTdTitle>Options</MobileTdTitle>
+                      <MobileTd>
+                        <ButtonBin
+                          type="button"
+                          onClick={() => toggleModal(elem._id)}
+                        >
+                          <BinIcon />
+                        </ButtonBin>
+                      </MobileTd>
                     </MobileTrPlus>
                   </MobileTbody>
                 </PlusTable>
@@ -140,11 +183,27 @@ const Table = () => {
                       <MobileTdTitle>Balance</MobileTdTitle>
                       <MobileTd>{elem.balanceAfter}</MobileTd>
                     </MobileTrMinus>
+                    <MobileTrMinus>
+                      <MobileTdTitle>Options</MobileTdTitle>
+                      <MobileTd>
+                        <ButtonBin
+                          type="button"
+                          onClick={() => toggleModal(elem._id)}
+                        >
+                          <BinIcon />
+                        </ButtonBin>
+                      </MobileTd>
+                    </MobileTrMinus>
                   </MobileTbody>
                 </MinusTable>
               ),
             )}
         </MobileContainer>
+      )}
+      {isModal && (
+        <Modal toggleModal={toggleModal} isSignIn>
+          <ModalLogout toggleModalCancel={toggleModal} isDeleteIn elem={id} />
+        </Modal>
       )}
     </>
   );

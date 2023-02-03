@@ -1,6 +1,7 @@
 import { CustomSelect, ChartSelect } from './SelectList.styled';
 
-const SelectList = ({ options, getCurrent, defaultValue, chart }) => {
+const SelectList = ({ options, getCurrent, defaultValue, chart, onChange, type, ...another }) => {
+
   const handleChange = selectedOption => {
     getCurrent(selectedOption);
   };
@@ -15,9 +16,9 @@ const SelectList = ({ options, getCurrent, defaultValue, chart }) => {
         defaultValue={defaultValue}
       /> : 
       <CustomSelect
+        {...another}
         classNamePrefix={'react-select'}
         onChange={handleChange}
-        defaltValue={options[0]}
         options={options}
         placeholder="Select a category"
       />} 

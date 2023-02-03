@@ -15,7 +15,7 @@ export const Overlay = styled.div`
   background-color: rgba(43, 43, 43, 0);
   z-index: 1200;
   pointer-events: none;
-   @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     background-color: rgba(43, 43, 43, 0.3);
     pointer-events: auto;
   }

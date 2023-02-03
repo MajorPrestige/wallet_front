@@ -1,14 +1,12 @@
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import 'react-datetime/css/react-datetime.css';
-// import moment from 'moment';
+import moment from 'moment';
 import { Formik } from 'formik';
-
 import * as yup from 'yup';
 
 import calendar from '../../images/svgs/calendar.svg';
 import SelectList from 'components/SelectList/SelectList';
-
 import {
   Conteiner,
   Title,
@@ -32,12 +30,19 @@ import {
 } from './../ModalAddTransactions/ModalAddTransaction.styled';
 import { getAllCategories } from 'api/categories/category';
 import { addTransaction } from 'redux/transactions/trans-operations';
+import { AuthError } from './../Auth/Auth.styled';
+import { getLoadingAddTransaction } from 'redux/transactions/trans-selectors';
 
 const ModalAddTransactions = ({ toggleModalCancel }) => {
+  const [isSubmit, setIsSubmit] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
+  const [isTouchedAdd, setIsTouchedAdd] = useState(false);
+  const [isErrorAdd, setIsErrorAdd] = useState(true);
   const [selectedOption, setSelectedOption] = useState(null);
   const [options, setOptions] = useState([]);
   const [date, setDate] = useState(new Date());
+  const isLoadingAdd = useSelector(getLoadingAddTransaction);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -46,34 +51,52 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
     });
   }, []);
 
+  useEffect(() => {
+    if (!isLoadingAdd && !isErrorAdd && isSubmit) {
+      toggleModalCancel();
+    }
+    if (!isLoadingAdd) setIsSubmit(false);
+  }, [isErrorAdd, isLoadingAdd, isSubmit, toggleModalCancel]);
+
+  useEffect(() => {
+    onChangeSelect();
+  }, []);
+
+  const onChangeSelect = selectedOptions => {
+    setSelectedOption(selectedOptions);
+    setIsErrorAdd(!selectedOptions);
+  };
+
   const handleChecked = () => {
     setIsChecked(!isChecked);
   };
 
-  // let yesterday = moment().subtract(1, 'day');
-
-  // function valid(current) {
-  //   return current.isAfter(yesterday);
-  // }
+  let yesterday = moment().subtract(0, 'day');
+  function valid(current) {
+    return current.isBefore(yesterday);
+  }
 
   const validationSchema = yup.object().shape({
-    // category: yup.string(),
-    // comment: yup.string(),
-    sum: yup.number().required(),
+    sum: yup.number().positive().required(),
   });
 
+  useEffect(() => {
+    if (!isChecked && !selectedOption && isTouchedAdd) {
+      // console.log('Please, select a category');
+    }
+  }, [isChecked, isTouchedAdd, selectedOption]);
+
   const onSubmit = values => {
+    setIsSubmit(true);
     const data = {
       type: isChecked,
       date: date.toISOString().slice(0, 10),
       sum: values.sum,
       comment: values.comment || '',
     };
-
     if (!isChecked) {
       data.category = selectedOption.value;
     }
-    console.log(data);
     dispatch(addTransaction(data));
   };
 
@@ -111,10 +134,7 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
 
         <Formik
           initialValues={{
-            // category: '',
             sum: '',
-            comment: '',
-            // date: '',
           }}
           validationSchema={validationSchema}
           onSubmit={onSubmit}
@@ -124,20 +144,25 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
               {!isChecked && (
                 <LableSelect>
                   <SelectList
+                    onBlur={() => setIsTouchedAdd(true)}
+                    required
                     options={options}
-                    getCurrent={setSelectedOption}
+                    getCurrent={onChangeSelect}
                   />
                 </LableSelect>
               )}
               <Lable>
                 <Inpput
-                  type="text"
+                  type="number"
+                  step="0.01"
                   placeholder="0.00"
                   name="sum"
                   value={values.name}
                   onChange={handleChange}
                 />
-                {touched.sum && errors.sum && <p>помилка</p>}
+                {touched.sum && errors.sum && (
+                  <AuthError>Please, enter your sum</AuthError>
+                )}
               </Lable>
               <CalendarDatetime
                 name="date"
@@ -151,7 +176,7 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
                 }}
                 timeFormat={false}
                 initialValue={date}
-                // isValidDate={valid}
+                isValidDate={valid}
                 value={date}
                 onChange={setDate}
                 closeOnSelect={true}
@@ -164,10 +189,10 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
                   value={values.name}
                   onChange={handleChange}
                 />
-
-                {/* {touched.comment && errors.comment && <p>{errors.comment}</p>} */}
               </LableComment>
-              <ButtonAdd type="submit">add</ButtonAdd>
+              <ButtonAdd disabled={isLoadingAdd} type="submit">
+                {isLoadingAdd ? 'loading...' : 'add'}
+              </ButtonAdd>
             </FormAddTrans>
           )}
         </Formik>

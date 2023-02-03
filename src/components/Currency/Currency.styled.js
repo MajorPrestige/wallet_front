@@ -5,6 +5,7 @@ import background from "images/svgs/currency-bg.svg";
 export const Container = styled.div`
   height: 174px;
   position: relative;
+  width: 280px;
 
   color: #ffffff;
   border-radius: 30px;

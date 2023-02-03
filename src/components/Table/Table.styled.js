@@ -1,6 +1,13 @@
 import styled from 'styled-components';
 import { device } from 'styles/Media.variables';
-import { backgroundColor, border, colorText } from './../../styles/Variables';
+import {
+  backgroundColor,
+  border,
+  colorText,
+  shadows,
+} from './../../styles/Variables';
+
+import { ReactComponent as Bin } from 'images/svgs/bin.svg';
 
 export const Container = styled.div`
   width: 100%;
@@ -18,11 +25,12 @@ export const Container = styled.div`
   }
   &::-webkit-scrollbar-track {
     background-color: aliceblue;
+
     border-radius: 10px;
   }
   &&::-webkit-scrollbar-thumb {
     background-color: ${backgroundColor.scrollbarThumb}; /* цвет бегунка */
-    border-radius: 10px; /* округлось бегунка */
+    border-radius: 10px; /* колір бегунка */
     border: ${border.scrollbarThumb}; /* отступ вокруг бегунка */
   }
 `;
@@ -32,8 +40,9 @@ export const TableContainer = styled.table`
   margin-left: auto;
   margin-right: auto;
   align-items: center;
-  table-layout: fixed;
+
   border-collapse: separate;
+  box-shadow: ${shadows.tableHomeShadows};
   @media ${device.tabletOnly} {
     max-height: 305px;
     margin-top: 0px;
@@ -71,6 +80,26 @@ export const Category = styled.th`
   }
 `;
 
+export const ButtonBin = styled.button`
+  border: none;
+  background: inherit;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+
+  &:hover svg,
+  &:focus svg {
+    filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
+    fill: #4a56e2;
+  }
+`;
+
+export const BinIcon = styled(Bin)`
+  width: 24px;
+  height: 24px;
+  fill: #6e78e8;
+`;
+
 export const Operations = styled.th`
   vertical-align: middle;
   padding: 15px;
@@ -78,6 +107,8 @@ export const Operations = styled.th`
   font-weight: 400;
   color: ${props => props.color};
   border-bottom: ${border.homeTabGrey};
+  word-break: ${props => props.wordBreak};
+  overflow-wrap: ${props => props.overflowWrap};
 `;
 
 // ----------------------------------------------------
@@ -103,6 +134,7 @@ export const MinusTable = styled.table`
   width: 100%;
   border-radius: 30px;
   margin-bottom: 10px;
+  word-break: break-all;
 `;
 
 export const MobileTbody = styled.tbody``;
@@ -131,7 +163,7 @@ export const MobileTrMinus = styled.tr`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 50px;
+  min-height: 50px;
   padding: 10px 20px;
   background-color: white;
 
@@ -151,14 +183,19 @@ export const MobileTdTitle = styled.td`
   font-weight: 700;
   font-size: 18px;
   line-height: calc(27 / 18);
+  word-break: normal;
+
+  padding-right: 10px;
 `;
 
 export const MobileTd = styled.td`
   display: flex;
+  justify-content: flex-end;
   font-weight: 400;
   font-size: 16px;
   line-height: calc(24 / 16);
   color: ${props => props.color};
+  overflow: hidden;
 `;
 
 export const MobileTdSumPlus = styled.td`

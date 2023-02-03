@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { addTransaction, deleteTransaction } from 'redux/transactions/trans-operations';
 import { signin, signout, signup, current } from './auth-operations';
 
 const initialState = {
@@ -89,6 +90,17 @@ const auth = createSlice({
       store.loading = false;
       store.error = payload;
     },
+    [deleteTransaction.fulfilled]: (store, { payload }) => {
+      store.user = payload.data;     
+      store.loading = false;
+      store.error = null;
+    },
+    [addTransaction.fulfilled]: (store, { payload }) => {
+      store.user = payload.data;
+      store.loading = false;
+      store.error = null;
+    },
+   
   },
 });
 
