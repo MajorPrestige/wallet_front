@@ -34,11 +34,11 @@ const Statistic = () => {
     <StatisticContainer>
       <div>
         <Title>Statistics</Title>
-        <Chart transactions={transactions} />
+        <Chart transactions={transactions || []} />
       </div>
       <TableContainer>
         <DiagramForm setDate={setDate} date={date} years={years} months={months || []}/>
-        <DiagramTab transactions={transactions} />
+        <DiagramTab transactions={transactions || []} />
       </TableContainer>
     </StatisticContainer>
   );
