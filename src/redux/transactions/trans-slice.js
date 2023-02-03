@@ -97,8 +97,8 @@ const transactions = createSlice({
       store.loading = true;
     },
     [deleteTransaction.fulfilled]: (store, { payload }) => {
-      store.transactions = payload;
-      console.log(payload);
+      store.transactions = payload.transactions;
+      
       store.loading = false;
       store.error = null;
     },
