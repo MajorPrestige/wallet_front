@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import 'react-datetime/css/react-datetime.css';
 // import moment from 'moment';
 import { Formik } from 'formik';
+
 import * as yup from 'yup';
 
 import calendar from '../../images/svgs/calendar.svg';
@@ -30,14 +31,14 @@ import {
   LableSelect,
 } from './../ModalAddTransactions/ModalAddTransaction.styled';
 import { getAllCategories } from 'api/categories/category';
+import { addTransaction } from 'redux/transactions/trans-operations';
 
 const ModalAddTransactions = ({ toggleModalCancel }) => {
   const [isChecked, setIsChecked] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
   const [options, setOptions] = useState([]);
-
   const [date, setDate] = useState(new Date());
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     getAllCategories().then(data => {
@@ -62,18 +63,18 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
   });
 
   const onSubmit = values => {
-    // dispatch();
-
     const data = {
       type: isChecked,
       date: date.toISOString().slice(0, 10),
       sum: values.sum,
-      comment: values.comment,
+      comment: values.comment || '',
     };
 
     if (!isChecked) {
       data.category = selectedOption.value;
     }
+    console.log(data);
+    dispatch(addTransaction(data));
   };
 
   return (
@@ -162,7 +163,9 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
                   placeholder="Comment"
                   value={values.name}
                   onChange={handleChange}
-                ></InpputComment>
+                />
+
+                {/* {touched.comment && errors.comment && <p>{errors.comment}</p>} */}
               </LableComment>
               <ButtonAdd type="submit">add</ButtonAdd>
             </FormAddTrans>

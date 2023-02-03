@@ -2,11 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import {
   fetchTransactions,
-  addTransaction, fetchPaginationTransactions, fetchStatistic,
+  addTransaction, fetchPaginationTransactions, fetchStatistic, deleteTransaction,
 } from './trans-operations';
 
 const initialState = {
-  statistic: [],
+  statistic: {transactions: [], dateArr: {}},
   transactions: [],
   isLogin: false,
   loading: false,
@@ -33,7 +33,8 @@ const transactions = createSlice({
       store.firstLoading = false;
       store.loading = false;
       store.isLogin = true;
-      store.statistic = payload;
+      const statistic = {transactions: payload.transactions, dateArr: payload.dateArr};
+      store.statistic = statistic;
     },
     [fetchStatistic.rejected]: (store, { payload }) => {
       store.firstLoading = false;
@@ -49,6 +50,7 @@ const transactions = createSlice({
       store.transactions = payload;
       store.loading = false;
       store.error = null;
+      store.allTransactions = payload;
     },
     [fetchTransactions.rejected]: (store, { payload }) => {
       store.error = payload;
@@ -73,10 +75,7 @@ const transactions = createSlice({
       store.loading = true;
     },
     [addTransaction.fulfilled]: (store, { payload }) => {
-      store.statistic.transactions = [
-        ...store.statistic.transactions,
-        payload.transaction,
-      ];
+      store.transactions = payload.transactions;
       store.loading = false;
       store.error = null;
     },
@@ -84,7 +83,23 @@ const transactions = createSlice({
       store.error = payload;
       store.loading = false;
     },
+    [deleteTransaction.pending]: store => {
+      store.loading = true;
+    },
+    [deleteTransaction.fulfilled]:(store, {payload}) => {
+      store.transactions = payload;
+      console.log(payload);
+      store.loading = false;
+      store.error = null;
+      
+    },
+    [deleteTransaction.rejected]: (store, { payload }) => {
+      store.error = payload;
+      store.loading = false;
+    },
   },
 });
 
 export default transactions.reducer;
+
+

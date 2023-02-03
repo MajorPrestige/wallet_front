@@ -69,7 +69,7 @@ export const Title = styled.h1`
 
 export const Container = styled.div`
   margin: 0 auto;
-  position: relative;
+  position: relative;  
 
   @media ${device.mobileOnly} {
     padding-left: 20px;
@@ -79,9 +79,10 @@ export const Container = styled.div`
   @media ${device.mobile} {
     padding-left: 32px;
     padding-right: 32px;
+    min-height: 100%;
   }
 
-  @media ${device.desktop} {
+  @media ${device.desktop} {    
     max-width: 1280px;
     padding-left: 16px;
     padding-right: 16px;

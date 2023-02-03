@@ -12,9 +12,9 @@ const NotFoundPage = () => {
       <div className={s.shadow}></div>
 
       <ErrorMessageText>
-        Ah, the dreaded <b>404</b>. Let's get you back on track
-      </ErrorMessageText>
-
+      Ooops, <b>404</b> Page Not Found. Let's get you back on track. 
+      </ErrorMessageText>      
+      
       <ButtonWrapper>
         <StyledLink primary="true" to={`/`}>
           HOME PAGE

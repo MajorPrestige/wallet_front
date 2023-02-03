@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 import { device } from 'styles/Media.variables';
+import { backgroundColor, border, colorText } from './../../styles/Variables';
+
+
+import { ReactComponent as Bin } from "images/svgs/bin.svg";
 
 export const Container = styled.div`
   width: 100%;
@@ -20,9 +24,9 @@ export const Container = styled.div`
     border-radius: 10px;
   }
   &&::-webkit-scrollbar-thumb {
-    background-color: #c0c5f5; /* цвет бегунка */
+    background-color: ${backgroundColor.scrollbarThumb}; /* цвет бегунка */
     border-radius: 10px; /* округлось бегунка */
-    border: 3px solid #c0c5f5; /* отступ вокруг бегунка */
+    border: ${border.scrollbarThumb}; /* отступ вокруг бегунка */
   }
 `;
 
@@ -70,13 +74,33 @@ export const Category = styled.th`
   }
 `;
 
+export const ButtonBin = styled.button`
+  border: none;
+  background: inherit;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+
+  &:hover svg,
+  &:focus svg {
+    filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
+    fill: #4a56e2;
+  }
+`;
+
+export const BinIcon = styled(Bin)`
+  width: 24px;
+  height: 24px;
+  fill: #6e78e8;
+`;
+
 export const Operations = styled.th`
   vertical-align: middle;
   padding: 15px;
   font-size: 16px;
   font-weight: 400;
   color: ${props => props.color};
-  border-bottom: 1px solid #dcdcdf;
+  border-bottom: ${border.homeTabGrey};
 `;
 
 // ----------------------------------------------------
@@ -122,8 +146,8 @@ export const MobileTrPlus = styled.tr`
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
   }
-  box-shadow: inset 4px 0px 0px #24cca7;
-  border: 1px solid #dcdcdf;
+  box-shadow: inset 4px 0px 0px ${colorText.green};
+  border: ${border.homeTabGrey};
 `;
 
 export const MobileTrMinus = styled.tr`
@@ -142,8 +166,8 @@ export const MobileTrMinus = styled.tr`
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
   }
-  box-shadow: inset 4px 0px 0px 0px #ff6596;
-  border: 1px solid #dcdcdf;
+  box-shadow: inset 4px 0px 0px 0px ${colorText.red};
+  border: ${border.homeTabGrey};
 `;
 
 export const MobileTdTitle = styled.td`
@@ -157,12 +181,12 @@ export const MobileTd = styled.td`
   font-weight: 400;
   font-size: 16px;
   line-height: calc(24 / 16);
-  color: ${props => props.color};
+  color: ${(props) => props.color};
 `;
 
 export const MobileTdSumPlus = styled.td`
-  color: #24cca7;
+  color: ${colorText.green};
 `;
 export const MobileTdMinus = styled.td`
-  color: #ff6596;
+  color: ${colorText.red};
 `;

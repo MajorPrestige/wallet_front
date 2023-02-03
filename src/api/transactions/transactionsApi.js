@@ -11,7 +11,13 @@ const getPaginationTransactions = async () => {
 };
 
 const postTransactions = async transaction => {
-  const { data } = await axios.post('/transactions', { transaction });
+  const { data } = await axios.post('/transactions',  transaction );
+  return data.result;
+};
+
+const delTransaction= async id => {
+  const { data } = await axios.delete(`/transactions/${id}`);
+  console.log(data);
   return data;
 };
 
@@ -19,4 +25,5 @@ export const transactionsAPI = {
   getTransactions,
   getPaginationTransactions,
   postTransactions,
+  delTransaction,
 };

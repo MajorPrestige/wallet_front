@@ -47,12 +47,34 @@ export const addTransaction = createAsyncThunk(
   'transaction',
   async (transaction, { rejectWithValue }) => {
     try {
-      const { data } = await transactionsAPI.postTransactions(transaction);
+      const addedTransaction = await transactionsAPI.postTransactions(
+        transaction,
+      );
+      const transactions = await transactionsAPI.getTransactions();
 
-      return data;
+      return {
+        addedTransaction,
+        transactions,
+      };
     } catch (error) {
       const { data, status } = error.response;
       return rejectWithValue({ data, status });
+    }
+  },
+);
+
+
+export const deleteTransaction = createAsyncThunk(
+  'transactions/delete',
+  async(id, {rejectWithValue}) => {
+    console.log(id);
+    try {
+       await transactionsAPI.delTransaction(id);
+      const transactions = await transactionsAPI.getTransactions();
+      console.log(transactions);
+      return transactions;
+    } catch (error) {
+      return rejectWithValue(error.message);
     }
   },
 );

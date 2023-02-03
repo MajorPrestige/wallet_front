@@ -21,13 +21,21 @@ import {
   MobileTdSumPlus,
   MobileTdMinus,
   Container,
+  ButtonBin,
+  BinIcon,
 } from './Table.styled';
 
 import { getTransactions } from 'redux/transactions/trans-selectors';
 import { fetchTransactions } from 'redux/transactions/trans-operations';
 import { formatDate } from './../../helpers/formatDate';
 
+import Modal from 'components/Modal/Modal';
+import { useState } from 'react';
+import ModalLogout from 'components/ModalLogout/ModalLogout';
+
 const Table = () => {
+  const [id, setId] = useState('');
+
   const isntMobile = useMediaQuery({ minWidth: 768 });
   const dispatch = useDispatch();
   const transactions = useSelector(getTransactions);
@@ -35,6 +43,13 @@ const Table = () => {
   useEffect(() => {
     dispatch(fetchTransactions());
   }, [dispatch]);
+
+  const [isModal, setIsModal] = useState(false);
+
+  const toggleModal = e => {
+    setIsModal(!isModal);
+    setId(e);
+  };
 
   if (!transactions) return false;
   // console.log(transactions);
@@ -51,6 +66,7 @@ const Table = () => {
                 <Category>Comment</Category>
                 <Category>Sum</Category>
                 <Category>Balance</Category>
+                <Category>Options</Category>
               </tr>
             </TableHead>
 
@@ -62,13 +78,21 @@ const Table = () => {
                     <Operations color={elem.type ? '#24cca7' : '#ff6596'}>
                       {elem.type ? '+' : '-'}
                     </Operations>
-                    <Operations>{elem.category.name}</Operations>
+                    <Operations>{elem?.category?.name ?? ''}</Operations>
                     <Operations>{elem.comment}</Operations>
                     <Operations color={elem.type ? '#24cca7' : '#ff6596'}>
                       {elem.sum}
                     </Operations>
 
                     <Operations>{elem.balanceAfter}</Operations>
+                    <Operations>
+                      <ButtonBin
+                        type="button"
+                        onClick={() => toggleModal(elem._id)}
+                      >
+                        <BinIcon />
+                      </ButtonBin>
+                    </Operations>
                   </tr>
                 ))}
             </tbody>
@@ -95,7 +119,7 @@ const Table = () => {
                     </MobileTrPlus>
                     <MobileTrPlus>
                       <MobileTdTitle>Category</MobileTdTitle>
-                      <MobileTd>{elem.category.name}</MobileTd>
+                      <MobileTd>{elem?.category?.name ?? ''}</MobileTd>
                     </MobileTrPlus>
                     <MobileTrPlus>
                       <MobileTdTitle>Comment</MobileTdTitle>
@@ -108,6 +132,17 @@ const Table = () => {
                     <MobileTrPlus>
                       <MobileTdTitle>Balance</MobileTdTitle>
                       <MobileTd>{elem.balanceAfter}</MobileTd>
+                    </MobileTrPlus>
+                    <MobileTrPlus>
+                      <MobileTdTitle>Options</MobileTdTitle>
+                      <MobileTd>
+                        <ButtonBin
+                          type="button"
+                          onClick={() => toggleModal(elem._id)}
+                        >
+                          <BinIcon />
+                        </ButtonBin>
+                      </MobileTd>
                     </MobileTrPlus>
                   </MobileTbody>
                 </PlusTable>
@@ -140,11 +175,27 @@ const Table = () => {
                       <MobileTdTitle>Balance</MobileTdTitle>
                       <MobileTd>{elem.balanceAfter}</MobileTd>
                     </MobileTrMinus>
+                    <MobileTrMinus>
+                      <MobileTdTitle>Options</MobileTdTitle>
+                      <MobileTd>
+                        <ButtonBin
+                          type="button"
+                          onClick={() => toggleModal(elem._id)}
+                        >
+                          <BinIcon />
+                        </ButtonBin>
+                      </MobileTd>
+                    </MobileTrMinus>
                   </MobileTbody>
                 </MinusTable>
               ),
             )}
         </MobileContainer>
+      )}
+      {isModal && (
+        <Modal toggleModal={toggleModal} isSignIn>
+          <ModalLogout toggleModalCancel={toggleModal} isDeleteIn elem={id} />
+        </Modal>
       )}
     </>
   );
