@@ -67,6 +67,7 @@ export const Title = styled.h1`
   font-family: 'Poppins';
   font-weight: 400;
   font-size: 30px;
+  color: ${(props) => props.theme.title}
 `;
 
 export const Container = styled.div`
@@ -91,3 +92,4 @@ export const Container = styled.div`
     display: flex;
   }
 `;
+
