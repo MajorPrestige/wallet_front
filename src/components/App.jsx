@@ -8,6 +8,7 @@ import PrivateRoutes from "./Routes/PrivateRoutes";
 import PublicRoutes from "./Routes/PublicRoutes";
 
 import Loader from "components/Loader/Loader";
+import { fetchCategories } from '../redux/categories/categories-operations.js';
 
 const LoginPage = lazy(() => import("pages/AuthPage/LoginPage/LoginPage"));
 const RegistrationPage = lazy(() =>
@@ -23,6 +24,7 @@ export const App = () => {
 
   useEffect(() => {
     dispatch(current());
+    dispatch(fetchCategories());
   }, [dispatch]);
 
   return (

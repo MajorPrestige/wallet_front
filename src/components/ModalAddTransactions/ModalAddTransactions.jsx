@@ -28,31 +28,24 @@ import {
   CalendarDatetime,
   LableSelect,
 } from './../ModalAddTransactions/ModalAddTransaction.styled';
-import { getAllCategories } from 'api/categories/category';
 import { addTransaction } from 'redux/transactions/trans-operations';
 import { AuthError } from './../Auth/Auth.styled';
 import { getLoadingAddTransaction } from 'redux/transactions/trans-selectors';
 import LoaderAddTrans from './../Loader/LoaderAddTrans';
+import { categorySelectSelector } from '../../redux/categories/categories-selectors.js';
 
 const ModalAddTransactions = ({ toggleModalCancel }) => {
   const [isSubmit, setIsSubmit] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
-  const [options, setOptions] = useState([]);
   const [date, setDate] = useState(new Date());
   const isLoadingAdd = useSelector(getLoadingAddTransaction);
+  const options = useSelector(categorySelectSelector);
 
   const dispatch = useDispatch();
 
   const defaultValue = (options, value) => {
     return options ? options.find(option => option.value === value) || '' : '';
   };
-
-
-  useEffect(() => {
-    getAllCategories().then(data => {
-      setOptions(data.map(it => ({ value: it._id, label: it.name })));
-    });
-  }, []);
 
   useEffect(() => {
     if (isSubmit && !isLoadingAdd) {
