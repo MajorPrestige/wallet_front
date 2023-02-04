@@ -37,14 +37,16 @@ import LoaderAddTrans from './../Loader/LoaderAddTrans';
 const ModalAddTransactions = ({ toggleModalCancel }) => {
   const [isSubmit, setIsSubmit] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
-  const [isTouchedAdd, setIsTouchedAdd] = useState(false);
-  const [isErrorAdd, setIsErrorAdd] = useState(true);
-  const [selectedOption, setSelectedOption] = useState(null);
   const [options, setOptions] = useState([]);
   const [date, setDate] = useState(new Date());
   const isLoadingAdd = useSelector(getLoadingAddTransaction);
 
   const dispatch = useDispatch();
+
+  const defaultValue = (options, value) => {
+    return options ? options.find(option => option.value === value) || '' : '';
+  };
+
 
   useEffect(() => {
     getAllCategories().then(data => {
@@ -53,20 +55,14 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
   }, []);
 
   useEffect(() => {
-    if (isSubmit && !isLoadingAdd &&
-      (isChecked ? true : !isErrorAdd)) {
+    if (isSubmit && !isLoadingAdd) {
       toggleModalCancel();
     }
     if (!isLoadingAdd) setIsSubmit(false);
-  }, [isChecked, isErrorAdd, isLoadingAdd, isSubmit, toggleModalCancel]);
+  }, [isChecked, isLoadingAdd, isSubmit, toggleModalCancel]);
 
-  useEffect(() => {
-    onChangeSelect();
-  }, []);
-
-  const onChangeSelect = selectedOptions => {
-    setSelectedOption(selectedOptions);
-    setIsErrorAdd(!selectedOptions);
+  const getOnChangeSelect = setFieldValue => {
+    return value => setFieldValue('select', value.value);
   };
 
   const handleChecked = () => {
@@ -80,19 +76,10 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
 
   const validationSchema = yup.object().shape({
     sum: yup.number().positive().required(),
+    select: yup.string().required(),
   });
 
-  useEffect(() => {
-    if (!isChecked && !selectedOption && isTouchedAdd) {
-      console.log('Please, select a category');
-    }
-  }, [isChecked, isTouchedAdd, selectedOption]);
-
   const onSubmit = values => {
-     if (!isChecked && !selectedOption && isTouchedAdd) {
-       console.log('Please, select a category');
-       return;
-     }
     setIsSubmit(true);
     const data = {
       type: isChecked,
@@ -101,7 +88,7 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
       comment: values.comment || '',
     };
     if (!isChecked) {
-      data.category = selectedOption.value;
+      data.category = values.select;
     }
     dispatch(addTransaction(data));
   };
@@ -141,20 +128,24 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
         <Formik
           initialValues={{
             sum: '',
+            select: '',
           }}
           validationSchema={validationSchema}
           onSubmit={onSubmit}
         >
-          {({ values, errors, touched, handleChange, handleSubmit }) => (
+          {({ values, errors, touched, handleChange, handleSubmit, setFieldValue }) => (
             <FormAddTrans onSubmit={handleSubmit}>
               {!isChecked && (
                 <LableSelect>
                   <SelectList
-                    onBlur={() => setIsTouchedAdd(true)}
-                    required
+                    name='select'
+                    value={defaultValue(options, values.select)}
+                    onChange={getOnChangeSelect(setFieldValue)}
                     options={options}
-                    getCurrent={onChangeSelect}
                   />
+                  {touched.select && errors.select && (
+                    <AuthError>{errors.select}</AuthError>
+                  )}
                 </LableSelect>
               )}
               <Lable>
@@ -167,7 +158,7 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
                   onChange={handleChange}
                 />
                 {touched.sum && errors.sum && (
-                  <AuthError>Please, enter your sum</AuthError>
+                  <AuthError>{errors.sum}</AuthError>
                 )}
               </Lable>
               <CalendarDatetime

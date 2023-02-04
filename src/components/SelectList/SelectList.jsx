@@ -8,20 +8,20 @@ const SelectList = ({ options, getCurrent, defaultValue, chart, onChange, type, 
 
   return (
     <>
-      {chart ? 
-      <ChartSelect 
-        classNamePrefix={'react-select'} 
-        options={options} 
-        onChange={handleChange} 
+      {chart ?
+      <ChartSelect
+        classNamePrefix={'react-select'}
+        options={options}
+        onChange={handleChange}
         defaultValue={defaultValue}
-      /> : 
+      /> :
       <CustomSelect
         {...another}
         classNamePrefix={'react-select'}
-        onChange={handleChange}
+        onChange={onChange}
         options={options}
         placeholder="Select a category"
-      />} 
+      />}
     </>
   );
 };
