@@ -1,5 +1,5 @@
 import { lazy, Suspense, useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 
 import { ThemeProvider } from 'styled-components';
@@ -18,6 +18,7 @@ import PrivateRoutes from './Routes/PrivateRoutes';
 import PublicRoutes from './Routes/PublicRoutes';
 import Loader from 'components/Loader/Loader';
 import { fetchCategories } from '../redux/categories/categories-operations.js';
+import { getIsLogin } from 'redux/auth/auth-selectors';
 
 const LoginPage = lazy(() => import('pages/AuthPage/LoginPage/LoginPage'));
 const RegistrationPage = lazy(() =>
@@ -35,6 +36,7 @@ const NotFoundPage = lazy(() => import('pages/NotFoundPage/NotFoundPage'));
 export const App = () => {
   const [theme, setTheme] = useState('light');
   const [isChecked, setIsChecked] = useState(true);
+  const isLogin = useSelector(getIsLogin);
 
   const dispatch = useDispatch();
 
@@ -47,8 +49,13 @@ export const App = () => {
 
   useEffect(() => {
     dispatch(current());
-    dispatch(fetchCategories());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (isLogin) {
+      dispatch(fetchCategories());
+    }
+  }, [dispatch, isLogin]);
 
   return (
     <ThemeProvider theme={isDarkTheme ? dark : light}>

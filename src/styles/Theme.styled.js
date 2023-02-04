@@ -1,5 +1,6 @@
 import Switch from 'react-switch';
 import styled from 'styled-components';
+import { device } from 'styles/Media.variables';
 
 import { ReactComponent as Light } from 'images/svgs/light.svg';
 import { ReactComponent as Dark } from 'images/svgs/dark.svg';
@@ -15,10 +16,14 @@ export const dark = {
 export const ThemeSwitcher = styled(Switch)`
   border: 1px solid #e0e0e0;
   border-radius: 30px !important;
-  position: absolute !important;
+  position: fixed !important;
   bottom: 5% !important;
   left: 5% !important;
   z-index: 1000 !important;
+
+  @media ${device.desktop} {    
+    left: calc(50vw - 620px) !important;
+  }
 `;
 
 export const StyledLightIcon = styled(Light)`
