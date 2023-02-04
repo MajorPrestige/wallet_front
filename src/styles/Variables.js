@@ -34,29 +34,32 @@ export const buttonColor = {
   blueActive: '#4A56E2',
 };
 
-export const statisticColor = {
-  main: '#FED057',
-  products: '#FFD8D0',
-  car: '#FD9498',
-  self: '#C5BAFF',
-  child: '#6E78E8',
-  household: '#4A56E2',
-  education: '#81E1FF',
-  leisure: '#24CCA7',
-  other: '#00AD84',
-};
+export const diargamColors = [
+   '#FED057',
+   '#FFD8D0',
+   '#FD9498',
+   '#C5BAFF',
+   '#6E78E8',
+   '#4A56E2',
+   '#81E1FF',
+   '#24CCA7',
+   '#00AD84',
+];
 
-// export const statisticColor =[
-//    '#FED057',
-//    '#FFD8D0',
-//    '#FD9498',
-//    '#C5BAFF',
-//    '#6E78E8',
-//    '#4A56E2',
-//    '#81E1FF',
-//    '#24CCA7',
-//    '#00AD84',
-// ;]
+export const monthNames = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
 
 export const border = {
   blue: '1px solid #4a56e2',

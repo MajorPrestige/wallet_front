@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { device } from 'styles/Media.variables';
+import { colorText, border, shadows } from '../../../styles/Variables';
 
 export const TableContainer = styled.table`
   min-width: 280px;
@@ -15,16 +16,13 @@ export const TableContainer = styled.table`
   }
 `;
 
-export const TableHead = styled.thead`
-`;
-
 export const Category = styled.th`
   padding-top: 16px;
   padding-bottom: 15px;
   padding-right: 20px;
   padding-left: 20px;
 
-  background-color: #ffffff;
+  background-color: ${colorText.white};
 
   font-weight: 700;
   font-size: 18px;
@@ -43,12 +41,9 @@ export const Category = styled.th`
   }
 `;
 
-export const TableBody = styled.tbody`
-`;
-
 export const TableRow = styled.tr`
-  border-bottom: 1px solid #DCDCDF;
-  box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);  
+  border-bottom: ${border.homeTabGrey};
+  box-shadow: ${shadows.diagramTabShadow};  
 `;
 
 export const OperationCat = styled.td`
@@ -107,13 +102,10 @@ export const Totals = styled.p`
 
 export const Expense = styled.span`
   text-align: right;
-  color: #FF6596;
+  color: ${colorText.red};
 `;
 
 export const Income = styled.span`
   text-align: right;
-  color: #24CCA7;  
-`;
-
-export const Sum = styled.div`
+  color: ${colorText.green};  
 `;
