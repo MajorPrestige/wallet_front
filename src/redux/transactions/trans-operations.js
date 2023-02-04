@@ -1,9 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { axiosCurrent } from 'api/auth/auth';
+// import { axiosCurrent } from 'api/auth/auth';
 
 import { axiosStatistic } from 'api/transactions/statistic';
 
 import { transactionsAPI } from 'api/transactions/transactionsApi';
+// import { getTransactions } from './trans-selectors.js';
+import { current } from '../auth/auth-operations.js';
 
 export const fetchStatistic = createAsyncThunk(
   'transactions/statistic',
@@ -46,19 +48,16 @@ export const fetchPaginationTransactions = createAsyncThunk(
 
 export const addTransaction = createAsyncThunk(
   'transaction',
-  async (transaction, { rejectWithValue, getState }) => {
+  async (transaction, { rejectWithValue, dispatch }) => {
     try {
       const addedTransaction = await transactionsAPI.postTransactions(
         transaction,
       );
-      const transactions = await transactionsAPI.getTransactions();
-      const { auth } = getState();
-      const data = await axiosCurrent(auth.token);
+      dispatch(fetchTransactions());
+      dispatch(current());
 
       return {
         addedTransaction,
-        transactions,
-        data,
       };
     } catch (error) {
       const { data, status } = error.response;
@@ -70,14 +69,16 @@ export const addTransaction = createAsyncThunk(
 
 export const deleteTransaction = createAsyncThunk(
   'transactions/delete',
-  async(id, {rejectWithValue, getState}) => {
+  async(id, {rejectWithValue, getState, dispatch}) => {
     try {
-       await transactionsAPI.delTransaction(id);
-      const transactions = await transactionsAPI.getTransactions();
-      const { auth } = getState();
-      const data = await axiosCurrent(auth.token);
- 
-      return {transactions, data};
+      await transactionsAPI.delTransaction(id);
+      dispatch(fetchTransactions());
+      dispatch(current());
+      // const transactions = await transactionsAPI.getTransactions();
+      // const { auth } = getState();
+      // const data = await axiosCurrent(auth.token);
+
+      // return {transactions, data};
     } catch (error) {
       return rejectWithValue(error.message);
     }

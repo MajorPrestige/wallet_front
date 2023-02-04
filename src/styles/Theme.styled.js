@@ -11,7 +11,7 @@ export const light = {
   bgPrimary2: '#ffffff',
   bgModalBlur: 'rgba(255, 255, 255, 0.4)',
   bgModalColor: '#ffffff',
-  logoColor: "000000",
+  logoColor: "#000000",
   bgblueActive: '#4A56E2',
   bgblueNoActive: '#6E78E8',
   bggreen: '#24cca7',
