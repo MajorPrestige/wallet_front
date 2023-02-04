@@ -143,7 +143,7 @@ export const ChartSelect = styled(Select)`
 
 .react-select__menu-list {
   border-radius: 20px;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .react-select__menu {

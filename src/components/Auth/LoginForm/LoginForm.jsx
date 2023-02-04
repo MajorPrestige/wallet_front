@@ -26,8 +26,9 @@ import {
 import { getAuthError } from 'redux/auth/auth-selectors';
 import { clearAuthError } from 'redux/auth/auth-slice';
 import ErrorMessage from 'components/ErrorMessage/ErrorMessage';
+import { emailRegexp } from '../../../variables/Regexp';
 
-const emailRegexp = /^\w+[\w-.]*\w@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/;
+// const emailRegexp = /^\w+[\w-.]*\w@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/;
 
 const LoginForm = () => {
   const dispatch = useDispatch();

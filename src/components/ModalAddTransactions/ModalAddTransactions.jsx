@@ -68,8 +68,8 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
   }
 
   const validationSchema = yup.object().shape({
-    sum: yup.number().positive().required(),
-    select: yup.string().required(),
+    sum: yup.number().positive().required("Sum is required."),
+    select: yup.string().required("Category is required."),
   });
 
   const onSubmit = values => {
