@@ -47,6 +47,7 @@ const Currency = () => {
           });
 
           saveInLocalStorage(res);
+          setError(null);
           return setCurrency(res);
         })
         .catch(error => setError(error.message))
@@ -70,7 +71,12 @@ const Currency = () => {
           />
         </WrapLoading>
       )}
-      {error && <WrapError>Oops, something went wrong</WrapError>}
+      {error && (
+        <WrapError>
+          <p>Currency is not available now.</p>
+          <p>Please check later.</p>
+        </WrapError>
+      )}
       <Table>
         <thead>
           <tr>
