@@ -1,8 +1,6 @@
 import {
   TableContainer,
-  TableHead,
   Category,
-  TableBody,
   TableRow,
   OperationCat,
   OperationSum,
@@ -11,22 +9,8 @@ import {
   Expense,
   Income,
   CellInner,
-  Sum,
 } from './DiagramTab.styled';
-
-
-const colors = [
-  '#FED057',
-  '#FFD8D0',
-  '#FD9498',
-  '#C5BAFF',
-  '#6E78E8',
-  '#4A56E2',
-  '#81E1FF',
-  '#24CCA7',
-  '#00AD84',
-  '#E1E384',
-];
+import { diargamColors } from '../../../styles/Variables';
 
 const DiagramTab = ({ transactions }) => {
 
@@ -39,7 +23,7 @@ const DiagramTab = ({ transactions }) => {
   const totalSums = categories.map((category, i) => ({
     id: i,
     category,
-    color: colors[i],
+    color: diargamColors[i],
     totalSum: expensesTrans
       .filter(trans => trans.category.name === category)
       .reduce((total, trans) => {
@@ -60,13 +44,13 @@ const DiagramTab = ({ transactions }) => {
   return (
     <>
       <TableContainer>
-        <TableHead>
+        <thead>
           <tr>
             <Category>Category</Category>
             <Category>Sum</Category>
           </tr>
-        </TableHead>
-        <TableBody>
+        </thead>
+        <tbody>
           {totalSums.map(({ id, category, totalSum, color }) => {
             return (
               <TableRow key={id}>
@@ -84,16 +68,16 @@ const DiagramTab = ({ transactions }) => {
               </TableRow>
             );
           })}
-        </TableBody>
+        </tbody>
       </TableContainer>
-      <Sum>
+      <div>
         <Totals>
           Expenses:<Expense>{expense.toFixed(2)}</Expense>
         </Totals>
         <Totals>
           Income:<Income>{income.toFixed(2)}</Income>
         </Totals>
-      </Sum>
+      </div>
     </>
   );
 };

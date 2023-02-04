@@ -171,7 +171,7 @@ export const ButtonGoogle = styled.a`
   font-size: 18px;
   margin-top: 20px;
   padding: 8px 0px;
-  padding-top: 12px;
+  padding-top: 14px;
   border-radius: 20px;
   letter-spacing: 0.1em;
   transition: 0.2s ease-in-out;
