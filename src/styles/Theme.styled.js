@@ -6,11 +6,12 @@ import { ReactComponent as Light } from 'images/svgs/light.svg';
 import { ReactComponent as Dark } from 'images/svgs/dark.svg';
 
 export const light = {
-  title: "#000000",
+  title: '#000000',
 };
 
 export const dark = {
   title: '#ffffff',
+  // #0d1117
 };
 
 export const ThemeSwitcher = styled(Switch)`
@@ -21,18 +22,18 @@ export const ThemeSwitcher = styled(Switch)`
   left: 5% !important;
   z-index: 1000 !important;
 
-  @media ${device.desktop} {    
+  @media ${device.desktop} {
     left: calc(50vw - 620px) !important;
   }
 `;
 
 export const StyledLightIcon = styled(Light)`
   width: 24px;
-  fill: #ffffff;
 `;
 
 export const StyledDarkIcon = styled(Dark)`
   width: 24px;
+  fill: #ffffff;
 `;
 
 export const CheckedHand = styled.div`
@@ -40,10 +41,9 @@ export const CheckedHand = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
-  box-shadow: 0px 6px 15px #00007d;
-  background-color: #00008B;
+  box-shadow: 0px 6px 15px #fff59d;
+  background-color: #ffff00;
   border-radius: 50%;
-  
 `;
 
 export const UncheckedHandle = styled.div`
@@ -51,7 +51,7 @@ export const UncheckedHandle = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
-  box-shadow: 0px 6px 15px #fff59d;
-  background-color: #ffff00;
   border-radius: 50%;
+  box-shadow: 0px 6px 15px #00007d;
+  background-color: #00008b;
 `;
