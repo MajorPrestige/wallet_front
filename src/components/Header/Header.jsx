@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Logo from 'components/Logo/Logo';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 import { getFirstName } from 'redux/auth/auth-selectors';
 import {
@@ -11,8 +11,9 @@ import {
 } from './Header.styled';
 import { ReactComponent as Logout } from 'images/svgs/logout.svg';
 
-import ModalLogout from 'components/ModalLogout/ModalLogout';
+import ModalAnswer from 'components/ModalAnswer/ModalAnswer';
 import Modal from 'components/Modal/Modal';
+import { signout } from 'redux/auth/auth-operations';
 
 const Header = () => {
   const userName = useSelector(getFirstName);
@@ -26,10 +27,16 @@ const Header = () => {
     setIsModal(!isModal);
   };
 
+  const dispatch = useDispatch();
+
+  const onLogoutButtonClick = () => {
+    dispatch(signout());
+  };
+
   return (
     <HeaderContainer>
       <StyledHeader>
-        <Logo header/>
+        <Logo header />
         <HeaderWrapper>
           {isMobile && (
             <>
@@ -51,7 +58,11 @@ const Header = () => {
         </HeaderWrapper>
         {isModal && (
           <Modal toggleModal={toggleModal} isSignIn>
-            <ModalLogout toggleModalCancel={toggleModal} />
+            <ModalAnswer
+              toggleModalCancel={toggleModal}
+              text={'Are you sure you want to exit?'}
+              onButtonClick={onLogoutButtonClick}
+            />
           </Modal>
         )}
       </StyledHeader>
