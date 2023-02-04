@@ -48,16 +48,13 @@ export const fetchPaginationTransactions = createAsyncThunk(
 
 export const addTransaction = createAsyncThunk(
   'transaction',
-  async (transaction, { rejectWithValue, getState, dispatch }) => {
+  async (transaction, { rejectWithValue, dispatch }) => {
     try {
       const addedTransaction = await transactionsAPI.postTransactions(
         transaction,
       );
       dispatch(fetchTransactions());
       dispatch(current());
-      // const transactions = await transactionsAPI.getTransactions();
-      // const { auth } = getState();
-      // const data = await axiosCurrent(auth.token);
 
       return {
         addedTransaction,

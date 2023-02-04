@@ -15,7 +15,7 @@ const Loader = () => {
         top: '50%',
         transform: 'translate(-50%, -50%)',
         backdropFilter: 'blur(15px)',
-        zIndex: '2',
+        zIndex: '1001',
       }}
     >
       <ThreeDots
