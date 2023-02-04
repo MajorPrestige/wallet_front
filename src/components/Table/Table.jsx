@@ -1,9 +1,6 @@
-import React from 'react';
-
 import { useMediaQuery } from 'react-responsive';
-import { useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect, useRef } from 'react';
 
 import {
   Category,
@@ -40,13 +37,27 @@ import ModalAnswer from 'components/ModalAnswer/ModalAnswer';
 const Table = () => {
   const [id, setId] = useState('');
 
+  const scrollBody = useRef();
+  const scrollContainer = useRef();
+
   const noMobile = useMediaQuery({ minWidth: 768 });
   const dispatch = useDispatch();
   const transactions = useSelector(getTransactions);
+  const [hasScroll, setHasScroll] = useState(false);
 
   useEffect(() => {
     dispatch(fetchTransactions());
   }, [dispatch]);
+
+  useEffect(
+    e => {
+      setHasScroll(
+        scrollBody?.current?.clientHeight >
+          scrollContainer?.current?.clientHeight,
+      );
+    },
+    [transactions],
+  );
 
   const [isModal, setIsModal] = useState(false);
 
@@ -65,8 +76,8 @@ const Table = () => {
   return (
     <>
       {noMobile && (
-        <Container>
-          <TableContainer>
+        <Container ref={scrollContainer}>
+          <TableContainer ref={scrollBody} hasScroll={hasScroll}>
             <TableHead>
               <tr>
                 <Category>Date</Category>
