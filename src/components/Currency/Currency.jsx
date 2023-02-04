@@ -1,16 +1,14 @@
-// import getCurrencyCources from "api/auth/currency";
-// import { TdLastChild } from './Currency.styled';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { ThreeDots } from 'react-loader-spinner';
-import { Table, Container } from './Currency.styled';
+import { Table, Container, WrapLoading, WrapError } from './Currency.styled';
 
 async function getCurrency() {
   try {
     const { data } = await axios.get('https://api.monobank.ua/bank/currency');
     return data;
   } catch (error) {
-    console.error(error.message);
+    return error;
   }
 }
 
@@ -27,6 +25,8 @@ function parsedLocalStorage() {
 
 const Currency = () => {
   const [currency, setCurrency] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     if (
@@ -36,33 +36,29 @@ const Currency = () => {
     ) {
       return setCurrency(parsedLocalStorage());
     } else {
-      getCurrency().then(data => {
-        const res = data.filter(value => {
-          return (
-            (value.currencyCodeA === 840 || value.currencyCodeA === 978) &&
-            value.currencyCodeB === 980
-          );
-        });
-        saveInLocalStorage(res);
-        return setCurrency(res);
-      });
+      setLoading(true);
+      getCurrency()
+        .then(data => {
+          const res = data.filter(value => {
+            return (
+              (value.currencyCodeA === 840 || value.currencyCodeA === 978) &&
+              value.currencyCodeB === 980
+            );
+          });
+
+          saveInLocalStorage(res);
+          setError(null);
+          return setCurrency(res);
+        })
+        .catch(error => setError(error.message))
+        .finally(() => setLoading(false));
     }
   }, [setCurrency]);
 
   return (
     <Container>
-      {currency.length === 0 && (
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            position: 'absolute',
-            top: '30%',
-            left: '50%',
-            transform: 'translateX(-50%)',
-          }}
-        >
+      {loading && (
+        <WrapLoading>
           <ThreeDots
             height="80"
             width="80"
@@ -73,9 +69,14 @@ const Currency = () => {
             wrapperClassName=""
             visible={true}
           />
-        </div>
+        </WrapLoading>
       )}
-
+      {error && (
+        <WrapError>
+          <p>Currency is not available now.</p>
+          <p>Please check later.</p>
+        </WrapError>
+      )}
       <Table>
         <thead>
           <tr>

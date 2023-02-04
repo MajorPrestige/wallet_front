@@ -28,8 +28,9 @@ import {
 
 import { getAuthError } from 'redux/auth/auth-selectors';
 import { clearAuthError } from 'redux/auth/auth-slice';
+import { emailRegexp, passwordRegexp } from '../../../variables/Regexp';
 
-const emailRegexp = /^\w+[\w-.]*\w@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/;
+// const emailRegexp = /^\w+[\w-.]*\w@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/;
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
@@ -45,11 +46,15 @@ const RegistrationForm = () => {
       .required(`Please, enter your password`)
       .min(6, 'At least 6 characters')
       .max(16, 'Up to 16 characters')
-      .matches(
-        /^.*(?=.{6,})((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+      .matches( 
+        passwordRegexp.lettersFull,
+        // /^.*(?=.{6,})((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
         'At least one uppercase and lowercase',
       )
-      .matches(/^.*(?=.*\d).*$/, 'At least one number'),
+      .matches(
+        passwordRegexp.numbers,
+        // /^.*(?=.*\d).*$/, 
+        'At least one number'),
     confirmPassword: yup
       .string()
       .oneOf([yup.ref('password')], 'Passwords do not match.')
@@ -65,11 +70,14 @@ const RegistrationForm = () => {
       if (password.length <= 16) {
         if (
           password.length > 5 &&
-          (/((?=.*[a-z]){1})((?=.*[A-Z]){1})/.test(password) ||
+          (
+            // /((?=.*[a-z]){1})((?=.*[A-Z]){1})/
+            passwordRegexp.lettersShort.test(password) ||
             /\d/.test(password))
         ) {
           if (
-            /(?=.{6,})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1})/.test(password)
+            // /(?=.{6,})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1})/
+            passwordRegexp.strong.test(password)
           ) {
             return 'strong';
           }

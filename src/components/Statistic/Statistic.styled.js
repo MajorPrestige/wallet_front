@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import { device } from "styles/Media.variables";
+import { font } from '../../styles/Variables';
 
 export const Title = styled.h1`
-  font-family: "Poppins";
+  font-family: ${font.title};
   font-weight: 400;
   font-size: 30px;
   line-height: 45px;
@@ -22,13 +23,17 @@ export const Title = styled.h1`
 `;
 
 export const StatisticContainer = styled.div`
+  padding-bottom: 48px;
+
   @media ${device.tablet} {
     display: flex;
     gap: 32px;
+    padding-bottom: 28px;
   }
 
   @media ${device.desktop} {
     margin-left: 70px;
+    padding-bottom: 44px;
   }
 `;
 

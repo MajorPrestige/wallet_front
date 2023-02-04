@@ -34,32 +34,36 @@ export const buttonColor = {
   blueActive: '#4A56E2',
 };
 
-export const statisticColor = {
-  main: '#FED057',
-  products: '#FFD8D0',
-  car: '#FD9498',
-  self: '#C5BAFF',
-  child: '#6E78E8',
-  household: '#4A56E2',
-  education: '#81E1FF',
-  leisure: '#24CCA7',
-  other: '#00AD84',
-};
+export const diargamColors = [
+   '#FED057',
+   '#FFD8D0',
+   '#FD9498',
+   '#C5BAFF',
+   '#6E78E8',
+   '#4A56E2',
+   '#81E1FF',
+   '#24CCA7',
+   '#00AD84',
+];
 
-// export const statisticColor =[
-//    '#FED057',
-//    '#FFD8D0',
-//    '#FD9498',
-//    '#C5BAFF',
-//    '#6E78E8',
-//    '#4A56E2',
-//    '#81E1FF',
-//    '#24CCA7',
-//    '#00AD84',
-// ;]
+export const monthNames = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
 
 export const border = {
   blue: '1px solid #4a56e2',
+  green: '1px solid #24cca7',
   greyModal: '1px solid #e0e0e0',
   homeTabGrey: '1px solid #dcdcdf',
   scrollbarThumb: '3px solid #c0c5f5',
@@ -69,4 +73,5 @@ export const shadows = {
   selectList: '0px 6px 15px rgba(0, 0, 0, 0.1)',
   diagramTabShadow: '0px 1px 0px rgba(255, 255, 255, 0.6)',
   tableHomeShadows: '0 5px 2px -2px rgba(0, 0, 0, 0.3);',
+  roundButton: "0px 6px 15px rgba(36, 204, 167, 0.5)",
 };

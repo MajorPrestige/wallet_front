@@ -16,20 +16,37 @@ export const CustomSelect = styled(Select)`
     display: flex;
     align-items: center;
     color: #000000;
+
+    border-bottom: 1px solid #E0E0E0;
+    border-radius: 0;
+    &:hover {
+      border: none;
+      outline: none;
+    }
+
+
+    &--is-focused {
+      border: 1px solid #24cca7;
+      outline: none;
+    }
+
+    &__inValid {
+      border: 1px solid red;
+      border-radius: 0;
+    }
+    &__inValid .react-select__placeholder{
+      color: red;
+    }
   }
   .react-select__indicator-separator {
     display: none;
-  }
-
-  .react-select__menu-list {
-    border-radius: 20px;
-    overflow: hidden;
   }
   .react-select__placeholder {
     color: #bdbdbd;
   }
 
   .react-select__menu {
+    overflow: hidden;
     background: rgba(255, 255, 255, 0.7);
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(25px);
@@ -37,12 +54,14 @@ export const CustomSelect = styled(Select)`
   }
 
   .react-select__menu-list {
+    overflow: auto;
     color: #000000;
     &::-webkit-scrollbar {
       width: 0;
       height: 0;
     }
   }
+
 
   .react-select__option {
     cursor: pointer;
@@ -52,6 +71,12 @@ export const CustomSelect = styled(Select)`
       color: #ff6596;
       background-color: #ffffff;
     }
+  }
+  .react-select__option--is-selected {
+    background-color: rgba(30, 9, 127, 0.4);
+  }
+  .css-t3ipsp-control {
+    box-shadow: none;
   }
 `;
 
@@ -118,7 +143,7 @@ export const ChartSelect = styled(Select)`
 
 .react-select__menu-list {
   border-radius: 20px;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .react-select__menu {
@@ -161,6 +186,10 @@ export const ChartSelect = styled(Select)`
   } */
 }
 
+.react-select__option--is-selected {
+    background-color: rgba(30, 9, 127, 0.4);
+  }
+  
 .react-select__indicator {
   color: #000000;
 }

@@ -71,7 +71,6 @@ export const addTransaction = createAsyncThunk(
 export const deleteTransaction = createAsyncThunk(
   'transactions/delete',
   async(id, {rejectWithValue, getState}) => {
-    console.log(id);
     try {
        await transactionsAPI.delTransaction(id);
       const transactions = await transactionsAPI.getTransactions();

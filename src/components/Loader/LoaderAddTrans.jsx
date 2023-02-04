@@ -8,15 +8,11 @@ const LoaderAddTrans = () => {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          position: 'absolute',
-          top:'2%',
-          left: '50%',
-          transform: 'translateX(-50%)',
         }}
       >
         <ThreeDots
-          height="80"
-          width="80"
+          height="50"
+          width="50"
           radius="9"
           color="#4A56E2"
           ariaLabel="three-dots-loading"

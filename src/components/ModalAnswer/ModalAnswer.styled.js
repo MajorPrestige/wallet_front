@@ -1,12 +1,13 @@
 import styled from "styled-components";
 import { device } from "styles/Media.variables";
+import { colorText, font } from '../../styles/Variables';
 
 export const Title = styled.p`
 	font-size: 17px;
-  font-family: 'Poppins';  
+  font-family: ${font.title};  
   line-height: 36px;
   text-align: center;
-  color: #000000;
+  color:  ${colorText.black};
   padding-top: 60px;
 
   @media ${device.tablet} {

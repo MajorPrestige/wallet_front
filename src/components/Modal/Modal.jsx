@@ -52,21 +52,3 @@ const Modal = ({ toggleModal, children, isSignIn }) => {
 };
 
 export default Modal;
-
-// функция переключатель для компонента
-//  в котором будет модальное окно.
-// Прокинуть ее пропсом в компонент Modal
-//               |
-//               V
-
-// const toggleModal = () => {
-// 	setIsModal(!isModal);
-// };
-
-// добавить его в компонент в котором
-//  будет модальное окно
-// state для модального окна.
-//               |
-//               V
-
-// const [isModal, setIsModal] = useState(false);
