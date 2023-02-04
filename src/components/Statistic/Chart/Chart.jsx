@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { getBalance } from 'redux/auth/auth-selectors';
 
 import { StyledChart, StyledBalance, Notification, Text } from './Chart.styled';
+import { diargamColors } from '../../../styles/Variables';
 
 ChartJS.register(ArcElement, Tooltip);
 
@@ -13,19 +14,6 @@ const Chart = ({ transactions }) => {
 
   let isExpensTrans = false;
   let isIncomeTrans = false;
-
-  const colors = [
-    '#FED057',
-    '#FFD8D0',
-    '#FD9498',
-    '#C5BAFF',
-    '#6E78E8',
-    '#4A56E2',
-    '#81E1FF',
-    '#24CCA7',
-    '#00AD84',
-    '#E1E384',
-  ];
 
   const expensesTrans = transactions.filter(trans => trans.type === false);
   if (expensesTrans.length !== 0) {
@@ -68,7 +56,7 @@ const Chart = ({ transactions }) => {
       {
         label: '% of Categories',
         data: totalSums,
-        backgroundColor: colors,
+        backgroundColor: diargamColors,
         borderWidth: 0,
         cutout: '70%',
       },
