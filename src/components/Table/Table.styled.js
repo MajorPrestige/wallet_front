@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 import { device } from 'styles/Media.variables';
-import { backgroundColor, border, colorText } from './../../styles/Variables';
+import {
+  backgroundColor,
+  border,
+  colorText,
+  shadows,
+} from './../../styles/Variables';
 
 import { ReactComponent as Bin } from 'images/svgs/bin.svg';
 
@@ -11,6 +16,10 @@ export const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
   overflow: auto;
+  box-shadow: ${props => {
+    const { hasScroll } = props.children.props;
+    return hasScroll ? shadows.tableHomeShadows : 'none';
+  }};
 
   @media ${device.tabletOnly} {
     max-height: 50vh;
