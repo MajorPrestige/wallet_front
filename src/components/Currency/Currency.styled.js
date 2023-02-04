@@ -31,6 +31,28 @@ export const Container = styled.div`
   }
 `;
 
+export const WrapLoading = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+`;
+
+export const WrapError = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  font-size: 18px;
+`;
+
 export const Table = styled.table`
   width: 100%;
   height: max-content;

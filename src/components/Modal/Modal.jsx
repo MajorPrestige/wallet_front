@@ -52,4 +52,3 @@ const Modal = ({ toggleModal, children, isSignIn }) => {
 };
 
 export default Modal;
-
