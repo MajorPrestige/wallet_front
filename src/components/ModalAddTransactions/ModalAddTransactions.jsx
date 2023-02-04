@@ -67,13 +67,18 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
     return current.isBefore(yesterday);
   }
 
-  const validationSchema = yup.object().shape({
-    sum: yup.number().positive().required("Sum is required."),
-    select: yup.string().required("Category is required."),
-  });
+  const validationSchema = isChecked ? 
+    ( yup.object().shape({
+      sum: yup.number().positive().required("Sum is required."),
+    })) :
+    ( yup.object().shape({
+        sum: yup.number().positive().required("Sum is required."),
+        select: yup.string().required("Category is required."),
+    }));
 
   const onSubmit = values => {
     setIsSubmit(true);
+
     const data = {
       type: isChecked,
       date: date.toISOString().slice(0, 10),
