@@ -1,11 +1,6 @@
 import styled from 'styled-components';
 import { device } from 'styles/Media.variables';
-import {
-  backgroundColor,
-  border,
-  colorText,
-  shadows,
-} from './../../styles/Variables';
+import { backgroundColor, border, colorText } from './../../styles/Variables';
 
 import { ReactComponent as Bin } from 'images/svgs/bin.svg';
 
@@ -111,9 +106,7 @@ export const Operations = styled.th`
   overflow-wrap: ${props => props.overflowWrap};
 `;
 
-export const Tbody = styled.tbody`
-  box-shadow: ${shadows.tableHomeShadows};
-`;
+export const Tbody = styled.tbody``;
 
 // ----------------------------------------------------
 export const MobileContainer = styled.div`
