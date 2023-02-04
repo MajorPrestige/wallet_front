@@ -16,6 +16,10 @@ export const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
   overflow: auto;
+  box-shadow: ${props => {
+    const { hasScroll } = props.children.props;
+    return hasScroll ? shadows.tableHomeShadows : 'none';
+  }};
 
   @media ${device.tabletOnly} {
     max-height: 50vh;
@@ -111,9 +115,7 @@ export const Operations = styled.th`
   overflow-wrap: ${props => props.overflowWrap};
 `;
 
-export const Tbody = styled.tbody`
-  box-shadow: ${shadows.tableHomeShadows};
-`;
+export const Tbody = styled.tbody``;
 
 // ----------------------------------------------------
 export const MobileContainer = styled.div`

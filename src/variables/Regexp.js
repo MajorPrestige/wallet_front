@@ -6,3 +6,5 @@ export const passwordRegexp = {
   lettersShort: /((?=.*[a-z]){1})((?=.*[A-Z]){1})/,
   strong: /(?=.{6,})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1})/,
 };
+
+export const nameRegexp = /^[A-zА-я0-9]{1,12}$/;

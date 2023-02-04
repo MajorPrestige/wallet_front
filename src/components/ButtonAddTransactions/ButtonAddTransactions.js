@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { device } from 'styles/Media.variables';
 import { ReactComponent as Icon } from 'images/svgs/add.svg';
+import { backgroundColor, border, shadows} from '../../styles/Variables';
 
 export const TransactionButton = styled.button`
   padding: 0;
@@ -9,7 +10,7 @@ export const TransactionButton = styled.button`
   align-items: center;
   width: 44px;
   height: 44px;
-  background-color: #24cca7;
+  background-color: ${backgroundColor.green};
   transition: 0.2s ease-in-out;
   border: none;
   border-radius: 50%;
@@ -19,19 +20,17 @@ export const TransactionButton = styled.button`
   bottom: 20px;
   outline: none;
   cursor: pointer;
-  box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
+  box-shadow: ${shadows.roundButton};
   &:hover,
   &:focus {
-    border: 1px solid #24cca7;
+    border:  ${border.green};
     transform: scale(1.05);
     outline: transparent;
-
-    background-color: #ffffff;
+    background-color: ${backgroundColor.white};
   }
   &:hover svg,
   &:focus svg {
-    stroke: #24cca7;
-    fill: #24cca7;
+    stroke: ${backgroundColor.green};    
   }
 
   @media ${device.tablet} {
@@ -47,6 +46,6 @@ export const TransactionButton = styled.button`
 export const IconLogo = styled(Icon)`
   width: 20px;
   height: 20px;
-  stroke: #fff;
+  stroke: ${backgroundColor.white};
   transition: 0.2s ease-in-out;
 `;

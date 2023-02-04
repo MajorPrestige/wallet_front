@@ -63,6 +63,7 @@ export const monthNames = [
 
 export const border = {
   blue: '1px solid #4a56e2',
+  green: '1px solid #24cca7',
   greyModal: '1px solid #e0e0e0',
   homeTabGrey: '1px solid #dcdcdf',
   scrollbarThumb: '3px solid #c0c5f5',
@@ -72,4 +73,5 @@ export const shadows = {
   selectList: '0px 6px 15px rgba(0, 0, 0, 0.1)',
   diagramTabShadow: '0px 1px 0px rgba(255, 255, 255, 0.6)',
   tableHomeShadows: '0 5px 2px -2px rgba(0, 0, 0, 0.3);',
+  roundButton: "0px 6px 15px rgba(36, 204, 167, 0.5)",
 };
