@@ -57,7 +57,7 @@ const transactions = createSlice({
       store.transactions = payload;
       store.loading = false;
       store.error = null;
-      store.allTransactions = payload;
+      // store.allTransactions = payload;
     },
     [fetchTransactions.rejected]: (store, { payload }) => {
       store.error = payload;
@@ -98,7 +98,6 @@ const transactions = createSlice({
     },
     [deleteTransaction.fulfilled]: (store, { payload }) => {
       store.transactions = payload.transactions;
-      
       store.loading = false;
       store.error = null;
     },
