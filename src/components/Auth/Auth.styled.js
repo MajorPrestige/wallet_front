@@ -24,7 +24,7 @@ export const AuthContainer = styled.div`
     min-height: 100vh;
     padding: 52px 91px 52px 107px;
     display: flex;
-    background: rgba(255, 255, 255, 0.4);
+    background: ${(props) => props.theme.bgModalBlur};
     backdrop-filter: blur(25px);
   }
 `;
@@ -35,10 +35,11 @@ export const LogoWrapper = styled.div`
 `;
 
 export const FormWrapper = styled.div`
-  background-color: #ffffff;
+  background-color: ${(props) => props.theme.bgModalColor};
   margin: auto;
 
   @media ${device.tabletBefore} {
+    background-color: ${(props) => props.theme.bgPrimary2};
     padding-top: 32px;
     padding-bottom: 32px;
     max-width: 320px;
@@ -68,10 +69,12 @@ export const StyledField = styled(Field)`
   width: 100%;
   padding-left: 55px;
   border: none;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid ${(props) => props.theme.txtmodalMailPassword};
   font-size: 18px;
   outline: none;
   transition: 0.2s ease-in-out;
+  background-color: ${(props) => props.theme.bgModalColor};
+  color: ${(props) => props.theme.reverseBlack};
 
   &::placeholder {
     color: #bdbdbd;
@@ -84,20 +87,24 @@ export const StyledField = styled(Field)`
   &:focus ~ svg {
     fill: #24cca7;
   }
+
+  @media ${device.tabletBefore} {
+    background-color: ${(props) => props.theme.bgPrimary2};
+  }
 `;
 
 export const EmailLogo = styled(Email)`
   position: absolute;
   top: 0;
   left: 10px;
-  fill: #e0e0e0;
+  fill: ${(props) => props.theme.txtmodalMailPassword};
 `;
 
 export const PasswordLogo = styled(Password)`
   position: absolute;
   top: 0;
   left: 10px;
-  fill: #e0e0e0;
+  fill: ${(props) => props.theme.txtmodalMailPassword};
 `;
 
 export const AuthError = styled.p`
@@ -179,7 +186,7 @@ export const ButtonGoogle = styled.a`
 
   background-color: #000000;
   color: #ffffff;
-  border: 1px solid #000000;
+  border: 1px solid ${(props) => props.theme.reverseBlack};
 
   &:hover,
   &:focus {

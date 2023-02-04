@@ -8,12 +8,12 @@ export const StyledAuthForm = styled.div`
   min-height: 100vh;
 
   @media ${device.tabletBefore} {
-    background-color: #ffffff;
+    background-color: ${(props) => props.theme.bgPrimary2};
   }
 
   @media ${device.tablet} {
     background: top 0% right 0% no-repeat url(${Elipse2}),
-      bottom 0% left 0% no-repeat url(${Elipse1}), #e7eaf2;
+      bottom 0% left 0% no-repeat url(${Elipse1}), ${(props) => props.theme.bgPrimary1};
   }
 `;
 
