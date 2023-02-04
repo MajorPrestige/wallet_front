@@ -2,21 +2,7 @@ import { Formik } from 'formik';
 
 import SelectList from 'components/SelectList/SelectList';
 import { FormContainer, StyledForm } from './DiagramForm.styled';
-
-const monthNames = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-];
+import { monthNames } from '../../../styles/Variables';
 
 const DiagramForm = ({ setDate, date, months, years }) => {
   
@@ -33,7 +19,7 @@ const DiagramForm = ({ setDate, date, months, years }) => {
 
   const optionsYears = years
     .reverse()
-    .map((year, i) => ({ value: year, label: year }));
+    .map(year => ({ value: year, label: year }));
   const setYear = e => {
     setDate(prevState => {
       return { ...prevState, year: e.value };
