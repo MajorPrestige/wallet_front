@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { device } from 'styles/Media.variables';
+import { ReactComponent as LogoutIcon } from 'images/svgs/logout.svg';
 
 export const HeaderContainer = styled.div`
   background-color: #ffffff;
@@ -38,6 +39,11 @@ export const HeaderWrapper = styled.div`
   color: #bdbdbd;
 `;
 
+export const Logout = styled(LogoutIcon)`
+  fill: #bdbdbd;
+  
+`;
+
 export const LogoutButton = styled.button`
   background-color: transparent;
   border: none;
@@ -45,6 +51,19 @@ export const LogoutButton = styled.button`
   align-items: center;
   padding: 0;
   padding-left: 8px;
+  transition: 0.2s ease-in-out;
+  &:hover svg,  
+  &:focus svg, 
+  &:hover span,
+  &:focus span {
+    
+    transform: scale(1.05);
+    fill: #ff6596;
+    filter: drop-shadow(0px 3px 10px rgb(255, 101, 150, 0.3));
+    color:#ff6596;
+    
+  }
+  
 
   ${props =>
     props.tablet &&
@@ -55,3 +74,6 @@ export const LogoutButton = styled.button`
       border-left: 1px solid #bdbdbd;
     `}
 `;
+
+
+
