@@ -103,7 +103,7 @@ export const PasswordLogo = styled(Password)`
 export const AuthError = styled.p`
   position: absolute;
   font-size: 12px;
-  margin-left: 55px;
+  margin-left: 10px;
   margin-top: 2px;
   color: #ff6596;
 `;
