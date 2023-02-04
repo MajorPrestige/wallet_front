@@ -8,8 +8,9 @@ import {
   HeaderWrapper,
   StyledHeader,
   LogoutButton,
+  Logout,
 } from './Header.styled';
-import { ReactComponent as Logout } from 'images/svgs/logout.svg';
+
 
 import ModalAnswer from 'components/ModalAnswer/ModalAnswer';
 import Modal from 'components/Modal/Modal';

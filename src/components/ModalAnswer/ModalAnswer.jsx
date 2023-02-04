@@ -16,7 +16,7 @@ const ModalAnswer = ({ toggleModalCancel, text, onButtonClick }) => {
         </Button>
         <Button
           outlined="true"
-          onClick={() => toggleModalCancel()}
+          onClick={toggleModalCancel}
           type="button"
         >
           NO
