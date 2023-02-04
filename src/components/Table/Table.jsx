@@ -27,12 +27,15 @@ import {
 } from './Table.styled';
 
 import { getTransactions } from 'redux/transactions/trans-selectors';
-import { fetchTransactions } from 'redux/transactions/trans-operations';
+import {
+  deleteTransaction,
+  fetchTransactions,
+} from 'redux/transactions/trans-operations';
 import { formatDate } from './../../helpers/formatDate';
 
 import Modal from 'components/Modal/Modal';
 import { useState } from 'react';
-import ModalLogout from 'components/ModalLogout/ModalLogout';
+import ModalAnswer from 'components/ModalAnswer/ModalAnswer';
 
 const Table = () => {
   const [id, setId] = useState('');
@@ -50,6 +53,11 @@ const Table = () => {
   const toggleModal = e => {
     setIsModal(!isModal);
     setId(e);
+  };
+
+  const handleDelete = close => {
+    dispatch(deleteTransaction(id));
+    close();
   };
 
   if (!transactions) return false;
@@ -203,7 +211,12 @@ const Table = () => {
       )}
       {isModal && (
         <Modal toggleModal={toggleModal} isSignIn>
-          <ModalLogout toggleModalCancel={toggleModal} isDeleteIn elem={id} />
+          <ModalAnswer
+            toggleModalCancel={toggleModal}
+            elem={id}
+            text={'Are you sure you want to delete transaction?'}
+            onButtonClick={handleDelete}
+          />
         </Modal>
       )}
     </>
