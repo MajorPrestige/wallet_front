@@ -1,5 +1,5 @@
 import { useMediaQuery } from "react-responsive";
-import { useTranslation, Trans } from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 import {
   StyledHomeIcon,
