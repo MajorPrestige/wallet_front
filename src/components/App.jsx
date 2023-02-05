@@ -1,6 +1,7 @@
 import { lazy, Suspense, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
+import { useTranslation } from "react-i18next";
 
 import { ThemeProvider } from 'styled-components';
 import {
@@ -34,6 +35,8 @@ const CurrencyPage = lazy(() =>
 const NotFoundPage = lazy(() => import('pages/NotFoundPage/NotFoundPage'));
 
 export const App = () => {
+  const { i18n } = useTranslation();
+  const [lng, setLng] = useState('en');
   const [theme, setTheme] = useState('light');
   const [isChecked, setIsChecked] = useState(true);
   const isLogin = useSelector(getIsLogin);
@@ -43,8 +46,21 @@ export const App = () => {
   const isDarkTheme = theme === 'dark';
 
   const handleThemeChange = () => {
+    const changeLanguage = (language) => {
+      i18n.changeLanguage(language);
+  };
     setTheme(isDarkTheme ? 'light' : 'dark');
     setIsChecked(!isChecked);
+
+    if(lng === "en") {
+      changeLanguage("ua");
+      setLng('ua');
+    }
+
+    if(lng === "ua") {
+      changeLanguage("en");
+      setLng('en');
+    };
   };
 
   useEffect(() => {

@@ -5,6 +5,8 @@ import moment from 'moment';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 
+import { useTranslation } from "react-i18next";
+
 import calendar from '../../images/svgs/calendar.svg';
 import SelectList from 'components/SelectList/SelectList';
 import {
@@ -35,6 +37,7 @@ import LoaderAddTrans from './../Loader/LoaderAddTrans';
 import { categorySelectSelector } from '../../redux/categories/categories-selectors.js';
 
 const ModalAddTransactions = ({ toggleModalCancel }) => {
+  const { t } = useTranslation();
   const [isSubmit, setIsSubmit] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const [date, setDate] = useState(new Date());
@@ -69,11 +72,11 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
 
   const validationSchema = isChecked ? 
     ( yup.object().shape({
-      sum: yup.number().positive().required("Sum is required."),
+      sum: yup.number().positive().required(`${t('modalAddTransactions.validationSchema.sum_required')}`),
     })) :
     ( yup.object().shape({
-        sum: yup.number().positive().required("Sum is required."),
-        select: yup.string().required("Category is required."),
+        sum: yup.number().positive().required(`${t('modalAddTransactions.validationSchema.sum_required')}`),
+        select: yup.string().required(`${t('modalAddTransactions.validationSchema.select_required')}`),
     }));
 
   const onSubmit = values => {
@@ -94,9 +97,9 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
   return (
     <>
       <Conteiner>
-        <Title>Add transaction</Title>
+        <Title>{t('modalAddTransactions.container.title')}</Title>
         <WrapCheckbox>
-          <CheckIncome isChecked={isChecked}>Income</CheckIncome>
+          <CheckIncome isChecked={isChecked}>{t('modalAddTransactions.container.checkIncome')}</CheckIncome>
           <Choice
             onChange={handleChecked}
             checked={!isChecked}
@@ -120,7 +123,7 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
             checkedIcon={false}
             uncheckedIcon={false}
           />
-          <CheckExpense isChecked={isChecked}>Expense</CheckExpense>
+          <CheckExpense isChecked={isChecked}>{t('modalAddTransactions.container.checkExpense')}</CheckExpense>
         </WrapCheckbox>
 
         <Formik
@@ -180,20 +183,20 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
                 <InpputComment
                   type="text"
                   name="comment"
-                  placeholder="Comment"
+                  placeholder={t('modalAddTransactions.lableComment.placeholder')}
                   value={values.name}
                   onChange={handleChange}
                 />
               </LableComment>
               <ButtonAdd disabled={isLoadingAdd} type="submit">
-                {isLoadingAdd ? <LoaderAddTrans /> : 'add'}
+                {isLoadingAdd ? <LoaderAddTrans /> : `${t('modalAddTransactions.buttonAdd')}`}
               </ButtonAdd>
             </FormAddTrans>
           )}
         </Formik>
 
         <ButtonCancel type="button" onClick={() => toggleModalCancel()}>
-          cancel
+        {t('modalAddTransactions.buttonCancel')}
         </ButtonCancel>
       </Conteiner>
     </>

@@ -5,12 +5,14 @@ import { FormContainer, StyledForm } from './DiagramForm.styled';
 import { monthNames } from '../../../styles/Variables';
 
 const DiagramForm = ({ setDate, date, months, years }) => {
-  
+
+
   const optionsMonths = months.map((month, i) => ({
     value: i + 1,
     isDisabled: !month,
     label: monthNames[i],
   }));
+
   const setMonth = e => {
     setDate(prevState => {
       return { ...prevState, month: e.value };

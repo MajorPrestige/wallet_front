@@ -1,6 +1,7 @@
 import { useMediaQuery } from 'react-responsive';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useRef } from 'react';
+import { useTranslation, Trans } from "react-i18next";
 
 import {
   Category,
@@ -35,6 +36,7 @@ import { useState } from 'react';
 import ModalAnswer from 'components/ModalAnswer/ModalAnswer';
 
 const Table = () => {
+  const { t } = useTranslation();
   const [id, setId] = useState('');
 
   const scrollBody = useRef();
@@ -80,13 +82,13 @@ const Table = () => {
           <TableContainer ref={scrollBody} hasScroll={hasScroll}>
             <TableHead>
               <tr>
-                <Category>Date</Category>
-                <Category>Type</Category>
-                <Category>Category</Category>
-                <Category>Comment</Category>
-                <Category>Sum</Category>
-                <Category>Balance</Category>
-                <Category>Options</Category>
+                <Category>{t('table.tableHead.category.date')}</Category>
+                <Category>{t('table.tableHead.category.type')}</Category>
+                <Category>{t('table.tableHead.category.category')}</Category>
+                <Category>{t('table.tableHead.category.comment')}</Category>
+                <Category>{t('table.tableHead.category.sum')}</Category>
+                <Category>{t('table.tableHead.category.balance')}</Category>
+                <Category>{t('table.tableHead.category.options')}</Category>
               </tr>
             </TableHead>
 
@@ -132,37 +134,37 @@ const Table = () => {
                 <PlusTable key={elem._id}>
                   <MobileTbody>
                     <MobileTrPlus>
-                      <MobileTdTitle>Date</MobileTdTitle>
+                      <MobileTdTitle>{t('table.mobileTrPlus.mobileTdTitle.date')}</MobileTdTitle>
                       <MobileTd>{formatDate(elem.date)}</MobileTd>
                     </MobileTrPlus>
                     <MobileTrPlus>
-                      <MobileTdTitle>Type</MobileTdTitle>
+                      <MobileTdTitle>{t('table.mobileTrPlus.mobileTdTitle.type')}</MobileTdTitle>
                       <MobileTd color={elem.type ? '#24cca7' : '#ff6596'}>
                         {elem.type ? '+' : '-'}
                       </MobileTd>
                     </MobileTrPlus>
                     <MobileTrPlus>
-                      <MobileTdTitle>Category</MobileTdTitle>
+                      <MobileTdTitle>{t('table.mobileTrPlus.mobileTdTitle.category')}</MobileTdTitle>
                       <MobileTd>{elem?.category?.name ?? ''}</MobileTd>
                     </MobileTrPlus>
                     <MobileTrPlus>
-                      <MobileTdTitle>Comment</MobileTdTitle>
+                      <MobileTdTitle>{t('table.mobileTrPlus.mobileTdTitle.comment')}</MobileTdTitle>
                       <MobileTd>{elem.comment}</MobileTd>
                     </MobileTrPlus>
                     <MobileTrPlus>
-                      <MobileTdTitle>Sum</MobileTdTitle>
+                      <MobileTdTitle>{t('table.mobileTrPlus.mobileTdTitle.sum')}</MobileTdTitle>
                       <MobileTdSumPlus>
                         {Number(elem.sum).toFixed(2)}
                       </MobileTdSumPlus>
                     </MobileTrPlus>
                     <MobileTrPlus>
-                      <MobileTdTitle>Balance</MobileTdTitle>
+                      <MobileTdTitle>{t('table.mobileTrPlus.mobileTdTitle.balance')}</MobileTdTitle>
                       <MobileTd>
                         {Number(elem.balanceAfter).toFixed(2)}
                       </MobileTd>
                     </MobileTrPlus>
                     <MobileTrPlus>
-                      <MobileTdTitle>Options</MobileTdTitle>
+                      <MobileTdTitle>{t('table.mobileTrPlus.mobileTdTitle.options')}</MobileTdTitle>
                       <MobileTd>
                         <ButtonBin
                           type="button"
@@ -178,7 +180,7 @@ const Table = () => {
                 <MinusTable key={elem._id}>
                   <MobileTbody>
                     <MobileTrMinus>
-                      <MobileTdTitle>Date</MobileTdTitle>
+                      <MobileTdTitle>{t('table.mobileTrMinus.mobileTdTitle.date')}</MobileTdTitle>
                       <MobileTd>{formatDate(elem.date)}</MobileTd>
                     </MobileTrMinus>
                     <MobileTrMinus>
@@ -188,23 +190,23 @@ const Table = () => {
                       </MobileTd>
                     </MobileTrMinus>
                     <MobileTrMinus>
-                      <MobileTdTitle>Category</MobileTdTitle>
+                      <MobileTdTitle>{t('table.mobileTrMinus.mobileTdTitle.category')}</MobileTdTitle>
                       <MobileTd>{elem.category.name}</MobileTd>
                     </MobileTrMinus>
                     <MobileTrMinus>
-                      <MobileTdTitle>Comment</MobileTdTitle>
+                      <MobileTdTitle>{t('table.mobileTrMinus.mobileTdTitle.comment')}</MobileTdTitle>
                       <MobileTd>{elem.comment}</MobileTd>
                     </MobileTrMinus>
                     <MobileTrMinus>
-                      <MobileTdTitle>Sum</MobileTdTitle>
+                      <MobileTdTitle>{t('table.mobileTrMinus.mobileTdTitle.sum')}</MobileTdTitle>
                       <MobileTdMinus>{elem.sum}</MobileTdMinus>
                     </MobileTrMinus>
                     <MobileTrMinus>
-                      <MobileTdTitle>Balance</MobileTdTitle>
+                      <MobileTdTitle>{t('table.mobileTrMinus.mobileTdTitle.balance')}</MobileTdTitle>
                       <MobileTd>{elem.balanceAfter}</MobileTd>
                     </MobileTrMinus>
                     <MobileTrMinus>
-                      <MobileTdTitle>Options</MobileTdTitle>
+                      <MobileTdTitle>{t('table.mobileTrMinus.mobileTdTitle.options')}</MobileTdTitle>
                       <MobileTd>
                         <ButtonBin
                           type="button"
@@ -225,7 +227,7 @@ const Table = () => {
           <ModalAnswer
             toggleModalCancel={toggleModal}
             elem={id}
-            text={'Are you sure you want to delete transaction?'}
+            text={`${t('table.modalAnswer')}`}
             onButtonClick={handleDelete}
           />
         </Modal>

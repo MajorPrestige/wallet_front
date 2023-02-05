@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import {
   TableContainer,
   Category,
@@ -13,7 +15,7 @@ import {
 import { diargamColors } from '../../../styles/Variables';
 
 const DiagramTab = ({ transactions }) => {
-
+  const { t } = useTranslation();
   const expensesTrans = transactions.filter(trans => trans.type === false);
 
   const categories = [
@@ -46,8 +48,8 @@ const DiagramTab = ({ transactions }) => {
       <TableContainer>
         <thead>
           <tr>
-            <Category>Category</Category>
-            <Category>Sum</Category>
+            <Category>{t('diagramTab.tableContainer.category')}</Category>
+            <Category>{t('diagramTab.tableContainer.sum')}</Category>
           </tr>
         </thead>
         <tbody>
@@ -72,10 +74,10 @@ const DiagramTab = ({ transactions }) => {
       </TableContainer>
       <div>
         <Totals>
-          Expenses:<Expense>{expense.toFixed(2)}</Expense>
+        {t('diagramTab.totals.expenses')}<Expense>{expense.toFixed(2)}</Expense>
         </Totals>
         <Totals>
-          Income:<Income>{income.toFixed(2)}</Income>
+        {t('diagramTab.totals.income')}<Income>{income.toFixed(2)}</Income>
         </Totals>
       </div>
     </>

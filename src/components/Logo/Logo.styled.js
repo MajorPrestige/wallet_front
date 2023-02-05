@@ -24,7 +24,7 @@ export const IconLogo = styled(Icon)`
 `;
 
 export const LogoText = styled.p`
-  font-family: 'Poppins';
+  font-family: 'Poppins', 'Montserrat';
   font-weight: 700;
   color: #000000;
 

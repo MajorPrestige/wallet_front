@@ -61,6 +61,15 @@ export const monthNames = [
   'December',
 ];
 
+// const monthTranslator = () => {
+//   const engMonthes = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];;
+//   const uaMonthes = ["Січень", "Лютий", "Березень", "Квітень", "Травень", "Червень", "Липень", "Серпень", "Вересень", "Жовтень", "Листопад", "Грудень"];
+//   const month = "";
+//   const currentMonth = date.month;
+// };
+
+
+
 export const border = {
   blue: '1px solid #4a56e2',
   green: '1px solid #24cca7',

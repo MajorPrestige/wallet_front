@@ -1,6 +1,7 @@
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip } from 'chart.js';
 import { useSelector } from 'react-redux';
+import { Trans } from "react-i18next";
 
 import { getBalance } from 'redux/auth/auth-selectors';
 
@@ -91,7 +92,9 @@ const Chart = ({ transactions }) => {
     {!isIncomeTrans && !isExpensTrans && (
     <Notification>
       <Text>
-        You have no transactions in selected date yet. <br/> Please add transaction or choose another date.
+      <Trans i18nKey="chart.notification.text">
+      You have no transactions in selected date yet. <br/> Please add transaction or choose another date.
+      </Trans>
       </Text>
     </Notification>
     )}
