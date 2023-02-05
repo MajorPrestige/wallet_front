@@ -14,7 +14,7 @@ import './i18n.js';
 import 'styles/fonts/fonts.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  // <React.StrictMode>
+  <React.StrictMode>
     <BrowserRouter basename='/wallet_front'>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
@@ -22,6 +22,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <App />
         </PersistGate>
       </Provider>
-    </BrowserRouter>,
-  // </React.StrictMode>,
+    </BrowserRouter>
+  </React.StrictMode>,
 );

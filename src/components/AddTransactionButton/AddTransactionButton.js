@@ -41,7 +41,7 @@ export const TransactionButton = styled.button`
     bottom: 40px;
     z-index: 10;
   }
-  @media ${device.desktop} {
+  @media (${device.desktop}) {
     right: calc(50vw - 620px);
   }
 `;

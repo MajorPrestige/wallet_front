@@ -6,13 +6,19 @@ import {
   Overlay,
   ModalWindow,
   ModalClose,
-  ModalWindowAddTransaction,
+  ModalWindowAddTransaction, Container, OverlayClick, Wrapper, ModalHeader,
 } from './Modal.styled';
+import Header from '../Header/Header.jsx';
 
 const modalRoot = document.querySelector('#modal-root');
 
-const Modal = ({ toggleModal, children, isSignIn }) => {
+const Modal = ({ toggleModal, children, isSignIn, InnerComponent }) => {
   const isTablet = useMediaQuery({ minWidth: 768 });
+
+  useEffect(() => {
+    window.document.body.classList.add('scroll-lock');
+    return () => window.document.body.classList.remove('scroll-lock');
+  }, []);
 
   useEffect(() => {
     window.addEventListener('keydown', onKeyDown);
@@ -34,19 +40,29 @@ const Modal = ({ toggleModal, children, isSignIn }) => {
   };
 
   return createPortal(
-    <Overlay onClick={onOverlayClick}>
-      {isSignIn ? (
-        <ModalWindowAddTransaction>
-          {isTablet && <ModalClose dark="true" onClick={toggleModal} />}
-          {children}
-        </ModalWindowAddTransaction>
-      ) : (
-        <ModalWindow>
-          <ModalClose onClick={toggleModal} />
-          {children}
-        </ModalWindow>
-      )}
-    </Overlay>,
+    <Container className='container'>
+      <Wrapper className='wrapper' isTablet={isTablet}>
+        <OverlayClick className='overlayClick' onClick={onOverlayClick} />
+        <Overlay className='overlay'>
+          {isSignIn ? (
+            <>
+              {!isTablet && <ModalHeader><Header /></ModalHeader>}
+              {!!InnerComponent ? <InnerComponent/> : (
+                <ModalWindowAddTransaction>
+                  {isTablet && <ModalClose dark="true" onClick={toggleModal} />}
+                  {children}
+                </ModalWindowAddTransaction>
+              )}
+            </>
+          ) : (
+            <ModalWindow>
+              <ModalClose onClick={toggleModal} />
+              {children}
+            </ModalWindow>
+          )}
+        </Overlay>
+      </Wrapper>
+    </Container>,
     modalRoot,
   );
 };

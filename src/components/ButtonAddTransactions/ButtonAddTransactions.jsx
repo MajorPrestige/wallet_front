@@ -4,17 +4,11 @@ import { useMediaQuery } from 'react-responsive';
 import { useSelector } from 'react-redux';
 import { useTranslation } from "react-i18next";
 
-import {
-  TransactionButton,
-  IconLogo,
-} from 'components/ButtonAddTransactions/ButtonAddTransactions';
 import ModalAddTransactions from 'components/ModalAddTransactions/ModalAddTransactions';
 import Modal from './../Modal/Modal';
-import ModalAddTransMobile from './../ModalAddTransMobile/ModalAddTransMobile';
-
 import ErrorMessage from 'components/ErrorMessage/ErrorMessage';
 import { getTransactionsError } from 'redux/transactions/trans-selectors';
-
+import AddTransactionButton from '../AddTransactionButton/AddTransactionButton.jsx';
 
 const ButtonAddTransactions = () => {
   const { t } = useTranslation();
@@ -29,9 +23,7 @@ const ButtonAddTransactions = () => {
   };
   return (
     <>
-      <TransactionButton type="button" onClick={() => toggleModal()}>
-        <IconLogo />
-      </TransactionButton>
+      <AddTransactionButton type="button" onClick={() => toggleModal()}/>
 
       {!transactionError && !isMobile && isModal && (
         <Modal toggleModal={toggleModal} isSignIn>
@@ -39,9 +31,9 @@ const ButtonAddTransactions = () => {
         </Modal>
       )}
       {!transactionError && isMobile && isModal && (
-        <ModalAddTransMobile toggleModal={toggleModal} isSignIn>
+        <Modal toggleModal={toggleModal} isSignIn>
           <ModalAddTransactions toggleModalCancel={toggleModal} />
-        </ModalAddTransMobile>
+        </Modal>
       )}
       {transactionError && (
         <Modal toggleModal={toggleModal}>

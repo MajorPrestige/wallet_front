@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import {setLanguage} from 'redux/language/language-slice';
 
 export const LanguagesSwitcher = () => {
-const [lng, setLng] = useState('');
+const [setLng] = useState('');
 const dispatch = useDispatch();
 const { i18n } = useTranslation();
 
