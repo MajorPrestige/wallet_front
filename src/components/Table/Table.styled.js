@@ -66,7 +66,8 @@ export const TableHead = styled.thead`
 
 export const Category = styled.th`
   padding: 15px;
-  background-color: #ffffff;
+  background-color: ${props => props.theme.bgPrimary2};
+  color: ${props => props.theme.reverseBlack};
   font-size: 18px;
   margin-top: 15px;
   font-weight: 700;
@@ -114,6 +115,16 @@ export const Operations = styled.th`
   word-break: ${props => props.wordBreak};
   overflow-wrap: ${props => props.overflowWrap};
 `;
+export const OperationsStyled = styled.th`
+  vertical-align: middle;
+  padding: 15px;
+  font-size: 16px;
+  font-weight: 400;
+  color: ${props => props.theme.reverseBlack};
+  border-bottom: ${border.homeTabGrey};
+  word-break: ${props => props.wordBreak};
+  overflow-wrap: ${props => props.overflowWrap};
+`;
 
 export const Tbody = styled.tbody``;
 
@@ -151,7 +162,7 @@ export const MobileTrPlus = styled.tr`
   align-items: center;
   height: 50px;
   padding: 10px 20px;
-  background-color: white;
+  background-color: ${props => props.theme.bgPrimary2};
 
   &:last-child {
     border-bottom-left-radius: 10px;
@@ -171,7 +182,7 @@ export const MobileTrMinus = styled.tr`
   align-items: center;
   min-height: 50px;
   padding: 10px 20px;
-  background-color: white;
+  background-color: ${props => props.theme.bgPrimary2};
 
   &:last-child {
     border-bottom-left-radius: 10px;
@@ -182,7 +193,7 @@ export const MobileTrMinus = styled.tr`
     border-top-right-radius: 10px;
   }
   box-shadow: inset 4px 0px 0px 0px ${colorText.red};
-  border: ${border.homeTabGrey};
+  border: ${props => props.theme.bgPrimary1};
 `;
 
 export const MobileTdTitle = styled.td`
@@ -190,7 +201,7 @@ export const MobileTdTitle = styled.td`
   font-size: 18px;
   line-height: calc(27 / 18);
   word-break: normal;
-
+  color: ${props => props.theme.reverseBlack};
   padding-right: 10px;
 `;
 
@@ -201,6 +212,16 @@ export const MobileTd = styled.td`
   font-size: 16px;
   line-height: calc(24 / 16);
   color: ${props => props.color};
+  overflow: hidden;
+`;
+
+export const MobileTdStyled = styled.td`
+  display: flex;
+  justify-content: flex-end;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: calc(24 / 16);
+  color: ${props => props.theme.reverseBlack};
   overflow: hidden;
 `;
 

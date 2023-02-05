@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { getBalance } from "redux/auth/auth-selectors";
-import { BalanceContainer } from "./Balance.styled";
+import { BalanceContainer, BalanceText } from "./Balance.styled";
 
 const Balance = () => {
   const balance = useSelector(getBalance);
@@ -9,8 +9,8 @@ const Balance = () => {
     <BalanceContainer>
       <p>YOUR BALANCE</p>
       <p>
-        <span>&#8372; </span>
-        <span>{balance.toFixed(2)}</span>
+        <BalanceText>&#8372; </BalanceText>
+        <BalanceText>{balance.toFixed(2)}</BalanceText>
       </p>
     </BalanceContainer>
   );
