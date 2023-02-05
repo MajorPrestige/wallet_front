@@ -51,7 +51,7 @@ export const CustomSelect = styled(Select)`
 
   .react-select__menu {
     overflow: hidden;
-    background: #000000;
+    background: #ffffff;
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(25px);
     border-radius: 20px;
