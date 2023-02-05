@@ -46,7 +46,7 @@ export const diargamColors = [
    '#00AD84',
 ];
 
-export const monthNames = [
+export const monthNamesEn = [
   'January',
   'February',
   'March',
@@ -61,14 +61,7 @@ export const monthNames = [
   'December',
 ];
 
-// const monthTranslator = () => {
-//   const engMonthes = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];;
-//   const uaMonthes = ["Січень", "Лютий", "Березень", "Квітень", "Травень", "Червень", "Липень", "Серпень", "Вересень", "Жовтень", "Листопад", "Грудень"];
-//   const month = "";
-//   const currentMonth = date.month;
-// };
-
-
+export const monthNamesUa = ["Січень", "Лютий", "Березень", "Квітень", "Травень", "Червень", "Липень", "Серпень", "Вересень", "Жовтень", "Листопад", "Грудень"];
 
 export const border = {
   blue: '1px solid #4a56e2',

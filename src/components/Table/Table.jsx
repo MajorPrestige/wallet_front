@@ -38,7 +38,7 @@ import ModalAnswer from 'components/ModalAnswer/ModalAnswer';
 const Table = () => {
   const { t } = useTranslation();
   const [id, setId] = useState('');
-
+  const currentLanguage = useSelector(state => state.language.language);
   const scrollBody = useRef();
   const scrollContainer = useRef();
 
@@ -75,6 +75,42 @@ const Table = () => {
 
   if (!transactions) return false;
 
+  const transactionsList = (e) => {
+    if(currentLanguage === "ua") {
+      if(e?.category?.name === 'Main expenses') {
+        return "Основні витрати";
+      };
+      if(e?.category?.name === 'Products') {
+        return "Продукти";
+      };
+      if(e?.category?.name === 'Car') {
+        return "Автомобіль";
+      };
+      if(e?.category?.name === 'Self care') {
+        return "Догляд за собою";
+      };
+      if(e?.category?.name === 'Child care') {
+        return "Догляд за дітьми";
+      };
+      if(e?.category?.name === 'Household products') {
+        return "Товари для дому";
+      };
+      if(e?.category?.name === 'Education') {
+        return "Освіта";
+      };
+      if(e?.category?.name === 'Leisure') {
+        return "Дозвілля";
+      };
+      if(e?.category?.name === 'Other expenses') {
+        return "Інші витрати";
+      };
+      if(e?.category?.name === 'Entertainment') {
+        return "Розваги";
+      };
+    };
+    return e?.category?.name;
+  };
+
   return (
     <>
       {noMobile && (
@@ -100,7 +136,7 @@ const Table = () => {
                     <Operations color={elem.type ? '#24cca7' : '#ff6596'}>
                       {elem.type ? '+' : '-'}
                     </Operations>
-                    <Operations>{elem?.category?.name ?? ''}</Operations>
+                    <Operations>{transactionsList(elem) ?? ''}</Operations>
                     <Operations overflowWrap="break-word" wordBreak="break-all">
                       {elem.comment}
                     </Operations>

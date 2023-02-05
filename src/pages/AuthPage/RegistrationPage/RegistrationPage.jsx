@@ -7,6 +7,7 @@ import RegistrationForm from 'components/Auth/RegistrationForm/RegistrationForm'
 import { StyledAuthForm, AuthHero, AuthContainer } from '../AuthPage.styled';
 import { RegistrationImg } from './RegistrationPage.styled';
 import { Title } from 'styles/Shared.styled';
+import { LanguagesSwitcher } from 'components/LanguagesSwitcher/LanguagesSwitcher';
 import FinanceTab from 'images/auth/FinanceTab.png';
 import FinanceTab2x from 'images/auth/FinanceTab@2x.png';
 import FinanceDesk from 'images/auth/FinanceDesk.png';
@@ -40,6 +41,7 @@ const RegistrationPage = () => {
                 <RegistrationImg src={FinanceTab} alt="Finance App" />
               </picture>
             </div>
+            <LanguagesSwitcher/>
             <Title>Finance App</Title>
           </AuthHero>
         )}

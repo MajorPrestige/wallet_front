@@ -1,16 +1,27 @@
 import { Formik } from 'formik';
+import { useSelector } from 'react-redux';
 
 import SelectList from 'components/SelectList/SelectList';
 import { FormContainer, StyledForm } from './DiagramForm.styled';
-import { monthNames } from '../../../styles/Variables';
+import { monthNamesEn, monthNamesUa } from '../../../styles/Variables';
 
 const DiagramForm = ({ setDate, date, months, years }) => {
+  const currentLanguage = useSelector(state => state.language.language);
 
+  const currentMonthNames = (i) => {
+    if(currentLanguage === "en") {
+      return monthNamesEn[i];
+    };
+
+    if(currentLanguage === "ua") {
+      return monthNamesUa[i];
+    }
+  };
 
   const optionsMonths = months.map((month, i) => ({
     value: i + 1,
     isDisabled: !month,
-    label: monthNames[i],
+    label: currentMonthNames(i),
   }));
 
   const setMonth = e => {
@@ -37,7 +48,7 @@ const DiagramForm = ({ setDate, date, months, years }) => {
               options={optionsMonths}
               chart
               defaultValue={{
-                label: monthNames[date.month - 1],
+                label: currentMonthNames(date.month - 1),
                 value: date.month,
               }}
               getCurrent={setMonth}

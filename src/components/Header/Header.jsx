@@ -11,6 +11,7 @@ import {
   LogoutButton,
   Logout,
 } from './Header.styled';
+import { LanguagesSwitcher } from 'components/LanguagesSwitcher/LanguagesSwitcher';
 
 
 import ModalAnswer from 'components/ModalAnswer/ModalAnswer';
@@ -39,6 +40,7 @@ const Header = () => {
   return (
     <HeaderContainer>
       <StyledHeader>
+        <LanguagesSwitcher/>
         <Logo header />
         <HeaderWrapper>
           {isMobile && (

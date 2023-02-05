@@ -43,13 +43,29 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
   const [date, setDate] = useState(new Date());
   const isLoadingAdd = useSelector(getLoadingAddTransaction);
   const options = useSelector(categorySelectSelector);
+  const currentLanguage = useSelector(state => state.language.language);
+  
 
   const dispatch = useDispatch();
 
-  const defaultValue = (options, value) => {
-    return options ? options.find(option => option.value === value) || '' : '';
-  };
 
+  const currentOptions = (array) => {
+    const categoriesEn =['Main expenses', 'Products', 'Car', 'Self care', 'Child care', 'Household products', 'Education', 'Leisure', 'Other expenses', 'Entertainment'];
+    const categoriesUa = ["Основні витрати", "Продукти", "Автомобіль", "Догляд за собою", "Догляд за дітьми", "Товари для дому", "Освіта", "Дозвілля", "Інші витрати", "Розваги"];
+    if(currentLanguage === "ua") {
+      let newArray = [];
+      array.map((e) => {
+        const res = {
+         value: e.value,
+          label: categoriesUa[categoriesEn.indexOf(e.label)],
+         };
+      return newArray.push(res);
+      });
+      return newArray;
+    };
+  return options;
+  };
+ 
   useEffect(() => {
     if (isSubmit && !isLoadingAdd) {
       toggleModalCancel();
@@ -140,9 +156,8 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
                 <LableSelect>
                   <SelectList
                     name='select'
-                    value={defaultValue(options, values.select)}
                     onChange={getOnChangeSelect(setFieldValue)}
-                    options={options}
+                    options={currentOptions(options)}
                   />
                   {touched.select && errors.select && (
                     <AuthError>{errors.select}</AuthError>

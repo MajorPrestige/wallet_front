@@ -130,20 +130,18 @@ const translationUA = {
         },
         modalAnswer: "Ви впевнені, що хочете видалити транзакцію?",
     },
-    monthNamess: {
-        january: 'Січень',
-        february: 'Лютий',
-        march: 'Березень',
-        april: 'Квітень',
-        may: 'Травень',
-        june: 'Червень',
-        july: 'Липень',
-        august: 'Серпень',
-        september: 'Вересень',
-        october: 'Жовтень',
-        november: 'Листопад',
-        december: 'Грудень',
-     },
+    categories: {
+        Mainexpenses: "Основні витрати",
+        Products: "Продукти",
+        Car: "Автомобіль",
+        Selfcare: "Догляд за собою",
+        Childcare: "Догляд за дітьми",
+        Householdproducts: "Товари для дому",
+        Education: "Освіта",
+        Leisure: "Дозвілля",
+        Otherexpenses: "Інші витрати",
+        Entertainment: "Розваги",
+    },
 };
 
 export default translationUA;

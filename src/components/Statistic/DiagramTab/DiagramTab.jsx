@@ -54,12 +54,13 @@ const DiagramTab = ({ transactions }) => {
         </thead>
         <tbody>
           {totalSums.map(({ id, category, totalSum, color }) => {
+            const res = category.split(' ').join('');
             return (
               <TableRow key={id}>
                 <OperationCat>
                   <CellInner>
                     <Square color={color} />
-                    {category}
+                    {t(`categories.${res}`)}
                   </CellInner>
                 </OperationCat>
                 <OperationSum>
