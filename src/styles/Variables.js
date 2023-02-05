@@ -46,7 +46,7 @@ export const diargamColors = [
    '#00AD84',
 ];
 
-export const monthNames = [
+export const monthNamesEn = [
   'January',
   'February',
   'March',
@@ -60,6 +60,8 @@ export const monthNames = [
   'November',
   'December',
 ];
+
+export const monthNamesUa = ["Січень", "Лютий", "Березень", "Квітень", "Травень", "Червень", "Липень", "Серпень", "Вересень", "Жовтень", "Листопад", "Грудень"];
 
 export const border = {
   blue: '1px solid #4a56e2',

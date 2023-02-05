@@ -22,7 +22,7 @@ export const NavigateButton = styled(NavLink)`
   background-color: transparent;
   border: none;
   height: 44px;
-  font-family: 'Poppins';
+  font-family: 'Poppins', "Montserrat";
   font-size: 18px;
   color: ${(props) => props.theme.reverseBlack};
 

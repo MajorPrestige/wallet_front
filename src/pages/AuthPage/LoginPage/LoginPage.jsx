@@ -9,6 +9,7 @@ import { AuthContainer, StyledAuthForm, AuthHero } from '../AuthPage.styled';
 
 import { getFirstLoading, getLoading } from 'redux/auth/auth-selectors';
 
+import { LanguagesSwitcher } from 'components/LanguagesSwitcher/LanguagesSwitcher';
 import SigninTab from 'images/auth/SigninAppTab.png';
 import SigninTab2x from 'images/auth/SigninAppTab@2x.png';
 import SigninDesk from 'images/auth/SigninAppDesk.png';
@@ -43,6 +44,7 @@ const LoginPage = () => {
                   <LoginImg src={SigninTab} alt="Finance App" />
                 </picture>
               </div>
+              <LanguagesSwitcher/>
               <Title>Finance App</Title>
             </AuthHero>
           )}

@@ -1,6 +1,7 @@
 import { useMediaQuery } from 'react-responsive';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useRef } from 'react';
+import { useTranslation } from "react-i18next";
 
 import {
   Category,
@@ -37,8 +38,9 @@ import { useState } from 'react';
 import ModalAnswer from 'components/ModalAnswer/ModalAnswer';
 
 const Table = () => {
+  const { t } = useTranslation();
   const [id, setId] = useState('');
-
+  const currentLanguage = useSelector(state => state.language.language);
   const scrollBody = useRef();
   const scrollContainer = useRef();
 
@@ -75,6 +77,42 @@ const Table = () => {
 
   if (!transactions) return false;
 
+  const transactionsList = (e) => {
+    if(currentLanguage === "ua") {
+      if(e?.category?.name === 'Main expenses') {
+        return "Основні витрати";
+      };
+      if(e?.category?.name === 'Products') {
+        return "Продукти";
+      };
+      if(e?.category?.name === 'Car') {
+        return "Автомобіль";
+      };
+      if(e?.category?.name === 'Self care') {
+        return "Догляд за собою";
+      };
+      if(e?.category?.name === 'Child care') {
+        return "Догляд за дітьми";
+      };
+      if(e?.category?.name === 'Household products') {
+        return "Товари для дому";
+      };
+      if(e?.category?.name === 'Education') {
+        return "Освіта";
+      };
+      if(e?.category?.name === 'Leisure') {
+        return "Дозвілля";
+      };
+      if(e?.category?.name === 'Other expenses') {
+        return "Інші витрати";
+      };
+      if(e?.category?.name === 'Entertainment') {
+        return "Розваги";
+      };
+    };
+    return e?.category?.name;
+  };
+
   return (
     <>
       {noMobile && (
@@ -82,13 +120,13 @@ const Table = () => {
           <TableContainer ref={scrollBody} hasScroll={hasScroll}>
             <TableHead>
               <tr>
-                <Category>Date</Category>
-                <Category>Type</Category>
-                <Category>Category</Category>
-                <Category>Comment</Category>
-                <Category>Sum</Category>
-                <Category>Balance</Category>
-                <Category>Options</Category>
+                <Category>{t('table.tableHead.category.date')}</Category>
+                <Category>{t('table.tableHead.category.type')}</Category>
+                <Category>{t('table.tableHead.category.category')}</Category>
+                <Category>{t('table.tableHead.category.comment')}</Category>
+                <Category>{t('table.tableHead.category.sum')}</Category>
+                <Category>{t('table.tableHead.category.balance')}</Category>
+                <Category>{t('table.tableHead.category.options')}</Category>
               </tr>
             </TableHead>
 
@@ -101,7 +139,7 @@ const Table = () => {
                       {elem.type ? '+' : '-'}
                     </Operations>
                     <OperationsStyled>
-                      {elem?.category?.name ?? ''}
+                    {transactionsList(elem) ?? ''}
                     </OperationsStyled>
                     <OperationsStyled
                       overflowWrap="break-word"
@@ -139,39 +177,45 @@ const Table = () => {
                 <PlusTable key={elem._id}>
                   <MobileTbody>
                     <MobileTrPlus>
-                      <MobileTdTitle>Date</MobileTdTitle>
+
+                      <MobileTdTitle>{t('table.mobileTrPlus.mobileTdTitle.date')}</MobileTdTitle>
                       <MobileTdStyled>{formatDate(elem.date)}</MobileTdStyled>
+
                     </MobileTrPlus>
                     <MobileTrPlus>
-                      <MobileTdTitle>Type</MobileTdTitle>
+                      <MobileTdTitle>{t('table.mobileTrPlus.mobileTdTitle.type')}</MobileTdTitle>
                       <MobileTd color={elem.type ? '#24cca7' : '#ff6596'}>
                         {elem.type ? '+' : '-'}
                       </MobileTd>
                     </MobileTrPlus>
                     <MobileTrPlus>
-                      <MobileTdTitle>Category</MobileTdTitle>
+
+                      <MobileTdTitle>{t('table.mobileTrPlus.mobileTdTitle.category')}</MobileTdTitle>
                       <MobileTdStyled>
                         {elem?.category?.name ?? ''}
                       </MobileTdStyled>
                     </MobileTrPlus>
                     <MobileTrPlus>
-                      <MobileTdTitle>Comment</MobileTdTitle>
+                      <MobileTdTitle>{t('table.mobileTrPlus.mobileTdTitle.comment')}</MobileTdTitle>
                       <MobileTdStyled>{elem.comment}</MobileTdStyled>
+
                     </MobileTrPlus>
                     <MobileTrPlus>
-                      <MobileTdTitle>Sum</MobileTdTitle>
+                      <MobileTdTitle>{t('table.mobileTrPlus.mobileTdTitle.sum')}</MobileTdTitle>
                       <MobileTdSumPlus>
                         {Number(elem.sum).toFixed(2)}
                       </MobileTdSumPlus>
                     </MobileTrPlus>
                     <MobileTrPlus>
-                      <MobileTdTitle>Balance</MobileTdTitle>
+
+                      <MobileTdTitle>{t('table.mobileTrPlus.mobileTdTitle.balance')}</MobileTdTitle>
                       <MobileTdStyled>
+
                         {Number(elem.balanceAfter).toFixed(2)}
                       </MobileTdStyled>
                     </MobileTrPlus>
                     <MobileTrPlus>
-                      <MobileTdTitle>Options</MobileTdTitle>
+                      <MobileTdTitle>{t('table.mobileTrPlus.mobileTdTitle.options')}</MobileTdTitle>
                       <MobileTd>
                         <ButtonBin
                           type="button"
@@ -187,8 +231,10 @@ const Table = () => {
                 <MinusTable key={elem._id}>
                   <MobileTbody>
                     <MobileTrMinus>
-                      <MobileTdTitle>Date</MobileTdTitle>
+
+                      <MobileTdTitle>{t('table.mobileTrMinus.mobileTdTitle.date')}</MobileTdTitle>
                       <MobileTdStyled>{formatDate(elem.date)}</MobileTdStyled>
+
                     </MobileTrMinus>
                     <MobileTrMinus>
                       <MobileTdTitle>Type</MobileTdTitle>
@@ -197,23 +243,26 @@ const Table = () => {
                       </MobileTd>
                     </MobileTrMinus>
                     <MobileTrMinus>
-                      <MobileTdTitle>Category</MobileTdTitle>
+
+                      <MobileTdTitle>{t('table.mobileTrMinus.mobileTdTitle.category')}</MobileTdTitle>
                       <MobileTdStyled>{elem.category.name}</MobileTdStyled>
                     </MobileTrMinus>
                     <MobileTrMinus>
-                      <MobileTdTitle>Comment</MobileTdTitle>
+                      <MobileTdTitle>{t('table.mobileTrMinus.mobileTdTitle.comment')}</MobileTdTitle>
                       <MobileTdStyled>{elem.comment}</MobileTdStyled>
+
                     </MobileTrMinus>
                     <MobileTrMinus>
-                      <MobileTdTitle>Sum</MobileTdTitle>
+                      <MobileTdTitle>{t('table.mobileTrMinus.mobileTdTitle.sum')}</MobileTdTitle>
                       <MobileTdMinus>{elem.sum}</MobileTdMinus>
                     </MobileTrMinus>
                     <MobileTrMinus>
-                      <MobileTdTitle>Balance</MobileTdTitle>
+
+                      <MobileTdTitle>{t('table.mobileTrMinus.mobileTdTitle.balance')}</MobileTdTitle>
                       <MobileTdStyled>{elem.balanceAfter}</MobileTdStyled>
                     </MobileTrMinus>
                     <MobileTrMinus>
-                      <MobileTdTitle>Options</MobileTdTitle>
+                      <MobileTdTitle>{t('table.mobileTrMinus.mobileTdTitle.options')}</MobileTdTitle>
                       <MobileTd>
                         <ButtonBin
                           type="button"
@@ -234,7 +283,7 @@ const Table = () => {
           <ModalAnswer
             toggleModalCancel={toggleModal}
             elem={id}
-            text={'Are you sure you want to delete transaction?'}
+            text={`${t('table.modalAnswer')}`}
             onButtonClick={handleDelete}
           />
         </Modal>

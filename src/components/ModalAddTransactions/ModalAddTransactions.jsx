@@ -5,6 +5,8 @@ import moment from 'moment';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 
+import { useTranslation } from "react-i18next";
+
 import calendar from '../../images/svgs/calendar.svg';
 import SelectList from 'components/SelectList/SelectList';
 import {
@@ -35,18 +37,35 @@ import LoaderAddTrans from './../Loader/LoaderAddTrans';
 import { categorySelectSelector } from '../../redux/categories/categories-selectors.js';
 
 const ModalAddTransactions = ({ toggleModalCancel }) => {
+  const { t } = useTranslation();
   const [isSubmit, setIsSubmit] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const [date, setDate] = useState(new Date());
   const isLoadingAdd = useSelector(getLoadingAddTransaction);
   const options = useSelector(categorySelectSelector);
+  const currentLanguage = useSelector(state => state.language.language);
+  
 
   const dispatch = useDispatch();
 
-  const defaultValue = (options, value) => {
-    return options ? options.find(option => option.value === value) || '' : '';
-  };
 
+  const currentOptions = (array) => {
+    const categoriesEn =['Main expenses', 'Products', 'Car', 'Self care', 'Child care', 'Household products', 'Education', 'Leisure', 'Other expenses', 'Entertainment'];
+    const categoriesUa = ["Основні витрати", "Продукти", "Автомобіль", "Догляд за собою", "Догляд за дітьми", "Товари для дому", "Освіта", "Дозвілля", "Інші витрати", "Розваги"];
+    if(currentLanguage === "ua") {
+      let newArray = [];
+      array.map((e) => {
+        const res = {
+         value: e.value,
+          label: categoriesUa[categoriesEn.indexOf(e.label)],
+         };
+      return newArray.push(res);
+      });
+      return newArray;
+    };
+  return options;
+  };
+ 
   useEffect(() => {
     if (isSubmit && !isLoadingAdd) {
       toggleModalCancel();
@@ -67,21 +86,22 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
     return current.isBefore(yesterday);
   }
 
+
   const validationSchema = isChecked
     ? yup.object().shape({
         sum: yup
           .number()
           .positive()
-          .required('Sum is required.')
+          .required(`${t('modalAddTransactions.validationSchema.sum_required')}`)
           .max(1000000000, 'up to 9 numbers'),
       })
     : yup.object().shape({
         sum: yup
           .number()
           .positive()
-          .required('Sum is required.')
+          .required(`${t('modalAddTransactions.validationSchema.sum_required')}`)
           .max(1000000000, 'up to 9 numbers'),
-        select: yup.string().required('Category is required.'),
+        select: yup.string().required(`${t('modalAddTransactions.validationSchema.select_required')}`),
       });
 
   const onSubmit = values => {
@@ -102,9 +122,9 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
   return (
     <>
       <Conteiner>
-        <Title>Add transaction</Title>
+        <Title>{t('modalAddTransactions.container.title')}</Title>
         <WrapCheckbox>
-          <CheckIncome isChecked={isChecked}>Income</CheckIncome>
+          <CheckIncome isChecked={isChecked}>{t('modalAddTransactions.container.checkIncome')}</CheckIncome>
           <Choice
             onChange={handleChecked}
             checked={!isChecked}
@@ -128,7 +148,7 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
             checkedIcon={false}
             uncheckedIcon={false}
           />
-          <CheckExpense isChecked={isChecked}>Expense</CheckExpense>
+          <CheckExpense isChecked={isChecked}>{t('modalAddTransactions.container.checkExpense')}</CheckExpense>
         </WrapCheckbox>
 
         <Formik
@@ -152,9 +172,8 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
                 <LableSelect>
                   <SelectList
                     name="select"
-                    value={defaultValue(options, values.select)}
                     onChange={getOnChangeSelect(setFieldValue)}
-                    options={options}
+                    options={currentOptions(options)}
                   />
                   {touched.select && errors.select && (
                     <AuthError>{errors.select}</AuthError>
@@ -195,20 +214,20 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
                 <InpputComment
                   type="text"
                   name="comment"
-                  placeholder="Comment"
+                  placeholder={t('modalAddTransactions.lableComment.placeholder')}
                   value={values.name}
                   onChange={handleChange}
                 />
               </LableComment>
               <ButtonAdd disabled={isLoadingAdd} type="submit">
-                {isLoadingAdd ? <LoaderAddTrans /> : 'add'}
+                {isLoadingAdd ? <LoaderAddTrans /> : `${t('modalAddTransactions.buttonAdd')}`}
               </ButtonAdd>
             </FormAddTrans>
           )}
         </Formik>
 
         <ButtonCancel type="button" onClick={() => toggleModalCancel()}>
-          cancel
+        {t('modalAddTransactions.buttonCancel')}
         </ButtonCancel>
       </Conteiner>
     </>

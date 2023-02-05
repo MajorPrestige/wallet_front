@@ -1,4 +1,5 @@
 import { useMediaQuery } from "react-responsive";
+import { useTranslation } from "react-i18next";
 
 import {
   StyledHomeIcon,
@@ -10,6 +11,7 @@ import {
 } from "./Navigation.styled";
 
 const Navigation = ({ current }) => {
+  const { t } = useTranslation();
   const isTablet = useMediaQuery({ minWidth: 768 });
 
   return (
@@ -18,9 +20,9 @@ const Navigation = ({ current }) => {
         {current === "home" ? <StyledHomeIcon current="true" /> : <StyledHomeIcon />}
         {isTablet ? (
           current === "home" ? (
-            <NavigateText current="true">Home</NavigateText>
+            <NavigateText current="true">{t('navigation.navigateText.home')}</NavigateText>
           ) : (
-            <NavigateText>Home</NavigateText>
+            <NavigateText>{t('navigation.navigateText.home')}</NavigateText>
           )
         ) : null}
       </NavigateButton>
@@ -34,9 +36,9 @@ const Navigation = ({ current }) => {
 
         {isTablet ? (
           current === "statistics" ? (
-            <NavigateText current="true">Statistics</NavigateText>
+            <NavigateText current="true">{t('navigation.navigateText.statistics')}</NavigateText>
           ) : (
-            <NavigateText>Statistics</NavigateText>
+            <NavigateText>{t('navigation.navigateText.statistics')}</NavigateText>
           )
         ) : null}
       </NavigateButton>

@@ -4,6 +4,7 @@ import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { signin, signinWithToken } from 'redux/auth/auth-operations';
+import { useTranslation, Trans } from "react-i18next";
 
 import Logo from 'components/Logo/Logo';
 import Modal from 'components/Modal/Modal';
@@ -31,6 +32,7 @@ import { emailRegexp } from '../../../variables/Regexp';
 // const emailRegexp = /^\w+[\w-.]*\w@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/;
 
 const LoginForm = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
 
@@ -45,9 +47,9 @@ const LoginForm = () => {
   const validationSchema = yup.object().shape({
     email: yup
       .string()
-      .matches(emailRegexp, 'invalid email')
-      .required('Please, enter your email'),
-    password: yup.string().required(`Please, enter your password`),
+      .matches(emailRegexp, `${t('loginForm.email_matches')}`)
+      .required(`${t('loginForm.email_required')}`),
+    password: yup.string().required(`${t('loginForm.password_required')}`),
   });
 
   const onSubmit = values => {
@@ -93,7 +95,7 @@ const LoginForm = () => {
                   <StyledField
                     name="password"
                     type="password"
-                    placeholder="Password"
+                    placeholder={`${t('loginForm.password_placeholder')}`}
                     value={values.name}
                     required={true}
                     onChange={handleChange}
@@ -106,14 +108,15 @@ const LoginForm = () => {
                 </StyledLabel>
                 <ButtonWrapper>
                   <Button primary marginBotom="20px" type="submit">
-                    SIGN IN
+                  {t('loginForm.signInButton')}
                   </Button>
                   <StyledLink to="/signup" outlined="true">
-                    SIGN UP
+                  {t('loginForm.signUpButton')}
                   </StyledLink>
-                  <ButtonGoogle href="https://goit-wallet-back.onrender.com/api/users/google">SIGN IN WITH
-                    <GoogleLogo />
-                    OOGLE
+                  <ButtonGoogle href="https://goit-wallet-back.onrender.com/api/users/google"><Trans i18nKey="loginForm.signInGoogle">
+                  SIGN IN WITH
+                  <GoogleLogo />OOGLE
+                  </Trans>
                   </ButtonGoogle>
                 </ButtonWrapper>
               </StyledForm>

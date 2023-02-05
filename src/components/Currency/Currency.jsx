@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { ThreeDots } from 'react-loader-spinner';
 import { Table, Container, WrapLoading, WrapError } from './Currency.styled';
+import { useTranslation, Trans } from "react-i18next";
 
 async function getCurrency() {
   try {
@@ -24,6 +25,7 @@ function parsedLocalStorage() {
 }
 
 const Currency = () => {
+  const { t } = useTranslation();
   const [currency, setCurrency] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -73,16 +75,18 @@ const Currency = () => {
       )}
       {error && (
         <WrapError>
+          <Trans i18nKey="currency.wrapError">
           <p>Currency is not available now.</p>
           <p>Please check later.</p>
+          </Trans>
         </WrapError>
       )}
       <Table>
         <thead>
           <tr>
-            <th>Currency</th>
-            <th>Purchase</th>
-            <th>Sale</th>
+            <th>{t('currency.table.currency')}</th>
+            <th>{t('currency.table.purchase')}</th>
+            <th>{t('currency.table.sale')}</th>
           </tr>
         </thead>
         <tbody>

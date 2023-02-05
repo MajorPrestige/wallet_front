@@ -47,6 +47,7 @@ export const App = () => {
     setIsChecked(!isChecked);
   };
 
+
   useEffect(() => {
     dispatch(current());
   }, [dispatch]);
