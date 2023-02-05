@@ -26,7 +26,7 @@ export const IconLogo = styled(Icon)`
 export const LogoText = styled.p`
   font-family: 'Poppins', 'Montserrat';
   font-weight: 700;
-  color: #000000;
+  color: ${(props) => props.theme.logoColor};
 
   @media ${device.tabletBefore} {
     font-size: 22px;

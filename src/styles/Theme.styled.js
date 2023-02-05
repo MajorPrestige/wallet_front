@@ -6,11 +6,47 @@ import { ReactComponent as Light } from 'images/svgs/light.svg';
 import { ReactComponent as Dark } from 'images/svgs/dark.svg';
 
 export const light = {
-  title: "#000000",
+  title: '#000000',
+  bgPrimary1: '#E7EAF2',
+  bgPrimary2: '#ffffff',
+  bgModalBlur: 'rgba(255, 255, 255, 0.4)',
+  bgModalColor: '#ffffff',
+  logoColor: "#000000",
+  bgblueActive: '#4A56E2',
+  bgblueNoActive: '#6E78E8',
+  bggreen: '#24cca7',
+  bgmodalCategoryList: 'rgba(255, 255, 255, 0.7)',
+  bgscrollbarThumb: '#c0c5f5',
+  reverseBlack: '#000000',
+  reverseWhite: '#ffffff',
+  txtgreen: '#24cca7',
+  txtred: '#FF6596',
+  txtblue: '#4A56E2',
+  txtGrey: '#BDBDBD',
+  txtbalanceGrey: '#A6A6A6',
+  txtmodalMailPassword: '#e0e0e0',
 };
 
 export const dark = {
   title: '#ffffff',
+  bgPrimary1: '#0d1117',
+  bgPrimary2: '#25282e',
+  bgModalBlur: 'rgba(0, 0, 0, 0.4)',
+  bgModalColor: '#25282e',
+  logoColor: "#ffffff",
+  bgblueActive: '#4A56E2',
+  bgblueNoActive: '#6E78E8',
+  bggreen: '#24cca7',
+  bgmodalCategoryList: 'rgba(255, 255, 255, 0.7)',
+  bgscrollbarThumb: '#c0c5f5',
+  reverseBlack: '#ffffff',
+  reverseWhite: '#000000',
+  txtgreen: '#24cca7',
+  txtred: '#FF6596',
+  txtblue: '#4A56E2',
+  txtGrey: '#ffffff',
+  txtbalanceGrey: '#A6A6A6',
+  txtmodalMailPassword: '#ffffff',
 };
 
 export const ThemeSwitcher = styled(Switch)`
@@ -21,18 +57,18 @@ export const ThemeSwitcher = styled(Switch)`
   left: 5% !important;
   z-index: 1000 !important;
 
-  @media ${device.desktop} {    
+  /* @media ${device.desktop} {
     left: calc(50vw - 620px) !important;
-  }
+  } */
 `;
 
 export const StyledLightIcon = styled(Light)`
   width: 24px;
-  fill: #ffffff;
 `;
 
 export const StyledDarkIcon = styled(Dark)`
   width: 24px;
+  fill: #ffffff;
 `;
 
 export const CheckedHand = styled.div`
@@ -40,10 +76,9 @@ export const CheckedHand = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
-  box-shadow: 0px 6px 15px #00007d;
-  background-color: #00008B;
+  box-shadow: 0px 6px 15px #fff59d;
+  background-color: #ffff00;
   border-radius: 50%;
-  
 `;
 
 export const UncheckedHandle = styled.div`
@@ -51,7 +86,7 @@ export const UncheckedHandle = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
-  box-shadow: 0px 6px 15px #fff59d;
-  background-color: #ffff00;
   border-radius: 50%;
+  box-shadow: 0px 6px 15px #00007d;
+  background-color: #00008b;
 `;
