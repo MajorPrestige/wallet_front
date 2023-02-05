@@ -49,7 +49,7 @@ const Modal = ({ toggleModal, children, isSignIn, InnerComponent }) => {
               {!isTablet && <ModalHeader><Header /></ModalHeader>}
               {!!InnerComponent ? <InnerComponent/> : (
                 <ModalWindowAddTransaction>
-                  {isTablet && <ModalClose onClick={toggleModal} />}
+                  {isTablet && <ModalClose dark="true" onClick={toggleModal} />}
                   {children}
                 </ModalWindowAddTransaction>
               )}

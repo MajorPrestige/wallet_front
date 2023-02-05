@@ -10,6 +10,7 @@ import { App } from 'components/App';
 import GlobalStyles from 'styles/Global.styled';
 import { persistor, store } from 'redux/store';
 
+import './i18n.js';
 import 'styles/fonts/fonts.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(

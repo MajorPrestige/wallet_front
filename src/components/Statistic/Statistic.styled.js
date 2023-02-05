@@ -7,6 +7,8 @@ export const Title = styled.h1`
   font-weight: 400;
   font-size: 30px;
   line-height: 45px;
+  color: ${props => props.theme.title};
+
 
   margin-top: 40px; 
   margin-bottom: 8px; 

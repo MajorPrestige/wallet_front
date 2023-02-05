@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import { useTranslation } from "react-i18next";
 
 import { getStatistic, getDateArr } from 'redux/transactions/trans-selectors';
 import { fetchStatistic } from 'redux/transactions/trans-operations';
@@ -11,6 +12,7 @@ import DiagramForm from './DiagramForm/DiagramForm';
 import { Title, StatisticContainer, TableContainer } from './Statistic.styled';
 
 const Statistic = () => {
+  const { t } = useTranslation();
   const [date, setDate] = useState(() => ({ month: (new Date().getMonth() + 1), year: new Date().getFullYear() }));
 
   const dispatch = useDispatch();
@@ -33,7 +35,7 @@ const Statistic = () => {
   return (
     <StatisticContainer>
       <div>
-        <Title>Statistics</Title>
+        <Title>{t('statistic.statisticContainer.title')}</Title>
         <Chart transactions={transactions || []} />
       </div>
       <TableContainer>

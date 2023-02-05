@@ -3,6 +3,7 @@ import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { signup } from 'redux/auth/auth-operations';
+import { useTranslation, Trans } from "react-i18next";
 
 import Modal from 'components/Modal/Modal';
 import Logo from 'components/Logo/Logo';
@@ -33,36 +34,37 @@ import { emailRegexp, passwordRegexp } from '../../../variables/Regexp';
 // const emailRegexp = /^\w+[\w-.]*\w@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/;
 
 const RegistrationForm = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const authError = useSelector(getAuthError);
 
   const validationSchema = yup.object().shape({
     email: yup
       .string()
-      .matches(emailRegexp, 'invalid email')
-      .required('Please, enter your email'),
+      .matches(emailRegexp, `${t('registrationForm.email_matches')}`)
+      .required(`${t('registrationForm.email_required')}`),
     password: yup
       .string()
-      .required(`Please, enter your password`)
-      .min(6, 'At least 6 characters')
-      .max(16, 'Up to 16 characters')
+      .required(`${t('registrationForm.password_required')}`)
+      .min(6, `${t('registrationForm.password_min')}`)
+      .max(16, `${t('registrationForm.password_max')}`)
       .matches( 
         passwordRegexp.lettersFull,
         // /^.*(?=.{6,})((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
-        'At least one uppercase and lowercase',
+        `${t('registrationForm.password_matchesFull')}`,
       )
       .matches(
         passwordRegexp.numbers,
         // /^.*(?=.*\d).*$/, 
-        'At least one number'),
+        `${t('registrationForm.password_matchesNum')}`),
     confirmPassword: yup
       .string()
-      .oneOf([yup.ref('password')], 'Passwords do not match.')
-      .required(`Please, confirm your password`),
+      .oneOf([yup.ref('password')], `${t('registerForm.confirmPassword_oneOf')}`)
+      .required(`${t('registrationForm.confirmPassword_required')}`),
     firstName: yup
       .string()
-      .max(12, 'up to 12 characters')
-      .required(`Please, enter your name`),
+      .max(12, `${t('registrationForm.firstName_max')}`)
+      .required(`${t('registrationForm.firstName_rquired')}`),
   });
 
   const checkPassword = password => {
@@ -139,7 +141,7 @@ const RegistrationForm = () => {
                   <StyledField
                     name="password"
                     type="password"
-                    placeholder="Password"
+                    placeholder={`${t('registrationForm.password_placeholder')}`}
                     value={values.name}
                     required={true}
                     onChange={handleChange}
@@ -161,7 +163,7 @@ const RegistrationForm = () => {
                   <StyledField
                     name="confirmPassword"
                     type="password"
-                    placeholder="Confirm password"
+                    placeholder={`${t('registrationForm.confirmPassword_placeholder')}`}
                     value={values.name}
                     onChange={handleChange}
                   />
@@ -174,7 +176,7 @@ const RegistrationForm = () => {
                   <StyledField
                     name="firstName"
                     type="text"
-                    placeholder="First name"
+                    placeholder={`${t('registrationForm.firstName_placeholder')}`}
                     value={values.name}
                     onChange={handleChange}
                   />
@@ -186,15 +188,16 @@ const RegistrationForm = () => {
                 </StyledLabel>
                 <ButtonWrapper>
                   <Button primary marginBotom="20px" type="submit">
-                    SIGN UP
+                  {t('registrationForm.signUpButton')}
                   </Button>
                   <StyledLink to="/" outlined="true">
-                    SIGN IN
+                  {t('registrationForm.signInButton')}
                   </StyledLink>
                   <ButtonGoogle href="https://goit-wallet-back.onrender.com/api/users/google">
-                    SIGN IN WITH
-                    <GoogleLogo />
-                    OOGLE
+                  <Trans i18nKey="registrationForm.signInGoogle">
+                  SIGN IN WITH
+                  <GoogleLogo />OOGLE
+                  </Trans>
                   </ButtonGoogle>
                 </ButtonWrapper>
               </StyledForm>

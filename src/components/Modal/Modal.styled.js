@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { device } from 'styles/Media.variables';
 
 import { ReactComponent as ModalCloseSvg } from 'images/svgs/modal-close.svg';
@@ -92,7 +92,7 @@ export const ModalWindow = styled.div`
   width: 280px;
   min-height: 520px;
   border-radius: 8px;
-  background-color: #fff;
+  background-color: #ffffff;
   box-shadow: 10px 10px 20px rgba(9, 30, 63, 0.2);
 
   @media ${device.mobileTablet} {
@@ -110,9 +110,10 @@ export const ModalWindowAddTransaction = styled.div`
   min-height: 204px;
   margin: 0;
   border-radius: 8px;
-  background-color: #fff;
+  background-color: ${props => props.theme.bgPrimary2};
   box-shadow: 10px 10px 20px rgba(9, 30, 63, 0.2);
   pointer-events: auto;
+
   @media screen and (max-width: 767px) {
     //margin-top: 140px;
 
@@ -132,6 +133,14 @@ export const ModalClose = styled(ModalCloseSvg)`
   height: 20px;
   top: 20px;
   right: 20px;
+  stroke: #000000;
+
+  ${props =>
+    props.dark &&
+    css`
+      stroke: ${props => props.theme.reverseBlack};
+      fill: ${props => props.theme.reverseBlack};
+    `}
 `;
 
 export const ModalHeader = styled.div`

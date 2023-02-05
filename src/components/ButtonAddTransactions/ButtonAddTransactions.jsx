@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { useSelector } from 'react-redux';
+import { useTranslation } from "react-i18next";
 
 // import {
 //   TransactionButton,
@@ -17,6 +18,7 @@ import AddTransactionButton from '../AddTransactionButton/AddTransactionButton.j
 
 
 const ButtonAddTransactions = () => {
+  const { t } = useTranslation();
   const [isModal, setIsModal] = useState(false);
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
@@ -42,7 +44,7 @@ const ButtonAddTransactions = () => {
       )}
       {transactionError && (
         <Modal toggleModal={toggleModal}>
-          <ErrorMessage message={transactionError}>messege</ErrorMessage>
+          <ErrorMessage message={transactionError}>{t('btnAddTransactions')}</ErrorMessage>
         </Modal>
       )}
     </>
