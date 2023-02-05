@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { device } from "styles/Media.variables";
+import styled from 'styled-components';
+import { device } from 'styles/Media.variables';
 
 export const BalanceContainer = styled.div`
   height: 80px;
@@ -10,7 +10,7 @@ export const BalanceContainer = styled.div`
   padding-left: 32px;
   padding-right: 73px;
   padding-bottom: 12px;
-  background-color: #ffffff;
+  background-color: ${props => props.theme.bgPrimary2};
   border-radius: 30px;
 
   @media ${device.tabletBefore} {
@@ -37,4 +37,8 @@ export const BalanceContainer = styled.div`
     font-family: Poppins, Circe;
     font-size: 30px;
   }
+`;
+
+export const BalanceText = styled.span`
+  color: ${(props) => props.theme.reverseBlack};
 `;

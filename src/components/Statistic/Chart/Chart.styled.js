@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { device } from "styles/Media.variables";
+import styled from 'styled-components';
+import { device } from 'styles/Media.variables';
 
 export const StyledChart = styled.div`
   position: relative;
@@ -60,4 +60,9 @@ export const Text = styled.p`
   width: 250px;
   text-align: center;
   font-size: 18px;
+  color: ${props => props.theme.reverseBlack};
+`;
+
+export const BalanceText = styled.span`
+  color: ${props => props.theme.reverseBlack};
 `;

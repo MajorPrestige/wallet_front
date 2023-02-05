@@ -86,14 +86,23 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
     return current.isBefore(yesterday);
   }
 
-  const validationSchema = isChecked ? 
-    ( yup.object().shape({
-      sum: yup.number().positive().required(`${t('modalAddTransactions.validationSchema.sum_required')}`),
-    })) :
-    ( yup.object().shape({
-        sum: yup.number().positive().required(`${t('modalAddTransactions.validationSchema.sum_required')}`),
+
+  const validationSchema = isChecked
+    ? yup.object().shape({
+        sum: yup
+          .number()
+          .positive()
+          .required(`${t('modalAddTransactions.validationSchema.sum_required')}`)
+          .max(1000000000, 'up to 9 numbers'),
+      })
+    : yup.object().shape({
+        sum: yup
+          .number()
+          .positive()
+          .required(`${t('modalAddTransactions.validationSchema.sum_required')}`)
+          .max(1000000000, 'up to 9 numbers'),
         select: yup.string().required(`${t('modalAddTransactions.validationSchema.select_required')}`),
-    }));
+      });
 
   const onSubmit = values => {
     setIsSubmit(true);
@@ -150,12 +159,19 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
           validationSchema={validationSchema}
           onSubmit={onSubmit}
         >
-          {({ values, errors, touched, handleChange, handleSubmit, setFieldValue }) => (
+          {({
+            values,
+            errors,
+            touched,
+            handleChange,
+            handleSubmit,
+            setFieldValue,
+          }) => (
             <FormAddTrans onSubmit={handleSubmit}>
               {!isChecked && (
                 <LableSelect>
                   <SelectList
-                    name='select'
+                    name="select"
                     onChange={getOnChangeSelect(setFieldValue)}
                     options={currentOptions(options)}
                   />

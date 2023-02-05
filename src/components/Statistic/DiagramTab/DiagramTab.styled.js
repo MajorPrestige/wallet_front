@@ -22,7 +22,9 @@ export const Category = styled.th`
   padding-right: 20px;
   padding-left: 20px;
 
-  background-color: ${colorText.white};
+  
+  background-color: ${props => props.theme.bgPrimary2};
+  color: ${props => props.theme.reverseBlack};
 
   font-weight: 700;
   font-size: 18px;
@@ -74,6 +76,7 @@ export const OperationSum = styled.td`
 export const CellInner = styled.div`
   display: flex;
   align-items: center;
+  color: ${props => props.theme.reverseBlack};
 `;
 
 export const Square = styled.div`
@@ -91,6 +94,7 @@ export const Totals = styled.p`
   font-weight: 700;
   font-size: 16px;
   line-height: 24px;
+  color: ${props => props.theme.reverseBlack};
 
   margin-top: 15px;
   margin-left: 20px;

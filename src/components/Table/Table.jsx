@@ -11,6 +11,7 @@ import {
   PlusTable,
   MinusTable,
   MobileTd,
+  MobileTdStyled,
   MobileTbody,
   MobileContainer,
   MobileTrPlus,
@@ -22,6 +23,7 @@ import {
   ButtonBin,
   BinIcon,
   Tbody,
+  OperationsStyled,
 } from './Table.styled';
 
 import { getTransactions } from 'redux/transactions/trans-selectors';
@@ -132,21 +134,26 @@ const Table = () => {
               {transactions.length > 0 &&
                 [...transactions].map(elem => (
                   <tr key={elem._id} style={{ height: 50 }}>
-                    <Operations>{formatDate(elem.date)}</Operations>
+                    <OperationsStyled>{formatDate(elem.date)}</OperationsStyled>
                     <Operations color={elem.type ? '#24cca7' : '#ff6596'}>
                       {elem.type ? '+' : '-'}
                     </Operations>
-                    <Operations>{transactionsList(elem) ?? ''}</Operations>
-                    <Operations overflowWrap="break-word" wordBreak="break-all">
+                    <OperationsStyled>
+                    {transactionsList(elem) ?? ''}
+                    </OperationsStyled>
+                    <OperationsStyled
+                      overflowWrap="break-word"
+                      wordBreak="break-all"
+                    >
                       {elem.comment}
-                    </Operations>
+                    </OperationsStyled>
                     <Operations color={elem.type ? '#24cca7' : '#ff6596'}>
                       {Number(elem.sum).toFixed(2)}
                     </Operations>
 
-                    <Operations>
+                    <OperationsStyled>
                       {Number(elem.balanceAfter).toFixed(2)}
-                    </Operations>
+                    </OperationsStyled>
                     <Operations>
                       <ButtonBin
                         type="button"
@@ -170,8 +177,10 @@ const Table = () => {
                 <PlusTable key={elem._id}>
                   <MobileTbody>
                     <MobileTrPlus>
+
                       <MobileTdTitle>{t('table.mobileTrPlus.mobileTdTitle.date')}</MobileTdTitle>
-                      <MobileTd>{formatDate(elem.date)}</MobileTd>
+                      <MobileTdStyled>{formatDate(elem.date)}</MobileTdStyled>
+
                     </MobileTrPlus>
                     <MobileTrPlus>
                       <MobileTdTitle>{t('table.mobileTrPlus.mobileTdTitle.type')}</MobileTdTitle>
@@ -180,12 +189,16 @@ const Table = () => {
                       </MobileTd>
                     </MobileTrPlus>
                     <MobileTrPlus>
+
                       <MobileTdTitle>{t('table.mobileTrPlus.mobileTdTitle.category')}</MobileTdTitle>
-                      <MobileTd>{elem?.category?.name ?? ''}</MobileTd>
+                      <MobileTdStyled>
+                        {elem?.category?.name ?? ''}
+                      </MobileTdStyled>
                     </MobileTrPlus>
                     <MobileTrPlus>
                       <MobileTdTitle>{t('table.mobileTrPlus.mobileTdTitle.comment')}</MobileTdTitle>
-                      <MobileTd>{elem.comment}</MobileTd>
+                      <MobileTdStyled>{elem.comment}</MobileTdStyled>
+
                     </MobileTrPlus>
                     <MobileTrPlus>
                       <MobileTdTitle>{t('table.mobileTrPlus.mobileTdTitle.sum')}</MobileTdTitle>
@@ -194,10 +207,12 @@ const Table = () => {
                       </MobileTdSumPlus>
                     </MobileTrPlus>
                     <MobileTrPlus>
+
                       <MobileTdTitle>{t('table.mobileTrPlus.mobileTdTitle.balance')}</MobileTdTitle>
-                      <MobileTd>
+                      <MobileTdStyled>
+
                         {Number(elem.balanceAfter).toFixed(2)}
-                      </MobileTd>
+                      </MobileTdStyled>
                     </MobileTrPlus>
                     <MobileTrPlus>
                       <MobileTdTitle>{t('table.mobileTrPlus.mobileTdTitle.options')}</MobileTdTitle>
@@ -216,8 +231,10 @@ const Table = () => {
                 <MinusTable key={elem._id}>
                   <MobileTbody>
                     <MobileTrMinus>
+
                       <MobileTdTitle>{t('table.mobileTrMinus.mobileTdTitle.date')}</MobileTdTitle>
-                      <MobileTd>{formatDate(elem.date)}</MobileTd>
+                      <MobileTdStyled>{formatDate(elem.date)}</MobileTdStyled>
+
                     </MobileTrMinus>
                     <MobileTrMinus>
                       <MobileTdTitle>Type</MobileTdTitle>
@@ -226,20 +243,23 @@ const Table = () => {
                       </MobileTd>
                     </MobileTrMinus>
                     <MobileTrMinus>
+
                       <MobileTdTitle>{t('table.mobileTrMinus.mobileTdTitle.category')}</MobileTdTitle>
-                      <MobileTd>{elem.category.name}</MobileTd>
+                      <MobileTdStyled>{elem.category.name}</MobileTdStyled>
                     </MobileTrMinus>
                     <MobileTrMinus>
                       <MobileTdTitle>{t('table.mobileTrMinus.mobileTdTitle.comment')}</MobileTdTitle>
-                      <MobileTd>{elem.comment}</MobileTd>
+                      <MobileTdStyled>{elem.comment}</MobileTdStyled>
+
                     </MobileTrMinus>
                     <MobileTrMinus>
                       <MobileTdTitle>{t('table.mobileTrMinus.mobileTdTitle.sum')}</MobileTdTitle>
                       <MobileTdMinus>{elem.sum}</MobileTdMinus>
                     </MobileTrMinus>
                     <MobileTrMinus>
+
                       <MobileTdTitle>{t('table.mobileTrMinus.mobileTdTitle.balance')}</MobileTdTitle>
-                      <MobileTd>{elem.balanceAfter}</MobileTd>
+                      <MobileTdStyled>{elem.balanceAfter}</MobileTdStyled>
                     </MobileTrMinus>
                     <MobileTrMinus>
                       <MobileTdTitle>{t('table.mobileTrMinus.mobileTdTitle.options')}</MobileTdTitle>

@@ -11,7 +11,7 @@ export const light = {
   bgPrimary2: '#ffffff',
   bgModalBlur: 'rgba(255, 255, 255, 0.4)',
   bgModalColor: '#ffffff',
-  logoColor: "#000000",
+  logoColor: '#000000',
   bgblueActive: '#4A56E2',
   bgblueNoActive: '#6E78E8',
   bggreen: '#24cca7',
@@ -33,7 +33,7 @@ export const dark = {
   bgPrimary2: '#25282e',
   bgModalBlur: 'rgba(0, 0, 0, 0.4)',
   bgModalColor: '#25282e',
-  logoColor: "#ffffff",
+  logoColor: '#ffffff',
   bgblueActive: '#4A56E2',
   bgblueNoActive: '#6E78E8',
   bggreen: '#24cca7',
@@ -56,10 +56,18 @@ export const ThemeSwitcher = styled(Switch)`
   bottom: 5% !important;
   left: 5% !important;
   z-index: 1000 !important;
+  opacity: 0.5 !important;
 
-  /* @media ${device.desktop} {
+  &:hover,
+  &:focus {
+    opacity: 1 !important;
+  }
+
+  opacity: 0.5 !important;
+
+  @media ${device.desktop} {
     left: calc(50vw - 620px) !important;
-  } */
+  }
 `;
 
 export const StyledLightIcon = styled(Light)`

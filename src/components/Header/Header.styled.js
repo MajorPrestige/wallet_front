@@ -3,7 +3,7 @@ import { device } from 'styles/Media.variables';
 import { ReactComponent as LogoutIcon } from 'images/svgs/logout.svg';
 
 export const HeaderContainer = styled.div`
-  background-color: #ffffff;
+  background-color: ${(props) => props.theme.bgPrimary2};
   text-align: center;
 `;
 
@@ -36,12 +36,11 @@ export const HeaderWrapper = styled.div`
   display: flex;
   align-items: center;
   font-size: 18px;
-  color: #bdbdbd;
+  color: ${(props) => props.theme.txtGrey};
 `;
 
 export const Logout = styled(LogoutIcon)`
-  fill: #bdbdbd;
-  
+  fill: ${(props) => props.theme.txtGrey};
 `;
 
 export const LogoutButton = styled.button`
@@ -69,9 +68,9 @@ export const LogoutButton = styled.button`
     props.tablet &&
     css`
       font-size: 18px;
-      color: #bdbdbd;
+      color: ${(props) => props.theme.txtGrey};
       padding-left: 12px;
-      border-left: 1px solid #bdbdbd;
+      border-left: 1px solid ${(props) => props.theme.txtGrey};
     `}
 `;
 

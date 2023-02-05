@@ -5,7 +5,13 @@ import { Trans } from "react-i18next";
 
 import { getBalance } from 'redux/auth/auth-selectors';
 
-import { StyledChart, StyledBalance, Notification, Text } from './Chart.styled';
+import {
+  StyledChart,
+  StyledBalance,
+  Notification,
+  BalanceText,
+  Text,
+} from './Chart.styled';
 import { diargamColors } from '../../../styles/Variables';
 
 ChartJS.register(ArcElement, Tooltip);
@@ -71,8 +77,8 @@ const Chart = ({ transactions }) => {
           <Doughnut data={dataIncome} />
           <StyledBalance>
             <div>
-              <span>&#8372; </span>
-              <span>{balance.toFixed(2)}</span>
+              <BalanceText>&#8372; </BalanceText>
+              <BalanceText>{balance.toFixed(2)}</BalanceText>
             </div>
           </StyledBalance>
         </StyledChart>
@@ -82,8 +88,8 @@ const Chart = ({ transactions }) => {
           <Doughnut data={dataExpens} />
           <StyledBalance>
             <div>
-              <span>&#8372; </span>
-              <span>{balance.toFixed(2)}</span>
+              <BalanceText>&#8372; </BalanceText>
+              <BalanceText>{balance.toFixed(2)}</BalanceText>
             </div>
           </StyledBalance>
         </StyledChart>

@@ -1,7 +1,9 @@
 import { useSelector } from "react-redux";
 import { getBalance } from "redux/auth/auth-selectors";
-import { BalanceContainer } from "./Balance.styled";
+
 import { useTranslation } from "react-i18next";
+import { BalanceContainer, BalanceText } from "./Balance.styled";
+
 
 const Balance = () => {
   const { t } = useTranslation();
@@ -11,8 +13,8 @@ const Balance = () => {
     <BalanceContainer>
       <p>{t('balance.your_balance')}</p>
       <p>
-        <span>&#8372; </span>
-        <span>{balance.toFixed(2)}</span>
+        <BalanceText>&#8372; </BalanceText>
+        <BalanceText>{balance.toFixed(2)}</BalanceText>
       </p>
     </BalanceContainer>
   );
