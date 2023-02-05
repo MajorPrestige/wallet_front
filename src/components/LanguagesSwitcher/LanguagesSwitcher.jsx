@@ -6,34 +6,25 @@ import { useDispatch } from 'react-redux';
 import {setLanguage} from 'redux/language/language-slice';
 
 export const LanguagesSwitcher = () => {
-const [lng, setLng] = useState('en');
+const [lng, setLng] = useState('');
 const dispatch = useDispatch();
 const { i18n } = useTranslation();
 
-const handleThemeChange = () => {
+const handleThemeChange = (lng) => {
     const changeLanguage = (language) => {
       i18n.changeLanguage(language);
   };
-
-    if(lng === "en") {
-      changeLanguage("ua");
-      setLng('ua');
-      dispatch(setLanguage('ua'));
-    }
-
-    if(lng === "ua") {
-      changeLanguage("en");
-      setLng('en');
-      dispatch(setLanguage('en'));
-    };
+      changeLanguage(lng);
+      setLng(lng);
+      dispatch(setLanguage(lng));
   };
 
 
 return (
 <>
 <div style={{widt: "200px", display: "flex", gap: "25px" }}>
-<button type="button" style={{padding: "0",  border: "none", backgroundColor: "transparent", width: "50px", minHeight: "5px", borderRadius: "30%", overflow: "hidden"}} onClick={() => handleThemeChange()}><GB title="GB" style={{ display: "block", width: "50px" }}/></button>
-<button type="button" style={{padding: "0",  border: "none", backgroundColor: "transparent", width: "50px", minHeight: "5px", borderRadius: "30%", overflow: "hidden"}} onClick={() => handleThemeChange()}><UA title="UA" style={{ display: "block", width: "50px" }}/></button>
+<button type="button" style={{padding: "0",  border: "none", backgroundColor: "transparent", width: "50px", minHeight: "5px", borderRadius: "30%", overflow: "hidden"}} onClick={() => handleThemeChange('en')}><GB title="GB" style={{ display: "block", width: "50px" }}/></button>
+<button type="button" style={{padding: "0",  border: "none", backgroundColor: "transparent", width: "50px", minHeight: "5px", borderRadius: "30%", overflow: "hidden"}} onClick={() => handleThemeChange('ua')}><UA title="UA" style={{ display: "block", width: "50px" }}/></button>
 </div>
 </>
 
