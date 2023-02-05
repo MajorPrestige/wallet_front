@@ -37,7 +37,7 @@ const Modal = ({ toggleModal, children, isSignIn }) => {
     <Overlay onClick={onOverlayClick}>
       {isSignIn ? (
         <ModalWindowAddTransaction>
-          {isTablet && <ModalClose onClick={toggleModal} />}
+          {isTablet && <ModalClose dark="true" onClick={toggleModal} />}
           {children}
         </ModalWindowAddTransaction>
       ) : (

@@ -1,14 +1,15 @@
 import styled from "styled-components";
 import { device } from "styles/Media.variables";
-import { colorText, font } from '../../styles/Variables';
+import { font } from '../../styles/Variables';
 
 export const Title = styled.p`
 	font-size: 17px;
   font-family: ${font.title};  
   line-height: 36px;
   text-align: center;
-  color:  ${colorText.black};
+  color:  ${props => props.theme.reverseBlack};
   padding-top: 60px;
+
 
   @media ${device.tablet} {
     font-size: 24px;
