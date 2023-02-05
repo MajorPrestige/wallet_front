@@ -57,9 +57,9 @@ export const ThemeSwitcher = styled(Switch)`
   left: 5% !important;
   z-index: 1000 !important;
 
-  /* @media ${device.desktop} {
+  @media ${device.desktop} {
     left: calc(50vw - 620px) !important;
-  } */
+  }
 `;
 
 export const StyledLightIcon = styled(Light)`

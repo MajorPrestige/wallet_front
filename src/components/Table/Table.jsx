@@ -10,6 +10,7 @@ import {
   PlusTable,
   MinusTable,
   MobileTd,
+  MobileTdStyled,
   MobileTbody,
   MobileContainer,
   MobileTrPlus,
@@ -21,6 +22,7 @@ import {
   ButtonBin,
   BinIcon,
   Tbody,
+  OperationsStyled,
 } from './Table.styled';
 
 import { getTransactions } from 'redux/transactions/trans-selectors';
@@ -94,21 +96,26 @@ const Table = () => {
               {transactions.length > 0 &&
                 [...transactions].map(elem => (
                   <tr key={elem._id} style={{ height: 50 }}>
-                    <Operations>{formatDate(elem.date)}</Operations>
+                    <OperationsStyled>{formatDate(elem.date)}</OperationsStyled>
                     <Operations color={elem.type ? '#24cca7' : '#ff6596'}>
                       {elem.type ? '+' : '-'}
                     </Operations>
-                    <Operations>{elem?.category?.name ?? ''}</Operations>
-                    <Operations overflowWrap="break-word" wordBreak="break-all">
+                    <OperationsStyled>
+                      {elem?.category?.name ?? ''}
+                    </OperationsStyled>
+                    <OperationsStyled
+                      overflowWrap="break-word"
+                      wordBreak="break-all"
+                    >
                       {elem.comment}
-                    </Operations>
+                    </OperationsStyled>
                     <Operations color={elem.type ? '#24cca7' : '#ff6596'}>
                       {Number(elem.sum).toFixed(2)}
                     </Operations>
 
-                    <Operations>
+                    <OperationsStyled>
                       {Number(elem.balanceAfter).toFixed(2)}
-                    </Operations>
+                    </OperationsStyled>
                     <Operations>
                       <ButtonBin
                         type="button"
@@ -133,7 +140,7 @@ const Table = () => {
                   <MobileTbody>
                     <MobileTrPlus>
                       <MobileTdTitle>Date</MobileTdTitle>
-                      <MobileTd>{formatDate(elem.date)}</MobileTd>
+                      <MobileTdStyled>{formatDate(elem.date)}</MobileTdStyled>
                     </MobileTrPlus>
                     <MobileTrPlus>
                       <MobileTdTitle>Type</MobileTdTitle>
@@ -143,11 +150,13 @@ const Table = () => {
                     </MobileTrPlus>
                     <MobileTrPlus>
                       <MobileTdTitle>Category</MobileTdTitle>
-                      <MobileTd>{elem?.category?.name ?? ''}</MobileTd>
+                      <MobileTdStyled>
+                        {elem?.category?.name ?? ''}
+                      </MobileTdStyled>
                     </MobileTrPlus>
                     <MobileTrPlus>
                       <MobileTdTitle>Comment</MobileTdTitle>
-                      <MobileTd>{elem.comment}</MobileTd>
+                      <MobileTdStyled>{elem.comment}</MobileTdStyled>
                     </MobileTrPlus>
                     <MobileTrPlus>
                       <MobileTdTitle>Sum</MobileTdTitle>
@@ -157,9 +166,9 @@ const Table = () => {
                     </MobileTrPlus>
                     <MobileTrPlus>
                       <MobileTdTitle>Balance</MobileTdTitle>
-                      <MobileTd>
+                      <MobileTdStyled>
                         {Number(elem.balanceAfter).toFixed(2)}
-                      </MobileTd>
+                      </MobileTdStyled>
                     </MobileTrPlus>
                     <MobileTrPlus>
                       <MobileTdTitle>Options</MobileTdTitle>
@@ -179,7 +188,7 @@ const Table = () => {
                   <MobileTbody>
                     <MobileTrMinus>
                       <MobileTdTitle>Date</MobileTdTitle>
-                      <MobileTd>{formatDate(elem.date)}</MobileTd>
+                      <MobileTdStyled>{formatDate(elem.date)}</MobileTdStyled>
                     </MobileTrMinus>
                     <MobileTrMinus>
                       <MobileTdTitle>Type</MobileTdTitle>
@@ -189,11 +198,11 @@ const Table = () => {
                     </MobileTrMinus>
                     <MobileTrMinus>
                       <MobileTdTitle>Category</MobileTdTitle>
-                      <MobileTd>{elem.category.name}</MobileTd>
+                      <MobileTdStyled>{elem.category.name}</MobileTdStyled>
                     </MobileTrMinus>
                     <MobileTrMinus>
                       <MobileTdTitle>Comment</MobileTdTitle>
-                      <MobileTd>{elem.comment}</MobileTd>
+                      <MobileTdStyled>{elem.comment}</MobileTdStyled>
                     </MobileTrMinus>
                     <MobileTrMinus>
                       <MobileTdTitle>Sum</MobileTdTitle>
@@ -201,7 +210,7 @@ const Table = () => {
                     </MobileTrMinus>
                     <MobileTrMinus>
                       <MobileTdTitle>Balance</MobileTdTitle>
-                      <MobileTd>{elem.balanceAfter}</MobileTd>
+                      <MobileTdStyled>{elem.balanceAfter}</MobileTdStyled>
                     </MobileTrMinus>
                     <MobileTrMinus>
                       <MobileTdTitle>Options</MobileTdTitle>

@@ -24,7 +24,7 @@ export const NavigateButton = styled(NavLink)`
   height: 44px;
   font-family: 'Poppins';
   font-size: 18px;
-  color: #000000;
+  color: ${(props) => props.theme.reverseBlack};
 
   &:not(:last-child) {
     margin-right: 32px;

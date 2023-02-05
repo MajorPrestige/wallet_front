@@ -16,8 +16,8 @@ export const TransactionButton = styled.button`
   border-radius: 50%;
   font-size: 30px;
   position: fixed;
-  right: 20px;
-  bottom: 20px;
+  right: 5%;
+  bottom: 5%;
   outline: none;
   cursor: pointer;
   box-shadow: ${shadows.roundButton};
@@ -39,7 +39,7 @@ export const TransactionButton = styled.button`
     z-index: 10;
   }
   @media ${device.desktop} {    
-    right: calc(50vw - 591px);
+    right: calc(50vw - 620px);
   }
 `;
 

@@ -5,11 +5,11 @@ import Elipse2 from "images/auth/Ellipse2.png";
 
 export const BackgroundContainer = styled.div`
   min-height: 100vh;
-  background-color: #e7eaf2;
+  background-color: ${(props) => props.theme.bgPrimary1};
 
   @media ${device.tablet} {
     background: top 0% right 0% no-repeat url(${Elipse2}),
-      bottom 0% left 0% no-repeat url(${Elipse1}), #e7eaf2;
+      bottom 0% left 0% no-repeat url(${Elipse1}), ${(props) => props.theme.bgPrimary1};
   }
 `;
 
