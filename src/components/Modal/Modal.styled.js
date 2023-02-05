@@ -2,7 +2,6 @@ import styled, { css } from 'styled-components';
 import { device } from 'styles/Media.variables';
 
 import { ReactComponent as ModalCloseSvg } from 'images/svgs/modal-close.svg';
-import Header from '../Header/Header.jsx';
 
 export const Container = styled.div`
   position: fixed;
@@ -95,10 +94,10 @@ export const ModalWindow = styled.div`
   background-color: #ffffff;
   box-shadow: 10px 10px 20px rgba(9, 30, 63, 0.2);
 
-  @media ${device.mobileTablet} {
+  @media (${device.mobileTablet}) {
     width: 440px;
   }
-  @media ${device.tablet} {
+  (@media ${device.tablet}) {
     width: 533px;
     min-height: 616px;
   }
