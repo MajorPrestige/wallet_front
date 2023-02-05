@@ -88,6 +88,7 @@ export const LableSelect = styled.label`
   width: 280px;
   height: 32px;
   margin-bottom: 40px;
+
   &:focus {
     border-color: #24cca7;
   }
@@ -101,6 +102,7 @@ export const Lable = styled.label`
   width: 280px;
   height: 32px;
   margin-bottom: 40px;
+
   &:focus {
     border-color: #24cca7;
   }
@@ -118,10 +120,12 @@ export const Inpput = styled.input`
   padding: 8px 20px;
   font-size: 18px;
   outline: none;
+  color: ${props => props.theme.reverseBlack};
+  background-color: ${props => props.theme.bgPrimary2};
 
   ::placeholder {
     font-size: 18px;
-    color: #bdbdbd;
+    color: ${props => props.theme.txtGrey};
   }
 
   :focus {
@@ -141,6 +145,7 @@ export const CalendarDatetime = styled(Datetime)`
     outline: none;
     padding: 8px 20px;
     font-size: 18px;
+    color: ${props => props.theme.reverseBlack};
 
     :focus {
       border-color: #24cca7;
@@ -175,10 +180,15 @@ export const InpputComment = styled.textarea`
   outline: none;
   resize: none;
   font-family: inherit;
+  line-height: 1.2;
+
+  
+  color: ${props => props.theme.reverseBlack};
+  background-color: ${props => props.theme.bgPrimary2};
 
   ::placeholder {
     font-size: 18px;
-    color: #bdbdbd;
+    color: ${props => props.theme.txtGrey};
   }
 
   :focus {
@@ -197,7 +207,7 @@ export const Title = styled.h2`
   font-weight: 400;
 
   margin-bottom: 42px;
-  color: #000000;
+  color: ${props => props.theme.reverseBlack};
 
   @media screen and (min-width: 768px) {
     font-size: 30px;
@@ -230,7 +240,6 @@ export const ButtonAdd = styled.button`
     color: #24cca7;
     border: 1px solid #24cca7;
   }
-
 
   &:disabled {
     filter: grayscale(1);
