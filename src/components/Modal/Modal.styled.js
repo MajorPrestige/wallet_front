@@ -63,12 +63,13 @@ export const Overlay = styled.div`
   padding-top: size(32px);
 
   border-radius: 16px;
-  background-color: #ffffff;
+  background-color: ${props => props.theme.bgPrimary2};
 
   @media screen and (min-width: 768px) {
     display: block;
     flex-direction: row;
     height: auto;
+    /* background-color: ${props => props.theme.bgPrimary2}; */
     background-color: rgba(43, 43, 43, 0.3);
     /* pointer-events: auto; */
   }
@@ -96,7 +97,7 @@ export const ModalWindow = styled.div`
   @media (${device.mobileTablet}) {
     width: 440px;
   }
-  
+
   @media (${device.tablet}) {
     width: 533px;
     min-height: 616px;
