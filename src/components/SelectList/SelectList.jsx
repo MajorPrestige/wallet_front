@@ -10,7 +10,6 @@ const SelectList = ({ options, getCurrent, defaultValue, chart, onChange, type, 
   const currentLanguage = useSelector(state => state.language.language);
   useEffect(()=>{
     setLng(currentLanguage);
-    console.log(defaultValue);
   }, [lng, currentLanguage, defaultValue]);
 
   const handleChange = selectedOption => {
