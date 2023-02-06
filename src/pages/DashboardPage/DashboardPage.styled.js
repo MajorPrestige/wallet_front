@@ -17,6 +17,7 @@ export const BlurContainer = styled.div`
   min-height: 100vh;
 
   @media ${device.tablet} {
+    background-color: ${props => props.theme.bgBlurColor};
     backdrop-filter: blur(25px);
   }
 `;
