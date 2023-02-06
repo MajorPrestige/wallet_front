@@ -15,6 +15,7 @@ export const CustomSelect = styled(Select)`
     line-height: 27px;
     display: flex;
     align-items: center;
+    background-color: ${props => props.theme.bgPrimary2};
     color: #000000;
 
     border-bottom: 1px solid #e0e0e0;
@@ -36,10 +37,6 @@ export const CustomSelect = styled(Select)`
     &__inValid .react-select__placeholder {
       color: red;
     }
-  }
-
-  .react-select__single-value {
-    color: ${props => props.theme.reverseBlack};
   }
 
   .react-select__indicator-separator {
@@ -81,6 +78,11 @@ export const CustomSelect = styled(Select)`
   .css-t3ipsp-control {
     box-shadow: none;
   }
+
+  .react-select__indicator {
+    color: ${props => props.theme.reverseBlack};
+  }
+
 `;
 
 export const ChartSelect = styled(Select)`

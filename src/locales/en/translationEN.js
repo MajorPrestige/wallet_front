@@ -71,7 +71,7 @@ const translationEN = {
     },
     navigation: {
         navigateText: {
-            home: "HOME",
+            home: "Home",
             statistics: "Statistics",
         },
     },
