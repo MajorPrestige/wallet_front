@@ -3,8 +3,9 @@ import { useSelector } from 'react-redux';
 
 import Loader from 'components/Loader/Loader';
 
+import { LanguagesSwitcher } from 'components/LanguagesSwitcher/LanguagesSwitcher';
 import RegistrationForm from 'components/Auth/RegistrationForm/RegistrationForm';
-import { StyledAuthForm, AuthHero, AuthContainer } from '../AuthPage.styled';
+import { StyledAuthForm, AuthHero, AuthContainer, LanguageButtonContainer  } from '../AuthPage.styled';
 import { RegistrationImg } from './RegistrationPage.styled';
 import { Title } from 'styles/Shared.styled';
 import FinanceTab from 'images/auth/FinanceTab.png';
@@ -22,6 +23,7 @@ const RegistrationPage = () => {
       {loading && <Loader />}
       <StyledAuthForm>
         <AuthContainer>
+        <LanguageButtonContainer><LanguagesSwitcher/></LanguageButtonContainer>
         {isntMobile && (
           <AuthHero>
             <div>
