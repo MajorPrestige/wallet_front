@@ -92,16 +92,32 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
         sum: yup
           .number()
           .positive()
-          .required(`${t('modalAddTransactions.validationSchema.sum_required')}`)
-          .max(1000000000, `${t('modalAddTransactions.validationSchema.sum_max')}`),
+          .required(
+            `${t('modalAddTransactions.validationSchema.sum_required')}`,
+          )
+          .max(
+            1000000000,
+            `${t('modalAddTransactions.validationSchema.sum_max')}`,
+          ),
+        comment: yup.string().max(30, 'up to 30 characters'),
       })
     : yup.object().shape({
         sum: yup
           .number()
           .positive()
-          .required(`${t('modalAddTransactions.validationSchema.sum_required')}`)
-          .max(1000000000, `${t('modalAddTransactions.validationSchema.sum_max')}`),
-        select: yup.string().required(`${t('modalAddTransactions.validationSchema.select_required')}`),
+          .required(
+            `${t('modalAddTransactions.validationSchema.sum_required')}`,
+          )
+          .max(
+            1000000000,
+            `${t('modalAddTransactions.validationSchema.sum_max')}`,
+          ),
+        select: yup
+          .string()
+          .required(
+            `${t('modalAddTransactions.validationSchema.select_required')}`,
+          ),
+        comment: yup.string().max(30, 'up to 30 characters'),
       });
 
   const onSubmit = values => {
@@ -124,7 +140,9 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
       <Conteiner>
         <Title>{t('modalAddTransactions.container.title')}</Title>
         <WrapCheckbox>
-          <CheckIncome isChecked={isChecked}>{t('modalAddTransactions.container.checkIncome')}</CheckIncome>
+          <CheckIncome isChecked={isChecked}>
+            {t('modalAddTransactions.container.checkIncome')}
+          </CheckIncome>
           <Choice
             onChange={handleChecked}
             checked={!isChecked}
@@ -148,13 +166,16 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
             checkedIcon={false}
             uncheckedIcon={false}
           />
-          <CheckExpense isChecked={isChecked}>{t('modalAddTransactions.container.checkExpense')}</CheckExpense>
+          <CheckExpense isChecked={isChecked}>
+            {t('modalAddTransactions.container.checkExpense')}
+          </CheckExpense>
         </WrapCheckbox>
 
         <Formik
           initialValues={{
             sum: '',
             select: '',
+            comment: '',
           }}
           validationSchema={validationSchema}
           onSubmit={onSubmit}
@@ -214,20 +235,29 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
                 <InpputComment
                   type="text"
                   name="comment"
-                  placeholder={t('modalAddTransactions.lableComment.placeholder')}
+                  placeholder={t(
+                    'modalAddTransactions.lableComment.placeholder',
+                  )}
                   value={values.name}
                   onChange={handleChange}
                 />
+                {touched.comment && errors.comment && (
+                  <AuthError>{errors.comment}</AuthError>
+                )}
               </LableComment>
               <ButtonAdd disabled={isLoadingAdd} type="submit">
-                {isLoadingAdd ? <LoaderAddTrans /> : `${t('modalAddTransactions.buttonAdd')}`}
+                {isLoadingAdd ? (
+                  <LoaderAddTrans />
+                ) : (
+                  `${t('modalAddTransactions.buttonAdd')}`
+                )}
               </ButtonAdd>
             </FormAddTrans>
           )}
         </Formik>
 
         <ButtonCancel type="button" onClick={() => toggleModalCancel()}>
-        {t('modalAddTransactions.buttonCancel')}
+          {t('modalAddTransactions.buttonCancel')}
         </ButtonCancel>
       </Conteiner>
     </>
