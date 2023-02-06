@@ -50,7 +50,7 @@ const translationUA = {
     modalAddTransactions: {
         validationSchema: {
             sum_required: "Необхідно вказати суму.",
-            sum_max: "До 9 знаків",
+            sum_max: "До 8 знаків",
             select_required: "Необхідно вказати категорію.",
         },
         container: {

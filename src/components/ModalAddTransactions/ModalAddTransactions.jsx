@@ -96,7 +96,7 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
             `${t('modalAddTransactions.validationSchema.sum_required')}`,
           )
           .max(
-            1000000000,
+            100000000,
             `${t('modalAddTransactions.validationSchema.sum_max')}`,
           ),
         comment: yup.string().max(30, 'up to 30 characters'),
@@ -109,7 +109,7 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
             `${t('modalAddTransactions.validationSchema.sum_required')}`,
           )
           .max(
-            1000000000,
+            100000000,
             `${t('modalAddTransactions.validationSchema.sum_max')}`,
           ),
         select: yup
