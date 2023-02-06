@@ -50,7 +50,7 @@ const translationEN = {
     modalAddTransactions: {
         validationSchema: {
             sum_required: "Sum is required.",
-            sum_max: "Up to 9 numbers",
+            sum_max: "Up to 8 numbers",
             select_required: "Category is required.",
         },
         container: {
