@@ -83,6 +83,9 @@ export const CustomSelect = styled(Select)`
     color: ${props => props.theme.reverseBlack};
   }
 
+  .react-select__single-value {
+    color: ${props => props.theme.reverseBlack};
+  }
 `;
 
 export const ChartSelect = styled(Select)`
