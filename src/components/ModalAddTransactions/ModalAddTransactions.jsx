@@ -92,16 +92,32 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
         sum: yup
           .number()
           .positive()
-          .required(`${t('modalAddTransactions.validationSchema.sum_required')}`)
-          .max(1000000000, `${t('modalAddTransactions.validationSchema.sum_max')}`),
+          .required(
+            `${t('modalAddTransactions.validationSchema.sum_required')}`,
+          )
+          .max(
+            1000000000,
+            `${t('modalAddTransactions.validationSchema.sum_max')}`,
+          ),
+        comment: yup.string().max(30, 'up to 30 characters'),
       })
     : yup.object().shape({
         sum: yup
           .number()
           .positive()
-          .required(`${t('modalAddTransactions.validationSchema.sum_required')}`)
-          .max(1000000000, `${t('modalAddTransactions.validationSchema.sum_max')}`),
-        select: yup.string().required(`${t('modalAddTransactions.validationSchema.select_required')}`),
+          .required(
+            `${t('modalAddTransactions.validationSchema.sum_required')}`,
+          )
+          .max(
+            1000000000,
+            `${t('modalAddTransactions.validationSchema.sum_max')}`,
+          ),
+        select: yup
+          .string()
+          .required(
+            `${t('modalAddTransactions.validationSchema.select_required')}`,
+          ),
+        comment: yup.string().max(30, 'up to 30 characters'),
       });
 
   const onSubmit = values => {

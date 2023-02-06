@@ -28,8 +28,8 @@ const Modal = ({ toggleModal, children, isSignIn, InnerComponent }) => {
   });
 
   const onOverlayClick = e => {
+    toggleModal();
     if (e.target === e.currentTarget) {
-      toggleModal();
     }
   };
 
@@ -38,6 +38,8 @@ const Modal = ({ toggleModal, children, isSignIn, InnerComponent }) => {
       toggleModal();
     }
   };
+
+  
 
   return createPortal(
     <Container className='container'>

@@ -49,7 +49,7 @@ export const Overlay = styled.div`
   //display: flex;
   //justify-content: center;
   //align-items: center;
-  background-color: rgba(43, 43, 43, 0);
+  /* background-color: rgba(43, 43, 43, 0); */
   //z-index: 1200;
   /* pointer-events: none; */
 
@@ -63,7 +63,7 @@ export const Overlay = styled.div`
   padding-top: size(32px);
 
   border-radius: 16px;
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
 
   @media screen and (min-width: 768px) {
     display: block;

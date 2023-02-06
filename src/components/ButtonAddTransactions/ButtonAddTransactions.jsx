@@ -19,11 +19,12 @@ const ButtonAddTransactions = () => {
 
 
   const toggleModal = () => {
+    console.log('toggleModal', isModal);
     setIsModal(!isModal);
   };
   return (
     <>
-      <AddTransactionButton type="button" onClick={() => toggleModal()}/>
+      <AddTransactionButton type="button" onClick={() => toggleModal()} />
 
       {!transactionError && !isMobile && isModal && (
         <Modal toggleModal={toggleModal} isSignIn>
@@ -35,11 +36,14 @@ const ButtonAddTransactions = () => {
           <ModalAddTransactions toggleModalCancel={toggleModal} />
         </Modal>
       )}
-      {transactionError && (
-        <Modal toggleModal={toggleModal}>
-          <ErrorMessage message={transactionError}>{t('btnAddTransactions')}</ErrorMessage>
-        </Modal>
-      )}
+      {transactionError &&
+        isModal && (
+          <Modal toggleModal={toggleModal}>
+            <ErrorMessage message={transactionError}>
+              {t('btnAddTransactions')}
+            </ErrorMessage>
+          </Modal>
+        )}
     </>
   );
 };
