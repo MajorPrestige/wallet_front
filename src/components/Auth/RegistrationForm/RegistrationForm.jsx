@@ -59,7 +59,7 @@ const RegistrationForm = () => {
         `${t('registrationForm.password_matchesNum')}`),
     confirmPassword: yup
       .string()
-      .oneOf([yup.ref('password')], `${t('registerForm.confirmPassword_oneOf')}`)
+      .oneOf([yup.ref('password')], `${t('registrationForm.confirmPassword_oneOf')}`)
       .required(`${t('registrationForm.confirmPassword_required')}`),
     firstName: yup
       .string()

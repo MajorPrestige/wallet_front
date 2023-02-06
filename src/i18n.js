@@ -18,7 +18,7 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
             translation: translationUA,
         },
     },
-    debug: true,
+    debug: false,
     detection: {
         order: ['queryString, cookie'],
         cache: ['cookie'],
