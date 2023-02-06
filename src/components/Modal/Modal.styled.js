@@ -16,7 +16,6 @@ export const Container = styled.div`
   z-index: 12000;
   pointer-events: auto;
 
-
   &::-webkit-scrollbar {
     //display: none;
   }
@@ -38,7 +37,7 @@ export const Wrapper = styled.div`
   width: 100%;
   min-height: 100%;
   //padding: 20px 40px;
-  padding: ${({isTablet}) => !isTablet ? '0' : '20px 40px'};
+  padding: ${({ isTablet }) => (!isTablet ? '0' : '20px 40px')};
 `;
 
 export const Overlay = styled.div`
@@ -64,7 +63,7 @@ export const Overlay = styled.div`
   padding-top: size(32px);
 
   border-radius: 16px;
-  background-color: ${props => props.theme.bgPrimary2};
+  background-color: #ffffff;
 
   @media screen and (min-width: 768px) {
     display: block;
@@ -97,7 +96,8 @@ export const ModalWindow = styled.div`
   @media (${device.mobileTablet}) {
     width: 440px;
   }
-  (@media ${device.tablet}) {
+  
+  @media (${device.tablet}) {
     width: 533px;
     min-height: 616px;
   }
