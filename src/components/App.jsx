@@ -1,6 +1,7 @@
-import { lazy, Suspense, useState, useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
+import useLocalStorage from 'use-local-storage';
 
 import { ThemeProvider } from 'styled-components';
 import {
@@ -34,8 +35,8 @@ const CurrencyPage = lazy(() =>
 const NotFoundPage = lazy(() => import('pages/NotFoundPage/NotFoundPage'));
 
 export const App = () => {
-  const [theme, setTheme] = useState('light');
-  const [isChecked, setIsChecked] = useState(true);
+  const [theme, setTheme] = useLocalStorage('theme', 'light');
+  const [isChecked, setIsChecked] = useLocalStorage('themeBtn', true);
   const isLogin = useSelector(getIsLogin);
 
   const dispatch = useDispatch();
@@ -46,7 +47,6 @@ export const App = () => {
     setTheme(isDarkTheme ? 'light' : 'dark');
     setIsChecked(!isChecked);
   };
-
 
   useEffect(() => {
     dispatch(current());

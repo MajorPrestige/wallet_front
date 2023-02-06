@@ -64,7 +64,7 @@ export const Overlay = styled.div`
   padding-top: size(32px);
 
   border-radius: 16px;
-  background-color: #ffffff;
+  background-color: ${props => props.theme.bgPrimary2};
 
   @media screen and (min-width: 768px) {
     display: block;
