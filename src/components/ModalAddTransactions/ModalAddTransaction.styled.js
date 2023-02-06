@@ -182,7 +182,6 @@ export const InpputComment = styled.textarea`
   font-family: inherit;
   line-height: 1.2;
 
-  
   color: ${props => props.theme.reverseBlack};
   background-color: ${props => props.theme.bgPrimary2};
 
@@ -202,7 +201,7 @@ export const InpputComment = styled.textarea`
 
 export const Title = styled.h2`
   font-size: 24px;
-  font-family: 'Poppins', "Montserrat";
+  font-family: 'Poppins', 'Montserrat';
   font-style: normal;
   font-weight: 400;
 
@@ -229,6 +228,7 @@ export const ButtonAdd = styled.button`
   text-transform: uppercase;
   color: #ffffff;
   background: #24cca7;
+  transition: 0.2s ease-in-out;
 
   &:hover:not(:disabled),
   &:focus {
@@ -260,6 +260,7 @@ export const ButtonCancel = styled.button`
   text-transform: uppercase;
   color: #4a56e2;
   margin-top: 20px;
+  transition: 0.2s ease-in-out;
 
   &:hover,
   &:focus {
