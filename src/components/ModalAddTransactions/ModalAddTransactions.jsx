@@ -140,7 +140,9 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
       <Conteiner>
         <Title>{t('modalAddTransactions.container.title')}</Title>
         <WrapCheckbox>
-          <CheckIncome isChecked={isChecked}>{t('modalAddTransactions.container.checkIncome')}</CheckIncome>
+          <CheckIncome isChecked={isChecked}>
+            {t('modalAddTransactions.container.checkIncome')}
+          </CheckIncome>
           <Choice
             onChange={handleChecked}
             checked={!isChecked}
@@ -164,13 +166,16 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
             checkedIcon={false}
             uncheckedIcon={false}
           />
-          <CheckExpense isChecked={isChecked}>{t('modalAddTransactions.container.checkExpense')}</CheckExpense>
+          <CheckExpense isChecked={isChecked}>
+            {t('modalAddTransactions.container.checkExpense')}
+          </CheckExpense>
         </WrapCheckbox>
 
         <Formik
           initialValues={{
             sum: '',
             select: '',
+            comment: '',
           }}
           validationSchema={validationSchema}
           onSubmit={onSubmit}
@@ -230,20 +235,29 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
                 <InpputComment
                   type="text"
                   name="comment"
-                  placeholder={t('modalAddTransactions.lableComment.placeholder')}
+                  placeholder={t(
+                    'modalAddTransactions.lableComment.placeholder',
+                  )}
                   value={values.name}
                   onChange={handleChange}
                 />
+                {touched.comment && errors.comment && (
+                  <AuthError>{errors.comment}</AuthError>
+                )}
               </LableComment>
               <ButtonAdd disabled={isLoadingAdd} type="submit">
-                {isLoadingAdd ? <LoaderAddTrans /> : `${t('modalAddTransactions.buttonAdd')}`}
+                {isLoadingAdd ? (
+                  <LoaderAddTrans />
+                ) : (
+                  `${t('modalAddTransactions.buttonAdd')}`
+                )}
               </ButtonAdd>
             </FormAddTrans>
           )}
         </Formik>
 
         <ButtonCancel type="button" onClick={() => toggleModalCancel()}>
-        {t('modalAddTransactions.buttonCancel')}
+          {t('modalAddTransactions.buttonCancel')}
         </ButtonCancel>
       </Conteiner>
     </>
