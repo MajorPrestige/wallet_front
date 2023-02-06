@@ -129,7 +129,6 @@ const Table = () => {
                 <Category>{t('table.tableHead.category.options')}</Category>
               </tr>
             </TableHead>
-
             <Tbody>
               {transactions.length > 0 &&
                 [...transactions].map(elem => (
@@ -143,22 +142,19 @@ const Table = () => {
                     </OperationsStyled>
                     <OperationsStyled
                       overflowWrap="break-word"
-                      wordBreak="break-all"
-                    >
+                      wordBreak="break-all">
                       {elem.comment}
                     </OperationsStyled>
                     <Operations color={elem.type ? '#24cca7' : '#ff6596'}>
                       {Number(elem.sum).toFixed(2)}
                     </Operations>
-
                     <OperationsStyled>
                       {Number(elem.balanceAfter).toFixed(2)}
                     </OperationsStyled>
                     <Operations>
                       <ButtonBin
                         type="button"
-                        onClick={() => toggleModal(elem._id)}
-                      >
+                        onClick={() => toggleModal(elem._id)}>
                         <BinIcon />
                       </ButtonBin>
                     </Operations>
@@ -168,7 +164,6 @@ const Table = () => {
           </TableContainer>
         </Container>
       )}
-
       {!noMobile && transactions.length > 0 && (
         <MobileContainer>
           {transactions.length > 0 &&
@@ -177,10 +172,8 @@ const Table = () => {
                 <PlusTable key={elem._id}>
                   <MobileTbody>
                     <MobileTrPlus>
-
                       <MobileTdTitle>{t('table.mobileTrPlus.mobileTdTitle.date')}</MobileTdTitle>
                       <MobileTdStyled>{formatDate(elem.date)}</MobileTdStyled>
-
                     </MobileTrPlus>
                     <MobileTrPlus>
                       <MobileTdTitle>{t('table.mobileTrPlus.mobileTdTitle.type')}</MobileTdTitle>
@@ -189,7 +182,6 @@ const Table = () => {
                       </MobileTd>
                     </MobileTrPlus>
                     <MobileTrPlus>
-
                       <MobileTdTitle>{t('table.mobileTrPlus.mobileTdTitle.category')}</MobileTdTitle>
                       <MobileTdStyled>
                         {elem?.category?.name ?? ''}
@@ -198,7 +190,6 @@ const Table = () => {
                     <MobileTrPlus>
                       <MobileTdTitle>{t('table.mobileTrPlus.mobileTdTitle.comment')}</MobileTdTitle>
                       <MobileTdStyled>{elem.comment}</MobileTdStyled>
-
                     </MobileTrPlus>
                     <MobileTrPlus>
                       <MobileTdTitle>{t('table.mobileTrPlus.mobileTdTitle.sum')}</MobileTdTitle>
@@ -207,10 +198,8 @@ const Table = () => {
                       </MobileTdSumPlus>
                     </MobileTrPlus>
                     <MobileTrPlus>
-
                       <MobileTdTitle>{t('table.mobileTrPlus.mobileTdTitle.balance')}</MobileTdTitle>
                       <MobileTdStyled>
-
                         {Number(elem.balanceAfter).toFixed(2)}
                       </MobileTdStyled>
                     </MobileTrPlus>
@@ -219,8 +208,7 @@ const Table = () => {
                       <MobileTd>
                         <ButtonBin
                           type="button"
-                          onClick={() => toggleModal(elem._id)}
-                        >
+                          onClick={() => toggleModal(elem._id)}>
                           <BinIcon />
                         </ButtonBin>
                       </MobileTd>
@@ -231,10 +219,8 @@ const Table = () => {
                 <MinusTable key={elem._id}>
                   <MobileTbody>
                     <MobileTrMinus>
-
                       <MobileTdTitle>{t('table.mobileTrMinus.mobileTdTitle.date')}</MobileTdTitle>
                       <MobileTdStyled>{formatDate(elem.date)}</MobileTdStyled>
-
                     </MobileTrMinus>
                     <MobileTrMinus>
                       <MobileTdTitle>{t('table.mobileTrMinus.mobileTdTitle.type')}</MobileTdTitle>
@@ -243,21 +229,18 @@ const Table = () => {
                       </MobileTd>
                     </MobileTrMinus>
                     <MobileTrMinus>
-
                       <MobileTdTitle>{t('table.mobileTrMinus.mobileTdTitle.category')}</MobileTdTitle>
-                      <MobileTdStyled>{elem.category.name}</MobileTdStyled>
+                      <MobileTdStyled>{transactionsList(elem) ?? ''}</MobileTdStyled>
                     </MobileTrMinus>
                     <MobileTrMinus>
                       <MobileTdTitle>{t('table.mobileTrMinus.mobileTdTitle.comment')}</MobileTdTitle>
                       <MobileTdStyled>{elem.comment}</MobileTdStyled>
-
                     </MobileTrMinus>
                     <MobileTrMinus>
                       <MobileTdTitle>{t('table.mobileTrMinus.mobileTdTitle.sum')}</MobileTdTitle>
                       <MobileTdMinus>{elem.sum}</MobileTdMinus>
                     </MobileTrMinus>
                     <MobileTrMinus>
-
                       <MobileTdTitle>{t('table.mobileTrMinus.mobileTdTitle.balance')}</MobileTdTitle>
                       <MobileTdStyled>{elem.balanceAfter}</MobileTdStyled>
                     </MobileTrMinus>
@@ -266,8 +249,7 @@ const Table = () => {
                       <MobileTd>
                         <ButtonBin
                           type="button"
-                          onClick={() => toggleModal(elem._id)}
-                        >
+                          onClick={() => toggleModal(elem._id)}>
                           <BinIcon />
                         </ButtonBin>
                       </MobileTd>
