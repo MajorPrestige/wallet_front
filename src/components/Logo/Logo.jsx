@@ -13,7 +13,7 @@ const Logo = ({ header }) => {
         </LogoHeaderContainer>
       ) : (
         <LogoContainer>
-          <IconLogo />
+         <IconLogo />
           <LogoText>{t('wallet')}</LogoText>
         </LogoContainer>
       )}

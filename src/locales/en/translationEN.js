@@ -50,6 +50,7 @@ const translationEN = {
     modalAddTransactions: {
         validationSchema: {
             sum_required: "Sum is required.",
+            sum_max: "Up to 9 numbers",
             select_required: "Category is required.",
         },
         container: {
@@ -141,6 +142,10 @@ const translationEN = {
         Leisure: "Leisure",
         Otherexpenses: "Other expenses",
         Entertainment: "Entertainment",
+    },
+    reactSelect: {
+        categoryPlaceholder: "Select a category",
+        placeholder: "Select the required value",
     },
 };
 

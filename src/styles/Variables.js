@@ -1,6 +1,6 @@
 export const font = {
   main: 'Circe, sans-serif',
-  title: 'Poppins, sans-serif',
+  title: 'Poppins, "Montserrat", sans-serif',
 };
 
 export const colorText = {

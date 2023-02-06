@@ -64,7 +64,7 @@ export const StyledLink = styled(Link)`
 `;
 
 export const Title = styled.h1`
-  font-family: 'Poppins';
+   font-family: 'Poppins', "Montserrat";
   font-weight: 400;
   font-size: 30px;
   color: ${(props) => props.theme.title}

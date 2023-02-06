@@ -202,7 +202,7 @@ export const InpputComment = styled.textarea`
 
 export const Title = styled.h2`
   font-size: 24px;
-  font-family: 'Poppins';
+  font-family: 'Poppins', "Montserrat";
   font-style: normal;
   font-weight: 400;
 

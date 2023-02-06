@@ -67,7 +67,6 @@ const LoginForm = () => {
           <LogoWrapper>
             <Logo />
           </LogoWrapper>
-
           <Formik
             initialValues={{
               email: '',

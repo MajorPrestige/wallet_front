@@ -237,7 +237,7 @@ const Table = () => {
 
                     </MobileTrMinus>
                     <MobileTrMinus>
-                      <MobileTdTitle>Type</MobileTdTitle>
+                      <MobileTdTitle>{t('table.mobileTrMinus.mobileTdTitle.type')}</MobileTdTitle>
                       <MobileTd color={elem.type ? '#24cca7' : '#ff6596'}>
                         {elem.type ? '+' : '-'}
                       </MobileTd>

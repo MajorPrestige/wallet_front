@@ -50,6 +50,7 @@ const translationUA = {
     modalAddTransactions: {
         validationSchema: {
             sum_required: "Необхідно вказати суму.",
+            sum_max: "До 9 знаків",
             select_required: "Необхідно вказати категорію.",
         },
         container: {
@@ -141,6 +142,10 @@ const translationUA = {
         Leisure: "Дозвілля",
         Otherexpenses: "Інші витрати",
         Entertainment: "Розваги",
+    },
+    reactSelect: {
+        categoryPlaceholder: "Виберіть категорію",
+        placeholder: "Виберіть необхідне значення",
     },
 };
 
