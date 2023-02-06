@@ -5,7 +5,7 @@ import Loader from 'components/Loader/Loader';
 import LoginForm from 'components/Auth/LoginForm/LoginForm';
 import { Title } from 'styles/Shared.styled';
 import { LoginImg } from './LoginPage.styled';
-import { AuthContainer, StyledAuthForm, AuthHero } from '../AuthPage.styled';
+import { AuthContainer, StyledAuthForm, AuthHero, LanguageButtonContainer } from '../AuthPage.styled';
 
 import { getFirstLoading, getLoading } from 'redux/auth/auth-selectors';
 
@@ -27,6 +27,7 @@ const LoginPage = () => {
       {loading && <Loader />}
         <StyledAuthForm>
         <AuthContainer>
+        <LanguageButtonContainer><LanguagesSwitcher/></LanguageButtonContainer>
           {isntMobile && (
             <AuthHero>
               <div>
@@ -44,10 +45,10 @@ const LoginPage = () => {
                   <LoginImg src={SigninTab} alt="Finance App" />
                 </picture>
               </div>
-              <LanguagesSwitcher/>
               <Title>Finance App</Title>
             </AuthHero>
           )}
+          
           <LoginForm />
           </AuthContainer>
         </StyledAuthForm>

@@ -1,12 +1,20 @@
 import { Formik } from 'formik';
 import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 
 import SelectList from 'components/SelectList/SelectList';
 import { FormContainer, StyledForm } from './DiagramForm.styled';
 import { monthNamesEn, monthNamesUa } from '../../../styles/Variables';
 
 const DiagramForm = ({ setDate, date, months, years }) => {
+  const [lng, setLng] = useState('');
+
   const currentLanguage = useSelector(state => state.language.language);
+
+
+  useEffect(()=>{
+    setLng(currentLanguage);
+  }, [lng, currentLanguage]);
 
   const currentMonthNames = (i) => {
     if(currentLanguage === "en") {

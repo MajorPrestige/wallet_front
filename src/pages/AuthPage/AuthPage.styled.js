@@ -5,6 +5,7 @@ import Elipse1 from 'images/auth/Ellipse1.png';
 import Elipse2 from 'images/auth/Ellipse2.png';
 
 export const StyledAuthForm = styled.div`
+position: relative;
   min-height: 100vh;
 
   @media ${device.tabletBefore} {
@@ -17,7 +18,24 @@ export const StyledAuthForm = styled.div`
   }
 `;
 
+export const LanguageButtonContainer = styled.div`
+  position: absolute;
+  top: 40px;
+  left: 2rem;
+
+  @media ${device.tablet} {
+    top: 45px;
+    left: 2.5rem;
+  }
+
+  @media ${device.desktop} {
+    top: 50px;
+    left: 1rem;
+  }
+`;
+
 export const AuthContainer = styled.div`
+position: relative;
   @media ${device.desktop} {
     display: flex;
     align-items: center;

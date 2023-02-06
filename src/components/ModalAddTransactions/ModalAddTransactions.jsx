@@ -93,14 +93,14 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
           .number()
           .positive()
           .required(`${t('modalAddTransactions.validationSchema.sum_required')}`)
-          .max(1000000000, 'up to 9 numbers'),
+          .max(1000000000, `${t('modalAddTransactions.validationSchema.sum_max')}`),
       })
     : yup.object().shape({
         sum: yup
           .number()
           .positive()
           .required(`${t('modalAddTransactions.validationSchema.sum_required')}`)
-          .max(1000000000, 'up to 9 numbers'),
+          .max(1000000000, `${t('modalAddTransactions.validationSchema.sum_max')}`),
         select: yup.string().required(`${t('modalAddTransactions.validationSchema.select_required')}`),
       });
 

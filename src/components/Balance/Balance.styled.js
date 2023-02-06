@@ -34,7 +34,7 @@ export const BalanceContainer = styled.div`
   }
 
   & p:last-child {
-    font-family: Poppins, Circe;
+    font-family: "Poppins", "Montserrat", "Circe";
     font-size: 30px;
   }
 `;
