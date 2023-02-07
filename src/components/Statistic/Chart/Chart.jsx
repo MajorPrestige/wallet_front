@@ -1,9 +1,6 @@
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip } from 'chart.js';
-import { useSelector } from 'react-redux';
-import { Trans } from "react-i18next";
-
-import { getBalance } from 'redux/auth/auth-selectors';
+import { Trans } from 'react-i18next';
 
 import {
   StyledChart,
@@ -17,7 +14,13 @@ import { diargamColors } from '../../../styles/Variables';
 ChartJS.register(ArcElement, Tooltip);
 
 const Chart = ({ transactions }) => {
-  const balance = useSelector(getBalance);
+  const totalTrans = transactions.reduce((total, trans) => {
+    if (trans.type) {
+      return total;
+    }
+
+    return total + trans.sum;
+  }, 0);
 
   let isExpensTrans = false;
   let isIncomeTrans = false;
@@ -78,7 +81,7 @@ const Chart = ({ transactions }) => {
           <StyledBalance>
             <div>
               <BalanceText>&#8372; </BalanceText>
-              <BalanceText>{balance.toFixed(2)}</BalanceText>
+              <BalanceText>{totalTrans.toFixed(2)}</BalanceText>
             </div>
           </StyledBalance>
         </StyledChart>
@@ -89,21 +92,21 @@ const Chart = ({ transactions }) => {
           <StyledBalance>
             <div>
               <BalanceText>&#8372; </BalanceText>
-              <BalanceText>{balance.toFixed(2)}</BalanceText>
+              <BalanceText>{totalTrans.toFixed(2)}</BalanceText>
             </div>
           </StyledBalance>
         </StyledChart>
-      )
-    }
-    {!isIncomeTrans && !isExpensTrans && (
-    <Notification>
-      <Text>
-      <Trans i18nKey="chart.notification.text">
-      You have no transactions in selected date yet. <br/> Please add transaction or choose another date.
-      </Trans>
-      </Text>
-    </Notification>
-    )}
+      )}
+      {!isIncomeTrans && !isExpensTrans && (
+        <Notification>
+          <Text>
+            <Trans i18nKey="chart.notification.text">
+              You have no transactions in selected date yet. <br /> Please add
+              transaction or choose another date.
+            </Trans>
+          </Text>
+        </Notification>
+      )}
     </>
   );
 };
