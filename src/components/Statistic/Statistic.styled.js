@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { device } from "styles/Media.variables";
+import styled from 'styled-components';
+import { device } from 'styles/Media.variables';
 import { font } from '../../styles/Variables';
 
 export const Title = styled.h1`
@@ -9,17 +9,16 @@ export const Title = styled.h1`
   line-height: 45px;
   color: ${props => props.theme.title};
 
-
-  margin-top: 40px; 
-  margin-bottom: 8px; 
+  margin-top: 40px;
+  margin-bottom: 8px;
 
   @media ${device.tablet} {
-    margin-top: 20px; 
-    margin-bottom: 20px; 
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 
   @media ${device.desktop} {
-    margin-top: 32px; 
+    margin-top: 32px;
     margin-left: 20px;
   }
 `;
@@ -29,13 +28,14 @@ export const StatisticContainer = styled.div`
 
   @media ${device.tablet} {
     display: flex;
-    gap: 32px;
+    justify-content: space-around;
     padding-bottom: 28px;
   }
 
   @media ${device.desktop} {
     margin-left: 70px;
     padding-bottom: 44px;
+    gap: 32px;
   }
 `;
 
@@ -45,12 +45,9 @@ export const Diagram = styled.div`
   }
 `;
 
-export const ChartContainer = styled.div`
-`;
+export const ChartContainer = styled.div``;
 
 export const TableContainer = styled.div`
-  margin-right: auto;
-  margin-left: auto;
   width: 280px;
 
   @media ${device.tablet} {
