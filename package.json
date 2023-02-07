@@ -2,7 +2,7 @@
   "name": "wallet",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://majorprestige.github.io/wallet_front/",
+  "homepage": "https://MajorPrestige.github.io/wallet_front/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.6",
     "@szhsin/react-menu": "^3.4.1",
