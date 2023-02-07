@@ -11,17 +11,16 @@ const DiagramForm = ({ setDate, date, months, years }) => {
 
   const currentLanguage = useSelector(state => state.language.language);
 
-
-  useEffect(()=>{
+  useEffect(() => {
     setLng(currentLanguage);
   }, [lng, currentLanguage]);
 
-  const currentMonthNames = (i) => {
-    if(currentLanguage === "en") {
+  const currentMonthNames = i => {
+    if (currentLanguage === 'en') {
       return monthNamesEn[i];
-    };
+    }
 
-    if(currentLanguage === "ua") {
+    if (currentLanguage === 'ua') {
       return monthNamesUa[i];
     }
   };
@@ -50,28 +49,26 @@ const DiagramForm = ({ setDate, date, months, years }) => {
   return (
     <FormContainer>
       <Formik initialValues={{ month: '', year: '' }}>
-        {props => (
-          <StyledForm>
-            <SelectList
-              options={optionsMonths}
-              chart
-              defaultValue={{
-                label: currentMonthNames(date.month - 1),
-                value: date.month,
-              }}
-              getCurrent={setMonth}
-            />
-            <SelectList
-              options={optionsYears}
-              chart
-              defaultValue={{
-                label: date.year,
-                value: date.year,
-              }}
-              getCurrent={setYear}
-            />
-          </StyledForm>
-        )}
+        <StyledForm>
+          <SelectList
+            options={optionsMonths}
+            chart
+            defaultValue={{
+              label: currentMonthNames(date.month - 1),
+              value: date.month,
+            }}
+            getCurrent={setMonth}
+          />
+          <SelectList
+            options={optionsYears}
+            chart
+            defaultValue={{
+              label: date.year,
+              value: date.year,
+            }}
+            getCurrent={setYear}
+          />
+        </StyledForm>
       </Formik>
     </FormContainer>
   );
