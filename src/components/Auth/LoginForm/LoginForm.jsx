@@ -4,7 +4,7 @@ import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { signin, signinWithToken } from 'redux/auth/auth-operations';
-import { useTranslation, Trans } from "react-i18next";
+import { useTranslation, Trans } from 'react-i18next';
 
 import Logo from 'components/Logo/Logo';
 import Modal from 'components/Modal/Modal';
@@ -107,15 +107,17 @@ const LoginForm = () => {
                 </StyledLabel>
                 <ButtonWrapper>
                   <Button primary marginBotom="20px" type="submit">
-                  {t('loginForm.signInButton')}
+                    {t('loginForm.signInButton')}
                   </Button>
                   <StyledLink to="/signup" outlined="true">
-                  {t('loginForm.signUpButton')}
+                    {t('loginForm.signUpButton')}
                   </StyledLink>
-                  <ButtonGoogle href="https://goit-wallet-back.onrender.com/api/users/google"><Trans i18nKey="loginForm.signInGoogle">
-                  SIGN IN WITH
-                  <GoogleLogo />OOGLE
-                  </Trans>
+                  <ButtonGoogle href="https://walletback-production.up.railway.app/api/users/google">
+                    <Trans i18nKey="loginForm.signInGoogle">
+                      SIGN IN WITH
+                      <GoogleLogo />
+                      OOGLE
+                    </Trans>
                   </ButtonGoogle>
                 </ButtonWrapper>
               </StyledForm>

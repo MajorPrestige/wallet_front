@@ -3,7 +3,7 @@ import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { signup } from 'redux/auth/auth-operations';
-import { useTranslation, Trans } from "react-i18next";
+import { useTranslation, Trans } from 'react-i18next';
 
 import Modal from 'components/Modal/Modal';
 import Logo from 'components/Logo/Logo';
@@ -48,18 +48,22 @@ const RegistrationForm = () => {
       .required(`${t('registrationForm.password_required')}`)
       .min(6, `${t('registrationForm.password_min')}`)
       .max(16, `${t('registrationForm.password_max')}`)
-      .matches( 
+      .matches(
         passwordRegexp.lettersFull,
         // /^.*(?=.{6,})((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
         `${t('registrationForm.password_matchesFull')}`,
       )
       .matches(
         passwordRegexp.numbers,
-        // /^.*(?=.*\d).*$/, 
-        `${t('registrationForm.password_matchesNum')}`),
+        // /^.*(?=.*\d).*$/,
+        `${t('registrationForm.password_matchesNum')}`,
+      ),
     confirmPassword: yup
       .string()
-      .oneOf([yup.ref('password')], `${t('registrationForm.confirmPassword_oneOf')}`)
+      .oneOf(
+        [yup.ref('password')],
+        `${t('registrationForm.confirmPassword_oneOf')}`,
+      )
       .required(`${t('registrationForm.confirmPassword_required')}`),
     firstName: yup
       .string()
@@ -72,10 +76,8 @@ const RegistrationForm = () => {
       if (password.length <= 16) {
         if (
           password.length > 5 &&
-          (
-            // /((?=.*[a-z]){1})((?=.*[A-Z]){1})/
-            passwordRegexp.lettersShort.test(password) ||
-            /\d/.test(password))
+          // /((?=.*[a-z]){1})((?=.*[A-Z]){1})/
+          (passwordRegexp.lettersShort.test(password) || /\d/.test(password))
         ) {
           if (
             // /(?=.{6,})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1})/
@@ -141,7 +143,9 @@ const RegistrationForm = () => {
                   <StyledField
                     name="password"
                     type="password"
-                    placeholder={`${t('registrationForm.password_placeholder')}`}
+                    placeholder={`${t(
+                      'registrationForm.password_placeholder',
+                    )}`}
                     value={values.name}
                     required={true}
                     onChange={handleChange}
@@ -163,7 +167,9 @@ const RegistrationForm = () => {
                   <StyledField
                     name="confirmPassword"
                     type="password"
-                    placeholder={`${t('registrationForm.confirmPassword_placeholder')}`}
+                    placeholder={`${t(
+                      'registrationForm.confirmPassword_placeholder',
+                    )}`}
                     value={values.name}
                     onChange={handleChange}
                   />
@@ -176,7 +182,9 @@ const RegistrationForm = () => {
                   <StyledField
                     name="firstName"
                     type="text"
-                    placeholder={`${t('registrationForm.firstName_placeholder')}`}
+                    placeholder={`${t(
+                      'registrationForm.firstName_placeholder',
+                    )}`}
                     value={values.name}
                     onChange={handleChange}
                   />
@@ -188,16 +196,17 @@ const RegistrationForm = () => {
                 </StyledLabel>
                 <ButtonWrapper>
                   <Button primary marginBotom="20px" type="submit">
-                  {t('registrationForm.signUpButton')}
+                    {t('registrationForm.signUpButton')}
                   </Button>
                   <StyledLink to="/" outlined="true">
-                  {t('registrationForm.signInButton')}
+                    {t('registrationForm.signInButton')}
                   </StyledLink>
-                  <ButtonGoogle href="https://goit-wallet-back.onrender.com/api/users/google">
-                  <Trans i18nKey="registrationForm.signInGoogle">
-                  SIGN IN WITH
-                  <GoogleLogo />OOGLE
-                  </Trans>
+                  <ButtonGoogle href="https://walletback-production.up.railway.app/api/users/google">
+                    <Trans i18nKey="registrationForm.signInGoogle">
+                      SIGN IN WITH
+                      <GoogleLogo />
+                      OOGLE
+                    </Trans>
                   </ButtonGoogle>
                 </ButtonWrapper>
               </StyledForm>
