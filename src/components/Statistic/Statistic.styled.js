@@ -12,6 +12,10 @@ export const Title = styled.h1`
   margin-top: 40px;
   margin-bottom: 8px;
 
+  @media ${device.tabletBefore} {
+    text-align: center;
+  }
+
   @media ${device.tablet} {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -49,6 +53,11 @@ export const ChartContainer = styled.div``;
 
 export const TableContainer = styled.div`
   width: 280px;
+
+  @media ${device.tabletBefore} {
+    margin-left: auto;
+    margin-right: auto;
+  }
 
   @media ${device.tablet} {
     width: 336px;
