@@ -49,11 +49,8 @@ export const App = () => {
   };
 
   useEffect(() => {
-    dispatch(current());
-  }, [dispatch]);
-
-  useEffect(() => {
     if (isLogin) {
+      dispatch(current());
       dispatch(fetchCategories());
     }
   }, [dispatch, isLogin]);
