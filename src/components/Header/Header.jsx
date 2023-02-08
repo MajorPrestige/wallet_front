@@ -3,7 +3,7 @@ import Logo from 'components/Logo/Logo';
 import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 import { getFirstName } from 'redux/auth/auth-selectors';
-import { useTranslation } from "react-i18next";
+import { useTranslation } from 'react-i18next';
 import {
   HeaderContainer,
   HeaderWrapper,
@@ -13,7 +13,6 @@ import {
 } from './Header.styled';
 import { LanguagesSwitcher } from 'components/LanguagesSwitcher/LanguagesSwitcher';
 
-
 import ModalAnswer from 'components/ModalAnswer/ModalAnswer';
 import Modal from 'components/Modal/Modal';
 import { signout } from 'redux/auth/auth-operations';
@@ -22,7 +21,8 @@ const Header = () => {
   const { t } = useTranslation();
   const userName = useSelector(getFirstName);
 
-  const isMobile = useMediaQuery({ maxWidth: 767 });
+  const isMobile = useMediaQuery({ maxWidth: 480 });
+  const isTabletBefore = useMediaQuery({ maxWidth: 767 });
   const isTablet = useMediaQuery({ minWidth: 768 });
 
   const [isModal, setIsModal] = useState(false);
@@ -40,10 +40,19 @@ const Header = () => {
   return (
     <HeaderContainer>
       <StyledHeader>
-        <LanguagesSwitcher/>
-        <Logo header />
+        {isMobile ? (
+          <>
+            <Logo header />
+            <LanguagesSwitcher />
+          </>
+        ) : (
+          <>
+            <LanguagesSwitcher />
+            <Logo header />
+          </>
+        )}
         <HeaderWrapper>
-          {isMobile && (
+          {isTabletBefore && (
             <>
               <p>{userName}</p>
               <LogoutButton onClick={toggleModal} type="button">
