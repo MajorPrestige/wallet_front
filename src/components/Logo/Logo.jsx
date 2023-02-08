@@ -1,6 +1,6 @@
 import { LogoContainer, LogoHeaderContainer, LogoText } from './Logo.styled';
 import { IconLogo } from './Logo.styled';
-import { useTranslation } from "react-i18next";
+import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 
 const Logo = ({ header }) => {
@@ -15,8 +15,8 @@ const Logo = ({ header }) => {
         </LogoHeaderContainer>
       ) : (
         <LogoContainer>
-         <IconLogo />
-          <LogoText>{isNotSmallMobile && t('wallet')}</LogoText>
+          <IconLogo />
+          <LogoText>{t('wallet')}</LogoText>
         </LogoContainer>
       )}
     </>
