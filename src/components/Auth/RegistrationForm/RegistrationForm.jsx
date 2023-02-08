@@ -94,7 +94,7 @@ const RegistrationForm = () => {
 
   const onSubmit = ({ firstName, email, password }) => {
     const value = {
-      name: firstName,
+      name: firstName.trim(),
       email,
       password,
     };
