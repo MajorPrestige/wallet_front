@@ -5,16 +5,23 @@ import Elipse1 from 'images/auth/Ellipse1.png';
 import Elipse2 from 'images/auth/Ellipse2.png';
 
 export const StyledAuthForm = styled.div`
-position: relative;
   min-height: 100vh;
 
   @media ${device.tabletBefore} {
-    background-color: ${(props) => props.theme.bgPrimary2};
+    background-color: ${props => props.theme.bgPrimary2};
   }
 
   @media ${device.tablet} {
     background: top 0% right 0% no-repeat url(${Elipse2}),
-      bottom 0% left 0% no-repeat url(${Elipse1}), ${(props) => props.theme.bgPrimary1};
+      bottom 0% left 0% no-repeat url(${Elipse1}),
+      ${props => props.theme.bgPrimary1}
+  }
+`;
+
+export const DarkThemeContainer = styled.div`
+  min-height: 100vh;
+  @media ${device.tablet} {
+    background-color: ${props => props.theme.bgAuthColor};
   }
 `;
 
@@ -35,7 +42,8 @@ export const LanguageButtonContainer = styled.div`
 `;
 
 export const AuthContainer = styled.div`
-position: relative;
+  position: relative;
+
   @media ${device.desktop} {
     display: flex;
     align-items: center;

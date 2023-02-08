@@ -18,6 +18,7 @@ export const TransactionButton = styled.button`
   position: fixed;
   right: 5%;
   bottom: 5%;
+  z-index: 10;
   outline: none;
   cursor: pointer;
   box-shadow: ${shadows.roundButton};
@@ -33,14 +34,6 @@ export const TransactionButton = styled.button`
     stroke: ${backgroundColor.green};
   }
 
-  @media (${device.desktopBefore}) {
-    position: fixed;
-    top: auto;
-    //left: auto;
-    //right: 40px;
-    bottom: 40px;
-    z-index: 10;
-  }
   @media ${device.desktop} {
     right: calc(50vw - 620px);
   }

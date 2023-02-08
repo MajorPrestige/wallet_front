@@ -5,7 +5,7 @@ import Loader from 'components/Loader/Loader';
 
 import { LanguagesSwitcher } from 'components/LanguagesSwitcher/LanguagesSwitcher';
 import RegistrationForm from 'components/Auth/RegistrationForm/RegistrationForm';
-import { StyledAuthForm, AuthHero, AuthContainer, LanguageButtonContainer  } from '../AuthPage.styled';
+import { StyledAuthForm, AuthHero, AuthContainer, LanguageButtonContainer, DarkThemeContainer  } from '../AuthPage.styled';
 import { RegistrationImg } from './RegistrationPage.styled';
 import { Title } from 'styles/Shared.styled';
 import FinanceTab from 'images/auth/FinanceTab.png';
@@ -22,6 +22,7 @@ const RegistrationPage = () => {
     <>
       {loading && <Loader />}
       <StyledAuthForm>
+      <DarkThemeContainer>
         <AuthContainer>
         <LanguageButtonContainer><LanguagesSwitcher/></LanguageButtonContainer>
         {isntMobile && (
@@ -46,6 +47,7 @@ const RegistrationPage = () => {
         )}
         <RegistrationForm />
         </AuthContainer>
+        </DarkThemeContainer>
       </StyledAuthForm>
     </>
   );
