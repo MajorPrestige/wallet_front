@@ -44,10 +44,8 @@ const ModalAddTransactions = ({ toggleModalCancel }) => {
   const isLoadingAdd = useSelector(getLoadingAddTransaction);
   const options = useSelector(categorySelectSelector);
   const currentLanguage = useSelector(state => state.language.language);
-  
 
   const dispatch = useDispatch();
-
 
   const currentOptions = (array) => {
     const categoriesEn =['Main expenses', 'Products', 'Car', 'Self care', 'Child care', 'Household products', 'Education', 'Leisure', 'Other expenses', 'Entertainment'];

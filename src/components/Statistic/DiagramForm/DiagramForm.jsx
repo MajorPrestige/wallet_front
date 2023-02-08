@@ -16,13 +16,11 @@ const DiagramForm = ({ setDate, date, months, years }) => {
   }, [lng, currentLanguage]);
 
   const currentMonthNames = i => {
-    if (currentLanguage === 'en') {
-      return monthNamesEn[i];
-    }
-
     if (currentLanguage === 'ua') {
       return monthNamesUa[i];
     }
+
+    return monthNamesEn[i];
   };
 
   const optionsMonths = months.map((month, i) => ({
@@ -46,6 +44,11 @@ const DiagramForm = ({ setDate, date, months, years }) => {
     });
   };
 
+  const defaultMonthValue = {
+    label: currentMonthNames(date.month - 1),
+    value: date.month,
+  };
+
   return (
     <FormContainer>
       <Formik initialValues={{ month: '', year: '' }}>
@@ -53,10 +56,7 @@ const DiagramForm = ({ setDate, date, months, years }) => {
           <SelectList
             options={optionsMonths}
             chart
-            defaultValue={{
-              label: currentMonthNames(date.month - 1),
-              value: date.month,
-            }}
+            defaultValue={defaultMonthValue}
             getCurrent={setMonth}
           />
           <SelectList

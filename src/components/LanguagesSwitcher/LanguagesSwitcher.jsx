@@ -27,7 +27,7 @@ const saveInLocalStorage = (key, value) => {
   }
 };
 
-const loadFromLocalStorage = key => {
+const loadFromLocalStorage = (key) => {
   try {
     const parsedValue = localStorage.getItem(key);
     return parsedValue === null ? undefined : JSON.parse(parsedValue);
@@ -36,7 +36,7 @@ const loadFromLocalStorage = key => {
   }
 };
 
-const handleThemeChange = (lng) => {
+const handleThemeChange = (lng ) => {
       changeLanguage(lng);
       setLng(lng);
       dispatch(setLanguage(lng));

@@ -14,7 +14,7 @@ import { Title, StatisticContainer, TableContainer } from './Statistic.styled';
 const Statistic = () => {
   const { t } = useTranslation();
   const [date, setDate] = useState(() => ({ month: (new Date().getMonth() + 1), year: new Date().getFullYear() }));
-
+  
   const dispatch = useDispatch();
 
   const { year, month } = date;
