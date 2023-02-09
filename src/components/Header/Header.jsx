@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Logo from 'components/Logo/Logo';
 import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
@@ -26,7 +26,7 @@ const Header = () => {
   const isTablet = useMediaQuery({ minWidth: 768 });
 
   const [isModal, setIsModal] = useState(false);
-
+  
   const toggleModal = () => {
     setIsModal(!isModal);
   };
