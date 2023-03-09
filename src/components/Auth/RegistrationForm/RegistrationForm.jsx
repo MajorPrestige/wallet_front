@@ -201,7 +201,8 @@ const RegistrationForm = () => {
                   <StyledLink to="/" outlined="true">
                     {t('registrationForm.signInButton')}
                   </StyledLink>
-                  <ButtonGoogle href="https://walletback-production.up.railway.app/api/users/google">
+                  {/* <ButtonGoogle href="https://walletback-production.up.railway.app/api/users/google"> */}
+                  <ButtonGoogle href="https://wallet-back-onrender.onrender.com/api/users/google">
                     <Trans i18nKey="registrationForm.signInGoogle">
                       SIGN IN WITH
                       <GoogleLogo />
