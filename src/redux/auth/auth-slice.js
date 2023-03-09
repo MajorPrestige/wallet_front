@@ -1,8 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-// import {
-//   addTransaction,
-//   deleteTransaction,
-// } from 'redux/transactions/trans-operations';
 import {
   signin,
   signout,

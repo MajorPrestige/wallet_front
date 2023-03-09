@@ -35,15 +35,15 @@ export const buttonColor = {
 };
 
 export const diargamColors = [
-   '#FED057',
-   '#FFD8D0',
-   '#FD9498',
-   '#C5BAFF',
-   '#6E78E8',
-   '#4A56E2',
-   '#81E1FF',
-   '#24CCA7',
-   '#00AD84',
+  '#FED057',
+  '#FFD8D0',
+  '#FD9498',
+  '#C5BAFF',
+  '#6E78E8',
+  '#4A56E2',
+  '#81E1FF',
+  '#24CCA7',
+  '#00AD84',
 ];
 
 export const monthNamesEn = [
@@ -61,7 +61,20 @@ export const monthNamesEn = [
   'December',
 ];
 
-export const monthNamesUa = ["Січень", "Лютий", "Березень", "Квітень", "Травень", "Червень", "Липень", "Серпень", "Вересень", "Жовтень", "Листопад", "Грудень"];
+export const monthNamesUa = [
+  'Січень',
+  'Лютий',
+  'Березень',
+  'Квітень',
+  'Травень',
+  'Червень',
+  'Липень',
+  'Серпень',
+  'Вересень',
+  'Жовтень',
+  'Листопад',
+  'Грудень',
+];
 
 export const border = {
   blue: '1px solid #4a56e2',
@@ -74,6 +87,6 @@ export const border = {
 export const shadows = {
   selectList: '0px 6px 15px rgba(0, 0, 0, 0.1)',
   diagramTabShadow: '0px 1px 0px rgba(255, 255, 255, 0.6)',
-  tableHomeShadows: '0 5px 2px -2px rgba(0, 0, 0, 0.3);',
-  roundButton: "0px 6px 15px rgba(36, 204, 167, 0.5)",
+  tableHomeShadows: '20px 20px 20px -2px rgba(0, 0, 0, 0.1)',
+  roundButton: '0px 6px 15px rgba(36, 204, 167, 0.5)',
 };

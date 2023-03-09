@@ -27,43 +27,43 @@ const LoginPage = () => {
 
   const loading = useSelector(getLoading);
 
-  return (
-    !isFirstLoading && (
-      <>
-        {loading && <Loader />}
-        <StyledAuthForm>
-          <DarkThemeContainer>
-            <AuthContainer>
-              <LanguageButtonContainer>
-                <LanguagesSwitcher />
-              </LanguageButtonContainer>
-              {isntMobile && (
-                <AuthHero>
-                  <div>
-                    <picture>
-                      <source
-                        media="(min-width: 1280px)"
-                        srcSet={`${SigninDesk} 1x, ${SigninDesk2x} 2x`}
-                        type="image/png"
-                      />
-                      <source
-                        media="(min-width: 768px)"
-                        srcSet={`${SigninTab} 1x, ${SigninTab2x} 2x`}
-                        type="image/png"
-                      />
-                      <LoginImg src={SigninTab} alt="Finance App" />
-                    </picture>
-                  </div>
-                  <Title>Finance App</Title>
-                </AuthHero>
-              )}
+  return isFirstLoading ? (
+    <Loader />
+  ) : (
+    <>
+      {loading && <Loader />}
+      <StyledAuthForm>
+        <DarkThemeContainer>
+          <AuthContainer>
+            <LanguageButtonContainer>
+              <LanguagesSwitcher />
+            </LanguageButtonContainer>
+            {isntMobile && (
+              <AuthHero>
+                <div>
+                  <picture>
+                    <source
+                      media="(min-width: 1280px)"
+                      srcSet={`${SigninDesk} 1x, ${SigninDesk2x} 2x`}
+                      type="image/png"
+                    />
+                    <source
+                      media="(min-width: 768px)"
+                      srcSet={`${SigninTab} 1x, ${SigninTab2x} 2x`}
+                      type="image/png"
+                    />
+                    <LoginImg src={SigninTab} alt="Finance App" />
+                  </picture>
+                </div>
+                <Title>Finance App</Title>
+              </AuthHero>
+            )}
 
-              <LoginForm />
-            </AuthContainer>
-          </DarkThemeContainer>
-        </StyledAuthForm>
-      </>
-    )
+            <LoginForm />
+          </AuthContainer>
+        </DarkThemeContainer>
+      </StyledAuthForm>
+    </>
   );
 };
 
