@@ -56,8 +56,10 @@ export const Overlay = styled.div`
   padding: size(24px);
   padding-top: size(32px);
 
+  
   border-radius: 16px;
   background-color: ${props => props.theme.bgPrimary2};
+  
 
   @media screen and (min-width: 768px) {
     display: block;
@@ -110,7 +112,7 @@ export const ModalWindowAddTransaction = styled.div`
   box-shadow: 10px 10px 20px rgba(9, 30, 63, 0.2);
   pointer-events: auto;
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 767.98px) {
     animation: ${slide} 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   }
 
