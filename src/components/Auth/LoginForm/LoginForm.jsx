@@ -112,7 +112,9 @@ const LoginForm = () => {
                   <PasswordLogo />
                   <EyeLogo
                     onMouseDown={handleSetInputTypePush}
+                    onTouchStart={handleSetInputTypePush}
                     onMouseUp={handleSetInputTypeUp}
+                    onTouchEnd={handleSetInputTypeUp}
                   />
                   {((errors.password && values.password) ||
                     touched.password) && (
@@ -140,11 +142,6 @@ const LoginForm = () => {
           </Formik>
         </FormWrapper>
       </AuthContainer>
-      {/* {authError && (
-        <Modal toggleModal={handleModalClose} isSignIn={false}>
-          <ErrorMessage message={authError}></ErrorMessage>
-        </Modal>
-      )} */}
       {authError && (
         <Modal toggleModal={handleModalClose} >
           <ErrorMessage message={authError}></ErrorMessage>

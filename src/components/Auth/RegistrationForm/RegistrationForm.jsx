@@ -187,7 +187,9 @@ const RegistrationForm = () => {
                   <PasswordLogo />
                   <EyeLogo
                     onMouseDown={handleSetInputTypePush}
+                    onTouchStart={handleSetInputTypePush}
                     onMouseUp={handleSetInputTypeUp}
+                    onTouchEnd={handleSetInputTypeUp}
                   />
                   {touched.confirmPassword && errors.confirmPassword && (
                     <AuthError>{errors.confirmPassword}</AuthError>
