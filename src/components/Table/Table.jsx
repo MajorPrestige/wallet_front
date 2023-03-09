@@ -1,7 +1,7 @@
 import { useMediaQuery } from 'react-responsive';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useRef } from 'react';
-import { useTranslation } from "react-i18next";
+import { useTranslation } from 'react-i18next';
 
 import {
   Category,
@@ -78,39 +78,39 @@ const Table = () => {
 
   if (!transactions) return false;
 
-  const transactionsList = (e) => {
-    if(currentLanguage === "ua") {
-      if(e?.category?.name === 'Main expenses') {
-        return "Основні витрати";
-      };
-      if(e?.category?.name === 'Products') {
-        return "Продукти";
-      };
-      if(e?.category?.name === 'Car') {
-        return "Автомобіль";
-      };
-      if(e?.category?.name === 'Self care') {
-        return "Догляд за собою";
-      };
-      if(e?.category?.name === 'Child care') {
-        return "Догляд за дітьми";
-      };
-      if(e?.category?.name === 'Household products') {
-        return "Товари для дому";
-      };
-      if(e?.category?.name === 'Education') {
-        return "Освіта";
-      };
-      if(e?.category?.name === 'Leisure') {
-        return "Дозвілля";
-      };
-      if(e?.category?.name === 'Other expenses') {
-        return "Інші витрати";
-      };
-      if(e?.category?.name === 'Entertainment') {
-        return "Розваги";
-      };
-    };
+  const transactionsList = e => {
+    if (currentLanguage === 'ua') {
+      if (e?.category?.name === 'Main expenses') {
+        return 'Основні витрати';
+      }
+      if (e?.category?.name === 'Products') {
+        return 'Продукти';
+      }
+      if (e?.category?.name === 'Car') {
+        return 'Автомобіль';
+      }
+      if (e?.category?.name === 'Self care') {
+        return 'Догляд за собою';
+      }
+      if (e?.category?.name === 'Child care') {
+        return 'Догляд за дітьми';
+      }
+      if (e?.category?.name === 'Household products') {
+        return 'Товари для дому';
+      }
+      if (e?.category?.name === 'Education') {
+        return 'Освіта';
+      }
+      if (e?.category?.name === 'Leisure') {
+        return 'Дозвілля';
+      }
+      if (e?.category?.name === 'Other expenses') {
+        return 'Інші витрати';
+      }
+      if (e?.category?.name === 'Entertainment') {
+        return 'Розваги';
+      }
+    }
     return e?.category?.name;
   };
 
@@ -136,15 +136,18 @@ const Table = () => {
                   <tr key={elem._id} style={{ height: 50 }}>
                     <OperationsStyled>{formatDate(elem.date)}</OperationsStyled>
                     <Operations color={elem.type ? '#24cca7' : '#ff6596'}>
-                      {elem.type ? '+' : '-'}
+                      {elem.type
+                        ? `${t('currency.table.income')}`
+                        : `${t('currency.table.expense')}`}
                     </Operations>
                     <OperationsStyled>
-                    {transactionsList(elem) ?? ''}
+                      {transactionsList(elem) ?? '-'}
                     </OperationsStyled>
                     <OperationsStyled
                       overflowWrap="break-word"
-                      wordBreak="break-all">
-                      {elem.comment}
+                      wordBreak="break-all"
+                    >
+                      {!elem.comment ? '-' : elem.comment}
                     </OperationsStyled>
                     <Operations color={elem.type ? '#24cca7' : '#ff6596'}>
                       {Number(elem.sum).toFixed(2)}
@@ -155,7 +158,8 @@ const Table = () => {
                     <Operations>
                       <ButtonBin
                         type="button"
-                        onClick={() => toggleModal(elem._id)}>
+                        onClick={() => toggleModal(elem._id)}
+                      >
                         <BinIcon />
                       </ButtonBin>
                     </Operations>
@@ -173,43 +177,62 @@ const Table = () => {
                 <PlusTable key={elem._id}>
                   <MobileTbody>
                     <MobileTrPlus>
-                      <MobileTdTitle>{t('table.mobileTrPlus.mobileTdTitle.date')}</MobileTdTitle>
+                      <MobileTdTitle>
+                        {t('table.mobileTrPlus.mobileTdTitle.date')}
+                      </MobileTdTitle>
                       <MobileTdStyled>{formatDate(elem.date)}</MobileTdStyled>
                     </MobileTrPlus>
                     <MobileTrPlus>
-                      <MobileTdTitle>{t('table.mobileTrPlus.mobileTdTitle.type')}</MobileTdTitle>
+                      <MobileTdTitle>
+                        {t('table.mobileTrPlus.mobileTdTitle.type')}
+                      </MobileTdTitle>
                       <MobileTd color={elem.type ? '#24cca7' : '#ff6596'}>
-                        {elem.type ? '+' : '-'}
+                        {elem.type
+                          ? `${t('currency.table.income')}`
+                          : `${t('currency.table.expense')}`}
                       </MobileTd>
                     </MobileTrPlus>
                     <MobileTrPlus>
-                      <MobileTdTitle>{t('table.mobileTrPlus.mobileTdTitle.category')}</MobileTdTitle>
+                      <MobileTdTitle>
+                        {t('table.mobileTrPlus.mobileTdTitle.category')}
+                      </MobileTdTitle>
                       <MobileTdStyled>
-                        {elem?.category?.name ?? ''}
+                        {elem?.category?.name ?? '-'}
                       </MobileTdStyled>
                     </MobileTrPlus>
                     <MobileTrPlus>
-                      <MobileTdTitle>{t('table.mobileTrPlus.mobileTdTitle.comment')}</MobileTdTitle>
-                      <MobileTdStyled>{elem.comment}</MobileTdStyled>
+                      <MobileTdTitle>
+                        {t('table.mobileTrPlus.mobileTdTitle.comment')}
+                      </MobileTdTitle>
+                      <MobileTdStyled>
+                        {!elem.comment ? '-' : elem.comment}
+                      </MobileTdStyled>
                     </MobileTrPlus>
                     <MobileTrPlus>
-                      <MobileTdTitle>{t('table.mobileTrPlus.mobileTdTitle.sum')}</MobileTdTitle>
+                      <MobileTdTitle>
+                        {t('table.mobileTrPlus.mobileTdTitle.sum')}
+                      </MobileTdTitle>
                       <MobileTdSumPlus>
                         {Number(elem.sum).toFixed(2)}
                       </MobileTdSumPlus>
                     </MobileTrPlus>
                     <MobileTrPlus>
-                      <MobileTdTitle>{t('table.mobileTrPlus.mobileTdTitle.balance')}</MobileTdTitle>
+                      <MobileTdTitle>
+                        {t('table.mobileTrPlus.mobileTdTitle.balance')}
+                      </MobileTdTitle>
                       <MobileTdStyled>
                         {Number(elem.balanceAfter).toFixed(2)}
                       </MobileTdStyled>
                     </MobileTrPlus>
                     <MobileTrPlus>
-                      <MobileTdTitle>{t('table.mobileTrPlus.mobileTdTitle.options')}</MobileTdTitle>
+                      <MobileTdTitle>
+                        {t('table.mobileTrPlus.mobileTdTitle.options')}
+                      </MobileTdTitle>
                       <MobileTd>
                         <ButtonBin
                           type="button"
-                          onClick={() => toggleModal(elem._id)}>
+                          onClick={() => toggleModal(elem._id)}
+                        >
                           <BinIcon />
                         </ButtonBin>
                       </MobileTd>
@@ -220,37 +243,58 @@ const Table = () => {
                 <MinusTable key={elem._id}>
                   <MobileTbody>
                     <MobileTrMinus>
-                      <MobileTdTitle>{t('table.mobileTrMinus.mobileTdTitle.date')}</MobileTdTitle>
+                      <MobileTdTitle>
+                        {t('table.mobileTrMinus.mobileTdTitle.date')}
+                      </MobileTdTitle>
                       <MobileTdStyled>{formatDate(elem.date)}</MobileTdStyled>
                     </MobileTrMinus>
                     <MobileTrMinus>
-                      <MobileTdTitle>{t('table.mobileTrMinus.mobileTdTitle.type')}</MobileTdTitle>
+                      <MobileTdTitle>
+                        {t('table.mobileTrMinus.mobileTdTitle.type')}
+                      </MobileTdTitle>
                       <MobileTd color={elem.type ? '#24cca7' : '#ff6596'}>
-                        {elem.type ? '+' : '-'}
+                        {elem.type
+                          ? `${t('currency.table.income')}`
+                          : `${t('currency.table.expense')}`}
                       </MobileTd>
                     </MobileTrMinus>
                     <MobileTrMinus>
-                      <MobileTdTitle>{t('table.mobileTrMinus.mobileTdTitle.category')}</MobileTdTitle>
-                      <MobileTdStyled>{transactionsList(elem) ?? ''}</MobileTdStyled>
+                      <MobileTdTitle>
+                        {t('table.mobileTrMinus.mobileTdTitle.category')}
+                      </MobileTdTitle>
+                      <MobileTdStyled>
+                        {transactionsList(elem) ?? '-'}
+                      </MobileTdStyled>
                     </MobileTrMinus>
                     <MobileTrMinus>
-                      <MobileTdTitle>{t('table.mobileTrMinus.mobileTdTitle.comment')}</MobileTdTitle>
-                      <MobileTdStyled>{elem.comment}</MobileTdStyled>
+                      <MobileTdTitle>
+                        {t('table.mobileTrMinus.mobileTdTitle.comment')}
+                      </MobileTdTitle>
+                      <MobileTdStyled>
+                        {!elem.comment ? '-' : elem.comment}
+                      </MobileTdStyled>
                     </MobileTrMinus>
                     <MobileTrMinus>
-                      <MobileTdTitle>{t('table.mobileTrMinus.mobileTdTitle.sum')}</MobileTdTitle>
+                      <MobileTdTitle>
+                        {t('table.mobileTrMinus.mobileTdTitle.sum')}
+                      </MobileTdTitle>
                       <MobileTdMinus>{elem.sum}</MobileTdMinus>
                     </MobileTrMinus>
                     <MobileTrMinus>
-                      <MobileTdTitle>{t('table.mobileTrMinus.mobileTdTitle.balance')}</MobileTdTitle>
+                      <MobileTdTitle>
+                        {t('table.mobileTrMinus.mobileTdTitle.balance')}
+                      </MobileTdTitle>
                       <MobileTdStyled>{elem.balanceAfter}</MobileTdStyled>
                     </MobileTrMinus>
                     <MobileTrMinus>
-                      <MobileTdTitle>{t('table.mobileTrMinus.mobileTdTitle.options')}</MobileTdTitle>
+                      <MobileTdTitle>
+                        {t('table.mobileTrMinus.mobileTdTitle.options')}
+                      </MobileTdTitle>
                       <MobileTd>
                         <ButtonBin
                           type="button"
-                          onClick={() => toggleModal(elem._id)}>
+                          onClick={() => toggleModal(elem._id)}
+                        >
                           <BinIcon />
                         </ButtonBin>
                       </MobileTd>

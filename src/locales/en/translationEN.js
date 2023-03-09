@@ -39,6 +39,8 @@ const translationEN = {
             currency: "Currency",
             purchase: "Purchase",
             sale: "Sale",
+            expense: "Expense",
+            income: "Income",
         },
     },
     header: {

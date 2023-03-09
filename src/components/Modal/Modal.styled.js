@@ -117,7 +117,11 @@ export const ModalWindowAddTransaction = styled.div`
   pointer-events: auto;
 
   @media screen and (max-width: 767.98px) {
-    margin: auto 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
     width: 100vw;
     border-radius: 0;
     box-shadow: 10px 10px 20px rgba(9, 30, 63, 0);

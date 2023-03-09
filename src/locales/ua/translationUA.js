@@ -39,6 +39,8 @@ const translationUA = {
             currency: "Валюта",
             purchase: "Купівля",
             sale: "Продаж",
+            expense: "Витрати",
+            income: "Дохід",
         },
     },
     header: {
