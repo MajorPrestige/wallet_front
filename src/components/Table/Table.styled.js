@@ -173,7 +173,7 @@ export const MobileTrPlus = styled.tr`
     border-top-right-radius: 10px;
   }
   box-shadow: inset 4px 0px 0px ${colorText.green};
-  border: ${border.homeTabGrey};
+  border: ${props => props.theme.borderTable};
 `;
 
 export const MobileTrMinus = styled.tr`
@@ -193,7 +193,7 @@ export const MobileTrMinus = styled.tr`
     border-top-right-radius: 10px;
   }
   box-shadow: inset 4px 0px 0px 0px ${colorText.red};
-  border: ${props => props.theme.bgPrimary1};
+  border: ${props => props.theme.borderTable};
 `;
 
 export const MobileTdTitle = styled.td`

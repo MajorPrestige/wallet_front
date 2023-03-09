@@ -26,6 +26,7 @@ export const light = {
   txtGrey: '#BDBDBD',
   txtbalanceGrey: '#A6A6A6',
   txtmodalMailPassword: '#e0e0e0',
+  borderTable: '1px solid #dcdcdf',
 };
 
 export const dark = {
@@ -49,6 +50,7 @@ export const dark = {
   txtGrey: '#ffffff',
   txtbalanceGrey: '#A6A6A6',
   txtmodalMailPassword: '#ffffff',
+  borderTable: '1px solid #0d1117',
 };
 
 export const ThemeSwitcher = styled(Switch)`
