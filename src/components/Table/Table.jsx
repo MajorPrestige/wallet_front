@@ -33,6 +33,7 @@ import {
 } from 'redux/transactions/trans-operations';
 import { formatDate } from './../../helpers/formatDate';
 
+import NotificationAddTransaction from 'components/NotificationAddTransaction/NotificationAddTransaction';
 import Modal from 'components/Modal/Modal';
 import { useState } from 'react';
 import ModalAnswer from 'components/ModalAnswer/ModalAnswer';
@@ -260,6 +261,7 @@ const Table = () => {
             )}
         </MobileContainer>
       )}
+      <NotificationAddTransaction />
       {isModal && (
         <Modal toggleModal={toggleModal} isSignIn>
           <ModalAnswer

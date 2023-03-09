@@ -116,6 +116,7 @@ export const EyeLogo = styled(Eye)`
   top: 0;
   right: 10px;
   fill: #e0e0e0;
+  transition: fill 0.2s ease-in-out;
 
   &:active {
     fill: #24cca7;

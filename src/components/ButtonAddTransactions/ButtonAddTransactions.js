@@ -1,7 +1,11 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { device } from 'styles/Media.variables';
 import { ReactComponent as Icon } from 'images/svgs/add.svg';
-import { backgroundColor, border, shadows} from '../../styles/Variables';
+import { backgroundColor, border, shadows } from '../../styles/Variables';
+
+const beat = keyframes`
+  to { transform: scale(1.1) }; 
+`;
 
 export const TransactionButton = styled.button`
   padding: 0;
@@ -22,9 +26,12 @@ export const TransactionButton = styled.button`
   outline: none;
   cursor: pointer;
   box-shadow: ${shadows.roundButton};
+
+  animation: ${beat} 300ms infinite alternate;
+
   &:hover,
   &:focus {
-    border:  ${border.green};
+    border: ${border.green};
     transform: scale(1.05);
     outline: transparent;
     background-color: ${backgroundColor.white};
