@@ -6,6 +6,7 @@ import { ReactComponent as Email } from 'images/svgs/email.svg';
 import { ReactComponent as Password } from 'images/svgs/password.svg';
 import { ReactComponent as User } from 'images/svgs/user.svg';
 import { ReactComponent as Google } from 'images/svgs/google.svg';
+import { ReactComponent as Eye } from 'images/svgs/eye.svg';
 
 export const AuthContainer = styled.div`
   @media ${device.tabletBefore} {
@@ -24,7 +25,7 @@ export const AuthContainer = styled.div`
     min-height: 100vh;
     padding: 52px 91px 52px 107px;
     display: flex;
-    background: ${(props) => props.theme.bgModalBlur};
+    background: ${props => props.theme.bgModalBlur};
     backdrop-filter: blur(25px);
   }
 `;
@@ -35,11 +36,11 @@ export const LogoWrapper = styled.div`
 `;
 
 export const FormWrapper = styled.div`
-  background-color: ${(props) => props.theme.bgModalColor};
+  background-color: ${props => props.theme.bgModalColor};
   margin: auto;
 
   @media ${device.tabletBefore} {
-    background-color: ${(props) => props.theme.bgPrimary2};
+    background-color: ${props => props.theme.bgPrimary2};
     padding-top: 32px;
     padding-bottom: 32px;
     max-width: 320px;
@@ -69,12 +70,12 @@ export const StyledField = styled(Field)`
   width: 100%;
   padding-left: 55px;
   border: none;
-  border-bottom: 1px solid ${(props) => props.theme.txtmodalMailPassword};
+  border-bottom: 1px solid ${props => props.theme.txtmodalMailPassword};
   font-size: 18px;
   outline: none;
   transition: 0.2s ease-in-out;
-  background-color: ${(props) => props.theme.bgModalColor};
-  color: ${(props) => props.theme.reverseBlack};
+  background-color: ${props => props.theme.bgModalColor};
+  color: ${props => props.theme.reverseBlack};
 
   &::placeholder {
     color: #bdbdbd;
@@ -84,12 +85,12 @@ export const StyledField = styled(Field)`
     border-color: #24cca7;
   }
 
-  &:focus ~ svg {
+  &:focus + svg {
     fill: #24cca7;
   }
 
   @media ${device.tabletBefore} {
-    background-color: ${(props) => props.theme.bgPrimary2};
+    background-color: ${props => props.theme.bgPrimary2};
   }
 `;
 
@@ -97,14 +98,28 @@ export const EmailLogo = styled(Email)`
   position: absolute;
   top: 0;
   left: 10px;
-  fill: ${(props) => props.theme.txtmodalMailPassword};
+  fill: ${props => props.theme.txtmodalMailPassword};
 `;
 
 export const PasswordLogo = styled(Password)`
   position: absolute;
   top: 0;
   left: 10px;
-  fill: ${(props) => props.theme.txtmodalMailPassword};
+  fill: ${props => props.theme.txtmodalMailPassword};
+`;
+
+export const EyeLogo = styled(Eye)`
+  position: absolute;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  top: 0;
+  right: 10px;
+  fill: #e0e0e0;
+
+  &:active {
+    fill: #24cca7;
+  }
 `;
 
 export const AuthError = styled.p`
@@ -169,11 +184,11 @@ export const PasswordCheck = styled.div`
 
 export const ButtonGoogle = styled.a`
   font-family: 'Circe';
-	position: relative;
+  position: relative;
   width: 280px;
-	display: flex;
-	text-align: baseline;
-	justify-content: center;
+  display: flex;
+  text-align: baseline;
+  justify-content: center;
   min-height: 50px;
   font-size: 18px;
   margin-top: 20px;
@@ -182,24 +197,24 @@ export const ButtonGoogle = styled.a`
   border-radius: 20px;
   letter-spacing: 0.1em;
   transition: 0.2s ease-in-out;
-	line-height: 1.3;
+  line-height: 1.3;
 
   background-color: #000000;
   color: #ffffff;
-  border: 1px solid ${(props) => props.theme.reverseBlack};
+  border: 1px solid ${props => props.theme.reverseBlack};
 
   &:hover,
   &:focus {
     transform: scale(1.05);
     outline: transparent;
-		border: 1px solid #000000;
-		background-color: #ffffff;
-		color: #000000;
+    border: 1px solid #000000;
+    background-color: #ffffff;
+    color: #000000;
   }
 `;
 
 export const GoogleLogo = styled(Google)`
   height: 19.5px;
-	margin-right: 2px;
-	margin-left: 7px;
+  margin-right: 2px;
+  margin-left: 7px;
 `;

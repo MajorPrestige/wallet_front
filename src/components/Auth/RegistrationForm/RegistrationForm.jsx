@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
@@ -19,6 +20,7 @@ import {
   StyledField,
   EmailLogo,
   PasswordLogo,
+  EyeLogo,
   AuthError,
   ButtonWrapper,
   UserLogo,
@@ -34,6 +36,7 @@ import { emailRegexp, passwordRegexp } from '../../../variables/Regexp';
 // const emailRegexp = /^\w+[\w-.]*\w@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/;
 
 const RegistrationForm = () => {
+  const [inputType, setInputType] = useState('password');
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const authError = useSelector(getAuthError);
@@ -106,6 +109,14 @@ const RegistrationForm = () => {
     dispatch(clearAuthError());
   };
 
+  const handleSetInputTypePush = () => {
+    setInputType('string');
+  };
+
+  const handleSetInputTypeUp = () => {
+    setInputType('password');
+  };
+
   return (
     <>
       <AuthContainer>
@@ -142,7 +153,7 @@ const RegistrationForm = () => {
                 <StyledLabel>
                   <StyledField
                     name="password"
-                    type="password"
+                    type={inputType}
                     placeholder={`${t(
                       'registrationForm.password_placeholder',
                     )}`}
@@ -166,7 +177,7 @@ const RegistrationForm = () => {
                 <StyledLabel>
                   <StyledField
                     name="confirmPassword"
-                    type="password"
+                    type={inputType}
                     placeholder={`${t(
                       'registrationForm.confirmPassword_placeholder',
                     )}`}
@@ -174,6 +185,10 @@ const RegistrationForm = () => {
                     onChange={handleChange}
                   />
                   <PasswordLogo />
+                  <EyeLogo
+                    onMouseDown={handleSetInputTypePush}
+                    onMouseUp={handleSetInputTypeUp}
+                  />
                   {touched.confirmPassword && errors.confirmPassword && (
                     <AuthError>{errors.confirmPassword}</AuthError>
                   )}

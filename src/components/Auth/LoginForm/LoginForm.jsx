@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Formik } from 'formik';
 import * as yup from 'yup';
@@ -18,6 +19,7 @@ import {
   StyledField,
   EmailLogo,
   PasswordLogo,
+  EyeLogo,
   AuthError,
   ButtonWrapper,
   GoogleLogo,
@@ -29,9 +31,8 @@ import { clearAuthError } from 'redux/auth/auth-slice';
 import ErrorMessage from 'components/ErrorMessage/ErrorMessage';
 import { emailRegexp } from '../../../variables/Regexp';
 
-// const emailRegexp = /^\w+[\w-.]*\w@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/;
-
 const LoginForm = () => {
+  const [inputType, setInputType] = useState('password');
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
@@ -58,6 +59,14 @@ const LoginForm = () => {
 
   const handleModalClose = () => {
     dispatch(clearAuthError());
+  };
+
+  const handleSetInputTypePush = () => {
+    setInputType('string');
+  };
+
+  const handleSetInputTypeUp = () => {
+    setInputType('password');
   };
 
   return (
@@ -93,13 +102,17 @@ const LoginForm = () => {
                 <StyledLabel>
                   <StyledField
                     name="password"
-                    type="password"
+                    type={inputType}
                     placeholder={`${t('loginForm.password_placeholder')}`}
                     value={values.name}
                     required={true}
                     onChange={handleChange}
                   />
                   <PasswordLogo />
+                  <EyeLogo
+                    onMouseDown={handleSetInputTypePush}
+                    onMouseUp={handleSetInputTypeUp}
+                  />
                   {((errors.password && values.password) ||
                     touched.password) && (
                     <AuthError>{errors.password}</AuthError>
