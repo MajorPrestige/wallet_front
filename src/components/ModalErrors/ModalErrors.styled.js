@@ -1,7 +1,16 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { device } from 'styles/Media.variables';
 
 import { ReactComponent as ModalCloseSvg } from 'images/svgs/modal-close.svg';
+
+const scale = keyframes`
+  0% {
+  transform: scale(0.5);
+  }
+  100% {
+  transform: scale(1);
+  }
+`;
 
 export const Container = styled.div`
   position: fixed;
@@ -12,7 +21,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  background-color: rgba(43, 43, 43, 0);
+  background-color: rgba(43, 43, 43, 0.3);
   z-index: 12000;
   pointer-events: auto;
 
@@ -67,7 +76,6 @@ export const Overlay = styled.div`
     display: block;
     flex-direction: row;
     height: auto;
-    background-color: rgba(43, 43, 43, 0.3);
   }
 `;
 
@@ -78,6 +86,8 @@ export const ModalWindow = styled.div`
   border-radius: 8px;
   background-color: #ffffff;
   box-shadow: 10px 10px 20px rgba(9, 30, 63, 0.2);
+
+  animation: ${scale} 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 
   @media (${device.mobileTablet}) {
     width: 440px;

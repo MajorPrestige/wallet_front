@@ -4,11 +4,20 @@ import { device } from 'styles/Media.variables';
 import { ReactComponent as ModalCloseSvg } from 'images/svgs/modal-close.svg';
 
 const slide = keyframes`
-0% {
-            transform: translateY(-700px);
+  0% {
+  transform: translateY(-700px);
   }
   100% {
-            transform: translateY(0px);
+  transform: translateY(0px);
+  }
+`;
+
+const scale = keyframes`
+  0% {
+  transform: scale(0.5);
+  }
+  100% {
+  transform: scale(1);
   }
 `;
 
@@ -29,6 +38,7 @@ export const Container = styled.div`
   }
 
   @media screen and (min-width: 768px) {
+    background-color: rgba(43, 43, 43, 0.3);
   }
 `;
 
@@ -56,16 +66,13 @@ export const Overlay = styled.div`
   padding: size(24px);
   padding-top: size(32px);
 
-  
   border-radius: 16px;
-  background-color: ${props => props.theme.bgPrimary2};
-  
 
   @media screen and (min-width: 768px) {
     display: block;
     flex-direction: row;
     height: auto;
-    background-color: rgba(43, 43, 43, 0.3);
+    /* background-color: rgba(43, 43, 43, 0.3); */
   }
 `;
 
@@ -113,14 +120,15 @@ export const ModalWindowAddTransaction = styled.div`
   pointer-events: auto;
 
   @media screen and (max-width: 767.98px) {
-    animation: ${slide} 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  }
-
-  @media screen and (max-width: 767px) {
     margin: auto 0;
     width: 100vw;
     border-radius: 0;
     box-shadow: 10px 10px 20px rgba(9, 30, 63, 0);
+    animation: ${slide} 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+
+  @media screen and (min-width: 768px) {
+    animation: ${scale} 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   }
 `;
 
@@ -146,4 +154,5 @@ export const ModalHeader = styled.div`
   z-index: 10;
   top: 0;
   left: 0;
+  animation: none;
 `;
