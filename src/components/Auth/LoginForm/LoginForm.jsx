@@ -8,7 +8,8 @@ import { signin, signinWithToken } from 'redux/auth/auth-operations';
 import { useTranslation, Trans } from 'react-i18next';
 
 import Logo from 'components/Logo/Logo';
-import Modal from 'components/Modal/Modal';
+// import Modal from 'components/Modal/Modal';
+import Modal from 'components/ModalErrors/ModalErrors';
 import { Button, StyledLink } from 'styles/Shared.styled';
 import {
   AuthContainer,
@@ -139,8 +140,13 @@ const LoginForm = () => {
           </Formik>
         </FormWrapper>
       </AuthContainer>
-      {authError && (
+      {/* {authError && (
         <Modal toggleModal={handleModalClose} isSignIn={false}>
+          <ErrorMessage message={authError}></ErrorMessage>
+        </Modal>
+      )} */}
+      {authError && (
+        <Modal toggleModal={handleModalClose} >
           <ErrorMessage message={authError}></ErrorMessage>
         </Modal>
       )}

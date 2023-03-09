@@ -1,16 +1,7 @@
-import styled, { css, keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 import { device } from 'styles/Media.variables';
 
 import { ReactComponent as ModalCloseSvg } from 'images/svgs/modal-close.svg';
-
-const slide = keyframes`
-0% {
-            transform: translateY(-700px);
-  }
-  100% {
-            transform: translateY(0px);
-  }
-`;
 
 export const Container = styled.div`
   position: fixed;
@@ -43,28 +34,6 @@ export const Wrapper = styled.div`
   align-items: center;
   width: 100%;
   min-height: 100%;
-  padding: ${({ isTablet }) => (!isTablet ? '0' : '20px 40px')};
-`;
-
-export const Overlay = styled.div`
-  position: relative;
-
-  display: flex;
-  flex-direction: column;
-  min-width: 300px;
-  height: 100%;
-  padding: size(24px);
-  padding-top: size(32px);
-
-  border-radius: 16px;
-  background-color: ${props => props.theme.bgPrimary2};
-
-  @media screen and (min-width: 768px) {
-    display: block;
-    flex-direction: row;
-    height: auto;
-    background-color: rgba(43, 43, 43, 0.3);
-  }
 `;
 
 export const OverlayClick = styled.div`
@@ -78,6 +47,30 @@ export const OverlayClick = styled.div`
   cursor: pointer;
 `;
 
+export const Overlay = styled.div`
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  height: 100%;
+  padding: size(24px);
+  padding-top: size(32px);
+
+  border-radius: 16px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media screen and (min-width: 768px) {
+    display: block;
+    flex-direction: row;
+    height: auto;
+    background-color: rgba(43, 43, 43, 0.3);
+  }
+`;
+
 export const ModalWindow = styled.div`
   position: relative;
   width: 280px;
@@ -86,10 +79,6 @@ export const ModalWindow = styled.div`
   background-color: #ffffff;
   box-shadow: 10px 10px 20px rgba(9, 30, 63, 0.2);
 
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
-
   @media (${device.mobileTablet}) {
     width: 440px;
   }
@@ -97,28 +86,6 @@ export const ModalWindow = styled.div`
   @media (${device.tablet}) {
     width: 533px;
     min-height: 616px;
-  }
-`;
-
-export const ModalWindowAddTransaction = styled.div`
-  position: relative;
-  width: 540px;
-  min-height: 204px;
-  margin: 0;
-  border-radius: 8px;
-  background-color: ${props => props.theme.bgPrimary2};
-  box-shadow: 10px 10px 20px rgba(9, 30, 63, 0.2);
-  pointer-events: auto;
-
-  @media screen and (max-width: 480px) {
-    animation: ${slide} 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  }
-
-  @media screen and (max-width: 767px) {
-    margin: auto 0;
-    width: 100vw;
-    border-radius: 0;
-    box-shadow: 10px 10px 20px rgba(9, 30, 63, 0);
   }
 `;
 
@@ -137,11 +104,4 @@ export const ModalClose = styled(ModalCloseSvg)`
       stroke: ${props => props.theme.reverseBlack};
       fill: ${props => props.theme.reverseBlack};
     `}
-`;
-
-export const ModalHeader = styled.div`
-  position: sticky;
-  z-index: 10;
-  top: 0;
-  left: 0;
 `;
