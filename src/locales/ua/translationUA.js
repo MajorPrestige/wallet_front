@@ -80,6 +80,11 @@ const translationUA = {
             text: "У вас ще немає транзакцій у вибрану дату. <1/> Додайте транзакцію або виберіть іншу дату.",
         },
     },
+    transaction: {
+        notification: {
+            text: "Вітаю! <1/> Щоб розпочати, будь-ласка, додайте транзакцію.",
+        },
+    },
     diagramTab: {
         tableContainer: {
             category: "Категорія",

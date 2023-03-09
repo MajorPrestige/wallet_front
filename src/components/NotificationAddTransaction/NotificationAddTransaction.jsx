@@ -1,9 +1,14 @@
 import { Text, Container } from './NotificationAddTransaction.styled';
+import { Trans } from 'react-i18next';
 
 const NotificationAddTransaction = () => {
   return (
     <Container>
-      <Text>Hello! <br /> To get started, please enter the transaction.</Text>
+      <Text>
+        <Trans i18nKey="transaction.notification.text">
+          Hello! <br /> To get started, please add the transaction.
+        </Trans>
+      </Text>
     </Container>
   );
 };

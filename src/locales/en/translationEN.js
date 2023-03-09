@@ -80,6 +80,11 @@ const translationEN = {
             text: "You have no transactions in selected date yet. <1/> Please add transaction or choose another date.",
         },
     },
+    transaction: {
+        notification: {
+            text: "Hello! <1/> To get started, please add the transaction.",
+        },
+    },
     diagramTab: {
         tableContainer: {
             category: "Category",

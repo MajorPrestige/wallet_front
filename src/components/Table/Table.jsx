@@ -261,7 +261,7 @@ const Table = () => {
             )}
         </MobileContainer>
       )}
-      <NotificationAddTransaction />
+      {transactions.length === 0 && <NotificationAddTransaction />}
       {isModal && (
         <Modal toggleModal={toggleModal} isSignIn>
           <ModalAnswer
