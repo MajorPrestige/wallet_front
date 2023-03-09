@@ -3,8 +3,14 @@ import { device } from 'styles/Media.variables';
 import { ReactComponent as LogoutIcon } from 'images/svgs/logout.svg';
 
 export const HeaderContainer = styled.div`
-  background-color: ${(props) => props.theme.bgPrimary2};
+  background-color: ${props => props.theme.bgPrimary2};
   text-align: center;
+
+  @media ${device.tabletBefore} {
+    position: sticky;
+    top: 0;
+    z-index: 9;
+  }
 `;
 
 export const StyledHeader = styled.header`
@@ -36,11 +42,11 @@ export const HeaderWrapper = styled.div`
   display: flex;
   align-items: center;
   font-size: 18px;
-  color: ${(props) => props.theme.txtGrey};
+  color: ${props => props.theme.txtGrey};
 `;
 
 export const Logout = styled(LogoutIcon)`
-  fill: ${(props) => props.theme.txtGrey};
+  fill: ${props => props.theme.txtGrey};
 `;
 
 export const LogoutButton = styled.button`
@@ -51,28 +57,22 @@ export const LogoutButton = styled.button`
   padding: 0;
   padding-left: 8px;
   transition: 0.2s ease-in-out;
-  &:hover svg,  
-  &:focus svg, 
+  &:hover svg,
+  &:focus svg,
   &:hover span,
   &:focus span {
-    
     transform: scale(1.05);
     fill: #ff6596;
     filter: drop-shadow(0px 3px 10px rgb(255, 101, 150, 0.3));
-    color:#ff6596;
-    
+    color: #ff6596;
   }
-  
 
   ${props =>
     props.tablet &&
     css`
       font-size: 18px;
-      color: ${(props) => props.theme.txtGrey};
+      color: ${props => props.theme.txtGrey};
       padding-left: 12px;
-      border-left: 1px solid ${(props) => props.theme.txtGrey};
+      border-left: 1px solid ${props => props.theme.txtGrey};
     `}
 `;
-
-
-
