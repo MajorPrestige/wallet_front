@@ -63,8 +63,6 @@ export const Overlay = styled.div`
   flex-direction: column;
   min-width: 300px;
   height: 100%;
-  padding: size(24px);
-  padding-top: size(32px);
 
   border-radius: 16px;
 
@@ -72,7 +70,6 @@ export const Overlay = styled.div`
     display: block;
     flex-direction: row;
     height: auto;
-    /* background-color: rgba(43, 43, 43, 0.3); */
   }
 `;
 

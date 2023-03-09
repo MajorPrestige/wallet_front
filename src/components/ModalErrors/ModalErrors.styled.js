@@ -59,18 +59,17 @@ export const OverlayClick = styled.div`
 export const Overlay = styled.div`
   position: relative;
 
-  display: flex;
   flex-direction: column;
   min-width: 300px;
   height: 100%;
-  padding: size(24px);
-  padding-top: size(32px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   border-radius: 16px;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 20px;
 
   @media screen and (min-width: 768px) {
     display: block;
