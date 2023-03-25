@@ -21,7 +21,6 @@ const Header = () => {
   const { t } = useTranslation();
   const userName = useSelector(getFirstName);
 
-  const isMobile = useMediaQuery({ maxWidth: 480 });
   const isTabletBefore = useMediaQuery({ maxWidth: 767 });
   const isTablet = useMediaQuery({ minWidth: 768 });
 
@@ -39,18 +38,9 @@ const Header = () => {
 
   return (
     <HeaderContainer>
-      <StyledHeader>
-        {isMobile ? (
-          <>
-            <Logo header />
-            <LanguagesSwitcher />
-          </>
-        ) : (
-          <>
+      <StyledHeader>  
             <LanguagesSwitcher />
             <Logo header />
-          </>
-        )}
         <HeaderWrapper>
           {isTabletBefore && (
             <>
