@@ -15,7 +15,9 @@ export const Container = styled.div`
   max-height: 71vh;
   margin-left: auto;
   margin-right: auto;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+
   box-shadow: ${props => {
     const { hasScroll } = props.children.props;
     return hasScroll ? shadows.tableHomeShadows : 'none';
