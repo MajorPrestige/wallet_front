@@ -1,4 +1,4 @@
-# Wallet project
+# Wallet - team project
 
 ## Start local project
 
