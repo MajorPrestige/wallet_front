@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://wallet-back-onrender.onrender.com/api';
+// axios.defaults.baseURL = 'https://wallet-back-onrender.onrender.com/api';
 
-// axios.defaults.baseURL = 'https://walletback-production.up.railway.app/api';
+axios.defaults.baseURL = 'https://walletback-production.up.railway.app/api';
 
 // axios.defaults.baseURL = "http://localhost:4000/api/";
 
