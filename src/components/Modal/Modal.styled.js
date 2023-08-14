@@ -129,7 +129,7 @@ export const ModalWindowAddTransaction = styled.div`
   }
 
   @media screen and (min-width: 768px) {
-    animation: ${scale} 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+    animation: ${scale} 0.15s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   }
 `;
 
