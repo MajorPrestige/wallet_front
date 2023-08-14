@@ -86,7 +86,7 @@ export const ModalWindow = styled.div`
   background-color: #ffffff;
   box-shadow: 10px 10px 20px rgba(9, 30, 63, 0.2);
 
-  animation: ${scale} 0.15s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: ${scale} 0.1s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 
   @media (${device.mobileTablet}) {
     width: 440px;
